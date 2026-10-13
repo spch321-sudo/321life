@@ -1,0 +1,17 @@
+{
+  "name": "321生命操練",
+  "short_name": "321生命操練",
+  "description": "舊人有己生命檢視表與新人無己生命操練表：每日檢視、操練、成長圖與得勝日記。",
+  "lang": "zh-Hant-TW",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#F3F6F4",
+  "theme_color": "#2F6A48",
+  "icons": [
+    {"src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any"},
+    {"src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any"},
+    {"src": "icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"},
+    {"src": "apple-touch-icon.png", "sizes": "180x180", "type": "image/png"}
+  ]
+}

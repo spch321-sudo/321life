@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>321生命操練</title>
+<meta name="description" content="舊人有己生命檢視表與新人無己生命操練表：每日檢視、操練、成長圖與得勝日記。">
+<meta name="theme-color" content="#2F6A48">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="321生命操練">
+<meta property="og:type" content="website">
+<meta property="og:title" content="321生命操練">
+<meta property="og:description" content="舊人有己生命檢視表與新人無己生命操練表：每日檢視、操練、成長圖與得勝日記。">
+<meta property="og:image" content="https://spch321-sudo.github.io/321life/hero.jpg">
+<meta property="og:image:width" content="1080">
+<meta property="og:image:height" content="1080">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;800&family=Noto+Sans+TC:wght@400;500;700&display=swap">
+<style>
+/* Layout: one-column phone app, header + content + fixed bottom tab bar. Vine green = new self, muted plum = old self. */
+:root{
+  --bg:#F3F6F4; --surface:#FFFFFF; --sunk:#E7EDE9; --fg:#1C2A24; --muted:#5E6E66; --line:#D3DDD7;
+  --vine:#2F6A48; --vine-soft:#DCEBE1; --plum:#86465A; --plum-soft:#F1E1E6; --gold:#A87B1F;
+  --display:"Noto Serif TC","Songti TC","PMingLiU",serif;
+  --body:"Noto Sans TC","PingFang TC","Microsoft JhengHei",system-ui,sans-serif;
+  --r:14px;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#111815; --surface:#18221D; --sunk:#202C26; --fg:#E4ECE7; --muted:#9AAAA1; --line:#2E3C35;
+  --vine:#86C49C; --vine-soft:#22382B; --plum:#D492A6; --plum-soft:#3A2630; --gold:#D9AE55; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#111815; --surface:#18221D; --sunk:#202C26; --fg:#E4ECE7; --muted:#9AAAA1; --line:#2E3C35;
+  --vine:#86C49C; --vine-soft:#22382B; --plum:#D492A6; --plum-soft:#3A2630; --gold:#D9AE55; color-scheme:dark}
+html,body{background:var(--bg)}
+:root{padding-top:env(safe-area-inset-top,0px)}
+*{-webkit-tap-highlight-color:transparent}
+body{margin:0;color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.7;padding-inline:16px;padding-block:0 96px}
+.wrap{max-width:640px;margin:0 auto}
+h1,h2,h3{font-family:var(--display);line-height:1.35;text-wrap:balance;margin:0}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,select:focus-visible,textarea:focus-visible,input:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:18px 8px}
+.brand{display:flex;align-items:baseline;gap:10px}
+.mark{font-family:var(--display);font-weight:800;font-size:28px;letter-spacing:.02em;color:var(--vine)}
+.brand h1{font-size:20px;font-weight:800}
+.eyebrow{font-size:12px;letter-spacing:.12em;color:var(--muted);font-weight:700}
+.view{display:grid;gap:16px;padding-block:8px 24px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:grid;gap:10px;min-width:0}
+.hero{background:linear-gradient(160deg,var(--vine-soft),var(--surface) 70%);border-color:transparent}
+.hero h2{font-size:26px}
+.kv{margin:0;border-radius:var(--r);overflow:hidden;background:#1d3a5c;aspect-ratio:1/1;position:relative;box-shadow:0 6px 20px rgba(20,40,30,.18)}
+.kv img{display:block;width:100%;height:100%;object-fit:cover}
+.kv figcaption{position:absolute;left:0;right:0;bottom:0;padding:40px 16px 14px;color:#fff;font-family:var(--display);font-size:16px;line-height:1.55;text-align:center;letter-spacing:.04em;background:linear-gradient(to top,rgba(10,20,15,.72),rgba(10,20,15,0));text-shadow:0 1px 3px rgba(0,0,0,.5)}
+.kv figcaption span{display:inline-block}
+.kv figcaption small{display:block;margin-top:2px;font-family:var(--body);font-size:12px;letter-spacing:.08em;opacity:.92}
+@supports not (aspect-ratio:1/1){.kv{height:0;padding-bottom:100%}.kv img{position:absolute;top:0;left:0}}
+.verse{font-family:var(--display);font-size:17px;line-height:1.8;margin:0;padding-left:14px;border-left:3px solid var(--gold)}
+.verse cite{display:block;font-family:var(--body);font-style:normal;font-size:13px;color:var(--muted);margin-top:4px}
+.row{display:flex;gap:10px;flex-wrap:wrap}
+.btn{border:0;border-radius:12px;padding:12px 16px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:48px}
+.btn.old{background:var(--plum);color:var(--bg)}
+.btn.new{background:var(--vine);color:var(--bg)}
+.btn.ghost{background:var(--sunk)}
+.btn.wide{flex:1 1 140px}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.week{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;text-align:center;font-size:12px;color:var(--muted)}
+.week .d{display:grid;gap:4px;justify-items:center}
+.dot{width:26px;height:26px;border-radius:50%;border:2px solid var(--line);display:grid;place-items:center;font-size:12px;font-weight:700}
+.dot.done{background:var(--vine);border-color:var(--vine);color:var(--bg)}
+.dot.today{border-color:var(--gold)}
+.fruit{display:flex;gap:14px;align-items:center}
+.fruit .ch{font-family:var(--display);font-size:34px;font-weight:800;color:var(--vine);width:56px;height:56px;border-radius:50%;background:var(--vine-soft);display:grid;place-items:center;flex:none}
+.small{font-size:14px;color:var(--muted)}
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;text-align:center}
+.pillars div{background:var(--sunk);border-radius:10px;padding:10px 6px;font-size:13px}
+.pillars b{display:block;font-family:var(--display);font-size:15px}
+/* group picker */
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 14px;font-size:15px;min-height:38px}
+.chip[aria-pressed="true"]{border-color:currentColor;font-weight:700}
+.mode-old .chip[aria-pressed="true"]{color:var(--plum);background:var(--plum-soft)}
+.mode-new .chip[aria-pressed="true"]{color:var(--vine);background:var(--vine-soft)}
+.legend{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;font-size:12px;color:var(--muted);text-align:center}
+.legend b{display:block;font-size:16px;color:var(--fg)}
+.group h3{font-size:21px}
+.mode-old .group h3{color:var(--plum)}
+.mode-new .group h3{color:var(--vine)}
+.item{display:grid;gap:8px;padding-block:12px;border-top:1px solid var(--line)}
+.item p{margin:0}
+.item .sym{font-size:13px;color:var(--plum)}
+.seg{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.seg button{border:1px solid var(--line);background:var(--sunk);border-radius:10px;min-height:44px;font-weight:700;font-variant-numeric:tabular-nums}
+.mode-old .seg button[aria-pressed="true"]{background:var(--plum);border-color:var(--plum);color:var(--bg)}
+.mode-new .seg button[aria-pressed="true"]{background:var(--vine);border-color:var(--vine);color:var(--bg)}
+.gscore{display:flex;justify-content:space-between;align-items:baseline;gap:8px;font-variant-numeric:tabular-nums}
+.gscore strong{font-size:22px;font-family:var(--display)}
+.helps{display:grid;gap:6px;font-size:15px;background:var(--sunk);border-radius:10px;padding:12px}
+.helps p{margin:0}
+.helps b{color:var(--muted);font-weight:700;margin-right:6px}
+.result{display:grid;gap:10px}
+.band{display:flex;gap:12px;align-items:center;padding:10px 12px;border-radius:10px;background:var(--sunk)}
+.band .n{font-family:var(--display);font-size:22px;font-weight:800;min-width:56px;font-variant-numeric:tabular-nums}
+ol.steps{margin:0;padding-left:1.4em;display:grid;gap:4px}
+.prayer{font-family:var(--display);line-height:1.9;background:var(--sunk);border-radius:10px;padding:14px;margin:0}
+/* growth chart */
+.chart{display:grid;gap:10px}
+.crow{display:grid;grid-template-columns:44px 1fr 34px;gap:8px;align-items:center;font-size:14px}
+.crow .lbl{font-weight:700}
+.bars{display:grid;gap:3px}
+.track{height:10px;background:var(--sunk);border-radius:5px;overflow:hidden}
+.track i{display:block;height:100%;border-radius:5px}
+.track.o i{background:var(--plum)}
+.track.n i{background:var(--vine)}
+.nums{font-size:12px;color:var(--muted);text-align:right;font-variant-numeric:tabular-nums;line-height:1.3}
+.key{display:flex;gap:16px;font-size:13px;color:var(--muted)}
+.key span::before{content:"";display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.k-old::before{background:var(--plum)}
+.k-new::before{background:var(--vine)}
+.tnum{font-variant-numeric:tabular-nums}
+.split{font-size:12px;letter-spacing:.1em;color:var(--muted);font-weight:700;padding-top:4px}
+.rec{display:grid;gap:4px;padding-block:12px;border-top:1px solid var(--line)}
+.rec .h{display:flex;justify-content:space-between;gap:8px;align-items:center}
+.tag{font-size:12px;font-weight:700;border-radius:6px;padding:1px 8px}
+.tag.old{background:var(--plum-soft);color:var(--plum)}
+.tag.new{background:var(--vine-soft);color:var(--vine)}
+.linkbtn{border:0;background:none;color:var(--muted);font-size:13px;text-decoration:underline;padding:4px}
+.linkbtn.danger{color:var(--plum)}
+/* journal */
+.seg2{display:grid;grid-template-columns:1fr 1fr;background:var(--sunk);border-radius:12px;padding:4px;gap:4px}
+.seg2 button{border:0;background:none;border-radius:9px;min-height:42px;font-weight:700}
+.seg2 button[aria-pressed="true"]{background:var(--surface);box-shadow:0 1px 3px rgba(0,0,0,.12)}
+label.f{display:grid;gap:4px;font-size:14px;font-weight:700;color:var(--muted)}
+textarea,select{font:inherit;color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px;width:100%;box-sizing:border-box}
+textarea{min-height:72px;resize:vertical}
+.empty{text-align:center;color:var(--muted);padding:24px 8px}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(84px + env(safe-area-inset-bottom,0px));background:var(--fg);color:var(--bg);padding:10px 18px;border-radius:999px;font-size:14px;z-index:20}
+nav.tabs{position:fixed;left:0;right:0;bottom:0;background:var(--surface);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(6,1fr);padding-bottom:env(safe-area-inset-bottom,0px);z-index:10}
+nav.tabs button{border:0;background:none;padding:10px 2px 8px;font-size:12px;display:grid;justify-items:center;gap:2px;color:var(--muted);min-height:60px}
+nav.tabs svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+nav.tabs button[aria-current="page"]{color:var(--vine);font-weight:700}
+nav.tabs button.t-old[aria-current="page"]{color:var(--plum)}
+@media (prefers-reduced-motion:no-preference){.view{animation:fade .25s ease}@keyframes fade{from{opacity:.4;transform:translateY(4px)}to{opacity:1;transform:none}}}
+.hdbtn{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:4px 12px;font-size:13px;color:var(--muted)}
+.updbar{position:fixed;left:16px;right:16px;top:calc(12px + env(safe-area-inset-top,0px));z-index:30;background:var(--vine);color:var(--bg);border-radius:12px;padding:10px 14px;display:flex;align-items:center;justify-content:space-between;gap:10px;max-width:608px;margin:0 auto;box-shadow:0 4px 16px rgba(0,0,0,.2)}
+.updbar button{border:0;background:var(--bg);color:var(--vine);border-radius:8px;padding:6px 12px;font-weight:700}
+[hidden]{display:none!important}
+/* 生命健檢 */
+.ckgrp{display:grid;gap:8px;padding-top:12px;border-top:1px solid var(--line)}
+.ckgrp h3{font-size:18px;display:flex;align-items:baseline;gap:8px}
+.ckgrp h3 em{font-style:normal;font-family:var(--body);font-size:13px;color:var(--muted);font-weight:500}
+.ckno{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--vine-soft);color:var(--vine);font-family:var(--body);font-size:13px;font-weight:700;flex:none}
+.emos{display:flex;flex-wrap:wrap;gap:6px}
+.emos .chip{font-size:14px;min-height:34px;padding:4px 12px}
+.busy{display:flex;gap:12px;align-items:center}
+.spin{width:22px;height:22px;border-radius:50%;border:3px solid var(--vine-soft);border-top-color:var(--vine);flex:none}
+@media (prefers-reduced-motion:no-preference){.spin{animation:sp 1s linear infinite}@keyframes sp{to{transform:rotate(360deg)}}}
+.who{justify-self:start;font-size:13px;font-weight:700;border-radius:999px;padding:2px 12px}
+.who.o{background:var(--plum-soft);color:var(--plum)}
+.who.m{background:#F4EAD3;color:var(--gold)}
+.who.n{background:var(--vine-soft);color:var(--vine)}
+:root[data-theme="dark"] .who.m{background:#3A3020}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .who.m{background:#3A3020}}
+.lk{display:grid;gap:8px;padding:12px;border-radius:10px;background:var(--sunk)}
+.lk .mine{font-size:14px;color:var(--muted);margin:0}
+.lk .on{display:grid;grid-template-columns:auto 1fr;gap:4px 10px;margin:0;font-size:15px}
+.lk .on dt{font-weight:700}
+.lk .on dd{margin:0}
+.lk .on .o{color:var(--plum)}
+.lk .on .n{color:var(--vine)}
+.shift{display:grid;gap:6px}
+.shift p{margin:0;padding:10px 12px;border-radius:10px}
+.shift .f{background:var(--plum-soft)}
+.shift .t{background:var(--vine-soft)}
+.act{background:var(--vine);color:var(--bg);border-radius:12px;padding:14px 16px;font-weight:700;font-size:17px;margin:0}
+.ckrec{border:0;background:none;text-align:left;padding:12px 0;border-top:1px solid var(--line);display:grid;gap:2px;width:100%}
+.ckrec b{font-size:16px}
+.raw p{margin:0 0 8px}
+</style>
+</head>
+<body>
+<div class="updbar" id="updbar" hidden><span>有新版本可以更新</span><button id="updbtn">立即更新</button></div>
+<div class="wrap">
+  <header class="top">
+    <div class="brand"><span class="mark">321</span><h1>生命操練</h1></div>
+    <button class="hdbtn" onclick="go('growth');setTimeout(function(){var b=document.getElementById('backup');if(b)b.scrollIntoView();},50)">備份</button>
+  </header>
+  <main id="app" class="view"></main>
+</div>
+<nav class="tabs" id="tabs" aria-label="主選單">
+  <button data-tab="home"><svg viewBox="0 0 24 24"><path d="M12 3v3M5.6 5.6l2.1 2.1M3 12h3M18.4 5.6l-2.1 2.1M21 12h-3M6 17a6 6 0 0 1 12 0M3 20h18"/></svg>今日</button>
+  <button data-tab="check"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/><path d="M3 12h4l2-3 3 6 2-3h7"/></svg>生命健檢</button>
+  <button data-tab="exam" class="t-old"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/></svg>檢視舊人</button>
+  <button data-tab="train"><svg viewBox="0 0 24 24"><path d="M12 21V11M12 11c0-4 3-7 8-7 0 5-3 7-8 7zM12 14c0-3-2.5-5-7-5 0 4 2.5 5 7 5z"/></svg>操練新人</button>
+  <button data-tab="growth"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>成長</button>
+  <button data-tab="journal"><svg viewBox="0 0 24 24"><path d="M5 4h11l3 3v13H5zM9 10h6M9 14h6M9 18h3"/></svg>日記</button>
+</nav>
+<script>
+/* 321生命操練 v1.2.0 — ES5 */
+
+var GROUPS=[
+ {id:"see",kind:"門戶",name:"看",
+  exam:{title:"我的眼睛在看誰？",items:["我很快看見別人的缺點，卻看不見自己的問題","我常拿自己和別人比較，因而自卑或自大","遇到難處時，我先看環境、看人，而不是仰望耶穌","我的眼目被手機、物質或私慾吸引，難以自制","我只看見自己吃虧，看不見神的恩典"],
+   newp:"看耶穌、看恩典、看別人的長處。",verse:["為甚麼看見你弟兄眼中有刺，卻不想自己眼中有梁木呢？","馬太福音7:3"]},
+  train:{title:"用基督的眼睛看",items:[["我先省察自己的梁木，再溫柔看待別人的刺","只看別人缺點"],["我看見每個人都是神獨特的創造，不與人比較","比較而自卑或自大"],["遇到難處時，我先仰望耶穌，再看環境","先看環境和人"],["我節制眼目，把時間留給神的話和需要我的人","被手機與私慾吸引"],["我天天數算主恩，看見神的手在每件事上","只看自己吃虧"]],
+   verse:["求你開我的眼睛，使我看出你律法中的奇妙。","詩篇119:18"],decl:"主啊，我要用你的眼光看人看事。",practice:"每天寫下三件看見的恩典，並當面說出一個人的長處。"}},
+ {id:"hear",kind:"門戶",name:"聽",
+  exam:{title:"我的耳朵向誰敞開？",items:["別人還沒說完，我已急著回應或打斷","我喜歡聽讚美，聽到勸告就不舒服、想辯解","我愛聽閒話、八卦，並在心裡給人定罪","我聽人的意見多，安靜聽神的話少","我選擇性地聽，只聽自己想聽的"],
+   newp:"先聽神，再聽人；聽懂心意，不只聽字面。",verse:["你們各人要快快的聽，慢慢的說，慢慢的動怒。","雅各書1:19"]},
+  train:{title:"用謙卑的耳朵聽",items:[["我讓人把話說完，聽懂對方的心意再回應","急著回應打斷"],["別人給我勸告時，我說「謝謝你提醒我」","只愛聽讚美"],["聽到閒話時，我停止傳播，並為那人禱告","愛聽八卦論斷人"],["每天我安靜聽神的話，再去聽人的意見","聽人多聽神少"],["我願意聽不同的聲音，從中學習","只聽想聽的"]],
+   verse:["我的羊聽我的聲音，我也認識他們，他們也跟著我。","約翰福音10:27"],decl:"請說，僕人敬聽！",practice:"每次對話先問「你的意思是……嗎？」確認之後再回應。"}},
+ {id:"think",kind:"門戶",name:"想",
+  exam:{title:"我的心思由誰掌管？",items:["我的念頭常繞著「我」：我的面子、我的感受、我的得失","我常憂慮未來，或反覆咀嚼過去的傷害","我在心裡論斷人、猜疑人的動機","做決定時我用腦算計，很少用心尋求聖靈","負面的想法一來，我就順著它走"],
+   newp:"把心意奪回，順服基督；從人的觀點換成神的觀點。",verse:["將人所有的心意奪回，使他都順服基督。","哥林多後書10:5"]},
+  train:{title:"用屬天的心思想",items:[["我的念頭常想到：怎樣使耶穌得榮耀、使別人得益處","繞著我的得失轉"],["憂慮一來，我立刻交託，安息在神的應許裡","憂慮未來、咀嚼傷害"],["我往好處想人，相信神也在對方身上動工","猜疑論斷人"],["做決定前，我先安靜用心尋求聖靈的引導","用腦算計"],["我把負面念頭奪回，換成真實、可愛、有美名的事","順著負面想法走"]],
+   verse:["凡是真實的、可敬的、公義的、清潔的、可愛的、有美名的，若有甚麼德行，若有甚麼稱讚，這些事你們都要思念。","腓立比書4:8"],decl:"我要以基督耶穌的心為心。",practice:"負面念頭出現就問：「耶穌怎麼看這件事？」再用一節經文取代它。"}},
+ {id:"speak",kind:"門戶",name:"講",
+  exam:{title:"我的口在建造還是拆毀？",items:["我常抱怨、發牢騷","我說話帶批評、諷刺或命令的口氣","我喜歡談自己的成就，暗中求人肯定","被指出錯誤時，我第一反應是辯解或推卸","背後談論別人的不是"],
+   newp:"說造就人的話、感恩的話、認錯的話。",verse:["污穢的言語，一句不可出口，只要隨事說造就人的好話，叫聽見的人得益處。","以弗所書4:29"]},
+  train:{title:"用造就人的口講",items:[["我把抱怨換成感謝，凡事謝恩","抱怨發牢騷"],["我說話溫柔，帶著和氣與鼓勵","批評諷刺命令"],["我述說神的作為，把榮耀歸給耶穌，把功勞歸給別人","談自己的成就"],["被指正時，我先說「我錯了，對不起」","辯解推卸"],["我在背後為人說好話、為人代禱","背後談論別人"]],
+   verse:["你們的言語要常常帶著和氣，好像用鹽調和，就可知道該怎樣回答各人。","歌羅西書4:6"],decl:"我的口要說造就人的話，叫聽見的人得益處。",practice:"每天至少說三句感謝或肯定的話；說錯了，當天就道歉。"}},
+ {id:"act",kind:"門戶",name:"行",
+  exam:{title:"我的腳步跟從誰？",items:["我做事先照自己的意思，事後才禱告","我的時間和力氣主要為自己的需要和喜好","我知道聖靈的感動，卻拖延或不順從","我做好事是為了被看見、被稱讚","不順我意時，我用冷漠、退縮或強硬來回應"],
+   newp:"捨己、背十架、跟從主；順著聖靈而行。",verse:["你們當順著聖靈而行，就不放縱肉體的情慾了。","加拉太書5:16"]},
+  train:{title:"用捨己的腳步行",items:[["我做事之前先禱告，求問主的心意","先照己意後禱告"],["我把時間和力氣分給神與身邊的人","只為自己的喜好"],["聖靈一有感動，我就立刻順從","拖延不順從"],["我在暗中行善，只求天父看見","為了被看見"],["不順我意時，我仍以溫柔和愛回應","冷漠退縮或強硬"]],
+   verse:["人若說他住在主裡面，就該自己照主所行的去行。","約翰一書2:6"],decl:"主啊，不要照我的意思，只要照你的意思。",practice:"每天做一件只有神知道的服事。"}},
+ {id:"idea",kind:"領域",name:"觀念",
+  exam:{title:"我用誰的眼光看事情？",items:["我用人的觀點判斷事情，很少問神怎麼看","我看重地上的得失，忽略天上的價值","我被眼前的處境左右，失去永恆的眼光","我認為成功就是有能力、有成就、被人看重","我覺得自己大致沒問題，問題多半在別人"],
+   newp:"人的→神的；地上的→天上的；暫時的→永恆的；屬世的→屬神的。",verse:["不要效法這個世界，只要心意更新而變化，叫你們察驗何為神的善良、純全、可喜悅的旨意。","羅馬書12:2"]},
+  train:{title:"穿上神的觀點",items:[["遇事我先問：「神怎麼看？」","用人的觀點判斷"],["我以天上的價值衡量得失","看重地上得失"],["我用永恆的眼光看眼前的處境","被處境左右"],["我認定成功就是讓耶穌作王、榮耀歸神","以成就為成功"],["我願意先看見自己的問題，從我開始改變","問題都在別人"]],
+   verse:["原來我們不是顧念所見的，乃是顧念所不見的；因為所見的是暫時的，所不見的是永遠的。","哥林多後書4:18"],decl:"從人的觀點換成神的觀點，從暫時換成永恆。",practice:"每天用八大步驟（資訊、啟示、信服、實踐、檢討、修正、反覆、繁殖）消化一節經文。"}},
+ {id:"life",kind:"領域",name:"生命",
+  exam:{title:"我裡面是誰在作王？",items:["我很在意面子、地位、別人怎麼看我","受委屈時，我陷在自憐或苦毒裡","我自以為義，覺得自己比別人屬靈","我不容易真心認錯、說「對不起」","我嘴上說讓耶穌作王，實際上自己作主"],
+   newp:"謙卑、無己，讓基督在裡面活，結出聖靈的果子。",verse:["凡事不可結黨，不可貪圖虛浮的榮耀；只要存心謙卑，各人看別人比自己強。","腓立比書2:3"]},
+  train:{title:"讓耶穌在裡面作王",items:[["我在意神的喜悅，多過人的眼光","在意面子地位"],["受委屈時，我交託給神，並為對方祝福","自憐苦毒"],["我承認自己全然靠恩典，看別人比自己強","自以為義"],["我能真心認錯，主動說「對不起」","不肯認錯"],["每天早晨我把生命寶座交給耶穌","嘴上讓主作王，實際自己作主"]],
+   verse:["你們當以基督耶穌的心為心。","腓立比書2:5"],decl:"主，今天請你坐在我生命的寶座上。",practice:"每天早晨禱告：「主，今天請你坐在我生命的寶座上。」"}},
+ {id:"living",kind:"領域",name:"生活",
+  exam:{title:"我的日子圍繞誰轉？",items:["靈修、禱告常被忙碌擠掉","我的時間、金錢主要用在自己身上","我用娛樂、購物或忙碌逃避內心的空虛","我常焦慮、急躁，缺少平安和喜樂","主日與平日判若兩人，信仰沒有進入生活"],
+   newp:"先求神的國和神的義；用心靠聖靈，用心就開心。",verse:["你要保守你心，勝過保守一切，因為一生的果效是由心發出。","箴言4:23"]},
+  train:{title:"讓神的國居首位",items:[["我每天有固定的靈修與禱告時間","靈修被擠掉"],["我以時間、金錢擺上，祝福神的國和別人","只用在自己身上"],["內心空虛時，我回到主面前得滿足","用娛樂購物逃避"],["我活在主的平安喜樂中，不急躁","焦慮急躁"],["我在家庭、職場都活出信仰","主日平日判若兩人"]],
+   verse:["你們要先求他的國和他的義，這些東西都要加給你們了。","馬太福音6:33"],decl:"我要先求神的國和神的義。",practice:"把靈修時間寫進行事曆，像赴最重要的約一樣守住它。"}},
+ {id:"rel",kind:"領域",name:"關係",
+  exam:{title:"我把人放在哪裡？",items:["為了把事做成，我不惜傷害人","為了東西或金錢，我和人起爭執、破壞關係","衝突時，我要求對方先改變、先道歉","我心裡有不肯饒恕的人","我與神的關係不夠親密，卻急著經營人際關係"],
+   newp:"先與神，再與自己，再與人，再與事。人比事重要，關係比東西重要。",verse:["各人不要單顧自己的事，也要顧別人的事。","腓立比書2:4"]},
+  train:{title:"人比事重要，關係比東西重要",items:[["做事時，我先顧念人，不為事傷人","為事傷人"],["我寧可吃虧，也要保全關係","為東西破壞關係"],["衝突時，我先謙卑、先道歉","要求對方先改變"],["我饒恕得罪我的人，如同主饒恕我","不肯饒恕"],["我先建立與神的關係，再與自己、與人、與事","次序顛倒"]],
+   verse:["並要以恩慈相待，存憐憫的心，彼此饒恕，正如神在基督裡饒恕了你們一樣。","以弗所書4:32"],decl:"人比事重要，關係比東西重要。",practice:"主動聯絡一位關係疏遠的人，說一句和好或祝福的話。"}},
+ {id:"work",kind:"領域",name:"事工",
+  exam:{title:"我在服事中榮耀誰？",items:["服事時我在意掌聲、職位和被看見","事工有成果，我心裡暗暗歸功自己","我不容易與人配搭，堅持自己的做法","我靠恩賜和經驗服事，很少靠禱告和聖靈","別人比我更被重用時，我心裡嫉妒不平"],
+   newp:"靈（聖靈引導）→ 悟（聖經準則）→ 命（耶穌生命）→ 侍（讓耶穌作王）→ 神（榮耀歸神）。",verse:["他必興旺，我必衰微。","約翰福音3:30"]},
+  train:{title:"讓耶穌得著一切的榮耀",items:[["我服事像是給主做的，不求人的掌聲","在意掌聲職位"],["事工有成果時，我立刻感恩歸榮耀給神","暗暗歸功自己"],["我樂意與人配搭，尊重團隊的決定","堅持己見"],["我先禱告、靠聖靈，再動用恩賜和經驗","靠才能服事"],["別人被重用時，我真心為他歡喜","嫉妒不平"]],
+   verse:["無論做甚麼，都要從心裡做，像是給主做的，不是給人做的。","歌羅西書3:23"],decl:"一切都是神的恩典，榮耀歸給耶穌。",practice:"每次服事前後都禱告，事後說：「一切都是神的恩典，榮耀歸給耶穌。」"}}
+];
+var G={};for(var gi=0;gi<GROUPS.length;gi++){G[GROUPS[gi].id]=GROUPS[gi];}
+/* 星期一至五的檢視重點（0=主日） */
+var WEEK={1:["see","idea"],2:["hear","life"],3:["think","living"],4:["speak","rel"],5:["act","work"]};
+var WEEK_FRUIT={1:"喜樂、信實",2:"溫柔、忍耐",3:"和平、節制",4:"仁愛、恩慈",5:"良善、信實"};
+var FRUITS=[["仁","仁愛","只顧自己","為一個「2」做一件實際的愛心事"],["喜","喜樂","抱怨不滿","寫下三件感恩的事"],["和","和平","憂慮爭競","把一件掛慮交託給主"],["忍","忍耐","急躁發怒","生氣時先停三秒、禱告"],["恩","恩慈","冷漠苛刻","對一個人說溫暖的話"],["良","良善","自私算計","暗中行一件善事"],["信","信實","推託失信","守住一個小承諾"],["溫","溫柔","強硬辯解","被指正時說「謝謝提醒」"],["節","節制","放縱私慾","為主放下一樣小嗜好一天"]];
+var SCALE={exam:["幾乎沒有","偶爾出現","常常出現","幾乎總是"],train:["尚未開始","偶爾做到","常常做到","天天活出"]};
+var BANDS={
+ exam:[[3,"新人生命在這裡已有根基","為恩典感謝，並陪伴別人走這條路"],[7,"有己時隱時現","選一題作為本週的操練重點"],[11,"有己在這裡相當活躍","每天認罪交託，並請一位屬靈同伴代禱"],[15,"這裡是有己的堡壘","尋求屬靈父母陪談，持續一個月專項操練"]],
+ train:[[3,"撒種：新生命剛發芽","選一題開始，天天求聖靈加力"],[7,"扎根：開始有新的習慣","加入一位屬靈同伴，彼此提醒"],[11,"長大：新人生命漸漸顯明","把操練帶進家庭、職場與服事"],[15,"結果：基督的生命自然流露","繁殖：陪伴另一個人走同一條路"]]};
+var STEPS={
+ exam:[["看見","在聖靈光照下，具體認出哪道門、哪個領域有己作王。"],["承認","不推給別人和環境，向神直接認罪（約壹1:9）。"],["交出","放下權力，回到本位，讓耶穌作王。"],["領受","憑信接受赦免與新生命，不再自責，而是感恩。"],["順從","順著聖靈而行，以謙卑的具體行動取代驕傲。"]],
+ train:[["仰望","用心不用腦，把焦點放在耶穌身上。"],["領受","宣告「不再是我，乃是基督在我裡面活著」。"],["順從","求聖靈引導今天具體的操練。"],["行出","在每一個「2」面前，以無己的生命回應。"],["感恩","凡事謝恩，把榮耀歸給耶穌。"]]};
+var PRAYER={
+ exam:"親愛的天父，謝謝你用光照亮我。今天我看見，在＿＿＿＿上，我又讓自己作王，離開了本位。我承認這是有己、是驕傲，求你赦免。謝謝主耶穌為我死，我的舊人已經與你同釘十字架；謝謝你復活，賜給我新生命。我把寶座交還給你，請你在我裡面作王。聖靈啊，求你引導我，明天在＿＿＿＿上活出無己的生命，好叫耶穌得著一切的榮耀。奉主耶穌基督的名禱告，阿們。",
+ train:"親愛的天父，感謝你賜我新的一天，也賜我新的生命。今天我不再為自己活，我把生命的寶座交給主耶穌，請你在我裡面作王掌權。我的眼睛要看你所看的，耳朵要聽你所說的，心思要想你所想的，口舌要說你要說的，腳步要行你所行的。聖靈啊，求你引導我，在＿＿＿＿面前活出無己的生命，結出＿＿＿＿的果子。願你的名被尊為聖，願你的國降臨，願你的旨意行在地上，如同行在天上。一切的榮耀都歸給你。奉主耶穌基督的名禱告，阿們。"};
+
+/* ---------- 工具 ---------- */
+if(!Element.prototype.matches){Element.prototype.matches=Element.prototype.msMatchesSelector||Element.prototype.webkitMatchesSelector;}
+function closestBtn(el,root){while(el&&el!==root){if(el.tagName==="BUTTON")return el;el=el.parentNode;}return null;}
+function lsGet(k,d){try{var v=localStorage.getItem(k);return v?JSON.parse(v):d;}catch(e){return d;}}
+function lsSet(k,v){try{localStorage.setItem(k,JSON.stringify(v));return true;}catch(e){return false;}}
+function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];});}
+function sum(a){var t=0;for(var i=0;i<a.length;i++){t+=a[i]||0;}return t;}
+function has(arr,x){return arr.indexOf(x)>-1;}
+function pad2(n){return n<10?"0"+n:""+n;}
+function dkey(d){return d.getFullYear()+"-"+pad2(d.getMonth()+1)+"-"+pad2(d.getDate());}
+function fmtDate(k){var p=k.split("-");return (+p[1])+"月"+(+p[2])+"日";}
+function band(mode,n){var b=BANDS[mode];for(var i=0;i<b.length;i++){if(n<=b[i][0])return b[i];}return b[b.length-1];}
+function answeredCount(a){var c=0;for(var i=0;i<a.length;i++){if(a[i]!=null)c++;}return c;}
+function toast(t){var el=document.createElement("div");el.className="toast";el.textContent=t;document.body.appendChild(el);setTimeout(function(){if(el.parentNode)el.parentNode.removeChild(el);},2400);}
+function verseHTML(v){return '<blockquote class="verse">'+esc(v[0])+'<cite>'+esc(v[1])+'</cite></blockquote>';}
+var WDN=["主日","一","二","三","四","五","六"];
+
+/* ---------- 儲存（本機） ---------- */
+var LS="r321-life-entries";
+var entries=lsGet(LS,[]);
+function saveAll(){return lsSet(LS,entries);}
+function putEntry(e){var out=[];for(var i=0;i<entries.length;i++){if(entries[i].id!==e.id)out.push(entries[i]);}out.push(e);entries=out;return saveAll();}
+function delEntry(id){var out=[];for(var i=0;i<entries.length;i++){if(entries[i].id!==id)out.push(entries[i]);}entries=out;return saveAll();}
+function byNewest(a,b){return b.ts-a.ts;}
+function filterEntries(fn){var out=[];for(var i=0;i<entries.length;i++){if(fn(entries[i]))out.push(entries[i]);}return out;}
+
+/* ---------- 狀態 ---------- */
+var today=new Date();
+var TODAY=dkey(today),WD=today.getDay();
+var defaultSel=WEEK[WD]||["see","idea"];
+var state={tab:"home",
+  exam:{sel:defaultSel.slice(),ans:lsGet("r321-draft-exam",{}),done:null},
+  train:{sel:defaultSel.slice(),ans:lsGet("r321-draft-train",{}),done:null},
+  jmode:"renew",confirmDel:null};
+var TABS=["home","check","exam","train","growth","journal"];
+var hash=location.hash.replace("#","");
+if(has(TABS,hash))state.tab=hash;
+
+/* ---------- 今日 ---------- */
+function viewHome(){
+  var pair=WEEK[WD];
+  var fruit=FRUITS[Math.floor(today.getTime()/864e5)%9];
+  var mon=new Date(today.getFullYear(),today.getMonth(),today.getDate()-((WD+6)%7));
+  var days={};for(var i=0;i<entries.length;i++){days[entries[i].date]=1;}
+  var week="",nWeek=0;
+  for(var k=0;k<7;k++){
+    var d=new Date(mon.getFullYear(),mon.getMonth(),mon.getDate()+k),key=dkey(d),done=!!days[key];
+    if(done)nWeek++;
+    week+='<div class="d"><span class="dot'+(done?" done":"")+(key===TODAY?" today":"")+'">'+(done?"✓":"")+'</span>'+(k===6?"日":WDN[k+1])+'</div>';
+  }
+  var focus;
+  if(pair){
+    focus='<div class="eyebrow">星期'+WDN[WD]+'・今日重點</div>'+
+      '<h2>'+G[pair[0]].name+' ＋ '+G[pair[1]].name+'</h2>'+
+      '<p class="small" style="margin:0">對應果子：'+WEEK_FRUIT[WD]+'</p>'+
+      '<div class="row"><button class="btn old wide" data-go="exam">檢視舊人</button><button class="btn new wide" data-go="train">操練新人</button></div>';
+  }else if(WD===6){
+    focus='<div class="eyebrow">星期六・同行日</div><h2>與屬靈同伴分享</h2>'+
+      '<p style="margin:0">把一週所見的得勝與掙扎帶到「2」屬靈同伴面前，彼此代禱。</p>'+
+      '<div class="row"><button class="btn new wide" data-go="growth">看一週成長</button><button class="btn ghost wide" data-go="journal">寫得勝見證</button></div>';
+  }else{
+    focus='<div class="eyebrow">主日・感恩日</div><h2>敬拜感恩，榮耀歸神</h2>'+
+      '<p style="margin:0">回顧這一週，數算主恩，把一切榮耀歸給耶穌。</p>'+
+      '<div class="row"><button class="btn new wide" data-go="growth">回顧一週</button><button class="btn ghost wide" data-go="journal">寫下感恩</button></div>';
+  }
+  return '<figure class="kv"><img src="hero.jpg" srcset="hero-720.jpg 720w, hero.jpg 1080w" sizes="(max-width:640px) 100vw, 640px" width="1080" height="1080" alt="321主視覺：一人背著行囊、手拿聖經，走在從打開的聖經延伸出的光明道路上，遠方是十字架與光明之城">'+
+    '<figcaption><span>耶穌是我的榜樣</span>・<span>聖經是我的準則</span>・<span>聖靈是我的引導</span><small>讓耶穌作王　讓耶穌得著一切的榮耀　建立屬神的體系</small></figcaption></figure>'+
+    '<section class="card hero">'+focus+'</section>'+
+  '<section class="card"><div class="eyebrow">生命健檢</div><h3 style="font-size:20px">今天有一件事讓你不平安嗎？</h3>'+
+    '<p style="margin:0">把事件、看到聽到的、心裡的意念情緒、說了做了的寫下來，小智用 321 陪你看見生命光景，找到更新的路。</p>'+
+    '<button class="btn new" data-go="check">開始生命健檢</button></section>'+
+  '<section class="card"><div class="eyebrow">本週操練</div><div class="week">'+week+'</div>'+
+    '<p class="small" style="margin:0">本週已操練 '+nWeek+' 天。改變不在一次的用力，而在天天的交出。</p></section>'+
+  '<section class="card"><div class="eyebrow">今日的一個果子</div>'+
+    '<div class="fruit"><span class="ch">'+fruit[0]+'</span><div><h3 style="font-size:20px">'+fruit[1]+'</h3>'+
+    '<p style="margin:0">取代：'+fruit[2]+'<br>今天操練：<b>'+fruit[3]+'</b></p></div></div></section>'+
+  '<section class="card">'+verseHTML(["我已經與基督同釘十字架，現在活著的不再是我，乃是基督在我裡面活著。","加拉太書2:20"])+
+    '<p class="small" style="margin:0">920：在每一個「2」面前，操練「0」無己，結出「9」聖靈的果子。</p></section>'+
+  '<section class="card"><div class="eyebrow">321 理念</div>'+
+    '<div class="pillars"><div><b>耶穌</b>是我的榜樣</div><div><b>聖經</b>是我的準則</div><div><b>聖靈</b>是我的引導</div></div>'+
+    '<p class="small" style="margin:0">兩個核心：讓耶穌作王，讓耶穌得著一切的榮耀。一個目的：建立屬神的體系。</p></section>';
+}
+
+/* ---------- 檢視 / 操練 ---------- */
+function chipHTML(mode,g){return '<button class="chip" data-pick="'+g.id+'" aria-pressed="'+has(state[mode].sel,g.id)+'">'+g.name+'</button>';}
+function viewPractice(mode){
+  var S=state[mode];
+  if(S.done)return viewResult(mode);
+  var isOld=mode==="exam",i,j;
+  var intro=isOld
+    ?'<div class="eyebrow">舊人有己生命檢視表</div><h2 style="font-size:24px">在光中看見有己</h2>'+
+      verseHTML(["神啊，求你鑒察我，知道我的心思，試煉我，知道我的意念，看在我裡面有甚麼惡行沒有，引導我走永生的道路。","詩篇139:23-24"])+
+      '<p class="small" style="margin:0">依過去一週的實況作答。分數高不是失敗的宣判，而是恩典的入口。</p>'
+    :'<div class="eyebrow">新人無己生命操練表</div><h2 style="font-size:24px">穿上新人，讓基督活出來</h2>'+
+      verseHTML(["並且穿上新人；這新人是照著神的形像造的，有真理的仁義和聖潔。","以弗所書4:24"])+
+      '<p class="small" style="margin:0">依過去一週的實際操練作答。分數是見證恩典的記號，不是自我誇口的成績單。</p>';
+  var gates="",areas="";
+  for(i=0;i<5;i++)gates+=chipHTML(mode,GROUPS[i]);
+  for(i=5;i<10;i++)areas+=chipHTML(mode,GROUPS[i]);
+  var legend="";for(i=0;i<4;i++)legend+='<div><b>'+i+'</b>'+SCALE[mode][i]+'</div>';
+  var groups="",ready=false;
+  for(i=0;i<GROUPS.length;i++){
+    var g=GROUPS[i];if(!has(S.sel,g.id))continue;
+    var t=g[mode],a=S.ans[g.id]||[],items="";
+    for(j=0;j<5;j++){
+      var it=t.items[j],text=isOld?it:it[0],seg="";
+      for(var n=0;n<4;n++)seg+='<button data-score="'+g.id+':'+j+':'+n+'" aria-pressed="'+(a[j]===n)+'" aria-label="'+n+'分 '+SCALE[mode][n]+'">'+n+'</button>';
+      items+='<div class="item"><p>'+esc(text)+'</p>'+(isOld?"":'<span class="sym">對應有己：'+esc(it[1])+'</span>')+
+        '<div class="seg" role="group" aria-label="分數">'+seg+'</div></div>';
+    }
+    var cnt=answeredCount(a);if(cnt===5)ready=true;
+    var helps=isOld
+      ?'<p><b>新人的'+g.name+'</b>'+esc(t.newp)+'</p><p><b>經文</b>'+esc(t.verse[0])+'（'+t.verse[1]+'）</p>'
+      :'<p><b>經文</b>'+esc(t.verse[0])+'（'+t.verse[1]+'）</p><p><b>宣告</b>'+esc(t.decl)+'</p><p><b>本週操練</b>'+esc(t.practice)+'</p>';
+    groups+='<section class="card group"><div class="eyebrow">'+g.kind+'・'+g.name+'</div><h3>'+g.name+'——'+esc(t.title)+'</h3>'+items+
+      '<div class="gscore"><span class="small">已答 '+cnt+'/5</span><strong>'+sum(a)+'<span class="small"> / 15</span></strong></div>'+
+      '<div class="helps">'+helps+'</div></section>';
+  }
+  return '<section class="card">'+intro+'</section>'+
+  '<section class="card"><div class="eyebrow">選擇今天要'+(isOld?"檢視":"操練")+'的部分</div>'+
+    '<div class="split">五道門戶</div><div class="chips">'+gates+'</div>'+
+    '<div class="split">五重領域</div><div class="chips">'+areas+'</div>'+
+    '<div class="legend">'+legend+'</div></section>'+
+  (groups||'<div class="card empty">請在上方選擇至少一道門戶或一個領域。</div>')+
+  '<button class="btn '+(isOld?"old":"new")+'" data-finish="'+mode+'"'+(ready?"":" disabled")+'>'+(isOld?"完成檢視，來到十字架前":"完成操練，把榮耀歸給神")+'</button>'+
+  (ready?"":'<p class="small" style="margin:0;text-align:center">至少完整回答一組（5 題）即可完成。</p>');
+}
+function viewResult(mode){
+  var isOld=mode==="exam",r=state[mode].done,bands="",steps="",id;
+  for(id in r.scores){if(!r.scores.hasOwnProperty(id))continue;
+    var n=sum(r.scores[id]),b=band(mode,n);
+    bands+='<div class="band"><span class="n">'+n+'<span class="small">/15</span></span><div><b>'+G[id].name+'・'+b[1]+'</b><br><span class="small">下一步：'+b[2]+'</span></div></div>';}
+  for(var i=0;i<STEPS[mode].length;i++)steps+='<li><b>'+STEPS[mode][i][0]+'</b>：'+STEPS[mode][i][1]+'</li>';
+  return '<section class="card result"><div class="eyebrow">'+fmtDate(r.date)+'・已儲存</div>'+
+    '<h2 style="font-size:24px">'+(isOld?"看見問題，是聖靈動工的好消息":"基督在你裡面興旺")+'</h2>'+bands+
+    verseHTML(isOld?["如今，那些在基督耶穌裡的就不定罪了。","羅馬書8:1"]:["他必興旺，我必衰微。","約翰福音3:30"])+'</section>'+
+  '<section class="card"><div class="eyebrow">'+(isOld?"更新五步：從看見到結果子":"每日操練五步驟")+'</div><ol class="steps">'+steps+'</ol></section>'+
+  '<section class="card"><div class="eyebrow">'+(isOld?"認罪更新禱告":"晨間奉獻禱告")+'</div><p class="prayer">'+PRAYER[mode]+'</p></section>'+
+  '<div class="row"><button class="btn '+(isOld?"old":"new")+' wide" data-go="journal" data-jm="'+(isOld?"renew":"victory")+'">'+(isOld?"寫更新記錄":"寫得勝見證")+'</button>'+
+  '<button class="btn ghost wide" data-again="'+mode+'">再做一次</button></div>';
+}
+
+/* ---------- 成長 ---------- */
+function latest(kind,id){
+  var xs=filterEntries(function(e){return e.kind===kind&&e.scores&&e.scores[id];}).sort(byNewest);
+  return xs.length?sum(xs[0].scores[id]):null;
+}
+function delControls(id){
+  return state.confirmDel===id
+    ?'<span><button class="linkbtn danger" data-del="'+id+'">確定刪除</button><button class="linkbtn" data-cancel="1">取消</button></span>'
+    :'<button class="linkbtn" data-ask="'+id+'">刪除</button>';
+}
+function chartRows(from,to){
+  var out="";
+  for(var i=from;i<to;i++){var g=GROUPS[i],o=latest("exam",g.id),n=latest("train",g.id);
+    out+='<div class="crow"><span class="lbl">'+g.name+'</span><div class="bars">'+
+      '<div class="track o"><i style="width:'+((o||0)/15*100)+'%"></i></div>'+
+      '<div class="track n"><i style="width:'+((n||0)/15*100)+'%"></i></div></div>'+
+      '<span class="nums">'+(o==null?"–":o)+'<br>'+(n==null?"–":n)+'</span></div>';}
+  return out;
+}
+function backupCard(){
+  return '<section class="card" id="backup"><div class="eyebrow">備份與還原</div>'+
+    '<p class="small" style="margin:0">記錄只存在這支手機的瀏覽器裡。換手機或清除瀏覽器資料前，請先匯出備份檔；在新裝置上匯入即可接續。</p>'+
+    '<div class="row"><button class="btn ghost wide" data-export="1">匯出備份</button><button class="btn ghost wide" data-import="1">匯入備份</button></div>'+
+    '<input type="file" id="importFile" accept=".json,application/json" hidden></section>';
+}
+function viewGrowth(){
+  var sessions=filterEntries(function(e){return !!e.scores;}).sort(byNewest);
+  if(!sessions.length)return '<section class="card empty"><h2 style="font-size:22px;color:var(--fg)">成長圖會在這裡出現</h2>'+
+    '<p>完成第一次「檢視舊人」或「操練新人」後，這裡會並排顯示每一道門戶與領域的分數：舊人的分數下降、新人的分數上升，就是生命正在更新的記號。</p>'+
+    '<div class="row" style="justify-content:center"><button class="btn old" data-go="exam">開始檢視</button><button class="btn new" data-go="train">開始操練</button></div></section>'+backupCard();
+  var recs="";
+  for(var i=0;i<sessions.length&&i<30;i++){var e=sessions[i],isOld=e.kind==="exam",parts=[];
+    for(var id in e.scores){if(e.scores.hasOwnProperty(id)&&G[id])parts.push(G[id].name+" "+sum(e.scores[id]));}
+    recs+='<div class="rec"><div class="h"><span><span class="tag '+(isOld?"old":"new")+'">'+(isOld?"檢視":"操練")+'</span> '+fmtDate(e.date)+'</span>'+delControls(e.id)+'</div>'+
+      '<span class="small tnum">'+parts.join("・")+'</span></div>';}
+  return '<section class="card"><div class="eyebrow">最近一次分數（每組滿分 15）</div>'+
+    '<h2 style="font-size:22px">舊人衰微，新人興旺</h2>'+
+    '<div class="key"><span class="k-old">舊人有己（越低越好）</span><span class="k-new">新人無己（越高越好）</span></div>'+
+    '<div class="chart"><div class="split">五道門戶</div>'+chartRows(0,5)+'<div class="split">五重領域</div>'+chartRows(5,10)+'</div></section>'+
+  '<section class="card"><div class="eyebrow">操練記錄（共 '+sessions.length+' 次）</div>'+recs+'</section>'+backupCard();
+}
+
+
+/* ---------- 生命健檢 ---------- */
+var XI_ENDPOINT="https://xiaozhi-proxy.spch321.workers.dev";
+var XI_MODEL="claude-sonnet-4-6";
+var CK_FIELDS=[["ev","事件","發生了甚麼事？（時間、地點、和誰）","例：晚餐時，太太說我又把碗放著沒洗"],
+ ["see","看到甚麼","我的眼睛看到甚麼？","例：她皺著眉頭，孩子在旁邊看"],
+ ["hear","聽到甚麼","我的耳朵聽到甚麼？","例：「你每次都這樣」"],
+ ["thought","產生甚麼意念","心裡第一個念頭是甚麼？","例：我上班已經很累了，她都不體諒我"],
+ ["feel","產生甚麼情緒","當下的感受","例：生氣、委屈"],
+ ["said","說了甚麼","我口裡說出的話","例：「你也沒好到哪裡去」"],
+ ["did","做了甚麼","我的行動與態度","例：把碗一推，回房間滑手機"]];
+var CK_EMOS=["生氣","委屈","煩躁","焦慮","害怕","難過","失望","羞愧","嫉妒","不服氣","被冒犯","冷漠","平安","喜樂","感恩"];
+var CK_SYS="你是「小智」，國度321空中團契的生命陪伴者，以福音派信仰和321理念，溫柔、誠實、具體地陪人做「生命健檢」。全部用繁體中文；引用經文一律用和合本原文，出處要正確，沒有把握的經文寧可不引。\n\n"+
+"【321理念】三個基礎：耶穌是我的榜樣、聖經是我的準則、聖靈是我的引導。兩個核心：讓耶穌作王、讓耶穌得著一切的榮耀。一個目的：建立屬神的體系。\n"+
+"【生命問題的根】舊人有己，以自己為中心，自己要作主作王、要代替神；表現出來就是驕傲——離開人的本位，抓住神的權力。謙卑是放下權力、回到本位：讓人作人，讓神作神。謙卑戰勝驕傲；驕傲激起驕傲、兩敗俱傷，謙卑帶動謙卑、達到雙贏。\n"+
+"【福音】耶穌的死解決我們的罪性與罪行，耶穌的復活賜我們新生命：舊人與基督同釘十字架，「不再是我，乃是基督在我裡面活著」。無己不是沒有，乃是進入無限、活出無限；無己才能讓耶穌作王、才能被聖靈引導、才能合一、才能得勝。\n"+
+"【920】每個跟我有關係的人都是我的「2」，在「2」面前操練「0」無己，結出「9」聖靈的果子（仁愛、喜樂、和平、忍耐、恩慈、良善、信實、溫柔、節制）。\n"+
+"【五道門戶】看、聽、想、講、行。感應＝看、聽；反應＝想（意念與情緒）；回應＝講、行。\n"+
+"【五重改變】觀念、生命、生活、關係、事工，由內而外；改變觀念就改變生命，改變生命就改變生活；先生命、再關係、後事工。人比事重要，關係比東西重要。關係的次序：先與神、再與自己、再與人、再與事。\n"+
+"【觀點轉換】從人的觀點→神的觀點；地上的→天上的；暫時的→永恆的；屬世的→屬神的。焦點在耶穌，不在自己、不在別人、不在環境。用心靠聖靈，不要用腦靠自己；用心就開心，用腦就煩惱。\n"+
+"【改變觀念八大步驟】資訊、啟示、信服、實踐、檢討、修正、反覆、繁殖。\n\n"+
+"【你的任務】使用者會寫下一件事：事件、感應（看到、聽到）、反應（意念、情緒）、回應（說了、做了）。請沿著「感應→反應→回應」這條鏈，指出哪裡是舊人有己在作王、哪裡已經有新人無己的生命；點出有己的根（我要的是甚麼：面子、控制、被肯定、被體諒、公平、安全感……），以及怎樣離開了本位；再給出具體、做得到的更新建議。\n"+
+"【語氣】像一位有愛心的牧者：誠實而不定罪，看見問題的同時更看見恩典（羅8:1）。只分析寫信人自己的生命，不替他論斷對方。若對方也有錯，承認那份委屈是真的，再把焦點帶回耶穌和自己能順服的一步。如果他已經活出無己，要具體肯定，把榮耀歸給神。\n"+
+"【安全】如果內容顯示有人正遭受暴力、虐待、人身危險，或有自傷、輕生的念頭，不要把它當成「有己」來分析，也不要勸他忍耐順服；要溫柔地把安全放第一，鼓勵他立刻聯絡可信任的人、當地緊急求助或專業協助，並在 picture 裡清楚說明。\n\n"+
+"【輸出格式】只輸出一個 JSON 物件，不要任何其他文字、不要 markdown 符號。欄位：\n"+
+"{\"title\":\"十五字內的一句話，點出這次健檢的核心\",\n"+
+"\"who\":\"舊人作王｜新舊交戰｜新人作王 三選一\",\n"+
+"\"picture\":\"生命光景，2到4句\",\n"+
+"\"chain\":[{\"k\":\"感應\",\"old\":\"有己的看與聽\",\"new\":\"無己的看與聽可以是\"},{\"k\":\"反應\",\"old\":\"有己的意念與情緒\",\"new\":\"無己的意念與情緒可以是\"},{\"k\":\"回應\",\"old\":\"有己的說與做\",\"new\":\"無己的說與做可以是（寫出可以真的說出口的一句話）\"}],\n"+
+"\"root\":\"有己的根：我要的是甚麼，怎樣離開本位、抓住權力\",\n"+
+"\"view\":{\"from\":\"我原本的觀點\",\"to\":\"神的觀點\"},\n"+
+"\"area\":\"看｜聽｜想｜講｜行｜觀念｜生命｜生活｜關係｜事工 十選一，最需要操練的\",\n"+
+"\"fruit\":{\"lack\":\"取代了哪個聖靈果子的舊人表現\",\"grow\":\"這次要結的果子（聖靈九果之一或二）\"},\n"+
+"\"verses\":[{\"ref\":\"書卷 章:節\",\"text\":\"和合本經文\"}],（一到二處）\n"+
+"\"steps\":[\"更新建議\"],（三到五條，具體可行，涵蓋：向神、向自己、向那位「2」）\n"+
+"\"tomorrow\":\"明天一個具體的無己行動，一句話\",\n"+
+"\"prayer\":\"第一人稱的禱告，約120字，奉主耶穌基督的名禱告，阿們\"}";
+
+var CK_DRAFT="r321-draft-check";
+var ck={draft:lsGet(CK_DRAFT,{}),busy:false,err:"",show:null};
+function ckVal(k){return ck.draft[k]||"";}
+function ckSaveDraft(){
+  for(var i=0;i<CK_FIELDS.length;i++){var el=$("c-"+CK_FIELDS[i][0]);if(el)ck.draft[CK_FIELDS[i][0]]=el.value;}
+  lsSet(CK_DRAFT,ck.draft);
+}
+function ckBlank(s){return !String(s||"").replace(/\s/g,"");}
+function ckField(i){var f=CK_FIELDS[i];
+  return '<label class="f">'+f[1]+'<span class="small" style="font-weight:400">'+f[2]+'</span><textarea id="c-'+f[0]+'" placeholder="'+esc(f[3])+'">'+esc(ckVal(f[0]))+'</textarea></label>';}
+function ckGroup(no,t,sub,inner){return '<div class="ckgrp"><h3><span class="ckno">'+no+'</span>'+t+'<em>'+sub+'</em></h3>'+inner+'</div>';}
+
+function viewCheck(){
+  if(ck.show){var e=null;for(var i=0;i<entries.length;i++){if(entries[i].id===ck.show)e=entries[i];}
+    if(e)return viewCheckResult(e);ck.show=null;}
+  var emo="";for(var j=0;j<CK_EMOS.length;j++)emo+='<button class="chip" data-emo="'+CK_EMOS[j]+'">'+CK_EMOS[j]+'</button>';
+  var form='<section class="card"><div class="eyebrow">生命健檢</div><h2 style="font-size:24px">從一件事，看見生命光景</h2>'+
+    verseHTML(["神啊，求你鑒察我，知道我的心思，試煉我，知道我的意念，看在我裡面有甚麼惡行沒有，引導我走永生的道路。","詩篇139:23-24"])+
+    '<p class="small" style="margin:0">照實寫下就好，不必修飾。小智會沿著「感應→反應→回應」，用 321 陪你看見有己的根，並提出更新的建議。</p>'+
+    ckGroup(1,"事件","發生了甚麼",ckField(0))+
+    ckGroup(2,"感應","看到甚麼、聽到甚麼",ckField(1)+ckField(2))+
+    ckGroup(3,"反應","產生甚麼意念、甚麼情緒",ckField(3)+ckField(4)+'<div class="emos" aria-label="點選加入情緒">'+emo+'</div>')+
+    ckGroup(4,"回應","說了甚麼、做了甚麼",ckField(5)+ckField(6))+
+    (ck.busy
+      ?'<div class="busy card" style="background:var(--vine-soft);border:0"><span class="spin"></span><span>小智正在用 321 為你健檢，約需二、三十秒……</span></div>'
+      :'<button class="btn new" data-ck="run">用 321 分析我的生命光景</button>')+
+    (ck.err?'<p class="small" style="margin:0;color:var(--plum)">'+esc(ck.err)+'</p>':'')+
+    '<button class="linkbtn" data-ck="clear" style="justify-self:center">清空重寫</button></section>';
+  var list=filterEntries(function(e){return e.kind==="check";}).sort(byNewest),h="";
+  for(var k=0;k<list.length&&k<40;k++){var x=list[k],t=x.ai&&x.ai.title?x.ai.title:(x.input.ev||"").slice(0,24);
+    h+='<button class="ckrec" data-ckopen="'+x.id+'"><span class="small">'+fmtDate(x.date)+(x.ai&&x.ai.who?'・'+esc(x.ai.who):'')+'</span><b>'+esc(t)+'</b></button>';}
+  return form+'<section class="card"><div class="eyebrow">健檢記錄</div>'+(h||'<p class="empty" style="margin:0">還沒有記錄。</p>')+'</section>';
+}
+
+function ckWhoClass(w){w=w||"";return w.indexOf("新人")===0?"n":w.indexOf("交戰")>-1?"m":"o";}
+function ckParas(t){var ps=String(t||"").split(/\n+/),o="";for(var i=0;i<ps.length;i++){if(ps[i].replace(/\s/g,""))o+='<p>'+esc(ps[i])+'</p>';}return o;}
+function viewCheckResult(e){
+  var a=e.ai||{},inp=e.input,i,out="";
+  var mine=[["感應",[inp.see,inp.hear]],["反應",[inp.thought,inp.feel]],["回應",[inp.said,inp.did]]];
+  out+='<section class="card result"><div class="eyebrow">'+fmtDate(e.date)+'・生命健檢</div>';
+  if(a.raw||!a.title){
+    out+='<h2 style="font-size:22px">小智的健檢回覆</h2><div class="raw">'+ckParas(a.raw||"（這次沒有收到分析，可以按「重新分析」再試一次。）")+'</div></section>';
+  }else{
+    out+='<h2 style="font-size:24px">'+esc(a.title)+'</h2>'+(a.who?'<span class="who '+ckWhoClass(a.who)+'">'+esc(a.who)+'</span>':'')+
+      '<p style="margin:0">'+esc(a.picture)+'</p></section>';
+    out+='<section class="card"><div class="eyebrow">事件</div><p style="margin:0">'+esc(inp.ev)+'</p>';
+    var ch=a.chain||[];
+    for(i=0;i<3;i++){var c=ch[i]||{},m=mine[i][1],my=[];if(!ckBlank(m[0]))my.push(m[0]);if(!ckBlank(m[1]))my.push(m[1]);
+      out+='<div class="lk"><b>'+mine[i][0]+'</b>'+(my.length?'<p class="mine">我：'+esc(my.join("；"))+'</p>':'')+
+        '<dl class="on">'+(c.old?'<dt class="o">有己</dt><dd>'+esc(c.old)+'</dd>':'')+(c["new"]?'<dt class="n">無己</dt><dd>'+esc(c["new"])+'</dd>':'')+'</dl></div>';}
+    out+='</section>';
+    if(a.root)out+='<section class="card"><div class="eyebrow">有己的根</div><p style="margin:0">'+esc(a.root)+'</p></section>';
+    if(a.view&&(a.view.from||a.view.to))out+='<section class="card"><div class="eyebrow">觀點轉換：從人的觀點到神的觀點</div><div class="shift">'+
+      '<p class="f"><b>原本：</b>'+esc(a.view.from)+'</p><p class="t"><b>神看：</b>'+esc(a.view.to)+'</p></div></section>';
+    var fr=a.fruit||{};
+    out+='<section class="card"><div class="eyebrow">920・在這個「2」面前</div>'+
+      (a.area?'<p style="margin:0"><b>最需要操練：</b>'+esc(a.area)+'</p>':'')+
+      (fr.lack?'<p style="margin:0"><b>舊人的表現：</b>'+esc(fr.lack)+'</p>':'')+
+      (fr.grow?'<p style="margin:0"><b>要結的果子：</b>'+esc(fr.grow)+'</p>':'')+'</section>';
+    var vs=a.verses||[];for(i=0;i<vs.length&&i<2;i++){if(vs[i]&&vs[i].text)out+='<section class="card">'+verseHTML([vs[i].text,vs[i].ref||""])+'</section>';}
+    var st=a.steps||[],sh="";for(i=0;i<st.length;i++)sh+='<li>'+esc(st[i])+'</li>';
+    if(sh)out+='<section class="card"><div class="eyebrow">更新改變的建議</div><ol class="steps">'+sh+'</ol></section>';
+    if(a.tomorrow)out+='<section class="card"><div class="eyebrow">明天的無己行動</div><p class="act">'+esc(a.tomorrow)+'</p>'+
+      '<p class="small" style="margin:0">照八大步驟走下去：資訊、啟示、信服、實踐、檢討、修正、反覆、繁殖。</p></section>';
+    if(a.prayer)out+='<section class="card"><div class="eyebrow">禱告</div><p class="prayer">'+esc(a.prayer)+'</p></section>';
+  }
+  out+='<p class="small" style="margin:0;text-align:center">小智的分析是陪伴與提醒，請以聖經與聖靈的引導為準，也可以和你的屬靈同伴一起禱告。</p>'+
+    '<div class="row">'+(a.title?'<button class="btn old wide" data-ck="tojournal" data-id="'+e.id+'">寫進更新記錄</button>':'')+
+    '<button class="btn ghost wide" data-ck="again" data-id="'+e.id+'">重新分析</button></div>'+
+    '<div class="row"><button class="btn new wide" data-ck="new">健檢另一件事</button></div>'+
+    '<div style="text-align:center">'+delControls(e.id)+'</div>';
+  return out;
+}
+
+function ckPrompt(inp){
+  function v(x){return ckBlank(x)?"（沒有寫）":x;}
+  return "請為我這件事做生命健檢：\n\n【事件】"+v(inp.ev)+"\n\n【感應】\n看到："+v(inp.see)+"\n聽到："+v(inp.hear)+
+    "\n\n【反應】\n意念："+v(inp.thought)+"\n情緒："+v(inp.feel)+"\n\n【回應】\n說了："+v(inp.said)+"\n做了："+v(inp.did);
+}
+function ckParse(t){
+  var a=t.indexOf("{"),b=t.lastIndexOf("}");
+  if(a>-1&&b>a){try{var o=JSON.parse(t.slice(a,b+1));if(o&&o.title)return o;}catch(e){}}
+  return {raw:t};
+}
+function ckAsk(inp,done){
+  var x;try{x=new XMLHttpRequest();}catch(e){done("這個瀏覽器無法連線");return;}
+  var fin=false;function end(err,txt){if(fin)return;fin=true;done(err,txt);}
+  x.open("POST",XI_ENDPOINT,true);
+  x.setRequestHeader("Content-Type","application/json");
+  x.timeout=90000;
+  x.onreadystatechange=function(){
+    if(x.readyState!==4)return;
+    if(x.status<200||x.status>=300){end("小智暫時連不上（"+(x.status||"網路")+"），草稿已保留，請稍後再按一次。");return;}
+    try{var d=JSON.parse(x.responseText),t="",c=d.content||[];
+      for(var i=0;i<c.length;i++){if(c[i].type==="text")t+=c[i].text;}
+      if(!t)throw 0;end(null,t);
+    }catch(e){end("小智的回覆讀不出來，請再按一次。");}
+  };
+  x.ontimeout=function(){end("等太久沒有回應，草稿已保留，請再按一次。");};
+  x.onerror=function(){end("網路連不上小智，草稿已保留，連上網路後再按一次。");};
+  x.send(JSON.stringify({model:XI_MODEL,max_tokens:2500,system:CK_SYS,messages:[{role:"user",content:ckPrompt(inp)}]}));
+}
+function ckRun(inp,oldId){
+  ck.busy=true;ck.err="";if(oldId)ck.show=null;render();
+  if(!oldId)setTimeout(function(){var b=document.querySelector(".busy");if(b&&b.scrollIntoView)b.scrollIntoView({block:"center"});},30);
+  ckAsk(inp,function(err,txt){
+    ck.busy=false;
+    if(err){ck.err=err;if(oldId)ck.show=oldId;if(state.tab==="check")keepScroll();toast(err.split("，")[0]);return;}
+    var now=new Date().getTime(),rec={id:oldId||("check-"+now),kind:"check",date:TODAY,ts:now,input:inp,ai:ckParse(txt)};
+    if(oldId){for(var i=0;i<entries.length;i++){if(entries[i].id===oldId){rec.date=entries[i].date;rec.ts=entries[i].ts;}}}
+    if(!putEntry(rec)){toast("儲存失敗：瀏覽器不允許儲存資料，請關閉無痕模式後再試");}
+    if(!oldId){ck.draft={};lsSet(CK_DRAFT,ck.draft);}
+    ck.show=rec.id;
+    if(state.tab==="check"){render();window.scrollTo(0,0);}
+    toast("健檢完成");
+  });
+}
+function ckFind(id){for(var i=0;i<entries.length;i++){if(entries[i].id===id)return entries[i];}return null;}
+function ckClick(b){
+  var act=b.getAttribute("data-ck"),id=b.getAttribute("data-id");
+  if(act==="run"){
+    ckSaveDraft();var inp={};for(var i=0;i<CK_FIELDS.length;i++){var k=CK_FIELDS[i][0];inp[k]=String(ck.draft[k]||"").replace(/^\s+|\s+$/g,"");}
+    if(ckBlank(inp.ev)){toast("請先寫下發生了甚麼事");$("c-ev").focus();return;}
+    if(ckBlank(inp.thought+inp.feel+inp.said+inp.did)){toast("請至少寫下一項反應或回應");return;}
+    if(ck.busy)return;ckRun(inp,null);return;
+  }
+  if(act==="clear"){ck.draft={};lsSet(CK_DRAFT,ck.draft);ck.err="";render();return;}
+  if(act==="new"){ck.show=null;ck.err="";render();window.scrollTo(0,0);return;}
+  if(act==="again"){var e=ckFind(id);if(e&&!ck.busy)ckRun(e.input,id);return;}
+  if(act==="tojournal"){var r=ckFind(id);if(!r)return;var a=r.ai||{},area="關係";
+    for(var g=0;g<GROUPS.length;g++){if(a.area&&a.area.indexOf(GROUPS[g].name)>-1){area=GROUPS[g].name;break;}}
+    var v=(a.verses&&a.verses[0])?(a.verses[0].ref+" "+a.verses[0].text):"";
+    state.jmode="renew";jdraft={mode:"renew",area:area,a:r.input.ev,b:a.root||"",c:v,d:a.tomorrow||"",fruits:[]};
+    go("journal");toast("已帶入更新記錄，確認後按儲存");return;}
+}
+
+/* ---------- 日記 ---------- */
+function areaOptions(){var o="";for(var i=0;i<GROUPS.length;i++)o+='<option>'+GROUPS[i].name+'</option>';return o;}
+function viewJournal(){
+  var isR=state.jmode==="renew",form,i;
+  if(isR){
+    form='<label class="f">門戶／領域<select id="j-area">'+areaOptions()+'</select></label>'+
+      '<label class="f">發生了甚麼<textarea id="j-a" placeholder="例：配偶提醒我遲到，我立刻頂回去"></textarea></label>'+
+      '<label class="f">有己的根（我要的是甚麼？）<textarea id="j-b" placeholder="例：我要面子，不要被指正"></textarea></label>'+
+      '<label class="f">神的觀點（經文）<textarea id="j-c" placeholder="例：雅各書1:19 快快的聽，慢慢的說"></textarea></label>'+
+      '<label class="f">明天的無己行動<textarea id="j-d" placeholder="例：明早先說「謝謝你提醒我」"></textarea></label>';
+  }else{
+    var fr="";for(i=0;i<FRUITS.length;i++)fr+='<button class="chip" data-fruit="'+FRUITS[i][1]+'" aria-pressed="false">'+FRUITS[i][1]+'</button>';
+    form='<label class="f">門戶／領域<select id="j-area">'+areaOptions()+'</select></label>'+
+      '<label class="f">遇到的處境<textarea id="j-a" placeholder="例：配偶提醒我遲到"></textarea></label>'+
+      '<label class="f">我如何讓耶穌作王<textarea id="j-b" placeholder="例：先停三秒禱告，說「謝謝你提醒我，對不起」"></textarea></label>'+
+      '<div class="f"><span class="small" style="font-weight:700">結出的果子</span><div class="chips">'+fr+'</div></div>'+
+      '<label class="f">感恩與榮耀歸神<textarea id="j-d" placeholder="例：謝謝主，一場爭吵變成一個擁抱"></textarea></label>';
+  }
+  var list=filterEntries(function(e){return e.kind==="renew"||e.kind==="victory";}).sort(byNewest),html="";
+  for(i=0;i<list.length;i++){var e=list[i],r=e.kind==="renew";
+    var body=r?[["發生",e.a],["有己的根",e.b],["神的觀點",e.c],["無己行動",e.d]]:[["處境",e.a],["讓耶穌作王",e.b],["果子",(e.fruits||[]).join("、")],["感恩",e.d]],bh="";
+    for(var j=0;j<body.length;j++){if(body[j][1])bh+='<span><b class="small">'+body[j][0]+'：</b>'+esc(body[j][1])+'</span>';}
+    html+='<div class="rec"><div class="h"><span><span class="tag '+(r?"old":"new")+'">'+(r?"更新記錄":"得勝見證")+'</span> '+fmtDate(e.date)+'・'+esc(e.area)+'</span>'+delControls(e.id)+'</div>'+bh+'</div>';}
+  return '<section class="card"><div class="seg2"><button data-jmode="renew" aria-pressed="'+isR+'">更新記錄</button><button data-jmode="victory" aria-pressed="'+(!isR)+'">得勝見證</button></div>'+
+    '<p class="small" style="margin:0">'+(isR?"把看見的有己帶到十字架前，寫下明天一個具體的無己行動。":"記下讓耶穌作王的時刻，凡事謝恩，把榮耀歸給耶穌。")+'</p>'+
+    form+'<button class="btn '+(isR?"old":"new")+'" id="j-save">儲存</button></section>'+
+  '<section class="card"><div class="eyebrow">我的記錄</div>'+(html||'<p class="empty" style="margin:0">還沒有記錄。第一筆可以從今天一件小事開始寫起。</p>')+'</section>';
+}
+
+/* ---------- 日記草稿 ---------- */
+var jdraft=null;
+function $(id){return document.getElementById(id);}
+function saveJournalDraft(){
+  if(!$("j-a"))return jdraft;
+  var fr=[],bs=document.querySelectorAll("[data-fruit]");
+  for(var i=0;i<bs.length;i++){if(bs[i].getAttribute("aria-pressed")==="true")fr.push(bs[i].getAttribute("data-fruit"));}
+  jdraft={mode:state.jmode,area:$("j-area").value,a:$("j-a").value,b:$("j-b").value,c:$("j-c")?$("j-c").value:"",d:$("j-d").value,fruits:fr};
+  return jdraft;
+}
+function restoreJournalDraft(d){
+  if(!d||d.mode!==state.jmode||!$("j-a"))return;
+  $("j-area").value=d.area;$("j-a").value=d.a;$("j-b").value=d.b;if($("j-c"))$("j-c").value=d.c;$("j-d").value=d.d;
+  var bs=document.querySelectorAll("[data-fruit]");
+  for(var i=0;i<bs.length;i++){if(has(d.fruits,bs[i].getAttribute("data-fruit")))bs[i].setAttribute("aria-pressed","true");}
+}
+
+/* ---------- 繪製 ---------- */
+var app=$("app");
+function render(){
+  app.className="view"+(state.tab==="exam"?" mode-old":state.tab==="train"?" mode-new":"");
+  var v=state.tab;
+  app.innerHTML=v==="home"?viewHome():v==="check"?viewCheck():v==="exam"?viewPractice("exam"):v==="train"?viewPractice("train"):v==="growth"?viewGrowth():viewJournal();
+  var tb=document.querySelectorAll("#tabs button");
+  for(var i=0;i<tb.length;i++){tb[i].setAttribute("aria-current",tb[i].getAttribute("data-tab")===state.tab?"page":"false");}
+  if(state.tab==="journal"&&jdraft)restoreJournalDraft(jdraft);
+}
+function keepScroll(){var y=window.pageYOffset;render();window.scrollTo(0,y);}
+function go(tab){
+  if(state.tab==="journal")saveJournalDraft();
+  if(tab==="check"&&state.tab!=="check")ck.show=null;
+  state.tab=tab;state.confirmDel=null;
+  try{history.replaceState(null,"","#"+tab);}catch(e){}
+  render();window.scrollTo(0,0);
+}
+
+/* ---------- 備份 ---------- */
+function exportBackup(){
+  var data=JSON.stringify({app:"321生命操練",version:1,exported:new Date().toISOString(),entries:entries},null,1);
+  try{
+    var blob=new Blob([data],{type:"application/json"}),url=URL.createObjectURL(blob),a=document.createElement("a");
+    a.href=url;a.download="321生命操練備份-"+TODAY+".json";document.body.appendChild(a);a.click();
+    setTimeout(function(){document.body.removeChild(a);URL.revokeObjectURL(url);},1000);
+    toast("已匯出備份檔");
+  }catch(e){toast("這個瀏覽器無法下載檔案，請改用 Safari 或 Chrome 開啟");}
+}
+function importBackup(file){
+  var rd=new FileReader();
+  rd.onload=function(){
+    try{
+      var obj=JSON.parse(rd.result),list=obj&&obj.entries;
+      if(!list||typeof list.length!=="number")throw 0;
+      var seen={},i,added=0;
+      for(i=0;i<entries.length;i++)seen[entries[i].id]=1;
+      for(i=0;i<list.length;i++){if(list[i]&&list[i].id&&!seen[list[i].id]){entries.push(list[i]);seen[list[i].id]=1;added++;}}
+      saveAll();render();toast("已匯入 "+added+" 筆記錄");
+    }catch(e){toast("這不是 321生命操練的備份檔，請重新選擇");}
+  };
+  rd.readAsText(file);
+}
+
+/* ---------- 事件 ---------- */
+$("tabs").addEventListener("click",function(e){var b=closestBtn(e.target,this);if(b)go(b.getAttribute("data-tab"));});
+app.addEventListener("input",function(){if(state.tab==="journal")saveJournalDraft();else if(state.tab==="check")ckSaveDraft();});
+app.addEventListener("change",function(e){
+  if(e.target.id==="importFile"&&e.target.files&&e.target.files[0]){importBackup(e.target.files[0]);e.target.value="";}
+  else if(state.tab==="journal")saveJournalDraft();
+});
+app.addEventListener("click",function(e){
+  var b=closestBtn(e.target,app);if(!b)return;
+  var at=function(n){return b.getAttribute("data-"+n);},S,mode,i;
+  if(at("ck")){ckClick(b);return;}
+  if(at("ckopen")){ck.show=at("ckopen");ck.err="";render();window.scrollTo(0,0);return;}
+  if(at("emo")){var ta=$("c-feel");if(ta){var w=at("emo");ta.value=ta.value.replace(/\s+$/,"")+(ta.value.replace(/\s/g,"")?"、":"")+w;ckSaveDraft();}return;}
+  if(at("go")){if(at("jm")){state.jmode=at("jm");jdraft=null;}go(at("go"));return;}
+  if(at("pick")){
+    S=state[state.tab];var id=at("pick"),sel=[];
+    for(i=0;i<GROUPS.length;i++){var gid=GROUPS[i].id;if(gid===id?!has(S.sel,id):has(S.sel,gid))sel.push(gid);}
+    S.sel=sel;keepScroll();return;
+  }
+  if(at("score")){
+    var p=at("score").split(":");mode=state.tab;S=state[mode];
+    var a=S.ans[p[0]]=S.ans[p[0]]||[null,null,null,null,null],ix=+p[1],n=+p[2];
+    a[ix]=a[ix]===n?null:n;lsSet("r321-draft-"+mode,S.ans);keepScroll();return;
+  }
+  if(at("finish")){
+    mode=at("finish");S=state[mode];var scores={},any=false;
+    for(i=0;i<S.sel.length;i++){var aa=S.ans[S.sel[i]]||[];if(answeredCount(aa)===5){scores[S.sel[i]]=aa.slice();any=true;}}
+    if(!any)return;
+    var rec={id:mode+"-"+new Date().getTime(),kind:mode,date:TODAY,ts:new Date().getTime(),scores:scores};
+    if(!putEntry(rec)){toast("儲存失敗：瀏覽器不允許儲存資料，請關閉無痕模式後再試");return;}
+    S.done=rec;for(var sid in scores){if(scores.hasOwnProperty(sid))delete S.ans[sid];}
+    lsSet("r321-draft-"+mode,S.ans);render();window.scrollTo(0,0);toast("已儲存");return;
+  }
+  if(at("again")){state[at("again")].done=null;render();window.scrollTo(0,0);return;}
+  if(at("jmode")){state.jmode=at("jmode");jdraft=null;render();return;}
+  if(at("fruit")){b.setAttribute("aria-pressed",b.getAttribute("aria-pressed")==="true"?"false":"true");saveJournalDraft();return;}
+  if(at("ask")){state.confirmDel=at("ask");keepScroll();return;}
+  if(at("cancel")){state.confirmDel=null;keepScroll();return;}
+  if(at("del")){if(ck.show===at("del"))ck.show=null;delEntry(at("del"));state.confirmDel=null;keepScroll();toast("已刪除");return;}
+  if(at("export")){exportBackup();return;}
+  if(at("import")){$("importFile").click();return;}
+  if(b.id==="j-save"){
+    var j=saveJournalDraft();
+    if(!j.a.replace(/\s/g,"")&&!j.b.replace(/\s/g,"")&&!j.d.replace(/\s/g,"")){toast("請至少寫下一欄內容");return;}
+    var trim=function(s){return s.replace(/^\s+|\s+$/g,"");};
+    var r={id:j.mode+"-"+new Date().getTime(),kind:j.mode,date:TODAY,ts:new Date().getTime(),area:j.area,a:trim(j.a),b:trim(j.b),c:trim(j.c),d:trim(j.d),fruits:j.fruits};
+    if(!putEntry(r)){toast("儲存失敗：瀏覽器不允許儲存資料，請關閉無痕模式後再試");return;}
+    jdraft=null;render();toast("已儲存，榮耀歸給耶穌");
+  }
+});
+render();
+
+/* ---------- 離線與自動更新 ---------- */
+if("serviceWorker" in navigator&&location.protocol!=="file:"){
+  window.addEventListener("load",function(){
+    navigator.serviceWorker.register("sw.js").then(function(reg){
+      reg.addEventListener("updatefound",function(){
+        var nw=reg.installing;if(!nw)return;
+        nw.addEventListener("statechange",function(){
+          if(nw.state==="installed"&&navigator.serviceWorker.controller){$("updbar").hidden=false;}
+        });
+      });
+    })["catch"](function(){});
+    var reloaded=false;
+    navigator.serviceWorker.addEventListener("controllerchange",function(){if(reloaded)return;reloaded=true;location.reload();});
+  });
+  $("updbtn").addEventListener("click",function(){
+    navigator.serviceWorker.getRegistration().then(function(reg){
+      if(reg&&reg.waiting)reg.waiting.postMessage("skip");else location.reload();
+    });
+  });
+}
+</script>
+</body>
+</html>
