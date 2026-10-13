@@ -1,5 +1,5 @@
 /* 321生命操練 service worker — 更新版本時把 VERSION 加一 */
-var VERSION = "321life-v1.2.0";
+var VERSION = "321life-v1.3.0";
 var SHELL = ["./", "index.html", "manifest.json", "icon-192.png", "icon-512.png", "icon-maskable-512.png", "apple-touch-icon.png", "hero.jpg", "hero-720.jpg"];
 
 self.addEventListener("install", function (e) {

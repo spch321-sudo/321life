@@ -180,7 +180,22 @@ nav.tabs button.t-old[aria-current="page"]{color:var(--plum)}
 .act{background:var(--vine);color:var(--bg);border-radius:12px;padding:14px 16px;font-weight:700;font-size:17px;margin:0}
 .ckrec{border:0;background:none;text-align:left;padding:12px 0;border-top:1px solid var(--line);display:grid;gap:2px;width:100%}
 .ckrec b{font-size:16px}
-.raw p{margin:0 0 8px}
+html,body{overflow-x:hidden}
+.card{overflow-wrap:anywhere}
+.md{display:grid;gap:8px;font-size:16px;line-height:1.8}
+.md p{margin:0}
+.md h4{margin:6px 0 0;font-family:var(--display);font-size:18px;color:var(--vine);padding-left:10px;border-left:4px solid var(--vine)}
+.md ul,.md ol{margin:0;padding-left:1.4em;display:grid;gap:4px}
+.md li::marker{color:var(--vine);font-weight:700}
+.md strong{color:var(--fg);background:linear-gradient(transparent 62%,rgba(168,123,31,.25) 0)}
+.md blockquote{margin:0;padding:8px 12px;border-left:3px solid var(--gold);background:var(--sunk);border-radius:0 10px 10px 0;font-family:var(--display)}
+.md hr{border:0;border-top:1px dashed var(--line);margin:4px 0;width:100%}
+.md .next{background:var(--vine-soft);border-radius:10px;padding:10px 12px}
+.chat{gap:12px}
+.turn{display:grid;gap:10px;padding-top:12px;border-top:1px solid var(--line)}
+.turn .q{justify-self:end;max-width:88%;margin:0;background:var(--vine);color:var(--bg);padding:8px 14px;border-radius:16px 16px 4px 16px;font-weight:500}
+.turn .ans{background:var(--surface)}
+.chat .chip{text-align:left;line-height:1.5}
 </style>
 </head>
 <body>
@@ -201,7 +216,7 @@ nav.tabs button.t-old[aria-current="page"]{color:var(--plum)}
   <button data-tab="journal"><svg viewBox="0 0 24 24"><path d="M5 4h11l3 3v13H5zM9 10h6M9 14h6M9 18h3"/></svg>日記</button>
 </nav>
 <script>
-/* 321生命操練 v1.2.0 — ES5 */
+/* 321生命操練 v1.3.0 — ES5 */
 
 var GROUPS=[
  {id:"see",kind:"門戶",name:"看",
@@ -467,7 +482,7 @@ var CK_FIELDS=[["ev","事件","發生了甚麼事？（時間、地點、和誰�
  ["said","說了甚麼","我口裡說出的話","例：「你也沒好到哪裡去」"],
  ["did","做了甚麼","我的行動與態度","例：把碗一推，回房間滑手機"]];
 var CK_EMOS=["生氣","委屈","煩躁","焦慮","害怕","難過","失望","羞愧","嫉妒","不服氣","被冒犯","冷漠","平安","喜樂","感恩"];
-var CK_SYS="你是「小智」，國度321空中團契的生命陪伴者，以福音派信仰和321理念，溫柔、誠實、具體地陪人做「生命健檢」。全部用繁體中文；引用經文一律用和合本原文，出處要正確，沒有把握的經文寧可不引。\n\n"+
+var CK_BASE="你是「小智」，國度321空中團契的生命陪伴者，以福音派信仰和321理念，溫柔、誠實、具體地陪人做「生命健檢」。全部用繁體中文；引用經文一律用和合本原文，出處要正確，沒有把握的經文寧可不引。\n\n"+
 "【321理念】三個基礎：耶穌是我的榜樣、聖經是我的準則、聖靈是我的引導。兩個核心：讓耶穌作王、讓耶穌得著一切的榮耀。一個目的：建立屬神的體系。\n"+
 "【生命問題的根】舊人有己，以自己為中心，自己要作主作王、要代替神；表現出來就是驕傲——離開人的本位，抓住神的權力。謙卑是放下權力、回到本位：讓人作人，讓神作神。謙卑戰勝驕傲；驕傲激起驕傲、兩敗俱傷，謙卑帶動謙卑、達到雙贏。\n"+
 "【福音】耶穌的死解決我們的罪性與罪行，耶穌的復活賜我們新生命：舊人與基督同釘十字架，「不再是我，乃是基督在我裡面活著」。無己不是沒有，乃是進入無限、活出無限；無己才能讓耶穌作王、才能被聖靈引導、才能合一、才能得勝。\n"+
@@ -479,7 +494,8 @@ var CK_SYS="你是「小智」，國度321空中團契的生命陪伴者，以�
 "【你的任務】使用者會寫下一件事：事件、感應（看到、聽到）、反應（意念、情緒）、回應（說了、做了）。請沿著「感應→反應→回應」這條鏈，指出哪裡是舊人有己在作王、哪裡已經有新人無己的生命；點出有己的根（我要的是甚麼：面子、控制、被肯定、被體諒、公平、安全感……），以及怎樣離開了本位；再給出具體、做得到的更新建議。\n"+
 "【語氣】像一位有愛心的牧者：誠實而不定罪，看見問題的同時更看見恩典（羅8:1）。只分析寫信人自己的生命，不替他論斷對方。若對方也有錯，承認那份委屈是真的，再把焦點帶回耶穌和自己能順服的一步。如果他已經活出無己，要具體肯定，把榮耀歸給神。\n"+
 "【安全】如果內容顯示有人正遭受暴力、虐待、人身危險，或有自傷、輕生的念頭，不要把它當成「有己」來分析，也不要勸他忍耐順服；要溫柔地把安全放第一，鼓勵他立刻聯絡可信任的人、當地緊急求助或專業協助，並在 picture 裡清楚說明。\n\n"+
-"【輸出格式】只輸出一個 JSON 物件，不要任何其他文字、不要 markdown 符號。欄位：\n"+
+"";
+var CK_SYS=CK_BASE+"【輸出格式】只輸出一個 JSON 物件，不要任何其他文字，不要用```包起來。字串裡不可出現半形雙引號，引用話語一律用「」。每個欄位都要精簡，整份控制在900字以內，務必完整輸出到最後的 }。欄位：\n"+
 "{\"title\":\"十五字內的一句話，點出這次健檢的核心\",\n"+
 "\"who\":\"舊人作王｜新舊交戰｜新人作王 三選一\",\n"+
 "\"picture\":\"生命光景，2到4句\",\n"+
@@ -489,14 +505,24 @@ var CK_SYS="你是「小智」，國度321空中團契的生命陪伴者，以�
 "\"area\":\"看｜聽｜想｜講｜行｜觀念｜生命｜生活｜關係｜事工 十選一，最需要操練的\",\n"+
 "\"fruit\":{\"lack\":\"取代了哪個聖靈果子的舊人表現\",\"grow\":\"這次要結的果子（聖靈九果之一或二）\"},\n"+
 "\"verses\":[{\"ref\":\"書卷 章:節\",\"text\":\"和合本經文\"}],（一到二處）\n"+
-"\"steps\":[\"更新建議\"],（三到五條，具體可行，涵蓋：向神、向自己、向那位「2」）\n"+
+"\"steps\":[\"更新建議\"],（三到四條，每條40字內，具體可行，涵蓋：向神、向自己、向那位「2」）\n"+
 "\"tomorrow\":\"明天一個具體的無己行動，一句話\",\n"+
-"\"prayer\":\"第一人稱的禱告，約120字，奉主耶穌基督的名禱告，阿們\"}";
+"\"asks\":[\"三個他最值得繼續追問的問題，第一人稱、具體貼近這件事，每題20字內\"],\n"+
+"\"prayer\":\"第一人稱的禱告，約100字，奉主耶穌基督的名禱告，阿們\"}";
 
+var CK_CHAT=CK_BASE+"【現在的任務：陪他繼續追問】你已經為這件事做過生命健檢（內容在前面的對話裡）。現在他要繼續追問，目標是：實際面對問題、真正解決問題、在這件事上成為得勝者。\n"+
+"回答原則：\n1. 緊扣他這件事和他的問題，不重複健檢已說過的內容，往更深、更實際的地方走。\n"+
+"2. 要給做得到的東西：可以直接說出口的話（用「」寫出完整句子）、具體步驟、時間點、怎樣面對對方可能的反應、跌倒了怎麼重新起來。\n"+
+"3. 先生命、再關係、後事工；先與神、再與自己、再與人、再與事。焦點帶回耶穌，用心靠聖靈。\n"+
+"4. 用 markdown 排版：### 小標題、- 條列、1. 編號、**粗體**、> 引用經文（和合本，後面寫出處）。段落短，手機好讀。\n"+
+"5. 長度約400到700字，不要寫成 JSON。\n"+
+"6. 最後一行固定寫：**得勝的下一步：**一句具體行動。需要時，可在前面問他一個幫助更深的問題。";
+var CK_ASKS=["我該怎麼開口道歉、和好？","如果對方不接受，我該怎麼辦？","這個有己的模式常出現，怎樣根本改變？","幫我擬一個七天得勝操練計畫","我心裡還是過不去，怎麼辦？","怎樣邀請屬靈同伴陪我走？"];
 var CK_DRAFT="r321-draft-check";
 var ck={draft:lsGet(CK_DRAFT,{}),busy:false,err:"",show:null};
 function ckVal(k){return ck.draft[k]||"";}
 function ckSaveDraft(){
+  var qq=$("ck-q");if(qq)ck.askDraft=qq.value;
   for(var i=0;i<CK_FIELDS.length;i++){var el=$("c-"+CK_FIELDS[i][0]);if(el)ck.draft[CK_FIELDS[i][0]]=el.value;}
   lsSet(CK_DRAFT,ck.draft);
 }
@@ -529,15 +555,33 @@ function viewCheck(){
 
 function ckWhoClass(w){w=w||"";return w.indexOf("新人")===0?"n":w.indexOf("交戰")>-1?"m":"o";}
 function ckParas(t){var ps=String(t||"").split(/\n+/),o="";for(var i=0;i<ps.length;i++){if(ps[i].replace(/\s/g,""))o+='<p>'+esc(ps[i])+'</p>';}return o;}
+function ckChatHTML(e,a){
+  var ch=e.chat||[],h="",i,asks=(a&&a.asks&&a.asks.length)?a.asks.slice(0,3):[],seen={};
+  for(i=0;i<ch.length;i++)seen[ch[i].q]=1;
+  for(i=0;i<ch.length;i++){
+    h+='<div class="turn"><p class="q">'+esc(ch[i].q)+'</p><div class="ans md">'+mdHTML(ch[i].a)+'</div></div>';}
+  if(ck.asking===e.id)h+='<div class="turn" id="ck-asking"><p class="q">'+esc(ck.askq)+'</p><div class="busy"><span class="spin"></span><span>小智正在思想，陪你找到得勝的路……</span></div></div>';
+  for(i=0;i<CK_ASKS.length&&asks.length<6;i++)asks.push(CK_ASKS[i]);
+  var chips="";for(i=0;i<asks.length;i++){if(seen[asks[i]])continue;seen[asks[i]]=1;chips+='<button class="chip" data-ckask="'+esc(asks[i])+'">'+esc(asks[i])+'</button>';}
+  return '<section class="card chat"><div class="eyebrow">繼續追問小智</div>'+
+    '<h3 style="font-size:20px">面對它、解決它，在這件事上得勝</h3>'+
+    (ch.length?'':'<p class="small" style="margin:0">點一個問題，或寫下你自己的問題。小智會給你可以說出口的話、具體的步驟，陪你一步一步走出來。</p>')+h+
+    '<div class="emos">'+chips+'</div>'+
+    '<textarea id="ck-q" placeholder="例：她如果又提起罰單，我該怎麼回應？">'+esc(ck.askDraft||"")+'</textarea>'+
+    (ck.askErr?'<p class="small" style="margin:0;color:var(--plum)">'+esc(ck.askErr)+'</p>':'')+
+    '<button class="btn new" data-ck="ask" data-id="'+e.id+'"'+(ck.asking?' disabled':'')+'>'+(ck.asking?'小智回答中……':'追問小智')+'</button></section>';
+}
 function viewCheckResult(e){
   var a=e.ai||{},inp=e.input,i,out="";
+  if(a.raw&&!a.title){var re=ckParse(a.raw);if(re.title){a=e.ai=re;putEntry(e);}}
   var mine=[["感應",[inp.see,inp.hear]],["反應",[inp.thought,inp.feel]],["回應",[inp.said,inp.did]]];
   out+='<section class="card result"><div class="eyebrow">'+fmtDate(e.date)+'・生命健檢</div>';
   if(a.raw||!a.title){
-    out+='<h2 style="font-size:22px">小智的健檢回覆</h2><div class="raw">'+ckParas(a.raw||"（這次沒有收到分析，可以按「重新分析」再試一次。）")+'</div></section>';
+    out+='<h2 style="font-size:22px">小智的健檢回覆</h2><div class="md">'+(a.raw?mdHTML(a.raw):'<p>（這次沒有收到分析，可以按「重新分析」再試一次。）</p>')+'</div></section>';
   }else{
     out+='<h2 style="font-size:24px">'+esc(a.title)+'</h2>'+(a.who?'<span class="who '+ckWhoClass(a.who)+'">'+esc(a.who)+'</span>':'')+
-      '<p style="margin:0">'+esc(a.picture)+'</p></section>';
+      '<p style="margin:0">'+esc(a.picture)+'</p>'+
+      (a.cut?'<p class="small" style="margin:0;color:var(--gold)">小智這次的回覆不完整，部分欄位可能空白，可以按下方「重新分析」。</p>':'')+'</section>';
     out+='<section class="card"><div class="eyebrow">事件</div><p style="margin:0">'+esc(inp.ev)+'</p>';
     var ch=a.chain||[];
     for(i=0;i<3;i++){var c=ch[i]||{},m=mine[i][1],my=[];if(!ckBlank(m[0]))my.push(m[0]);if(!ckBlank(m[1]))my.push(m[1]);
@@ -556,9 +600,11 @@ function viewCheckResult(e){
     var st=a.steps||[],sh="";for(i=0;i<st.length;i++)sh+='<li>'+esc(st[i])+'</li>';
     if(sh)out+='<section class="card"><div class="eyebrow">更新改變的建議</div><ol class="steps">'+sh+'</ol></section>';
     if(a.tomorrow)out+='<section class="card"><div class="eyebrow">明天的無己行動</div><p class="act">'+esc(a.tomorrow)+'</p>'+
-      '<p class="small" style="margin:0">照八大步驟走下去：資訊、啟示、信服、實踐、檢討、修正、反覆、繁殖。</p></section>';
+      '<p class="small" style="margin:0">照八大步驟走下去：資訊、啟示、信服、實踐、檢討、修正、反覆、繁殖。</p>'+
+      '<button class="btn ghost" data-ck="victory" data-id="'+e.id+'">我做到了！寫得勝見證</button></section>';
     if(a.prayer)out+='<section class="card"><div class="eyebrow">禱告</div><p class="prayer">'+esc(a.prayer)+'</p></section>';
   }
+  out+=ckChatHTML(e,a);
   out+='<p class="small" style="margin:0;text-align:center">小智的分析是陪伴與提醒，請以聖經與聖靈的引導為準，也可以和你的屬靈同伴一起禱告。</p>'+
     '<div class="row">'+(a.title?'<button class="btn old wide" data-ck="tojournal" data-id="'+e.id+'">寫進更新記錄</button>':'')+
     '<button class="btn ghost wide" data-ck="again" data-id="'+e.id+'">重新分析</button></div>'+
@@ -572,43 +618,114 @@ function ckPrompt(inp){
   return "請為我這件事做生命健檢：\n\n【事件】"+v(inp.ev)+"\n\n【感應】\n看到："+v(inp.see)+"\n聽到："+v(inp.hear)+
     "\n\n【反應】\n意念："+v(inp.thought)+"\n情緒："+v(inp.feel)+"\n\n【回應】\n說了："+v(inp.said)+"\n做了："+v(inp.did);
 }
+/* 解析小智的 JSON；被截斷時盡量補回結構 */
+function ckTryJSON(t){try{var o=JSON.parse(t);return (o&&typeof o==="object")?o:null;}catch(e){return null;}}
+function ckRepair(t){
+  var st=[],inS=false,esc1=false,cuts=[],i,c;
+  for(i=0;i<t.length;i++){c=t.charAt(i);
+    if(inS){if(esc1)esc1=false;else if(c==="\\")esc1=true;else if(c==='"')inS=false;continue;}
+    if(c==='"')inS=true;else if(c==="{"||c==="[")st.push(c);else if(c==="}"||c==="]")st.pop();
+    else if(c===",")cuts.push([i,st.slice()]);}
+  function close(stk){var o="";for(var k=stk.length-1;k>=0;k--)o+=stk[k]==="{"?"}":"]";return o;}
+  var base=t;if(inS){if(esc1)base=base.slice(0,-1);base+='"';}
+  var o=ckTryJSON(base+close(st));if(o)return o;
+  o=ckTryJSON(base+':""'+close(st));if(o)return o;
+  for(i=cuts.length-1;i>=0&&i>=cuts.length-40;i--){o=ckTryJSON(t.slice(0,cuts[i][0])+close(cuts[i][1]));if(o)return o;}
+  return null;
+}
 function ckParse(t){
-  var a=t.indexOf("{"),b=t.lastIndexOf("}");
-  if(a>-1&&b>a){try{var o=JSON.parse(t.slice(a,b+1));if(o&&o.title)return o;}catch(e){}}
+  t=String(t||"").replace(/```(json)?/g,"");
+  var a=t.indexOf("{");if(a<0)return {raw:t};
+  var b=t.lastIndexOf("}"),o=b>a?ckTryJSON(t.slice(a,b+1)):null,cut=false;
+  if(!o){o=ckRepair(t.slice(a));cut=true;}
+  if(o&&o.title){if(cut)o.cut=true;return o;}
   return {raw:t};
 }
-function ckAsk(inp,done){
+/* 小智請求：messages 陣列，回傳文字與是否截斷 */
+function xiCall(sys,msgs,maxTok,done){
   var x;try{x=new XMLHttpRequest();}catch(e){done("這個瀏覽器無法連線");return;}
-  var fin=false;function end(err,txt){if(fin)return;fin=true;done(err,txt);}
+  var fin=false;function end(err,txt,cut){if(fin)return;fin=true;done(err,txt,cut);}
   x.open("POST",XI_ENDPOINT,true);
   x.setRequestHeader("Content-Type","application/json");
-  x.timeout=90000;
+  x.timeout=120000;
   x.onreadystatechange=function(){
     if(x.readyState!==4)return;
-    if(x.status<200||x.status>=300){end("小智暫時連不上（"+(x.status||"網路")+"），草稿已保留，請稍後再按一次。");return;}
+    if(x.status<200||x.status>=300){end("小智暫時連不上（"+(x.status||"網路")+"），請稍後再試一次。");return;}
     try{var d=JSON.parse(x.responseText),t="",c=d.content||[];
       for(var i=0;i<c.length;i++){if(c[i].type==="text")t+=c[i].text;}
-      if(!t)throw 0;end(null,t);
-    }catch(e){end("小智的回覆讀不出來，請再按一次。");}
+      if(!t)throw 0;end(null,t,d.stop_reason==="max_tokens");
+    }catch(e){end("小智的回覆讀不出來，請再試一次。");}
   };
-  x.ontimeout=function(){end("等太久沒有回應，草稿已保留，請再按一次。");};
-  x.onerror=function(){end("網路連不上小智，草稿已保留，連上網路後再按一次。");};
-  x.send(JSON.stringify({model:XI_MODEL,max_tokens:2500,system:CK_SYS,messages:[{role:"user",content:ckPrompt(inp)}]}));
+  x.ontimeout=function(){end("等太久沒有回應，請再試一次。");};
+  x.onerror=function(){end("網路連不上小智，連上網路後再試一次。");};
+  x.send(JSON.stringify({model:XI_MODEL,max_tokens:maxTok,system:sys,messages:msgs}));
 }
 function ckRun(inp,oldId){
   ck.busy=true;ck.err="";if(oldId)ck.show=null;render();
   if(!oldId)setTimeout(function(){var b=document.querySelector(".busy");if(b&&b.scrollIntoView)b.scrollIntoView({block:"center"});},30);
-  ckAsk(inp,function(err,txt){
+  xiCall(CK_SYS,[{role:"user",content:ckPrompt(inp)}],4000,function(err,txt){
     ck.busy=false;
-    if(err){ck.err=err;if(oldId)ck.show=oldId;if(state.tab==="check")keepScroll();toast(err.split("，")[0]);return;}
-    var now=new Date().getTime(),rec={id:oldId||("check-"+now),kind:"check",date:TODAY,ts:now,input:inp,ai:ckParse(txt)};
-    if(oldId){for(var i=0;i<entries.length;i++){if(entries[i].id===oldId){rec.date=entries[i].date;rec.ts=entries[i].ts;}}}
+    if(err){ck.err=err+(oldId?"":"草稿已保留。");if(oldId)ck.show=oldId;if(state.tab==="check")keepScroll();toast(err.split("，")[0]);return;}
+    var now=new Date().getTime(),rec={id:oldId||("check-"+now),kind:"check",date:TODAY,ts:now,input:inp,ai:ckParse(txt),chat:[]};
+    if(oldId){var old=ckFind(oldId);if(old){rec.date=old.date;rec.ts=old.ts;}}
     if(!putEntry(rec)){toast("儲存失敗：瀏覽器不允許儲存資料，請關閉無痕模式後再試");}
     if(!oldId){ck.draft={};lsSet(CK_DRAFT,ck.draft);}
     ck.show=rec.id;
     if(state.tab==="check"){render();window.scrollTo(0,0);}
     toast("健檢完成");
   });
+}
+/* 把健檢結果整理成文字，當作追問的前文 */
+function ckSummary(a){
+  if(!a||!a.title)return String(a&&a.raw||"").slice(0,1500);
+  var o=["【健檢結果】"+a.title+"（"+(a.who||"")+"）",a.picture||""],i,c=a.chain||[];
+  for(i=0;i<c.length;i++){if(c[i])o.push(c[i].k+"——有己："+(c[i].old||"")+"；無己："+(c[i]["new"]||""));}
+  if(a.root)o.push("有己的根："+a.root);
+  if(a.view)o.push("觀點轉換："+(a.view.from||"")+" → "+(a.view.to||""));
+  if(a.area)o.push("最需要操練："+a.area);
+  if(a.fruit)o.push("要結的果子："+(a.fruit.grow||""));
+  if(a.steps)o.push("建議："+a.steps.join("；"));
+  if(a.tomorrow)o.push("明天的無己行動："+a.tomorrow);
+  return o.join("\n");
+}
+function ckAskMore(id,q){
+  var e=ckFind(id);if(!e||ck.asking)return;
+  q=String(q||"").replace(/^\s+|\s+$/g,"");if(!q){toast("請寫下想追問的問題");return;}
+  e.chat=e.chat||[];
+  var msgs=[{role:"user",content:ckPrompt(e.input)},{role:"assistant",content:ckSummary(e.ai)}],i,from=Math.max(0,e.chat.length-5);
+  for(i=from;i<e.chat.length;i++){msgs.push({role:"user",content:e.chat[i].q});msgs.push({role:"assistant",content:e.chat[i].a});}
+  msgs.push({role:"user",content:q});
+  ck.asking=id;ck.askq=q;ck.askErr="";ck.askDraft="";keepScroll();
+  setTimeout(function(){var b=$("ck-asking");if(b&&b.scrollIntoView)b.scrollIntoView({block:"center"});},30);
+  xiCall(CK_CHAT,msgs,2500,function(err,txt,cut){
+    ck.asking=null;
+    if(err){ck.askErr=err;ck.askDraft=q;if(state.tab==="check")keepScroll();toast(err.split("，")[0]);return;}
+    var cur=ckFind(id);if(!cur)return;cur.chat=cur.chat||[];
+    cur.chat.push({q:q,a:txt+(cut?"\n\n（回答較長，到這裡被截斷了，可以接著問「請繼續」。）":""),ts:new Date().getTime()});
+    putEntry(cur);
+    if(state.tab==="check"&&ck.show===id){render();setTimeout(function(){var ls=document.querySelectorAll(".turn");if(ls.length&&ls[ls.length-1].scrollIntoView)ls[ls.length-1].scrollIntoView({block:"start"});},30);}
+    toast("小智回答了");
+  });
+}
+/* 簡易 markdown 排版 */
+function mdInline(t){
+  return esc(t).replace(/\*\*([^*]+)\*\*/g,"<strong>$1</strong>").replace(/__([^_]+)__/g,"<strong>$1</strong>");
+}
+function mdHTML(src){
+  var L=String(src||"").replace(/```[a-z]*/g,"").replace(/\r/g,"").split("\n"),o="",list=null,i,m,ln;
+  function endList(){if(list){o+="</"+list+">";list=null;}}
+  for(i=0;i<L.length;i++){ln=L[i].replace(/\s+$/,"");
+    if(!ln.replace(/\s/g,"")){endList();continue;}
+    if((m=ln.match(/^\s*#{1,6}\s+(.*)$/))){endList();o+="<h4>"+mdInline(m[1].replace(/\*\*/g,""))+"</h4>";continue;}
+    if(/^\s*(-{3,}|\*{3,})\s*$/.test(ln)){endList();o+="<hr>";continue;}
+    if((m=ln.match(/^\s*>\s?(.*)$/))){endList();o+="<blockquote>"+mdInline(m[1])+"</blockquote>";continue;}
+    if((m=ln.match(/^\s*[-*•]\s+(.*)$/))){if(list!=="ul"){endList();o+="<ul>";list="ul";}o+="<li>"+mdInline(m[1])+"</li>";continue;}
+    if((m=ln.match(/^\s*\d+[.、)]\s*(.*)$/))){if(list!=="ol"){endList();o+="<ol>";list="ol";}o+="<li>"+mdInline(m[1])+"</li>";continue;}
+    endList();
+    if(/^\s*\*\*得勝的下一步/.test(ln)){o+='<p class="next">'+mdInline(ln)+"</p>";continue;}
+    o+="<p>"+mdInline(ln)+"</p>";
+  }
+  endList();return o;
 }
 function ckFind(id){for(var i=0;i<entries.length;i++){if(entries[i].id===id)return entries[i];}return null;}
 function ckClick(b){
@@ -620,8 +737,14 @@ function ckClick(b){
     if(ck.busy)return;ckRun(inp,null);return;
   }
   if(act==="clear"){ck.draft={};lsSet(CK_DRAFT,ck.draft);ck.err="";render();return;}
-  if(act==="new"){ck.show=null;ck.err="";render();window.scrollTo(0,0);return;}
+  if(act==="new"){ck.show=null;ck.err="";ck.askDraft="";ck.askErr="";render();window.scrollTo(0,0);return;}
   if(act==="again"){var e=ckFind(id);if(e&&!ck.busy)ckRun(e.input,id);return;}
+  if(act==="ask"){var qa=$("ck-q");ckAskMore(id,qa?qa.value:"");return;}
+  if(act==="victory"){var rv=ckFind(id);if(!rv)return;var av=rv.ai||{},ar="關係",fv=[];
+    for(var gv=0;gv<GROUPS.length;gv++){if(av.area&&av.area.indexOf(GROUPS[gv].name)>-1){ar=GROUPS[gv].name;break;}}
+    for(var f=0;f<FRUITS.length;f++){if(av.fruit&&av.fruit.grow&&av.fruit.grow.indexOf(FRUITS[f][1])>-1)fv.push(FRUITS[f][1]);}
+    state.jmode="victory";jdraft={mode:"victory",area:ar,a:rv.input.ev,b:av.tomorrow||"",c:"",d:"",fruits:fv};
+    go("journal");toast("已帶入得勝見證，寫下感恩後按儲存");return;}
   if(act==="tojournal"){var r=ckFind(id);if(!r)return;var a=r.ai||{},area="關係";
     for(var g=0;g<GROUPS.length;g++){if(a.area&&a.area.indexOf(GROUPS[g].name)>-1){area=GROUPS[g].name;break;}}
     var v=(a.verses&&a.verses[0])?(a.verses[0].ref+" "+a.verses[0].text):"";
@@ -730,7 +853,8 @@ app.addEventListener("click",function(e){
   var b=closestBtn(e.target,app);if(!b)return;
   var at=function(n){return b.getAttribute("data-"+n);},S,mode,i;
   if(at("ck")){ckClick(b);return;}
-  if(at("ckopen")){ck.show=at("ckopen");ck.err="";render();window.scrollTo(0,0);return;}
+  if(at("ckask")){if(ck.show)ckAskMore(ck.show,at("ckask"));return;}
+  if(at("ckopen")){ck.show=at("ckopen");ck.err="";ck.askDraft="";ck.askErr="";render();window.scrollTo(0,0);return;}
   if(at("emo")){var ta=$("c-feel");if(ta){var w=at("emo");ta.value=ta.value.replace(/\s+$/,"")+(ta.value.replace(/\s/g,"")?"、":"")+w;ckSaveDraft();}return;}
   if(at("go")){if(at("jm")){state.jmode=at("jm");jdraft=null;}go(at("go"));return;}
   if(at("pick")){
