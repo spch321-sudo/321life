@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>321生命操練</title>
-<meta name="description" content="舊人有己生命檢視表與新人無己生命操練表：每日檢視、操練、成長圖與得勝日記。">
+<meta name="description" content="舊人有己生命檢視表與新人無己生命操練表：每日檢視、操練、成長圖與得勝日記。繁體／简体／English。">
 <meta name="theme-color" content="#2F6A48">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
@@ -17,13 +17,15 @@
 <meta property="og:image:width" content="1080">
 <meta property="og:image:height" content="1080">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="manifest" href="manifest.json">
-<link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
-<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+<link rel="manifest" href="manifest.json?v=2">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="icon-192-v2.png">
+<link rel="apple-touch-icon" href="apple-touch-icon-v2.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon-v2.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;800&family=Noto+Sans+TC:wght@400;500;700&display=swap">
 <style>
-/* Layout: one-column phone app, header + content + fixed bottom tab bar. Vine green = new self, muted plum = old self. */
+
 :root{
   --bg:#F3F6F4; --surface:#FFFFFF; --sunk:#E7EDE9; --fg:#1C2A24; --muted:#5E6E66; --line:#D3DDD7;
   --vine:#2F6A48; --vine-soft:#DCEBE1; --plum:#86465A; --plum-soft:#F1E1E6; --gold:#A87B1F;
@@ -40,7 +42,7 @@
 html,body{background:var(--bg)}
 :root{padding-top:env(safe-area-inset-top,0px)}
 *{-webkit-tap-highlight-color:transparent}
-body{margin:0;color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.7;padding-inline:16px;padding-block:0 96px}
+body{margin:0;color:var(--fg);font-family:var(--body);font-size:1rem;line-height:1.7;padding-inline:16px;padding-block:0 96px}
 .wrap{max-width:640px;margin:0 auto}
 h1,h2,h3{font-family:var(--display);line-height:1.35;text-wrap:balance;margin:0}
 button{font:inherit;color:inherit;cursor:pointer}
@@ -49,19 +51,19 @@ button:focus-visible,select:focus-visible,textarea:focus-visible,input:focus-vis
 .brand{display:flex;align-items:baseline;gap:10px}
 .mark{font-family:var(--display);font-weight:800;font-size:28px;letter-spacing:.02em;color:var(--vine)}
 .brand h1{font-size:20px;font-weight:800}
-.eyebrow{font-size:12px;letter-spacing:.12em;color:var(--muted);font-weight:700}
+.eyebrow{font-size:0.75rem;letter-spacing:.12em;color:var(--muted);font-weight:700}
 .view{display:grid;gap:16px;padding-block:8px 24px}
 .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:grid;gap:10px;min-width:0}
 .hero{background:linear-gradient(160deg,var(--vine-soft),var(--surface) 70%);border-color:transparent}
-.hero h2{font-size:26px}
+.hero h2{font-size:1.625rem}
 .kv{margin:0;border-radius:var(--r);overflow:hidden;background:#1d3a5c;aspect-ratio:1/1;position:relative;box-shadow:0 6px 20px rgba(20,40,30,.18)}
 .kv img{display:block;width:100%;height:100%;object-fit:cover}
-.kv figcaption{position:absolute;left:0;right:0;bottom:0;padding:40px 16px 14px;color:#fff;font-family:var(--display);font-size:16px;line-height:1.55;text-align:center;letter-spacing:.04em;background:linear-gradient(to top,rgba(10,20,15,.72),rgba(10,20,15,0));text-shadow:0 1px 3px rgba(0,0,0,.5)}
+.kv figcaption{position:absolute;left:0;right:0;bottom:0;padding:40px 16px 14px;color:#fff;font-family:var(--display);font-size:1rem;line-height:1.55;text-align:center;letter-spacing:.04em;background:linear-gradient(to top,rgba(10,20,15,.72),rgba(10,20,15,0));text-shadow:0 1px 3px rgba(0,0,0,.5)}
 .kv figcaption span{display:inline-block}
-.kv figcaption small{display:block;margin-top:2px;font-family:var(--body);font-size:12px;letter-spacing:.08em;opacity:.92}
+.kv figcaption small{display:block;margin-top:2px;font-family:var(--body);font-size:0.75rem;letter-spacing:.08em;opacity:.92}
 @supports not (aspect-ratio:1/1){.kv{height:0;padding-bottom:100%}.kv img{position:absolute;top:0;left:0}}
-.verse{font-family:var(--display);font-size:17px;line-height:1.8;margin:0;padding-left:14px;border-left:3px solid var(--gold)}
-.verse cite{display:block;font-family:var(--body);font-style:normal;font-size:13px;color:var(--muted);margin-top:4px}
+.verse{font-family:var(--display);font-size:1.0625rem;line-height:1.8;margin:0;padding-left:14px;border-left:3px solid var(--gold)}
+.verse cite{display:block;font-family:var(--body);font-style:normal;font-size:0.8125rem;color:var(--muted);margin-top:4px}
 .row{display:flex;gap:10px;flex-wrap:wrap}
 .btn{border:0;border-radius:12px;padding:12px 16px;font-weight:700;display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:48px}
 .btn.old{background:var(--plum);color:var(--bg)}
@@ -69,73 +71,70 @@ button:focus-visible,select:focus-visible,textarea:focus-visible,input:focus-vis
 .btn.ghost{background:var(--sunk)}
 .btn.wide{flex:1 1 140px}
 .btn:disabled{opacity:.45;cursor:not-allowed}
-.week{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;text-align:center;font-size:12px;color:var(--muted)}
+.week{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;text-align:center;font-size:0.75rem;color:var(--muted)}
 .week .d{display:grid;gap:4px;justify-items:center}
-.dot{width:26px;height:26px;border-radius:50%;border:2px solid var(--line);display:grid;place-items:center;font-size:12px;font-weight:700}
+.dot{width:26px;height:26px;border-radius:50%;border:2px solid var(--line);display:grid;place-items:center;font-size:0.75rem;font-weight:700}
 .dot.done{background:var(--vine);border-color:var(--vine);color:var(--bg)}
 .dot.today{border-color:var(--gold)}
 .fruit{display:flex;gap:14px;align-items:center}
-.fruit .ch{font-family:var(--display);font-size:34px;font-weight:800;color:var(--vine);width:56px;height:56px;border-radius:50%;background:var(--vine-soft);display:grid;place-items:center;flex:none}
-.small{font-size:14px;color:var(--muted)}
+.fruit .ch{font-family:var(--display);font-size:2.125rem;font-weight:800;color:var(--vine);width:56px;height:56px;border-radius:50%;background:var(--vine-soft);display:grid;place-items:center;flex:none}
+.small{font-size:0.875rem;color:var(--muted)}
 .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;text-align:center}
-.pillars div{background:var(--sunk);border-radius:10px;padding:10px 6px;font-size:13px}
-.pillars b{display:block;font-family:var(--display);font-size:15px}
-/* group picker */
+.pillars div{background:var(--sunk);border-radius:10px;padding:10px 6px;font-size:0.8125rem}
+.pillars b{display:block;font-family:var(--display);font-size:0.9375rem}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
-.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 14px;font-size:15px;min-height:38px}
+.chip{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 14px;font-size:0.9375rem;min-height:38px}
 .chip[aria-pressed="true"]{border-color:currentColor;font-weight:700}
 .mode-old .chip[aria-pressed="true"]{color:var(--plum);background:var(--plum-soft)}
 .mode-new .chip[aria-pressed="true"]{color:var(--vine);background:var(--vine-soft)}
-.legend{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;font-size:12px;color:var(--muted);text-align:center}
-.legend b{display:block;font-size:16px;color:var(--fg)}
-.group h3{font-size:21px}
+.legend{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;font-size:0.75rem;color:var(--muted);text-align:center}
+.legend b{display:block;font-size:1rem;color:var(--fg)}
+.group h3{font-size:1.3125rem}
 .mode-old .group h3{color:var(--plum)}
 .mode-new .group h3{color:var(--vine)}
 .item{display:grid;gap:8px;padding-block:12px;border-top:1px solid var(--line)}
 .item p{margin:0}
-.item .sym{font-size:13px;color:var(--plum)}
+.item .sym{font-size:0.8125rem;color:var(--plum)}
 .seg{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
 .seg button{border:1px solid var(--line);background:var(--sunk);border-radius:10px;min-height:44px;font-weight:700;font-variant-numeric:tabular-nums}
 .mode-old .seg button[aria-pressed="true"]{background:var(--plum);border-color:var(--plum);color:var(--bg)}
 .mode-new .seg button[aria-pressed="true"]{background:var(--vine);border-color:var(--vine);color:var(--bg)}
 .gscore{display:flex;justify-content:space-between;align-items:baseline;gap:8px;font-variant-numeric:tabular-nums}
-.gscore strong{font-size:22px;font-family:var(--display)}
-.helps{display:grid;gap:6px;font-size:15px;background:var(--sunk);border-radius:10px;padding:12px}
+.gscore strong{font-size:1.375rem;font-family:var(--display)}
+.helps{display:grid;gap:6px;font-size:0.9375rem;background:var(--sunk);border-radius:10px;padding:12px}
 .helps p{margin:0}
 .helps b{color:var(--muted);font-weight:700;margin-right:6px}
 .result{display:grid;gap:10px}
 .band{display:flex;gap:12px;align-items:center;padding:10px 12px;border-radius:10px;background:var(--sunk)}
-.band .n{font-family:var(--display);font-size:22px;font-weight:800;min-width:56px;font-variant-numeric:tabular-nums}
+.band .n{font-family:var(--display);font-size:1.375rem;font-weight:800;min-width:56px;font-variant-numeric:tabular-nums}
 ol.steps{margin:0;padding-left:1.4em;display:grid;gap:4px}
 .prayer{font-family:var(--display);line-height:1.9;background:var(--sunk);border-radius:10px;padding:14px;margin:0}
-/* growth chart */
 .chart{display:grid;gap:10px}
-.crow{display:grid;grid-template-columns:44px 1fr 34px;gap:8px;align-items:center;font-size:14px}
+.crow{display:grid;grid-template-columns:44px 1fr 34px;gap:8px;align-items:center;font-size:0.875rem}
 .crow .lbl{font-weight:700}
 .bars{display:grid;gap:3px}
 .track{height:10px;background:var(--sunk);border-radius:5px;overflow:hidden}
 .track i{display:block;height:100%;border-radius:5px}
 .track.o i{background:var(--plum)}
 .track.n i{background:var(--vine)}
-.nums{font-size:12px;color:var(--muted);text-align:right;font-variant-numeric:tabular-nums;line-height:1.3}
-.key{display:flex;gap:16px;font-size:13px;color:var(--muted)}
+.nums{font-size:0.75rem;color:var(--muted);text-align:right;font-variant-numeric:tabular-nums;line-height:1.3}
+.key{display:flex;gap:16px;font-size:0.8125rem;color:var(--muted)}
 .key span::before{content:"";display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
 .k-old::before{background:var(--plum)}
 .k-new::before{background:var(--vine)}
 .tnum{font-variant-numeric:tabular-nums}
-.split{font-size:12px;letter-spacing:.1em;color:var(--muted);font-weight:700;padding-top:4px}
+.split{font-size:0.75rem;letter-spacing:.1em;color:var(--muted);font-weight:700;padding-top:4px}
 .rec{display:grid;gap:4px;padding-block:12px;border-top:1px solid var(--line)}
 .rec .h{display:flex;justify-content:space-between;gap:8px;align-items:center}
-.tag{font-size:12px;font-weight:700;border-radius:6px;padding:1px 8px}
+.tag{font-size:0.75rem;font-weight:700;border-radius:6px;padding:1px 8px}
 .tag.old{background:var(--plum-soft);color:var(--plum)}
 .tag.new{background:var(--vine-soft);color:var(--vine)}
-.linkbtn{border:0;background:none;color:var(--muted);font-size:13px;text-decoration:underline;padding:4px}
+.linkbtn{border:0;background:none;color:var(--muted);font-size:0.8125rem;text-decoration:underline;padding:4px}
 .linkbtn.danger{color:var(--plum)}
-/* journal */
 .seg2{display:grid;grid-template-columns:1fr 1fr;background:var(--sunk);border-radius:12px;padding:4px;gap:4px}
 .seg2 button{border:0;background:none;border-radius:9px;min-height:42px;font-weight:700}
 .seg2 button[aria-pressed="true"]{background:var(--surface);box-shadow:0 1px 3px rgba(0,0,0,.12)}
-label.f{display:grid;gap:4px;font-size:14px;font-weight:700;color:var(--muted)}
+label.f{display:grid;gap:4px;font-size:0.875rem;font-weight:700;color:var(--muted)}
 textarea,select{font:inherit;color:var(--fg);background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px;width:100%;box-sizing:border-box}
 textarea{min-height:72px;resize:vertical}
 .empty{text-align:center;color:var(--muted);padding:24px 8px}
@@ -146,29 +145,28 @@ nav.tabs svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1
 nav.tabs button[aria-current="page"]{color:var(--vine);font-weight:700}
 nav.tabs button.t-old[aria-current="page"]{color:var(--plum)}
 @media (prefers-reduced-motion:no-preference){.view{animation:fade .25s ease}@keyframes fade{from{opacity:.4;transform:translateY(4px)}to{opacity:1;transform:none}}}
-.hdbtn{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:4px 12px;font-size:13px;color:var(--muted)}
+.hdbtn{border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:4px 12px;font-size:0.8125rem;color:var(--muted)}
 .updbar{position:fixed;left:16px;right:16px;top:calc(12px + env(safe-area-inset-top,0px));z-index:30;background:var(--vine);color:var(--bg);border-radius:12px;padding:10px 14px;display:flex;align-items:center;justify-content:space-between;gap:10px;max-width:608px;margin:0 auto;box-shadow:0 4px 16px rgba(0,0,0,.2)}
 .updbar button{border:0;background:var(--bg);color:var(--vine);border-radius:8px;padding:6px 12px;font-weight:700}
 [hidden]{display:none!important}
-/* 生命健檢 */
 .ckgrp{display:grid;gap:8px;padding-top:12px;border-top:1px solid var(--line)}
-.ckgrp h3{font-size:18px;display:flex;align-items:baseline;gap:8px}
-.ckgrp h3 em{font-style:normal;font-family:var(--body);font-size:13px;color:var(--muted);font-weight:500}
-.ckno{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--vine-soft);color:var(--vine);font-family:var(--body);font-size:13px;font-weight:700;flex:none}
+.ckgrp h3{font-size:1.125rem;display:flex;align-items:baseline;gap:8px}
+.ckgrp h3 em{font-style:normal;font-family:var(--body);font-size:0.8125rem;color:var(--muted);font-weight:500}
+.ckno{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--vine-soft);color:var(--vine);font-family:var(--body);font-size:0.8125rem;font-weight:700;flex:none}
 .emos{display:flex;flex-wrap:wrap;gap:6px}
-.emos .chip{font-size:14px;min-height:34px;padding:4px 12px}
+.emos .chip{font-size:0.875rem;min-height:34px;padding:4px 12px}
 .busy{display:flex;gap:12px;align-items:center}
 .spin{width:22px;height:22px;border-radius:50%;border:3px solid var(--vine-soft);border-top-color:var(--vine);flex:none}
 @media (prefers-reduced-motion:no-preference){.spin{animation:sp 1s linear infinite}@keyframes sp{to{transform:rotate(360deg)}}}
-.who{justify-self:start;font-size:13px;font-weight:700;border-radius:999px;padding:2px 12px}
+.who{justify-self:start;font-size:0.8125rem;font-weight:700;border-radius:999px;padding:2px 12px}
 .who.o{background:var(--plum-soft);color:var(--plum)}
 .who.m{background:#F4EAD3;color:var(--gold)}
 .who.n{background:var(--vine-soft);color:var(--vine)}
 :root[data-theme="dark"] .who.m{background:#3A3020}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .who.m{background:#3A3020}}
 .lk{display:grid;gap:8px;padding:12px;border-radius:10px;background:var(--sunk)}
-.lk .mine{font-size:14px;color:var(--muted);margin:0}
-.lk .on{display:grid;grid-template-columns:auto 1fr;gap:4px 10px;margin:0;font-size:15px}
+.lk .mine{font-size:0.875rem;color:var(--muted);margin:0}
+.lk .on{display:grid;grid-template-columns:auto 1fr;gap:4px 10px;margin:0;font-size:0.9375rem}
 .lk .on dt{font-weight:700}
 .lk .on dd{margin:0}
 .lk .on .o{color:var(--plum)}
@@ -177,14 +175,14 @@ nav.tabs button.t-old[aria-current="page"]{color:var(--plum)}
 .shift p{margin:0;padding:10px 12px;border-radius:10px}
 .shift .f{background:var(--plum-soft)}
 .shift .t{background:var(--vine-soft)}
-.act{background:var(--vine);color:var(--bg);border-radius:12px;padding:14px 16px;font-weight:700;font-size:17px;margin:0}
+.act{background:var(--vine);color:var(--bg);border-radius:12px;padding:14px 16px;font-weight:700;font-size:1.0625rem;margin:0}
 .ckrec{border:0;background:none;text-align:left;padding:12px 0;border-top:1px solid var(--line);display:grid;gap:2px;width:100%}
-.ckrec b{font-size:16px}
+.ckrec b{font-size:1rem}
 html,body{overflow-x:hidden}
 .card{overflow-wrap:anywhere}
-.md{display:grid;gap:8px;font-size:16px;line-height:1.8}
+.md{display:grid;gap:8px;font-size:1rem;line-height:1.8}
 .md p{margin:0}
-.md h4{margin:6px 0 0;font-family:var(--display);font-size:18px;color:var(--vine);padding-left:10px;border-left:4px solid var(--vine)}
+.md h4{margin:6px 0 0;font-family:var(--display);font-size:1.125rem;color:var(--vine);padding-left:10px;border-left:4px solid var(--vine)}
 .md ul,.md ol{margin:0;padding-left:1.4em;display:grid;gap:4px}
 .md li::marker{color:var(--vine);font-weight:700}
 .md strong{color:var(--fg);background:linear-gradient(transparent 62%,rgba(168,123,31,.25) 0)}
@@ -196,28 +194,145 @@ html,body{overflow-x:hidden}
 .turn .q{justify-self:end;max-width:88%;margin:0;background:var(--vine);color:var(--bg);padding:8px 14px;border-radius:16px 16px 4px 16px;font-weight:500}
 .turn .ans{background:var(--surface)}
 .chat .chip{text-align:left;line-height:1.5}
+html{font-size:16px}
+html.fs-lg{font-size:18px}html.fs-xl{font-size:20.5px}html.fs-xxl{font-size:23px}
+html[data-lang="zs"]{--display:"Noto Serif SC","Songti SC","STSong","SimSun",serif;--body:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif}
+html[data-lang="en"]{--display:Georgia,"Times New Roman",serif;--body:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+html[data-lang="en"] .eyebrow{letter-spacing:.06em;text-transform:uppercase}
+.top{flex-wrap:nowrap}
+.brand{min-width:0}
+.brand h1{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tools{display:flex;align-items:center;gap:6px;flex:none}
+.langsw{display:flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:var(--surface)}
+.langsw button{border:0;background:none;padding:5px 9px;font-size:13px;font-weight:700;color:var(--muted);min-height:32px}
+.langsw button.on{background:var(--vine);color:var(--bg)}
+.ib{border:1px solid var(--line);background:var(--surface);border-radius:999px;width:34px;height:34px;display:grid;place-items:center;font-size:13px;font-weight:800;color:var(--muted);padding:0;flex:none}
+.ib svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+@media (max-width:380px){.brand h1{display:none}.langsw button{padding:5px 7px}}
+nav.tabs button span{font-size:12px;line-height:1.2}
+html[data-lang="en"] nav.tabs button span{font-size:11px}
+.fabs{position:fixed;right:max(14px,calc(50% - 320px + 14px));bottom:calc(74px + env(safe-area-inset-bottom,0px));display:grid;gap:10px;z-index:12}
+.fab{width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:var(--surface);box-shadow:0 4px 14px rgba(0,0,0,.18);font-size:18px;display:grid;place-items:center;padding:0;color:var(--fg)}
+.fab.on{background:var(--plum);color:#fff;border-color:var(--plum)}
+.xzfab{background:var(--vine);color:var(--bg);border-color:var(--vine);font-family:var(--display);font-weight:800;font-size:1.1875rem}
+.sent{cursor:pointer;border-radius:3px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.sent:active{background:var(--vine-soft)}
+:root{--hlbg-gold:#F6E7C4;--hlbg-green:#E3F0E1;--hlbg-blue:#E1EBF7;--hlbg-pink:#FBE4E9;--hlbg-purple:#ECE3F5;--hlbg-maroon:#F3E1E1;--hlbg-brown:#F0E6D6;--hlbg-charcoal:#E7E6E2;--reading:#E7EDF6}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--hlbg-gold:#4A3E22;--hlbg-green:#24402A;--hlbg-blue:#22334F;--hlbg-pink:#4A2A33;--hlbg-purple:#3A2E4B;--hlbg-maroon:#4A2628;--hlbg-brown:#433423;--hlbg-charcoal:#3A3A37;--reading:#25354F}}
+:root[data-theme="dark"]{--hlbg-gold:#4A3E22;--hlbg-green:#24402A;--hlbg-blue:#22334F;--hlbg-pink:#4A2A33;--hlbg-purple:#3A2E4B;--hlbg-maroon:#4A2628;--hlbg-brown:#433423;--hlbg-charcoal:#3A3A37;--reading:#25354F}
+.sent[data-hl]{background:linear-gradient(transparent 52%,var(--hlbg-gold) 52%)}
+.sent[data-color="green"]{background:linear-gradient(transparent 52%,var(--hlbg-green) 52%)}
+.sent[data-color="blue"]{background:linear-gradient(transparent 52%,var(--hlbg-blue) 52%)}
+.sent[data-color="pink"]{background:linear-gradient(transparent 52%,var(--hlbg-pink) 52%)}
+.sent[data-color="purple"]{background:linear-gradient(transparent 52%,var(--hlbg-purple) 52%)}
+.sent[data-color="maroon"]{background:linear-gradient(transparent 52%,var(--hlbg-maroon) 52%)}
+.sent[data-color="brown"]{background:linear-gradient(transparent 52%,var(--hlbg-brown) 52%)}
+.sent[data-color="charcoal"]{background:linear-gradient(transparent 52%,var(--hlbg-charcoal) 52%)}
+.act .sent[data-hl]{color:var(--fg)}
+.hl-note{margin:6px 0 2px;padding:8px 12px;border-left:3px solid #D9B168;background:var(--sunk);border-radius:0 10px 10px 0;font-size:0.875rem;white-space:pre-wrap;cursor:pointer;color:var(--fg);font-family:var(--body);font-style:normal}
+.hl-note[data-color="green"]{border-color:#6FAE71}.hl-note[data-color="blue"]{border-color:#6C93D1}.hl-note[data-color="pink"]{border-color:#E58FA0}.hl-note[data-color="purple"]{border-color:#A48AC9}.hl-note[data-color="maroon"]{border-color:#8C4A4E}.hl-note[data-color="brown"]{border-color:#8A6740}.hl-note[data-color="charcoal"]{border-color:#54534E}
+.hl-note::before{content:"✎ ";color:var(--muted)}
+.tts-reading{box-shadow:inset 0 0 0 999px var(--reading);border-radius:4px;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+.flash{outline:3px solid var(--gold);outline-offset:2px}
+.sheet-mask{position:fixed;inset:0;background:rgba(0,0,0,.42);z-index:75;display:flex;align-items:flex-end}
+.sheet-card{background:var(--surface);color:var(--fg);width:100%;max-width:640px;margin:0 auto;max-height:86vh;overflow-y:auto;border-radius:20px 20px 0 0;padding:18px 18px calc(18px + env(safe-area-inset-bottom,0px));box-sizing:border-box;display:grid;gap:12px}
+.sheet-title{display:flex;align-items:center;gap:8px;font-family:var(--display);font-weight:800;font-size:1.125rem}
+.sheet-ref{flex:1;font-family:var(--body);font-weight:500;font-size:0.8125rem;color:var(--muted);min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.sheet-x{margin-left:auto;border:0;background:var(--sunk);border-radius:50%;width:32px;height:32px;flex:none}
+.sheet-quote{margin:0;font-family:var(--display);line-height:1.8;padding-left:12px;border-left:3px solid var(--gold);max-height:30vh;overflow-y:auto}
+.sheet-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.sheet-lab{font-size:0.8125rem;color:var(--muted);font-weight:700;min-width:3em}
+.swatches{display:flex;gap:8px;flex-wrap:wrap}
+.hlswatch{width:30px;height:30px;border-radius:50%;border:3px solid transparent;padding:0;box-shadow:0 0 0 1px var(--line)}
+.hlswatch.on{border-color:var(--fg)}
+.spanrow{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.spanbtn{border:1px solid var(--line);background:var(--sunk);border-radius:10px;min-width:40px;min-height:38px;font-weight:700}
+.spanbtn.wide{padding:0 12px}
+.spannum{min-width:3.5em;text-align:center;font-variant-numeric:tabular-nums}
+.sheet-ta{min-height:70px}
+.sheet-acts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.sheet-acts2{display:flex;flex-wrap:wrap;gap:6px}
+.btn.sm{min-height:38px;padding:6px 12px;font-size:0.875rem;background:var(--sunk);font-weight:600}
+.btn.danger{color:var(--plum)}
+.segx{display:flex;flex-wrap:wrap;gap:6px}
+.segx button{border:1px solid var(--line);background:var(--sunk);border-radius:999px;padding:5px 12px;font-size:0.875rem;min-height:36px}
+.segx button.on{background:var(--vine);border-color:var(--vine);color:var(--bg);font-weight:700}
+.segx.sm button{font-size:0.75rem;min-height:30px;padding:3px 10px}
+.setrow{display:grid;gap:6px}
+.setrow>span{font-size:0.8125rem;font-weight:700;color:var(--muted)}
+.setver{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;font-size:0.8125rem;color:var(--muted);border-top:1px solid var(--line);padding-top:10px}
+.spk{position:fixed;left:12px;right:72px;bottom:calc(74px + env(safe-area-inset-bottom,0px));max-width:520px;margin:0 auto;z-index:13;background:var(--fg);color:var(--bg);border-radius:999px;padding:6px 6px 6px 14px;display:flex;align-items:center;gap:4px;box-shadow:0 6px 18px rgba(0,0,0,.25)}
+.spk .t{flex:1;min-width:0;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.spk button{border:0;background:rgba(255,255,255,.14);color:inherit;border-radius:50%;width:36px;height:36px;flex:none;padding:0;font-size:14px}
+.seg3{display:grid;grid-template-columns:1fr 1fr 1fr;background:var(--sunk);border-radius:12px;padding:4px;gap:4px}
+.seg3 button{border:0;background:none;border-radius:9px;min-height:42px;font-weight:700;font-size:0.875rem;padding:4px}
+.seg3 button[aria-pressed="true"]{background:var(--surface);box-shadow:0 1px 3px rgba(0,0,0,.12)}
+.hitem{display:grid;gap:6px;padding-block:12px;border-top:1px solid var(--line)}
+.hitem .q{font-family:var(--display);line-height:1.8;padding-left:10px;border-left:4px solid #D9B168}
+.hitem .q[data-color="green"]{border-color:#6FAE71}.hitem .q[data-color="blue"]{border-color:#6C93D1}.hitem .q[data-color="pink"]{border-color:#E58FA0}.hitem .q[data-color="purple"]{border-color:#A48AC9}.hitem .q[data-color="maroon"]{border-color:#8C4A4E}.hitem .q[data-color="brown"]{border-color:#8A6740}.hitem .q[data-color="charcoal"]{border-color:#54534E}
+.hitem .n{font-size:0.875rem;white-space:pre-wrap;background:var(--sunk);border-radius:8px;padding:6px 10px}
+.hitem .m{display:flex;justify-content:space-between;gap:8px;align-items:center;font-size:0.75rem;color:var(--muted);flex-wrap:wrap}
+.xz{display:none}
+.xz.on{display:flex;flex-direction:column;position:fixed;inset:0;z-index:60;background:var(--bg);padding-top:env(safe-area-inset-top,0px)}
+.xzhd{display:flex;align-items:center;gap:8px;padding:10px 12px;border-bottom:1px solid var(--line);background:var(--surface);max-width:640px;width:100%;margin:0 auto;box-sizing:border-box}
+.xzhd .grow{flex:1;min-width:0;line-height:1.3}
+.xzhd .hdbtn{flex:none;white-space:nowrap}
+.xzav{width:36px;height:36px;border-radius:10px;background:var(--vine);color:var(--bg);display:grid;place-items:center;font-family:var(--display);font-weight:800;flex:none}
+.xzbd{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:12px 16px 20px;max-width:640px;width:100%;margin:0 auto;box-sizing:border-box;display:grid;gap:10px;align-content:start}
+.xzft{display:flex;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line);background:var(--surface);max-width:640px;width:100%;margin:0 auto;box-sizing:border-box}
+.xzft textarea{flex:1 1 0;width:0;min-width:0;min-height:46px;max-height:30vh;resize:none}
+.xzft .btn{flex:0 0 auto;white-space:nowrap}
+.chatctx{justify-self:start;font-size:0.75rem;color:var(--muted);background:var(--sunk);border-radius:999px;padding:2px 10px}
+.qs-toggle{justify-self:start;border:1px dashed var(--line);background:none;border-radius:999px;padding:4px 12px;font-size:0.875rem;color:var(--vine)}
+.qs-panel{display:flex;flex-wrap:wrap;gap:6px}
+.qs-chip,.fu-chip{border:1px solid var(--line);background:var(--surface);border-radius:14px;padding:6px 12px;font-size:.9em;text-align:left;line-height:1.5}
+.chatlog{display:grid;gap:10px}
+.xzhi{background:var(--vine-soft);border-radius:14px;padding:12px 14px;line-height:1.8}
+.msg{max-width:92%;padding:10px 14px;border-radius:14px;line-height:1.75;overflow-wrap:anywhere}
+.msg.user{background:var(--vine);color:var(--bg);margin-left:auto;border-radius:16px 16px 4px 16px;white-space:pre-wrap;max-width:85%}
+.msg.ai{background:var(--surface);border:1px solid var(--line);max-width:100%;box-sizing:border-box}
+.msg.ai.fold .msg-body{max-height:9.6em;overflow:hidden;-webkit-mask-image:linear-gradient(#000 55%,transparent);mask-image:linear-gradient(#000 55%,transparent)}
+.msg-more{display:block;margin:6px 0 0;padding:4px 12px;border:1px solid var(--line);border-radius:999px;background:var(--sunk);color:var(--vine);font-size:.8em;font-weight:700}
+.msg-actions{display:flex;flex-wrap:wrap;gap:4px;margin-top:8px}
+.msg-act{border:1px solid var(--line);background:var(--sunk);border-radius:999px;padding:3px 10px;font-size:.82em;color:var(--muted)}
+.msg-act.on{color:var(--gold);border-color:var(--gold)}
+.fu{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.typing{display:inline-flex;gap:3px;vertical-align:middle}
+.typing i{width:6px;height:6px;border-radius:50%;background:var(--muted);opacity:.5}
+@media (prefers-reduced-motion:no-preference){.typing i{animation:tp 1.2s infinite}.typing i:nth-child(2){animation-delay:.2s}.typing i:nth-child(3){animation-delay:.4s}@keyframes tp{0%,100%{opacity:.25}50%{opacity:1}}}
+.tbwrap{overflow-x:auto}
+.md .mdtb{border-collapse:collapse;font-size:.93em;min-width:100%}
+.md .mdtb th,.md .mdtb td{border:1px solid var(--line);padding:6px 9px;text-align:left;vertical-align:top}
+.md .mdtb th{background:var(--vine-soft)}
+.md blockquote{font-size:.97em}
+.md em{font-style:normal;color:var(--vine)}
+.turn .msg-actions{margin-top:0}
+.updbar{cursor:pointer;justify-content:center;font-weight:700;font-size:14px}
+
 </style>
 </head>
 <body>
-<div class="updbar" id="updbar" hidden><span>有新版本可以更新</span><button id="updbtn">立即更新</button></div>
 <div class="wrap">
   <header class="top">
-    <div class="brand"><span class="mark">321</span><h1>生命操練</h1></div>
-    <button class="hdbtn" onclick="go('growth');setTimeout(function(){var b=document.getElementById('backup');if(b)b.scrollIntoView();},50)">備份</button>
+    <div class="brand"><span class="mark">321</span><h1 id="hdtitle">生命操練</h1></div>
+    <div class="tools">
+      <div class="langsw" id="langsw" role="group" aria-label="Language"><button data-l="zh">繁</button><button data-l="zs">简</button><button data-l="en">EN</button></div>
+      <button class="ib" id="btnfont" aria-label="字級 Font size">Aa</button>
+      <button class="ib" id="btnset" aria-label="設定 Settings"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></button>
+    </div>
   </header>
   <main id="app" class="view"></main>
 </div>
+<div class="fabs"><button class="fab" id="fabtts" aria-label="朗讀這一頁">🔊</button><button class="fab xzfab" id="fabxz" aria-label="問小智">智</button></div>
 <nav class="tabs" id="tabs" aria-label="主選單">
-  <button data-tab="home"><svg viewBox="0 0 24 24"><path d="M12 3v3M5.6 5.6l2.1 2.1M3 12h3M18.4 5.6l-2.1 2.1M21 12h-3M6 17a6 6 0 0 1 12 0M3 20h18"/></svg>今日</button>
-  <button data-tab="check"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/><path d="M3 12h4l2-3 3 6 2-3h7"/></svg>生命健檢</button>
-  <button data-tab="exam" class="t-old"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/></svg>檢視舊人</button>
-  <button data-tab="train"><svg viewBox="0 0 24 24"><path d="M12 21V11M12 11c0-4 3-7 8-7 0 5-3 7-8 7zM12 14c0-3-2.5-5-7-5 0 4 2.5 5 7 5z"/></svg>操練新人</button>
-  <button data-tab="growth"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>成長</button>
-  <button data-tab="journal"><svg viewBox="0 0 24 24"><path d="M5 4h11l3 3v13H5zM9 10h6M9 14h6M9 18h3"/></svg>日記</button>
+  <button data-tab="home"><svg viewBox="0 0 24 24"><path d="M12 3v3M5.6 5.6l2.1 2.1M3 12h3M18.4 5.6l-2.1 2.1M21 12h-3M6 17a6 6 0 0 1 12 0M3 20h18"/></svg><span>今日</span></button>
+  <button data-tab="check"><svg viewBox="0 0 24 24"><path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/><path d="M3 12h4l2-3 3 6 2-3h7"/></svg><span>生命健檢</span></button>
+  <button data-tab="exam" class="t-old"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/></svg><span>檢視舊人</span></button>
+  <button data-tab="train"><svg viewBox="0 0 24 24"><path d="M12 21V11M12 11c0-4 3-7 8-7 0 5-3 7-8 7zM12 14c0-3-2.5-5-7-5 0 4 2.5 5 7 5z"/></svg><span>操練新人</span></button>
+  <button data-tab="growth"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg><span>成長</span></button>
+  <button data-tab="journal"><svg viewBox="0 0 24 24"><path d="M5 4h11l3 3v13H5zM9 10h6M9 14h6M9 18h3"/></svg><span>日記</span></button>
 </nav>
 <script>
-/* 321生命操練 v1.3.0 — ES5 */
-
 var GROUPS=[
  {id:"see",kind:"門戶",name:"看",
   exam:{title:"我的眼睛在看誰？",items:["我很快看見別人的缺點，卻看不見自己的問題","我常拿自己和別人比較，因而自卑或自大","遇到難處時，我先看環境、看人，而不是仰望耶穌","我的眼目被手機、物質或私慾吸引，難以自制","我只看見自己吃虧，看不見神的恩典"],
@@ -271,7 +386,6 @@ var GROUPS=[
    verse:["無論做甚麼，都要從心裡做，像是給主做的，不是給人做的。","歌羅西書3:23"],decl:"一切都是神的恩典，榮耀歸給耶穌。",practice:"每次服事前後都禱告，事後說：「一切都是神的恩典，榮耀歸給耶穌。」"}}
 ];
 var G={};for(var gi=0;gi<GROUPS.length;gi++){G[GROUPS[gi].id]=GROUPS[gi];}
-/* 星期一至五的檢視重點（0=主日） */
 var WEEK={1:["see","idea"],2:["hear","life"],3:["think","living"],4:["speak","rel"],5:["act","work"]};
 var WEEK_FRUIT={1:"喜樂、信實",2:"溫柔、忍耐",3:"和平、節制",4:"仁愛、恩慈",5:"良善、信實"};
 var FRUITS=[["仁","仁愛","只顧自己","為一個「2」做一件實際的愛心事"],["喜","喜樂","抱怨不滿","寫下三件感恩的事"],["和","和平","憂慮爭競","把一件掛慮交託給主"],["忍","忍耐","急躁發怒","生氣時先停三秒、禱告"],["恩","恩慈","冷漠苛刻","對一個人說溫暖的話"],["良","良善","自私算計","暗中行一件善事"],["信","信實","推託失信","守住一個小承諾"],["溫","溫柔","強硬辯解","被指正時說「謝謝提醒」"],["節","節制","放縱私慾","為主放下一樣小嗜好一天"]];
@@ -285,8 +399,6 @@ var STEPS={
 var PRAYER={
  exam:"親愛的天父，謝謝你用光照亮我。今天我看見，在＿＿＿＿上，我又讓自己作王，離開了本位。我承認這是有己、是驕傲，求你赦免。謝謝主耶穌為我死，我的舊人已經與你同釘十字架；謝謝你復活，賜給我新生命。我把寶座交還給你，請你在我裡面作王。聖靈啊，求你引導我，明天在＿＿＿＿上活出無己的生命，好叫耶穌得著一切的榮耀。奉主耶穌基督的名禱告，阿們。",
  train:"親愛的天父，感謝你賜我新的一天，也賜我新的生命。今天我不再為自己活，我把生命的寶座交給主耶穌，請你在我裡面作王掌權。我的眼睛要看你所看的，耳朵要聽你所說的，心思要想你所想的，口舌要說你要說的，腳步要行你所行的。聖靈啊，求你引導我，在＿＿＿＿面前活出無己的生命，結出＿＿＿＿的果子。願你的名被尊為聖，願你的國降臨，願你的旨意行在地上，如同行在天上。一切的榮耀都歸給你。奉主耶穌基督的名禱告，阿們。"};
-
-/* ---------- 工具 ---------- */
 if(!Element.prototype.matches){Element.prototype.matches=Element.prototype.msMatchesSelector||Element.prototype.webkitMatchesSelector;}
 function closestBtn(el,root){while(el&&el!==root){if(el.tagName==="BUTTON")return el;el=el.parentNode;}return null;}
 function lsGet(k,d){try{var v=localStorage.getItem(k);return v?JSON.parse(v):d;}catch(e){return d;}}
@@ -295,15 +407,44 @@ function esc(s){return String(s==null?"":s).replace(/[&<>"]/g,function(c){return
 function sum(a){var t=0;for(var i=0;i<a.length;i++){t+=a[i]||0;}return t;}
 function has(arr,x){return arr.indexOf(x)>-1;}
 function pad2(n){return n<10?"0"+n:""+n;}
+function now(){return new Date().getTime();}
+function trim(s){return String(s==null?"":s).replace(/^\s+|\s+$/g,"");}
 function dkey(d){return d.getFullYear()+"-"+pad2(d.getMonth()+1)+"-"+pad2(d.getDate());}
-function fmtDate(k){var p=k.split("-");return (+p[1])+"月"+(+p[2])+"日";}
-function band(mode,n){var b=BANDS[mode];for(var i=0;i<b.length;i++){if(n<=b[i][0])return b[i];}return b[b.length-1];}
-function answeredCount(a){var c=0;for(var i=0;i<a.length;i++){if(a[i]!=null)c++;}return c;}
-function toast(t){var el=document.createElement("div");el.className="toast";el.textContent=t;document.body.appendChild(el);setTimeout(function(){if(el.parentNode)el.parentNode.removeChild(el);},2400);}
-function verseHTML(v){return '<blockquote class="verse">'+esc(v[0])+'<cite>'+esc(v[1])+'</cite></blockquote>';}
+function $(id){return document.getElementById(id);}
+function qa(sel,root){var l=(root||document).querySelectorAll(sel),o=[];for(var i=0;i<l.length;i++)o.push(l[i]);return o;}
+function eachA(a,f){for(var i=0;i<a.length;i++)f(a[i],i);}
+var SET=lsGet("r321-life-set",null);
+if(!SET){var nl=String(navigator.language||"zh").toLowerCase();
+  var olduser=false;try{olduser=!!localStorage.getItem("r321-life-entries");}catch(e){}
+  SET={lang:olduser?"zh":(/^zh-(cn|sg|hans)/.test(nl)?"zs":(/^zh/.test(nl)?"zh":(/^en/.test(nl)?"en":"zh"))),font:0,theme:"",voice:0,rate:0,human:true,aud:"adult"};}
+function saveSet(){lsSet("r321-life-set",SET);}
+var PACK={zh:{}};
+function L(){return SET.lang||"zh";}
+function isEN(){return L()==="en";}
+function isZS(){return L()==="zs";}
+function T(k){var d=PACK[L()]||{},s=d[k];if(s==null)s=k;
+  for(var i=1;i<arguments.length;i++)s=s.split("{"+(i-1)+"}").join(arguments[i]);return s;}
+function DOT(){return isEN()?" · ":"・";}
+function Q(s){return isEN()?"“"+s+"”":"「"+s+"」";}
+var MON_EN=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+function fmtDate(k){var p=String(k).split("-");return isEN()?MON_EN[(+p[1])-1]+" "+(+p[2]):(+p[1])+T("月")+(+p[2])+T("日");}
 var WDN=["主日","一","二","三","四","五","六"];
-
-/* ---------- 儲存（本機） ---------- */
+var WDN_EN=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+var WDS_EN=["S","M","T","W","T","F","S"];
+function wdName(d){return isEN()?WDN_EN[d]:T("星期")+WDN[d];}
+function toast(t){var old=qa(".toast");eachA(old,function(o){o.parentNode.removeChild(o);});
+  var el=document.createElement("div");el.className="toast";el.textContent=t;document.body.appendChild(el);setTimeout(function(){if(el.parentNode)el.parentNode.removeChild(el);},2400);}
+function splitS(text){
+  text=String(text||"");var out=[],cur="",i;
+  if(isEN()){var re=/[^.!?]*[.!?]+["'”’\)\]]*(\s+|$)/g,m,last=0;
+    while((m=re.exec(text))!==null){if(trim(m[0]))out.push(m[0]);last=re.lastIndex;if(re.lastIndex===m.index)re.lastIndex++;}
+    if(last<text.length&&trim(text.slice(last)))out.push(text.slice(last));return out.length?out:[text];}
+  for(i=0;i<text.length;i++){cur+=text.charAt(i);
+    if("。！？".indexOf(text.charAt(i))>=0){while(i+1<text.length&&"」』）〕”".indexOf(text.charAt(i+1))>=0)cur+=text.charAt(++i);out.push(cur);cur="";}}
+  if(cur)out.push(cur);return out;
+}
+function ST(hk,text){var ss=splitS(text),h="";for(var i=0;i<ss.length;i++)h+='<span class="sent" data-k="'+esc(hk)+'" data-s="'+i+'">'+esc(ss[i])+'</span>';return h;}
+function verseHTML(v,hk){return '<blockquote class="verse">'+(hk?ST(hk,T(v[0])):esc(T(v[0])))+'<cite class="rd">'+esc(T(v[1]))+'</cite></blockquote>';}
 var LS="r321-life-entries";
 var entries=lsGet(LS,[]);
 function saveAll(){return lsSet(LS,entries);}
@@ -311,8 +452,9 @@ function putEntry(e){var out=[];for(var i=0;i<entries.length;i++){if(entries[i].
 function delEntry(id){var out=[];for(var i=0;i<entries.length;i++){if(entries[i].id!==id)out.push(entries[i]);}entries=out;return saveAll();}
 function byNewest(a,b){return b.ts-a.ts;}
 function filterEntries(fn){var out=[];for(var i=0;i<entries.length;i++){if(fn(entries[i]))out.push(entries[i]);}return out;}
-
-/* ---------- 狀態 ---------- */
+function band(mode,n){var b=BANDS[mode];for(var i=0;i<b.length;i++){if(n<=b[i][0])return b[i];}return b[b.length-1];}
+function answeredCount(a){var c=0;for(var i=0;i<a.length;i++){if(a[i]!=null)c++;}return c;}
+var SAVE_FAIL="儲存失敗：瀏覽器不允許儲存資料，請關閉無痕模式後再試";
 var today=new Date();
 var TODAY=dkey(today),WD=today.getDay();
 var defaultSel=WEEK[WD]||["see","idea"];
@@ -323,8 +465,7 @@ var state={tab:"home",
 var TABS=["home","check","exam","train","growth","journal"];
 var hash=location.hash.replace("#","");
 if(has(TABS,hash))state.tab=hash;
-
-/* ---------- 今日 ---------- */
+function gname(id){return T(G[id].name);}
 function viewHome(){
   var pair=WEEK[WD];
   var fruit=FRUITS[Math.floor(today.getTime()/864e5)%9];
@@ -332,146 +473,139 @@ function viewHome(){
   var days={};for(var i=0;i<entries.length;i++){days[entries[i].date]=1;}
   var week="",nWeek=0;
   for(var k=0;k<7;k++){
-    var d=new Date(mon.getFullYear(),mon.getMonth(),mon.getDate()+k),key=dkey(d),done=!!days[key];
+    var d=new Date(mon.getFullYear(),mon.getMonth(),mon.getDate()+k),key=dkey(d),done=!!days[key],wd=(k+1)%7;
     if(done)nWeek++;
-    week+='<div class="d"><span class="dot'+(done?" done":"")+(key===TODAY?" today":"")+'">'+(done?"✓":"")+'</span>'+(k===6?"日":WDN[k+1])+'</div>';
+    week+='<div class="d"><span class="dot'+(done?" done":"")+(key===TODAY?" today":"")+'">'+(done?"✓":"")+'</span>'+(isEN()?WDS_EN[wd]:(k===6?T("日"):T(WDN[wd])))+'</div>';
   }
   var focus;
   if(pair){
-    focus='<div class="eyebrow">星期'+WDN[WD]+'・今日重點</div>'+
-      '<h2>'+G[pair[0]].name+' ＋ '+G[pair[1]].name+'</h2>'+
-      '<p class="small" style="margin:0">對應果子：'+WEEK_FRUIT[WD]+'</p>'+
-      '<div class="row"><button class="btn old wide" data-go="exam">檢視舊人</button><button class="btn new wide" data-go="train">操練新人</button></div>';
+    focus='<div class="eyebrow">'+esc(T("{0}・今日重點",wdName(WD)))+'</div>'+
+      '<h2 class="rd">'+gname(pair[0])+' ＋ '+gname(pair[1])+'</h2>'+
+      '<p class="small" style="margin:0">'+ST("h:fr",T("對應果子：{0}",T(WEEK_FRUIT[WD])))+'</p>'+
+      '<div class="row"><button class="btn old wide" data-go="exam">'+T("檢視舊人")+'</button><button class="btn new wide" data-go="train">'+T("操練新人")+'</button></div>';
   }else if(WD===6){
-    focus='<div class="eyebrow">星期六・同行日</div><h2>與屬靈同伴分享</h2>'+
-      '<p style="margin:0">把一週所見的得勝與掙扎帶到「2」屬靈同伴面前，彼此代禱。</p>'+
-      '<div class="row"><button class="btn new wide" data-go="growth">看一週成長</button><button class="btn ghost wide" data-go="journal">寫得勝見證</button></div>';
+    focus='<div class="eyebrow">'+esc(T("{0}・同行日",wdName(6)))+'</div><h2 class="rd">'+T("與屬靈同伴分享")+'</h2>'+
+      '<p style="margin:0">'+ST("h:sat",T("把一週所見的得勝與掙扎帶到「2」屬靈同伴面前，彼此代禱。"))+'</p>'+
+      '<div class="row"><button class="btn new wide" data-go="growth">'+T("看一週成長")+'</button><button class="btn ghost wide" data-go="journal">'+T("寫得勝見證")+'</button></div>';
   }else{
-    focus='<div class="eyebrow">主日・感恩日</div><h2>敬拜感恩，榮耀歸神</h2>'+
-      '<p style="margin:0">回顧這一週，數算主恩，把一切榮耀歸給耶穌。</p>'+
-      '<div class="row"><button class="btn new wide" data-go="growth">回顧一週</button><button class="btn ghost wide" data-go="journal">寫下感恩</button></div>';
+    focus='<div class="eyebrow">'+T("主日・感恩日")+'</div><h2 class="rd">'+T("敬拜感恩，榮耀歸神")+'</h2>'+
+      '<p style="margin:0">'+ST("h:sun",T("回顧這一週，數算主恩，把一切榮耀歸給耶穌。"))+'</p>'+
+      '<div class="row"><button class="btn new wide" data-go="growth">'+T("回顧一週")+'</button><button class="btn ghost wide" data-go="journal">'+T("寫下感恩")+'</button></div>';
   }
-  return '<figure class="kv"><img src="hero.jpg" srcset="hero-720.jpg 720w, hero.jpg 1080w" sizes="(max-width:640px) 100vw, 640px" width="1080" height="1080" alt="321主視覺：一人背著行囊、手拿聖經，走在從打開的聖經延伸出的光明道路上，遠方是十字架與光明之城">'+
-    '<figcaption><span>耶穌是我的榜樣</span>・<span>聖經是我的準則</span>・<span>聖靈是我的引導</span><small>讓耶穌作王　讓耶穌得著一切的榮耀　建立屬神的體系</small></figcaption></figure>'+
+  return '<figure class="kv"><img src="hero.jpg" srcset="hero-720.jpg 720w, hero.jpg 1080w" sizes="(max-width:640px) 100vw, 640px" width="1080" height="1080" alt="'+esc(T("321主視覺：一人背著行囊、手拿聖經，走在從打開的聖經延伸出的光明道路上，遠方是十字架與光明之城"))+'">'+
+    '<figcaption><span>'+T("耶穌是我的榜樣")+'</span>・<span>'+T("聖經是我的準則")+'</span>・<span>'+T("聖靈是我的引導")+'</span><small>'+T("讓耶穌作王　讓耶穌得著一切的榮耀　建立屬神的體系")+'</small></figcaption></figure>'+
     '<section class="card hero">'+focus+'</section>'+
-  '<section class="card"><div class="eyebrow">生命健檢</div><h3 style="font-size:20px">今天有一件事讓你不平安嗎？</h3>'+
-    '<p style="margin:0">把事件、看到聽到的、心裡的意念情緒、說了做了的寫下來，小智用 321 陪你看見生命光景，找到更新的路。</p>'+
-    '<button class="btn new" data-go="check">開始生命健檢</button></section>'+
-  '<section class="card"><div class="eyebrow">本週操練</div><div class="week">'+week+'</div>'+
-    '<p class="small" style="margin:0">本週已操練 '+nWeek+' 天。改變不在一次的用力，而在天天的交出。</p></section>'+
-  '<section class="card"><div class="eyebrow">今日的一個果子</div>'+
-    '<div class="fruit"><span class="ch">'+fruit[0]+'</span><div><h3 style="font-size:20px">'+fruit[1]+'</h3>'+
-    '<p style="margin:0">取代：'+fruit[2]+'<br>今天操練：<b>'+fruit[3]+'</b></p></div></div></section>'+
-  '<section class="card">'+verseHTML(["我已經與基督同釘十字架，現在活著的不再是我，乃是基督在我裡面活著。","加拉太書2:20"])+
-    '<p class="small" style="margin:0">920：在每一個「2」面前，操練「0」無己，結出「9」聖靈的果子。</p></section>'+
-  '<section class="card"><div class="eyebrow">321 理念</div>'+
-    '<div class="pillars"><div><b>耶穌</b>是我的榜樣</div><div><b>聖經</b>是我的準則</div><div><b>聖靈</b>是我的引導</div></div>'+
-    '<p class="small" style="margin:0">兩個核心：讓耶穌作王，讓耶穌得著一切的榮耀。一個目的：建立屬神的體系。</p></section>';
+  '<section class="card"><div class="eyebrow">'+T("生命健檢")+'</div><h3 class="rd" style="font-size:1.25rem">'+T("今天有一件事讓你不平安嗎？")+'</h3>'+
+    '<p style="margin:0">'+ST("h:ck",T("把事件、看到聽到的、心裡的意念情緒、說了做了的寫下來，小智用 321 陪你看見生命光景，找到更新的路。"))+'</p>'+
+    '<button class="btn new" data-go="check">'+T("開始生命健檢")+'</button></section>'+
+  '<section class="card"><div class="eyebrow">'+T("本週操練")+'</div><div class="week">'+week+'</div>'+
+    '<p class="small" style="margin:0">'+ST("h:wk",T("本週已操練 {0} 天。改變不在一次的用力，而在天天的交出。",nWeek))+'</p></section>'+
+  '<section class="card"><div class="eyebrow">'+T("今日的一個果子")+'</div>'+
+    '<div class="fruit"><span class="ch">'+(isEN()?T(fruit[1]).charAt(0):T(fruit[0]))+'</span><div><h3 class="rd" style="font-size:1.25rem">'+T(fruit[1])+'</h3>'+
+    '<p style="margin:0">'+ST("h:f1",T("取代：{0}",T(fruit[2])))+'<br>'+T("今天操練：")+'<b>'+ST("h:f2",T(fruit[3]))+'</b></p></div></div></section>'+
+  '<section class="card">'+verseHTML(["我已經與基督同釘十字架，現在活著的不再是我，乃是基督在我裡面活著。","加拉太書2:20"],"h:gal")+
+    '<p class="small" style="margin:0">'+ST("h:920",T("920：在每一個「2」面前，操練「0」無己，結出「9」聖靈的果子。"))+'</p></section>'+
+  '<section class="card"><div class="eyebrow">'+T("321 理念")+'</div>'+
+    '<div class="pillars"><div>'+T("<b>耶穌</b>是我的榜樣")+'</div><div>'+T("<b>聖經</b>是我的準則")+'</div><div>'+T("<b>聖靈</b>是我的引導")+'</div></div>'+
+    '<p class="small" style="margin:0">'+ST("h:321",T("兩個核心：讓耶穌作王，讓耶穌得著一切的榮耀。一個目的：建立屬神的體系。"))+'</p></section>';
 }
-
-/* ---------- 檢視 / 操練 ---------- */
-function chipHTML(mode,g){return '<button class="chip" data-pick="'+g.id+'" aria-pressed="'+has(state[mode].sel,g.id)+'">'+g.name+'</button>';}
+function chipHTML(mode,g){return '<button class="chip" data-pick="'+g.id+'" aria-pressed="'+has(state[mode].sel,g.id)+'">'+T(g.name)+'</button>';}
 function viewPractice(mode){
   var S=state[mode];
   if(S.done)return viewResult(mode);
-  var isOld=mode==="exam",i,j;
+  var isOld=mode==="exam",i,j,pre="p:"+mode+":";
   var intro=isOld
-    ?'<div class="eyebrow">舊人有己生命檢視表</div><h2 style="font-size:24px">在光中看見有己</h2>'+
-      verseHTML(["神啊，求你鑒察我，知道我的心思，試煉我，知道我的意念，看在我裡面有甚麼惡行沒有，引導我走永生的道路。","詩篇139:23-24"])+
-      '<p class="small" style="margin:0">依過去一週的實況作答。分數高不是失敗的宣判，而是恩典的入口。</p>'
-    :'<div class="eyebrow">新人無己生命操練表</div><h2 style="font-size:24px">穿上新人，讓基督活出來</h2>'+
-      verseHTML(["並且穿上新人；這新人是照著神的形像造的，有真理的仁義和聖潔。","以弗所書4:24"])+
-      '<p class="small" style="margin:0">依過去一週的實際操練作答。分數是見證恩典的記號，不是自我誇口的成績單。</p>';
+    ?'<div class="eyebrow">'+T("舊人有己生命檢視表")+'</div><h2 class="rd" style="font-size:1.5rem">'+T("在光中看見有己")+'</h2>'+
+      verseHTML(["神啊，求你鑒察我，知道我的心思，試煉我，知道我的意念，看在我裡面有甚麼惡行沒有，引導我走永生的道路。","詩篇139:23-24"],pre+"v")+
+      '<p class="small" style="margin:0">'+ST(pre+"n",T("依過去一週的實況作答。分數高不是失敗的宣判，而是恩典的入口。"))+'</p>'
+    :'<div class="eyebrow">'+T("新人無己生命操練表")+'</div><h2 class="rd" style="font-size:1.5rem">'+T("穿上新人，讓基督活出來")+'</h2>'+
+      verseHTML(["並且穿上新人；這新人是照著神的形像造的，有真理的仁義和聖潔。","以弗所書4:24"],pre+"v")+
+      '<p class="small" style="margin:0">'+ST(pre+"n",T("依過去一週的實際操練作答。分數是見證恩典的記號，不是自我誇口的成績單。"))+'</p>';
   var gates="",areas="";
   for(i=0;i<5;i++)gates+=chipHTML(mode,GROUPS[i]);
   for(i=5;i<10;i++)areas+=chipHTML(mode,GROUPS[i]);
-  var legend="";for(i=0;i<4;i++)legend+='<div><b>'+i+'</b>'+SCALE[mode][i]+'</div>';
+  var legend="";for(i=0;i<4;i++)legend+='<div><b>'+i+'</b>'+T(SCALE[mode][i])+'</div>';
   var groups="",ready=false;
   for(i=0;i<GROUPS.length;i++){
     var g=GROUPS[i];if(!has(S.sel,g.id))continue;
-    var t=g[mode],a=S.ans[g.id]||[],items="";
+    var t=g[mode],a=S.ans[g.id]||[],items="",gk=pre+g.id+":";
     for(j=0;j<5;j++){
       var it=t.items[j],text=isOld?it:it[0],seg="";
-      for(var n=0;n<4;n++)seg+='<button data-score="'+g.id+':'+j+':'+n+'" aria-pressed="'+(a[j]===n)+'" aria-label="'+n+'分 '+SCALE[mode][n]+'">'+n+'</button>';
-      items+='<div class="item"><p>'+esc(text)+'</p>'+(isOld?"":'<span class="sym">對應有己：'+esc(it[1])+'</span>')+
-        '<div class="seg" role="group" aria-label="分數">'+seg+'</div></div>';
+      for(var n=0;n<4;n++)seg+='<button data-score="'+g.id+':'+j+':'+n+'" aria-pressed="'+(a[j]===n)+'" aria-label="'+esc(T("{0}分 {1}",n,T(SCALE[mode][n])))+'">'+n+'</button>';
+      items+='<div class="item"><p>'+ST(gk+"i"+j,T(text))+'</p>'+(isOld?"":'<span class="sym">'+T("對應有己：")+esc(T(it[1]))+'</span>')+
+        '<div class="seg" role="group" aria-label="'+T("分數")+'">'+seg+'</div></div>';
     }
     var cnt=answeredCount(a);if(cnt===5)ready=true;
     var helps=isOld
-      ?'<p><b>新人的'+g.name+'</b>'+esc(t.newp)+'</p><p><b>經文</b>'+esc(t.verse[0])+'（'+t.verse[1]+'）</p>'
-      :'<p><b>經文</b>'+esc(t.verse[0])+'（'+t.verse[1]+'）</p><p><b>宣告</b>'+esc(t.decl)+'</p><p><b>本週操練</b>'+esc(t.practice)+'</p>';
-    groups+='<section class="card group"><div class="eyebrow">'+g.kind+'・'+g.name+'</div><h3>'+g.name+'——'+esc(t.title)+'</h3>'+items+
-      '<div class="gscore"><span class="small">已答 '+cnt+'/5</span><strong>'+sum(a)+'<span class="small"> / 15</span></strong></div>'+
+      ?'<p><b>'+esc(T("新人的{0}",T(g.name)))+'</b>'+ST(gk+"np",T(t.newp))+'</p><p><b>'+T("經文")+'</b>'+ST(gk+"v",T(t.verse[0]))+'<span class="vref">'+T("（")+'<span class="rd">'+esc(T(t.verse[1]))+'</span>'+T("）")+'</span></p>'
+      :'<p><b>'+T("經文")+'</b>'+ST(gk+"v",T(t.verse[0]))+'<span class="vref">'+T("（")+'<span class="rd">'+esc(T(t.verse[1]))+'</span>'+T("）")+'</span></p><p><b>'+T("宣告")+'</b>'+ST(gk+"d",T(t.decl))+'</p><p><b>'+T("本週操練")+'</b>'+ST(gk+"pr",T(t.practice))+'</p>';
+    groups+='<section class="card group" data-g="'+g.id+'"><div class="eyebrow">'+T(g.kind)+DOT()+T(g.name)+'</div><h3 class="rd">'+esc((isEN()?T(g.name)+" — "+T(t.title):T(g.name)+"——"+T(t.title)))+'</h3>'+items+
+      '<div class="gscore"><span class="small">'+T("已答 {0}/5",cnt)+'</span><strong>'+sum(a)+'<span class="small"> / 15</span></strong></div>'+
       '<div class="helps">'+helps+'</div></section>';
   }
   return '<section class="card">'+intro+'</section>'+
-  '<section class="card"><div class="eyebrow">選擇今天要'+(isOld?"檢視":"操練")+'的部分</div>'+
-    '<div class="split">五道門戶</div><div class="chips">'+gates+'</div>'+
-    '<div class="split">五重領域</div><div class="chips">'+areas+'</div>'+
+  '<section class="card"><div class="eyebrow">'+T(isOld?"選擇今天要檢視的部分":"選擇今天要操練的部分")+'</div>'+
+    '<div class="split">'+T("五道門戶")+'</div><div class="chips">'+gates+'</div>'+
+    '<div class="split">'+T("五重領域")+'</div><div class="chips">'+areas+'</div>'+
     '<div class="legend">'+legend+'</div></section>'+
-  (groups||'<div class="card empty">請在上方選擇至少一道門戶或一個領域。</div>')+
-  '<button class="btn '+(isOld?"old":"new")+'" data-finish="'+mode+'"'+(ready?"":" disabled")+'>'+(isOld?"完成檢視，來到十字架前":"完成操練，把榮耀歸給神")+'</button>'+
-  (ready?"":'<p class="small" style="margin:0;text-align:center">至少完整回答一組（5 題）即可完成。</p>');
+  (groups||'<div class="card empty">'+T("請在上方選擇至少一道門戶或一個領域。")+'</div>')+
+  '<button class="btn '+(isOld?"old":"new")+'" data-finish="'+mode+'"'+(ready?"":" disabled")+'>'+T(isOld?"完成檢視，來到十字架前":"完成操練，把榮耀歸給神")+'</button>'+
+  (ready?"":'<p class="small" style="margin:0;text-align:center">'+T("至少完整回答一組（5 題）即可完成。")+'</p>');
 }
 function viewResult(mode){
-  var isOld=mode==="exam",r=state[mode].done,bands="",steps="",id;
+  var isOld=mode==="exam",r=state[mode].done,bands="",steps="",id,pre="r:"+mode+":";
   for(id in r.scores){if(!r.scores.hasOwnProperty(id))continue;
     var n=sum(r.scores[id]),b=band(mode,n);
-    bands+='<div class="band"><span class="n">'+n+'<span class="small">/15</span></span><div><b>'+G[id].name+'・'+b[1]+'</b><br><span class="small">下一步：'+b[2]+'</span></div></div>';}
-  for(var i=0;i<STEPS[mode].length;i++)steps+='<li><b>'+STEPS[mode][i][0]+'</b>：'+STEPS[mode][i][1]+'</li>';
-  return '<section class="card result"><div class="eyebrow">'+fmtDate(r.date)+'・已儲存</div>'+
-    '<h2 style="font-size:24px">'+(isOld?"看見問題，是聖靈動工的好消息":"基督在你裡面興旺")+'</h2>'+bands+
-    verseHTML(isOld?["如今，那些在基督耶穌裡的就不定罪了。","羅馬書8:1"]:["他必興旺，我必衰微。","約翰福音3:30"])+'</section>'+
-  '<section class="card"><div class="eyebrow">'+(isOld?"更新五步：從看見到結果子":"每日操練五步驟")+'</div><ol class="steps">'+steps+'</ol></section>'+
-  '<section class="card"><div class="eyebrow">'+(isOld?"認罪更新禱告":"晨間奉獻禱告")+'</div><p class="prayer">'+PRAYER[mode]+'</p></section>'+
-  '<div class="row"><button class="btn '+(isOld?"old":"new")+' wide" data-go="journal" data-jm="'+(isOld?"renew":"victory")+'">'+(isOld?"寫更新記錄":"寫得勝見證")+'</button>'+
-  '<button class="btn ghost wide" data-again="'+mode+'">再做一次</button></div>';
+    bands+='<div class="band"><span class="n">'+n+'<span class="small">/15</span></span><div><b class="rd">'+esc(gname(id)+DOT()+T(b[1]))+'</b><br><span class="small">'+T("下一步：")+ST(pre+id,T(b[2]))+'</span></div></div>';}
+  for(var i=0;i<STEPS[mode].length;i++)steps+='<li><b>'+T(STEPS[mode][i][0])+'</b>'+T("：")+ST(pre+"s"+i,T(STEPS[mode][i][1]))+'</li>';
+  return '<section class="card result"><div class="eyebrow">'+esc(T("{0}・已儲存",fmtDate(r.date)))+'</div>'+
+    '<h2 class="rd" style="font-size:1.5rem">'+T(isOld?"看見問題，是聖靈動工的好消息":"基督在你裡面興旺")+'</h2>'+bands+
+    verseHTML(isOld?["如今，那些在基督耶穌裡的就不定罪了。","羅馬書8:1"]:["他必興旺，我必衰微。","約翰福音3:30"],pre+"v")+'</section>'+
+  '<section class="card"><div class="eyebrow">'+T(isOld?"更新五步：從看見到結果子":"每日操練五步驟")+'</div><ol class="steps">'+steps+'</ol></section>'+
+  '<section class="card" data-say="'+esc(T("讓我們一起禱告。"))+'"><div class="eyebrow">'+T(isOld?"認罪更新禱告":"晨間奉獻禱告")+'</div><p class="prayer">'+ST(pre+"pray",T(PRAYER[mode]))+'</p></section>'+
+  '<div class="row"><button class="btn '+(isOld?"old":"new")+' wide" data-go="journal" data-jm="'+(isOld?"renew":"victory")+'">'+T(isOld?"寫更新記錄":"寫得勝見證")+'</button>'+
+  '<button class="btn ghost wide" data-again="'+mode+'">'+T("再做一次")+'</button></div>';
 }
-
-/* ---------- 成長 ---------- */
 function latest(kind,id){
   var xs=filterEntries(function(e){return e.kind===kind&&e.scores&&e.scores[id];}).sort(byNewest);
   return xs.length?sum(xs[0].scores[id]):null;
 }
 function delControls(id){
   return state.confirmDel===id
-    ?'<span><button class="linkbtn danger" data-del="'+id+'">確定刪除</button><button class="linkbtn" data-cancel="1">取消</button></span>'
-    :'<button class="linkbtn" data-ask="'+id+'">刪除</button>';
+    ?'<span><button class="linkbtn danger" data-del="'+id+'">'+T("確定刪除")+'</button><button class="linkbtn" data-cancel="1">'+T("取消")+'</button></span>'
+    :'<button class="linkbtn" data-ask="'+id+'">'+T("刪除")+'</button>';
 }
 function chartRows(from,to){
   var out="";
   for(var i=from;i<to;i++){var g=GROUPS[i],o=latest("exam",g.id),n=latest("train",g.id);
-    out+='<div class="crow"><span class="lbl">'+g.name+'</span><div class="bars">'+
+    out+='<div class="crow"><span class="lbl">'+T(g.name)+'</span><div class="bars">'+
       '<div class="track o"><i style="width:'+((o||0)/15*100)+'%"></i></div>'+
       '<div class="track n"><i style="width:'+((n||0)/15*100)+'%"></i></div></div>'+
       '<span class="nums">'+(o==null?"–":o)+'<br>'+(n==null?"–":n)+'</span></div>';}
   return out;
 }
 function backupCard(){
-  return '<section class="card" id="backup"><div class="eyebrow">備份與還原</div>'+
-    '<p class="small" style="margin:0">記錄只存在這支手機的瀏覽器裡。換手機或清除瀏覽器資料前，請先匯出備份檔；在新裝置上匯入即可接續。</p>'+
-    '<div class="row"><button class="btn ghost wide" data-export="1">匯出備份</button><button class="btn ghost wide" data-import="1">匯入備份</button></div>'+
+  return '<section class="card" id="backup"><div class="eyebrow">'+T("備份與還原")+'</div>'+
+    '<p class="small" style="margin:0">'+T("記錄只存在這支手機的瀏覽器裡。換手機或清除瀏覽器資料前，請先匯出備份檔；在新裝置上匯入即可接續。")+'</p>'+
+    '<div class="row"><button class="btn ghost wide" data-export="1">'+T("匯出備份")+'</button><button class="btn ghost wide" data-import="1">'+T("匯入備份")+'</button></div>'+
     '<input type="file" id="importFile" accept=".json,application/json" hidden></section>';
 }
 function viewGrowth(){
   var sessions=filterEntries(function(e){return !!e.scores;}).sort(byNewest);
-  if(!sessions.length)return '<section class="card empty"><h2 style="font-size:22px;color:var(--fg)">成長圖會在這裡出現</h2>'+
-    '<p>完成第一次「檢視舊人」或「操練新人」後，這裡會並排顯示每一道門戶與領域的分數：舊人的分數下降、新人的分數上升，就是生命正在更新的記號。</p>'+
-    '<div class="row" style="justify-content:center"><button class="btn old" data-go="exam">開始檢視</button><button class="btn new" data-go="train">開始操練</button></div></section>'+backupCard();
+  if(!sessions.length)return '<section class="card empty"><h2 class="rd" style="font-size:1.375rem;color:var(--fg)">'+T("成長圖會在這裡出現")+'</h2>'+
+    '<p>'+ST("g:empty",T("完成第一次「檢視舊人」或「操練新人」後，這裡會並排顯示每一道門戶與領域的分數：舊人的分數下降、新人的分數上升，就是生命正在更新的記號。"))+'</p>'+
+    '<div class="row" style="justify-content:center"><button class="btn old" data-go="exam">'+T("開始檢視")+'</button><button class="btn new" data-go="train">'+T("開始操練")+'</button></div></section>'+backupCard();
   var recs="";
   for(var i=0;i<sessions.length&&i<30;i++){var e=sessions[i],isOld=e.kind==="exam",parts=[];
-    for(var id in e.scores){if(e.scores.hasOwnProperty(id)&&G[id])parts.push(G[id].name+" "+sum(e.scores[id]));}
-    recs+='<div class="rec"><div class="h"><span><span class="tag '+(isOld?"old":"new")+'">'+(isOld?"檢視":"操練")+'</span> '+fmtDate(e.date)+'</span>'+delControls(e.id)+'</div>'+
-      '<span class="small tnum">'+parts.join("・")+'</span></div>';}
-  return '<section class="card"><div class="eyebrow">最近一次分數（每組滿分 15）</div>'+
-    '<h2 style="font-size:22px">舊人衰微，新人興旺</h2>'+
-    '<div class="key"><span class="k-old">舊人有己（越低越好）</span><span class="k-new">新人無己（越高越好）</span></div>'+
-    '<div class="chart"><div class="split">五道門戶</div>'+chartRows(0,5)+'<div class="split">五重領域</div>'+chartRows(5,10)+'</div></section>'+
-  '<section class="card"><div class="eyebrow">操練記錄（共 '+sessions.length+' 次）</div>'+recs+'</section>'+backupCard();
+    for(var id in e.scores){if(e.scores.hasOwnProperty(id)&&G[id])parts.push(gname(id)+" "+sum(e.scores[id]));}
+    recs+='<div class="rec"><div class="h"><span><span class="tag '+(isOld?"old":"new")+'">'+T(isOld?"檢視":"操練")+'</span> '+fmtDate(e.date)+'</span>'+delControls(e.id)+'</div>'+
+      '<span class="small tnum">'+esc(parts.join(DOT()))+'</span></div>';}
+  return '<section class="card"><div class="eyebrow">'+T("最近一次分數（每組滿分 15）")+'</div>'+
+    '<h2 class="rd" style="font-size:1.375rem">'+T("舊人衰微，新人興旺")+'</h2>'+
+    '<div class="key"><span class="k-old">'+T("舊人有己（越低越好）")+'</span><span class="k-new">'+T("新人無己（越高越好）")+'</span></div>'+
+    '<div class="chart"><div class="split">'+T("五道門戶")+'</div>'+chartRows(0,5)+'<div class="split">'+T("五重領域")+'</div>'+chartRows(5,10)+'</div></section>'+
+  '<section class="card"><div class="eyebrow">'+T("操練記錄（共 {0} 次）",sessions.length)+'</div>'+recs+'</section>'+backupCard();
 }
-
-
-/* ---------- 生命健檢 ---------- */
 var XI_ENDPOINT="https://xiaozhi-proxy.spch321.workers.dev";
 var XI_MODEL="claude-sonnet-4-6";
 var CK_FIELDS=[["ev","事件","發生了甚麼事？（時間、地點、和誰）","例：晚餐時，太太說我又把碗放著沒洗"],
@@ -491,11 +625,24 @@ var CK_BASE="你是「小智」，國度321空中團契的生命陪伴者，以�
 "【五重改變】觀念、生命、生活、關係、事工，由內而外；改變觀念就改變生命，改變生命就改變生活；先生命、再關係、後事工。人比事重要，關係比東西重要。關係的次序：先與神、再與自己、再與人、再與事。\n"+
 "【觀點轉換】從人的觀點→神的觀點；地上的→天上的；暫時的→永恆的；屬世的→屬神的。焦點在耶穌，不在自己、不在別人、不在環境。用心靠聖靈，不要用腦靠自己；用心就開心，用腦就煩惱。\n"+
 "【改變觀念八大步驟】資訊、啟示、信服、實踐、檢討、修正、反覆、繁殖。\n\n"+
-"【你的任務】使用者會寫下一件事：事件、感應（看到、聽到）、反應（意念、情緒）、回應（說了、做了）。請沿著「感應→反應→回應」這條鏈，指出哪裡是舊人有己在作王、哪裡已經有新人無己的生命；點出有己的根（我要的是甚麼：面子、控制、被肯定、被體諒、公平、安全感……），以及怎樣離開了本位；再給出具體、做得到的更新建議。\n"+
 "【語氣】像一位有愛心的牧者：誠實而不定罪，看見問題的同時更看見恩典（羅8:1）。只分析寫信人自己的生命，不替他論斷對方。若對方也有錯，承認那份委屈是真的，再把焦點帶回耶穌和自己能順服的一步。如果他已經活出無己，要具體肯定，把榮耀歸給神。\n"+
 "【安全】如果內容顯示有人正遭受暴力、虐待、人身危險，或有自傷、輕生的念頭，不要把它當成「有己」來分析，也不要勸他忍耐順服；要溫柔地把安全放第一，鼓勵他立刻聯絡可信任的人、當地緊急求助或專業協助，並在 picture 裡清楚說明。\n\n"+
 "";
-var CK_SYS=CK_BASE+"【輸出格式】只輸出一個 JSON 物件，不要任何其他文字，不要用```包起來。字串裡不可出現半形雙引號，引用話語一律用「」。每個欄位都要精簡，整份控制在900字以內，務必完整輸出到最後的 }。欄位：\n"+
+var CK_TASK="【你的任務】使用者會寫下一件事：事件、感應（看到、聽到）、反應（意念、情緒）、回應（說了、做了）。請沿著「感應→反應→回應」這條鏈，指出哪裡是舊人有己在作王、哪裡已經有新人無己的生命；點出有己的根（我要的是甚麼：面子、控制、被肯定、被體諒、公平、安全感……），以及怎樣離開了本位；再給出具體、做得到的更新建議。\n";
+function langLine(){
+  if(isEN())return "Write every word of your reply in natural, warm English (the user reads English). Quote Scripture from the World English Bible (WEB) with English book names, e.g. James 1:19. Keep the 321 terms in plain English: old self (self-centered, 'having self'), new self (selfless, 'no self'), the '2' (each person in my life), '0' (selflessness), '9' (the ninefold fruit of the Spirit).";
+  if(isZS())return "全部用简体中文回答；引用经文一律用和合本（简体）原文，出处要正确，没有把握的经文宁可不引。";
+  return "全部用繁體中文；引用經文一律用和合本原文，出處要正確，沒有把握的經文寧可不引。";
+}
+function ckBase(){return CK_BASE.replace("全部用繁體中文；引用經文一律用和合本原文，出處要正確，沒有把握的經文寧可不引。",langLine());}
+function ckSys(){
+  var s=ckBase()+CK_TASK+CK_JSON;
+  if(isEN())s+="\n\n[ENGLISH OUTPUT] All JSON string values must be in English. \"who\" must be exactly one of: Old self reigns | Old and new at war | New self reigns. \"area\" must be one of: See, Hear, Think, Speak, Act, Mindset, Life, Living, Relationships, Ministry. \"chain\" k values: Perception, Reaction, Response. Use straight double quotes only for JSON syntax; inside strings use “” for quotations. The prayer ends with: in the name of the Lord Jesus Christ we pray, Amen.";
+  else if(isZS())s+="\n\n【简体输出】所有 JSON 字串值一律用简体中文；who、area、chain.k 的选项也用简体（旧人作王｜新旧交战｜新人作王；看｜听｜想｜讲｜行｜观念｜生命｜生活｜关系｜事工；感应｜反应｜回应）。";
+  return s+audLine();
+}
+function ckChatSys(){return ckBase()+CK_TASK+"\n"+CK_CHAT+(isEN()?"\nWrite in English. The last line is always: **Next step to overcome:** one concrete action.":"")+audLine();}
+var CK_JSON="【輸出格式】只輸出一個 JSON 物件，不要任何其他文字，不要用```包起來。字串裡不可出現半形雙引號，引用話語一律用「」。每個欄位都要精簡，整份控制在900字以內，務必完整輸出到最後的 }。欄位：\n"+
 "{\"title\":\"十五字內的一句話，點出這次健檢的核心\",\n"+
 "\"who\":\"舊人作王｜新舊交戰｜新人作王 三選一\",\n"+
 "\"picture\":\"生命光景，2到4句\",\n"+
@@ -509,8 +656,7 @@ var CK_SYS=CK_BASE+"【輸出格式】只輸出一個 JSON 物件，不要任何
 "\"tomorrow\":\"明天一個具體的無己行動，一句話\",\n"+
 "\"asks\":[\"三個他最值得繼續追問的問題，第一人稱、具體貼近這件事，每題20字內\"],\n"+
 "\"prayer\":\"第一人稱的禱告，約100字，奉主耶穌基督的名禱告，阿們\"}";
-
-var CK_CHAT=CK_BASE+"【現在的任務：陪他繼續追問】你已經為這件事做過生命健檢（內容在前面的對話裡）。現在他要繼續追問，目標是：實際面對問題、真正解決問題、在這件事上成為得勝者。\n"+
+var CK_CHAT="【現在的任務：陪他繼續追問】你已經為這件事做過生命健檢（內容在前面的對話裡）。現在他要繼續追問，目標是：實際面對問題、真正解決問題、在這件事上成為得勝者。\n"+
 "回答原則：\n1. 緊扣他這件事和他的問題，不重複健檢已說過的內容，往更深、更實際的地方走。\n"+
 "2. 要給做得到的東西：可以直接說出口的話（用「」寫出完整句子）、具體步驟、時間點、怎樣面對對方可能的反應、跌倒了怎麼重新起來。\n"+
 "3. 先生命、再關係、後事工；先與神、再與自己、再與人、再與事。焦點帶回耶穌，用心靠聖靈。\n"+
@@ -528,97 +674,92 @@ function ckSaveDraft(){
 }
 function ckBlank(s){return !String(s||"").replace(/\s/g,"");}
 function ckField(i){var f=CK_FIELDS[i];
-  return '<label class="f">'+f[1]+'<span class="small" style="font-weight:400">'+f[2]+'</span><textarea id="c-'+f[0]+'" placeholder="'+esc(f[3])+'">'+esc(ckVal(f[0]))+'</textarea></label>';}
-function ckGroup(no,t,sub,inner){return '<div class="ckgrp"><h3><span class="ckno">'+no+'</span>'+t+'<em>'+sub+'</em></h3>'+inner+'</div>';}
-
+  return '<label class="f">'+T(f[1])+'<span class="small" style="font-weight:400">'+T(f[2])+'</span><textarea id="c-'+f[0]+'" placeholder="'+esc(T(f[3]))+'">'+esc(ckVal(f[0]))+'</textarea></label>';}
+function ckGroup(no,t,sub,inner){return '<div class="ckgrp"><h3><span class="ckno">'+no+'</span>'+T(t)+'<em>'+T(sub)+'</em></h3>'+inner+'</div>';}
 function viewCheck(){
-  if(ck.show){var e=null;for(var i=0;i<entries.length;i++){if(entries[i].id===ck.show)e=entries[i];}
-    if(e)return viewCheckResult(e);ck.show=null;}
-  var emo="";for(var j=0;j<CK_EMOS.length;j++)emo+='<button class="chip" data-emo="'+CK_EMOS[j]+'">'+CK_EMOS[j]+'</button>';
-  var form='<section class="card"><div class="eyebrow">生命健檢</div><h2 style="font-size:24px">從一件事，看見生命光景</h2>'+
-    verseHTML(["神啊，求你鑒察我，知道我的心思，試煉我，知道我的意念，看在我裡面有甚麼惡行沒有，引導我走永生的道路。","詩篇139:23-24"])+
-    '<p class="small" style="margin:0">照實寫下就好，不必修飾。小智會沿著「感應→反應→回應」，用 321 陪你看見有己的根，並提出更新的建議。</p>'+
+  if(ck.show){var e=ckFind(ck.show);if(e)return viewCheckResult(e);ck.show=null;}
+  var emo="";for(var j=0;j<CK_EMOS.length;j++)emo+='<button class="chip" data-emo="'+esc(T(CK_EMOS[j]))+'">'+T(CK_EMOS[j])+'</button>';
+  var form='<section class="card"><div class="eyebrow">'+T("生命健檢")+'</div><h2 class="rd" style="font-size:1.5rem">'+T("從一件事，看見生命光景")+'</h2>'+
+    verseHTML(["神啊，求你鑒察我，知道我的心思，試煉我，知道我的意念，看在我裡面有甚麼惡行沒有，引導我走永生的道路。","詩篇139:23-24"],"c:form:v")+
+    '<p class="small" style="margin:0">'+ST("c:form:n",T("照實寫下就好，不必修飾。小智會沿著「感應→反應→回應」，用 321 陪你看見有己的根，並提出更新的建議。"))+'</p>'+
     ckGroup(1,"事件","發生了甚麼",ckField(0))+
     ckGroup(2,"感應","看到甚麼、聽到甚麼",ckField(1)+ckField(2))+
-    ckGroup(3,"反應","產生甚麼意念、甚麼情緒",ckField(3)+ckField(4)+'<div class="emos" aria-label="點選加入情緒">'+emo+'</div>')+
+    ckGroup(3,"反應","產生甚麼意念、甚麼情緒",ckField(3)+ckField(4)+'<div class="emos" aria-label="'+T("點選加入情緒")+'">'+emo+'</div>')+
     ckGroup(4,"回應","說了甚麼、做了甚麼",ckField(5)+ckField(6))+
     (ck.busy
-      ?'<div class="busy card" style="background:var(--vine-soft);border:0"><span class="spin"></span><span>小智正在用 321 為你健檢，約需二、三十秒……</span></div>'
-      :'<button class="btn new" data-ck="run">用 321 分析我的生命光景</button>')+
+      ?'<div class="busy card" style="background:var(--vine-soft);border:0"><span class="spin"></span><span>'+T("小智正在用 321 為你健檢，約需二、三十秒……")+'</span></div>'
+      :'<button class="btn new" data-ck="run">'+T("用 321 分析我的生命光景")+'</button>')+
     (ck.err?'<p class="small" style="margin:0;color:var(--plum)">'+esc(ck.err)+'</p>':'')+
-    '<button class="linkbtn" data-ck="clear" style="justify-self:center">清空重寫</button></section>';
+    '<button class="linkbtn" data-ck="clear" style="justify-self:center">'+T("清空重寫")+'</button></section>';
   var list=filterEntries(function(e){return e.kind==="check";}).sort(byNewest),h="";
   for(var k=0;k<list.length&&k<40;k++){var x=list[k],t=x.ai&&x.ai.title?x.ai.title:(x.input.ev||"").slice(0,24);
-    h+='<button class="ckrec" data-ckopen="'+x.id+'"><span class="small">'+fmtDate(x.date)+(x.ai&&x.ai.who?'・'+esc(x.ai.who):'')+'</span><b>'+esc(t)+'</b></button>';}
-  return form+'<section class="card"><div class="eyebrow">健檢記錄</div>'+(h||'<p class="empty" style="margin:0">還沒有記錄。</p>')+'</section>';
+    h+='<button class="ckrec" data-ckopen="'+x.id+'"><span class="small">'+fmtDate(x.date)+(x.ai&&x.ai.who?DOT()+esc(x.ai.who):'')+'</span><b>'+esc(t)+'</b></button>';}
+  return form+'<section class="card"><div class="eyebrow">'+T("健檢記錄")+'</div>'+(h||'<p class="empty" style="margin:0">'+T("還沒有記錄。")+'</p>')+'</section>';
 }
-
-function ckWhoClass(w){w=w||"";return w.indexOf("新人")===0?"n":w.indexOf("交戰")>-1?"m":"o";}
-function ckParas(t){var ps=String(t||"").split(/\n+/),o="";for(var i=0;i<ps.length;i++){if(ps[i].replace(/\s/g,""))o+='<p>'+esc(ps[i])+'</p>';}return o;}
+function ckWhoClass(w){w=w||"";return /^(新人|New)/i.test(w)?"n":/交戰|交战|war/i.test(w)?"m":"o";}
 function ckChatHTML(e,a){
   var ch=e.chat||[],h="",i,asks=(a&&a.asks&&a.asks.length)?a.asks.slice(0,3):[],seen={};
   for(i=0;i<ch.length;i++)seen[ch[i].q]=1;
   for(i=0;i<ch.length;i++){
-    h+='<div class="turn"><p class="q">'+esc(ch[i].q)+'</p><div class="ans md">'+mdHTML(ch[i].a)+'</div></div>';}
-  if(ck.asking===e.id)h+='<div class="turn" id="ck-asking"><p class="q">'+esc(ck.askq)+'</p><div class="busy"><span class="spin"></span><span>小智正在思想，陪你找到得勝的路……</span></div></div>';
-  for(i=0;i<CK_ASKS.length&&asks.length<6;i++)asks.push(CK_ASKS[i]);
+    h+='<div class="turn"><p class="q">'+esc(ch[i].q)+'</p><div class="ans md">'+mdHTML(ch[i].a)+'</div>'+
+      '<div class="msg-actions"><button class="msg-act" data-cka="tts" data-i="'+i+'">🔊 '+T("朗讀")+'</button><button class="msg-act" data-cka="copy" data-i="'+i+'">⧉ '+T("複製")+'</button><button class="msg-act" data-cka="share" data-i="'+i+'">↗ '+T("分享")+'</button><button class="msg-act" data-cka="fav" data-i="'+i+'">★ '+T("收藏")+'</button></div></div>';}
+  if(ck.asking===e.id)h+='<div class="turn" id="ck-asking"><p class="q">'+esc(ck.askq)+'</p>'+(ck.partial?'<div class="ans md">'+mdHTML(ck.partial)+'</div>':'')+'<div class="busy"><span class="spin"></span><span>'+T(ck.partial?"小智還在接著寫…":"小智正在思想，陪你找到得勝的路……")+'</span></div></div>';
+  for(i=0;i<CK_ASKS.length&&asks.length<6;i++)asks.push(T(CK_ASKS[i]));
   var chips="";for(i=0;i<asks.length;i++){if(seen[asks[i]])continue;seen[asks[i]]=1;chips+='<button class="chip" data-ckask="'+esc(asks[i])+'">'+esc(asks[i])+'</button>';}
-  return '<section class="card chat"><div class="eyebrow">繼續追問小智</div>'+
-    '<h3 style="font-size:20px">面對它、解決它，在這件事上得勝</h3>'+
-    (ch.length?'':'<p class="small" style="margin:0">點一個問題，或寫下你自己的問題。小智會給你可以說出口的話、具體的步驟，陪你一步一步走出來。</p>')+h+
+  return '<section class="card chat"><div class="eyebrow">'+T("繼續追問小智")+'</div>'+
+    '<h3 class="rd" style="font-size:1.25rem">'+T("面對它、解決它，在這件事上得勝")+'</h3>'+
+    (ch.length?'':'<p class="small" style="margin:0">'+T("點一個問題，或寫下你自己的問題。小智會給你可以說出口的話、具體的步驟，陪你一步一步走出來。")+'</p>')+h+
     '<div class="emos">'+chips+'</div>'+
-    '<textarea id="ck-q" placeholder="例：她如果又提起罰單，我該怎麼回應？">'+esc(ck.askDraft||"")+'</textarea>'+
+    '<textarea id="ck-q" placeholder="'+esc(T("例：她如果又提起罰單，我該怎麼回應？"))+'">'+esc(ck.askDraft||"")+'</textarea>'+
     (ck.askErr?'<p class="small" style="margin:0;color:var(--plum)">'+esc(ck.askErr)+'</p>':'')+
-    '<button class="btn new" data-ck="ask" data-id="'+e.id+'"'+(ck.asking?' disabled':'')+'>'+(ck.asking?'小智回答中……':'追問小智')+'</button></section>';
+    '<button class="btn new" data-ck="ask" data-id="'+e.id+'"'+(ck.asking?' disabled':'')+'>'+T(ck.asking?"小智回答中……":"追問小智")+'</button></section>';
 }
 function viewCheckResult(e){
-  var a=e.ai||{},inp=e.input,i,out="";
+  var a=e.ai||{},inp=e.input,i,out="",pk="c:"+e.id+":";
   if(a.raw&&!a.title){var re=ckParse(a.raw);if(re.title){a=e.ai=re;putEntry(e);}}
   var mine=[["感應",[inp.see,inp.hear]],["反應",[inp.thought,inp.feel]],["回應",[inp.said,inp.did]]];
-  out+='<section class="card result"><div class="eyebrow">'+fmtDate(e.date)+'・生命健檢</div>';
+  out+='<section class="card result"><div class="eyebrow">'+esc(T("{0}・生命健檢",fmtDate(e.date)))+'</div>';
   if(a.raw||!a.title){
-    out+='<h2 style="font-size:22px">小智的健檢回覆</h2><div class="md">'+(a.raw?mdHTML(a.raw):'<p>（這次沒有收到分析，可以按「重新分析」再試一次。）</p>')+'</div></section>';
+    out+='<h2 class="rd" style="font-size:1.375rem">'+T("小智的健檢回覆")+'</h2><div class="md">'+(a.raw?mdHTML(a.raw):'<p>'+T("（這次沒有收到分析，可以按「重新分析」再試一次。）")+'</p>')+'</div></section>';
   }else{
-    out+='<h2 style="font-size:24px">'+esc(a.title)+'</h2>'+(a.who?'<span class="who '+ckWhoClass(a.who)+'">'+esc(a.who)+'</span>':'')+
-      '<p style="margin:0">'+esc(a.picture)+'</p>'+
-      (a.cut?'<p class="small" style="margin:0;color:var(--gold)">小智這次的回覆不完整，部分欄位可能空白，可以按下方「重新分析」。</p>':'')+'</section>';
-    out+='<section class="card"><div class="eyebrow">事件</div><p style="margin:0">'+esc(inp.ev)+'</p>';
+    out+='<h2 style="font-size:1.5rem">'+ST(pk+"t",a.title)+'</h2>'+(a.who?'<span class="who '+ckWhoClass(a.who)+'">'+esc(a.who)+'</span>':'')+
+      '<p style="margin:0">'+ST(pk+"pic",a.picture)+'</p>'+
+      (a.cut?'<p class="small" style="margin:0;color:var(--gold)">'+T("小智這次的回覆不完整，部分欄位可能空白，可以按下方「重新分析」。")+'</p>':'')+'</section>';
+    out+='<section class="card"><div class="eyebrow">'+T("事件")+'</div><p style="margin:0">'+esc(inp.ev)+'</p>';
     var ch=a.chain||[];
     for(i=0;i<3;i++){var c=ch[i]||{},m=mine[i][1],my=[];if(!ckBlank(m[0]))my.push(m[0]);if(!ckBlank(m[1]))my.push(m[1]);
-      out+='<div class="lk"><b>'+mine[i][0]+'</b>'+(my.length?'<p class="mine">我：'+esc(my.join("；"))+'</p>':'')+
-        '<dl class="on">'+(c.old?'<dt class="o">有己</dt><dd>'+esc(c.old)+'</dd>':'')+(c["new"]?'<dt class="n">無己</dt><dd>'+esc(c["new"])+'</dd>':'')+'</dl></div>';}
+      out+='<div class="lk"><b class="rd">'+T(mine[i][0])+'</b>'+(my.length?'<p class="mine">'+T("我：")+esc(my.join(isEN()?"; ":"；"))+'</p>':'')+
+        '<dl class="on">'+(c.old?'<dt class="o">'+T("有己")+'</dt><dd>'+ST(pk+"o"+i,c.old)+'</dd>':'')+(c["new"]?'<dt class="n">'+T("無己")+'</dt><dd>'+ST(pk+"n"+i,c["new"])+'</dd>':'')+'</dl></div>';}
     out+='</section>';
-    if(a.root)out+='<section class="card"><div class="eyebrow">有己的根</div><p style="margin:0">'+esc(a.root)+'</p></section>';
-    if(a.view&&(a.view.from||a.view.to))out+='<section class="card"><div class="eyebrow">觀點轉換：從人的觀點到神的觀點</div><div class="shift">'+
-      '<p class="f"><b>原本：</b>'+esc(a.view.from)+'</p><p class="t"><b>神看：</b>'+esc(a.view.to)+'</p></div></section>';
+    if(a.root)out+='<section class="card"><div class="eyebrow">'+T("有己的根")+'</div><p style="margin:0">'+ST(pk+"root",a.root)+'</p></section>';
+    if(a.view&&(a.view.from||a.view.to))out+='<section class="card"><div class="eyebrow">'+T("觀點轉換：從人的觀點到神的觀點")+'</div><div class="shift">'+
+      '<p class="f"><b>'+T("原本：")+'</b>'+ST(pk+"vf",a.view.from||"")+'</p><p class="t"><b>'+T("神看：")+'</b>'+ST(pk+"vt",a.view.to||"")+'</p></div></section>';
     var fr=a.fruit||{};
-    out+='<section class="card"><div class="eyebrow">920・在這個「2」面前</div>'+
-      (a.area?'<p style="margin:0"><b>最需要操練：</b>'+esc(a.area)+'</p>':'')+
-      (fr.lack?'<p style="margin:0"><b>舊人的表現：</b>'+esc(fr.lack)+'</p>':'')+
-      (fr.grow?'<p style="margin:0"><b>要結的果子：</b>'+esc(fr.grow)+'</p>':'')+'</section>';
-    var vs=a.verses||[];for(i=0;i<vs.length&&i<2;i++){if(vs[i]&&vs[i].text)out+='<section class="card">'+verseHTML([vs[i].text,vs[i].ref||""])+'</section>';}
-    var st=a.steps||[],sh="";for(i=0;i<st.length;i++)sh+='<li>'+esc(st[i])+'</li>';
-    if(sh)out+='<section class="card"><div class="eyebrow">更新改變的建議</div><ol class="steps">'+sh+'</ol></section>';
-    if(a.tomorrow)out+='<section class="card"><div class="eyebrow">明天的無己行動</div><p class="act">'+esc(a.tomorrow)+'</p>'+
-      '<p class="small" style="margin:0">照八大步驟走下去：資訊、啟示、信服、實踐、檢討、修正、反覆、繁殖。</p>'+
-      '<button class="btn ghost" data-ck="victory" data-id="'+e.id+'">我做到了！寫得勝見證</button></section>';
-    if(a.prayer)out+='<section class="card"><div class="eyebrow">禱告</div><p class="prayer">'+esc(a.prayer)+'</p></section>';
+    out+='<section class="card"><div class="eyebrow">'+T("920・在這個「2」面前")+'</div>'+
+      (a.area?'<p style="margin:0"><b>'+T("最需要操練：")+'</b>'+esc(a.area)+'</p>':'')+
+      (fr.lack?'<p style="margin:0"><b>'+T("舊人的表現：")+'</b>'+ST(pk+"fl",fr.lack)+'</p>':'')+
+      (fr.grow?'<p style="margin:0"><b>'+T("要結的果子：")+'</b>'+ST(pk+"fg",fr.grow)+'</p>':'')+'</section>';
+    var vs=a.verses||[];for(i=0;i<vs.length&&i<2;i++){if(vs[i]&&vs[i].text)out+='<section class="card"><blockquote class="verse">'+ST(pk+"v"+i,vs[i].text)+'<cite class="rd">'+esc(vs[i].ref||"")+'</cite></blockquote></section>';}
+    var st=a.steps||[],sh="";for(i=0;i<st.length;i++)sh+='<li>'+ST(pk+"s"+i,st[i])+'</li>';
+    if(sh)out+='<section class="card"><div class="eyebrow">'+T("更新改變的建議")+'</div><ol class="steps">'+sh+'</ol></section>';
+    if(a.tomorrow)out+='<section class="card"><div class="eyebrow">'+T("明天的無己行動")+'</div><p class="act">'+ST(pk+"tm",a.tomorrow)+'</p>'+
+      '<p class="small" style="margin:0">'+T("照八大步驟走下去：資訊、啟示、信服、實踐、檢討、修正、反覆、繁殖。")+'</p>'+
+      '<button class="btn ghost" data-ck="victory" data-id="'+e.id+'">'+T("我做到了！寫得勝見證")+'</button></section>';
+    if(a.prayer)out+='<section class="card" data-say="'+esc(T("讓我們一起禱告。"))+'"><div class="eyebrow">'+T("禱告")+'</div><p class="prayer">'+ST(pk+"pr",a.prayer)+'</p></section>';
   }
   out+=ckChatHTML(e,a);
-  out+='<p class="small" style="margin:0;text-align:center">小智的分析是陪伴與提醒，請以聖經與聖靈的引導為準，也可以和你的屬靈同伴一起禱告。</p>'+
-    '<div class="row">'+(a.title?'<button class="btn old wide" data-ck="tojournal" data-id="'+e.id+'">寫進更新記錄</button>':'')+
-    '<button class="btn ghost wide" data-ck="again" data-id="'+e.id+'">重新分析</button></div>'+
-    '<div class="row"><button class="btn new wide" data-ck="new">健檢另一件事</button></div>'+
+  out+='<p class="small" style="margin:0;text-align:center">'+T("小智的分析是陪伴與提醒，請以聖經與聖靈的引導為準，也可以和你的屬靈同伴一起禱告。")+'</p>'+
+    '<div class="row">'+(a.title?'<button class="btn old wide" data-ck="tojournal" data-id="'+e.id+'">'+T("寫進更新記錄")+'</button>':'')+
+    '<button class="btn ghost wide" data-ck="again" data-id="'+e.id+'">'+T("重新分析")+'</button></div>'+
+    '<div class="row"><button class="btn new wide" data-ck="new">'+T("健檢另一件事")+'</button></div>'+
     '<div style="text-align:center">'+delControls(e.id)+'</div>';
   return out;
 }
-
 function ckPrompt(inp){
-  function v(x){return ckBlank(x)?"（沒有寫）":x;}
-  return "請為我這件事做生命健檢：\n\n【事件】"+v(inp.ev)+"\n\n【感應】\n看到："+v(inp.see)+"\n聽到："+v(inp.hear)+
-    "\n\n【反應】\n意念："+v(inp.thought)+"\n情緒："+v(inp.feel)+"\n\n【回應】\n說了："+v(inp.said)+"\n做了："+v(inp.did);
+  function v(x){return ckBlank(x)?T("（沒有寫）"):x;}
+  return T("請為我這件事做生命健檢：")+"\n\n"+T("【事件】")+v(inp.ev)+"\n\n"+T("【感應】")+"\n"+T("看到：")+v(inp.see)+"\n"+T("聽到：")+v(inp.hear)+
+    "\n\n"+T("【反應】")+"\n"+T("意念：")+v(inp.thought)+"\n"+T("情緒：")+v(inp.feel)+"\n\n"+T("【回應】")+"\n"+T("說了：")+v(inp.said)+"\n"+T("做了：")+v(inp.did);
 }
-/* 解析小智的 JSON；被截斷時盡量補回結構 */
 function ckTryJSON(t){try{var o=JSON.parse(t);return (o&&typeof o==="object")?o:null;}catch(e){return null;}}
 function ckRepair(t){
   var st=[],inS=false,esc1=false,cuts=[],i,c;
@@ -641,41 +782,65 @@ function ckParse(t){
   if(o&&o.title){if(cut)o.cut=true;return o;}
   return {raw:t};
 }
-/* 小智請求：messages 陣列，回傳文字與是否截斷 */
 function xiCall(sys,msgs,maxTok,done){
-  var x;try{x=new XMLHttpRequest();}catch(e){done("這個瀏覽器無法連線");return;}
-  var fin=false;function end(err,txt,cut){if(fin)return;fin=true;done(err,txt,cut);}
+  var x;try{x=new XMLHttpRequest();}catch(e){done(T("這個瀏覽器無法連線"));return;}
+  var fin=false;function end(err,txt,cut,d){if(fin)return;fin=true;done(err,txt,cut,d);}
   x.open("POST",XI_ENDPOINT,true);
   x.setRequestHeader("Content-Type","application/json");
   x.timeout=120000;
   x.onreadystatechange=function(){
     if(x.readyState!==4)return;
-    if(x.status<200||x.status>=300){end("小智暫時連不上（"+(x.status||"網路")+"），請稍後再試一次。");return;}
-    try{var d=JSON.parse(x.responseText),t="",c=d.content||[];
-      for(var i=0;i<c.length;i++){if(c[i].type==="text")t+=c[i].text;}
-      if(!t)throw 0;end(null,t,d.stop_reason==="max_tokens");
-    }catch(e){end("小智的回覆讀不出來，請再試一次。");}
+    if(x.status<200||x.status>=300){end(T("小智暫時連不上（{0}），請稍後再試一次。",x.status||T("網路")));return;}
+    try{var d=JSON.parse(x.responseText),t=extractReply(d);
+      if(!t)throw 0;end(null,t,isCut(d,t),d);
+    }catch(e){end(T("小智的回覆讀不出來，請再試一次。"));}
   };
-  x.ontimeout=function(){end("等太久沒有回應，請再試一次。");};
-  x.onerror=function(){end("網路連不上小智，連上網路後再試一次。");};
+  x.ontimeout=function(){end(T("等太久沒有回應，請再試一次。"));};
+  x.onerror=function(){end(T("網路連不上小智，連上網路後再試一次。"));};
   x.send(JSON.stringify({model:XI_MODEL,max_tokens:maxTok,system:sys,messages:msgs}));
+}
+function extractReply(d){if(!d)return "";if(typeof d==="string")return d;var t="";
+  if(d.content&&d.content.length){for(var i=0;i<d.content.length;i++){if(d.content[i].type==="text"||d.content[i].text)t+=d.content[i].text||"";}if(t)return t;}
+  return d.reply||d.text||d.message||(d.choices&&d.choices[0]&&d.choices[0].message?d.choices[0].message.content:"")||"";}
+function isCut(d,t){
+  var sr=d&&(d.stop_reason||d.finish_reason||(d.choices&&d.choices[0]&&d.choices[0].finish_reason));
+  if(sr)return sr==="max_tokens"||sr==="length";
+  t=trim(mdStrip(t));return t.length>300&&!/[。！？.!?」』”)）們men]$/.test(t);
+}
+function joinCont(a,b){
+  b=String(b).replace(/^\s*(好的|好|接續|繼續|继续|接着|接著|Continuing|Sure)[，,:：。.!！]?\s*/i,"");
+  for(var n=Math.min(80,a.length,b.length);n>=6;n--)if(a.slice(-n)===b.slice(0,n))return a+b.slice(n);
+  var nl=/^(#|>|-|\*|\d+[.、]|\|)/.test(trim(b))&&!/\n$/.test(a);
+  return a+(nl?"\n\n":"")+b;
+}
+function xiChat(sys,msgs,maxTok,max,onPart,done){
+  var acc="";
+  (function round(k){
+    var ms=msgs.slice();if(k){ms.push({role:"assistant",content:acc});ms.push({role:"user",content:T("請從中斷的地方直接接著寫完，不要重複前面已經寫過的內容，也不要加開場白。")});}
+    xiCall(sys,ms,maxTok,function(err,txt,cut,d){
+      if(err){if(acc){done(null,acc);return;}done(err);return;}
+      var sure=d&&(d.stop_reason||d.finish_reason);
+      acc=k?joinCont(acc,txt):txt;
+      if(cut&&k<(sure?max:1)){if(onPart)onPart(acc);round(k+1);return;}
+      done(null,acc);
+    });
+  })(0);
 }
 function ckRun(inp,oldId){
   ck.busy=true;ck.err="";if(oldId)ck.show=null;render();
   if(!oldId)setTimeout(function(){var b=document.querySelector(".busy");if(b&&b.scrollIntoView)b.scrollIntoView({block:"center"});},30);
-  xiCall(CK_SYS,[{role:"user",content:ckPrompt(inp)}],4000,function(err,txt){
+  xiCall(ckSys(),[{role:"user",content:ckPrompt(inp)}],4000,function(err,txt){
     ck.busy=false;
-    if(err){ck.err=err+(oldId?"":"草稿已保留。");if(oldId)ck.show=oldId;if(state.tab==="check")keepScroll();toast(err.split("，")[0]);return;}
-    var now=new Date().getTime(),rec={id:oldId||("check-"+now),kind:"check",date:TODAY,ts:now,input:inp,ai:ckParse(txt),chat:[]};
-    if(oldId){var old=ckFind(oldId);if(old){rec.date=old.date;rec.ts=old.ts;}}
-    if(!putEntry(rec)){toast("儲存失敗：瀏覽器不允許儲存資料，請關閉無痕模式後再試");}
+    if(err){ck.err=err+(oldId?"":T("草稿已保留。"));if(oldId)ck.show=oldId;if(state.tab==="check")keepScroll();toast(err.split(/[，,]/)[0]);return;}
+    var tnow=now(),rec={id:oldId||("check-"+tnow),kind:"check",date:TODAY,ts:tnow,input:inp,ai:ckParse(txt),chat:[],lang:L()};
+    if(oldId){var old=ckFind(oldId);if(old){rec.date=old.date;rec.ts=old.ts;rec.chat=old.chat||[];}}
+    if(!putEntry(rec)){toast(T(SAVE_FAIL));}
     if(!oldId){ck.draft={};lsSet(CK_DRAFT,ck.draft);}
     ck.show=rec.id;
     if(state.tab==="check"){render();window.scrollTo(0,0);}
-    toast("健檢完成");
+    toast(T("健檢完成"));
   });
 }
-/* 把健檢結果整理成文字，當作追問的前文 */
 function ckSummary(a){
   if(!a||!a.title)return String(a&&a.raw||"").slice(0,1500);
   var o=["【健檢結果】"+a.title+"（"+(a.who||"")+"）",a.picture||""],i,c=a.chain||[];
@@ -690,100 +855,78 @@ function ckSummary(a){
 }
 function ckAskMore(id,q){
   var e=ckFind(id);if(!e||ck.asking)return;
-  q=String(q||"").replace(/^\s+|\s+$/g,"");if(!q){toast("請寫下想追問的問題");return;}
+  q=trim(q);if(!q){toast(T("請寫下想追問的問題"));return;}
   e.chat=e.chat||[];
   var msgs=[{role:"user",content:ckPrompt(e.input)},{role:"assistant",content:ckSummary(e.ai)}],i,from=Math.max(0,e.chat.length-5);
   for(i=from;i<e.chat.length;i++){msgs.push({role:"user",content:e.chat[i].q});msgs.push({role:"assistant",content:e.chat[i].a});}
   msgs.push({role:"user",content:q});
-  ck.asking=id;ck.askq=q;ck.askErr="";ck.askDraft="";keepScroll();
+  ck.asking=id;ck.askq=q;ck.askErr="";ck.askDraft="";ck.partial="";keepScroll();
   setTimeout(function(){var b=$("ck-asking");if(b&&b.scrollIntoView)b.scrollIntoView({block:"center"});},30);
-  xiCall(CK_CHAT,msgs,2500,function(err,txt,cut){
-    ck.asking=null;
-    if(err){ck.askErr=err;ck.askDraft=q;if(state.tab==="check")keepScroll();toast(err.split("，")[0]);return;}
+  xiChat(ckChatSys(),msgs,2500,3,function(part){ck.partial=part;if(state.tab==="check"&&ck.show===id&&!hlOpen())keepScroll();},function(err,txt){
+    ck.asking=null;ck.partial="";
+    if(err){ck.askErr=err;ck.askDraft=q;if(state.tab==="check")keepScroll();toast(err.split(/[，,]/)[0]);return;}
     var cur=ckFind(id);if(!cur)return;cur.chat=cur.chat||[];
-    cur.chat.push({q:q,a:txt+(cut?"\n\n（回答較長，到這裡被截斷了，可以接著問「請繼續」。）":""),ts:new Date().getTime()});
+    cur.chat.push({q:q,a:txt,ts:now()});
     putEntry(cur);
     if(state.tab==="check"&&ck.show===id){render();setTimeout(function(){var ls=document.querySelectorAll(".turn");if(ls.length&&ls[ls.length-1].scrollIntoView)ls[ls.length-1].scrollIntoView({block:"start"});},30);}
-    toast("小智回答了");
+    toast(T("小智回答了"));
   });
-}
-/* 簡易 markdown 排版 */
-function mdInline(t){
-  return esc(t).replace(/\*\*([^*]+)\*\*/g,"<strong>$1</strong>").replace(/__([^_]+)__/g,"<strong>$1</strong>");
-}
-function mdHTML(src){
-  var L=String(src||"").replace(/```[a-z]*/g,"").replace(/\r/g,"").split("\n"),o="",list=null,i,m,ln;
-  function endList(){if(list){o+="</"+list+">";list=null;}}
-  for(i=0;i<L.length;i++){ln=L[i].replace(/\s+$/,"");
-    if(!ln.replace(/\s/g,"")){endList();continue;}
-    if((m=ln.match(/^\s*#{1,6}\s+(.*)$/))){endList();o+="<h4>"+mdInline(m[1].replace(/\*\*/g,""))+"</h4>";continue;}
-    if(/^\s*(-{3,}|\*{3,})\s*$/.test(ln)){endList();o+="<hr>";continue;}
-    if((m=ln.match(/^\s*>\s?(.*)$/))){endList();o+="<blockquote>"+mdInline(m[1])+"</blockquote>";continue;}
-    if((m=ln.match(/^\s*[-*•]\s+(.*)$/))){if(list!=="ul"){endList();o+="<ul>";list="ul";}o+="<li>"+mdInline(m[1])+"</li>";continue;}
-    if((m=ln.match(/^\s*\d+[.、)]\s*(.*)$/))){if(list!=="ol"){endList();o+="<ol>";list="ol";}o+="<li>"+mdInline(m[1])+"</li>";continue;}
-    endList();
-    if(/^\s*\*\*得勝的下一步/.test(ln)){o+='<p class="next">'+mdInline(ln)+"</p>";continue;}
-    o+="<p>"+mdInline(ln)+"</p>";
-  }
-  endList();return o;
 }
 function ckFind(id){for(var i=0;i<entries.length;i++){if(entries[i].id===id)return entries[i];}return null;}
 function ckClick(b){
   var act=b.getAttribute("data-ck"),id=b.getAttribute("data-id");
   if(act==="run"){
-    ckSaveDraft();var inp={};for(var i=0;i<CK_FIELDS.length;i++){var k=CK_FIELDS[i][0];inp[k]=String(ck.draft[k]||"").replace(/^\s+|\s+$/g,"");}
-    if(ckBlank(inp.ev)){toast("請先寫下發生了甚麼事");$("c-ev").focus();return;}
-    if(ckBlank(inp.thought+inp.feel+inp.said+inp.did)){toast("請至少寫下一項反應或回應");return;}
+    ckSaveDraft();var inp={};for(var i=0;i<CK_FIELDS.length;i++){var k=CK_FIELDS[i][0];inp[k]=trim(ck.draft[k]||"");}
+    if(ckBlank(inp.ev)){toast(T("請先寫下發生了甚麼事"));$("c-ev").focus();return;}
+    if(ckBlank(inp.thought+inp.feel+inp.said+inp.did)){toast(T("請至少寫下一項反應或回應"));return;}
     if(ck.busy)return;ckRun(inp,null);return;
   }
   if(act==="clear"){ck.draft={};lsSet(CK_DRAFT,ck.draft);ck.err="";render();return;}
   if(act==="new"){ck.show=null;ck.err="";ck.askDraft="";ck.askErr="";render();window.scrollTo(0,0);return;}
   if(act==="again"){var e=ckFind(id);if(e&&!ck.busy)ckRun(e.input,id);return;}
-  if(act==="ask"){var qa=$("ck-q");ckAskMore(id,qa?qa.value:"");return;}
-  if(act==="victory"){var rv=ckFind(id);if(!rv)return;var av=rv.ai||{},ar="關係",fv=[];
-    for(var gv=0;gv<GROUPS.length;gv++){if(av.area&&av.area.indexOf(GROUPS[gv].name)>-1){ar=GROUPS[gv].name;break;}}
-    for(var f=0;f<FRUITS.length;f++){if(av.fruit&&av.fruit.grow&&av.fruit.grow.indexOf(FRUITS[f][1])>-1)fv.push(FRUITS[f][1]);}
-    state.jmode="victory";jdraft={mode:"victory",area:ar,a:rv.input.ev,b:av.tomorrow||"",c:"",d:"",fruits:fv};
-    go("journal");toast("已帶入得勝見證，寫下感恩後按儲存");return;}
-  if(act==="tojournal"){var r=ckFind(id);if(!r)return;var a=r.ai||{},area="關係";
-    for(var g=0;g<GROUPS.length;g++){if(a.area&&a.area.indexOf(GROUPS[g].name)>-1){area=GROUPS[g].name;break;}}
+  if(act==="ask"){var qa2=$("ck-q");ckAskMore(id,qa2?qa2.value:"");return;}
+  if(act==="victory"){var rv=ckFind(id);if(!rv)return;var av=rv.ai||{};
+    state.jmode="victory";jdraft={mode:"victory",area:areaOf(av.area),a:rv.input.ev,b:av.tomorrow||"",c:"",d:"",fruits:fruitsOf(av.fruit&&av.fruit.grow)};
+    go("journal");toast(T("已帶入得勝見證，寫下感恩後按儲存"));return;}
+  if(act==="tojournal"){var r=ckFind(id);if(!r)return;var a=r.ai||{};
     var v=(a.verses&&a.verses[0])?(a.verses[0].ref+" "+a.verses[0].text):"";
-    state.jmode="renew";jdraft={mode:"renew",area:area,a:r.input.ev,b:a.root||"",c:v,d:a.tomorrow||"",fruits:[]};
-    go("journal");toast("已帶入更新記錄，確認後按儲存");return;}
+    state.jmode="renew";jdraft={mode:"renew",area:areaOf(a.area),a:r.input.ev,b:a.root||"",c:v,d:a.tomorrow||"",fruits:[]};
+    go("journal");toast(T("已帶入更新記錄，確認後按儲存"));return;}
 }
-
-/* ---------- 日記 ---------- */
-function areaOptions(){var o="";for(var i=0;i<GROUPS.length;i++)o+='<option>'+GROUPS[i].name+'</option>';return o;}
+function areaOf(s){s=String(s||"");for(var g=0;g<GROUPS.length;g++){var n=GROUPS[g].name;if(s.indexOf(n)>-1||s.indexOf(T(n))>-1||(PACK.zs&&PACK.zs[n]&&s.indexOf(PACK.zs[n])>-1))return n;}return "關係";}
+function fruitsOf(s){s=String(s||"");var o=[];for(var f=0;f<FRUITS.length;f++){var n=FRUITS[f][1];if(s.indexOf(n)>-1||s.toLowerCase().indexOf(T(n).toLowerCase())>-1)o.push(n);}return o;}
+function areaOptions(){var o="";for(var i=0;i<GROUPS.length;i++)o+='<option value="'+GROUPS[i].name+'">'+T(GROUPS[i].name)+'</option>';return o;}
 function viewJournal(){
+  if(state.jmode==="marks")return jSeg()+marksHTML();
   var isR=state.jmode==="renew",form,i;
   if(isR){
-    form='<label class="f">門戶／領域<select id="j-area">'+areaOptions()+'</select></label>'+
-      '<label class="f">發生了甚麼<textarea id="j-a" placeholder="例：配偶提醒我遲到，我立刻頂回去"></textarea></label>'+
-      '<label class="f">有己的根（我要的是甚麼？）<textarea id="j-b" placeholder="例：我要面子，不要被指正"></textarea></label>'+
-      '<label class="f">神的觀點（經文）<textarea id="j-c" placeholder="例：雅各書1:19 快快的聽，慢慢的說"></textarea></label>'+
-      '<label class="f">明天的無己行動<textarea id="j-d" placeholder="例：明早先說「謝謝你提醒我」"></textarea></label>';
+    form='<label class="f">'+T("門戶／領域")+'<select id="j-area">'+areaOptions()+'</select></label>'+
+      '<label class="f">'+T("發生了甚麼")+'<textarea id="j-a" placeholder="'+esc(T("例：配偶提醒我遲到，我立刻頂回去"))+'"></textarea></label>'+
+      '<label class="f">'+T("有己的根（我要的是甚麼？）")+'<textarea id="j-b" placeholder="'+esc(T("例：我要面子，不要被指正"))+'"></textarea></label>'+
+      '<label class="f">'+T("神的觀點（經文）")+'<textarea id="j-c" placeholder="'+esc(T("例：雅各書1:19 快快的聽，慢慢的說"))+'"></textarea></label>'+
+      '<label class="f">'+T("明天的無己行動")+'<textarea id="j-d" placeholder="'+esc(T("例：明早先說「謝謝你提醒我」"))+'"></textarea></label>';
   }else{
-    var fr="";for(i=0;i<FRUITS.length;i++)fr+='<button class="chip" data-fruit="'+FRUITS[i][1]+'" aria-pressed="false">'+FRUITS[i][1]+'</button>';
-    form='<label class="f">門戶／領域<select id="j-area">'+areaOptions()+'</select></label>'+
-      '<label class="f">遇到的處境<textarea id="j-a" placeholder="例：配偶提醒我遲到"></textarea></label>'+
-      '<label class="f">我如何讓耶穌作王<textarea id="j-b" placeholder="例：先停三秒禱告，說「謝謝你提醒我，對不起」"></textarea></label>'+
-      '<div class="f"><span class="small" style="font-weight:700">結出的果子</span><div class="chips">'+fr+'</div></div>'+
-      '<label class="f">感恩與榮耀歸神<textarea id="j-d" placeholder="例：謝謝主，一場爭吵變成一個擁抱"></textarea></label>';
+    var fr="";for(i=0;i<FRUITS.length;i++)fr+='<button class="chip" data-fruit="'+FRUITS[i][1]+'" aria-pressed="false">'+T(FRUITS[i][1])+'</button>';
+    form='<label class="f">'+T("門戶／領域")+'<select id="j-area">'+areaOptions()+'</select></label>'+
+      '<label class="f">'+T("遇到的處境")+'<textarea id="j-a" placeholder="'+esc(T("例：配偶提醒我遲到"))+'"></textarea></label>'+
+      '<label class="f">'+T("我如何讓耶穌作王")+'<textarea id="j-b" placeholder="'+esc(T("例：先停三秒禱告，說「謝謝你提醒我，對不起」"))+'"></textarea></label>'+
+      '<div class="f"><span class="small" style="font-weight:700">'+T("結出的果子")+'</span><div class="chips">'+fr+'</div></div>'+
+      '<label class="f">'+T("感恩與榮耀歸神")+'<textarea id="j-d" placeholder="'+esc(T("例：謝謝主，一場爭吵變成一個擁抱"))+'"></textarea></label>';
   }
   var list=filterEntries(function(e){return e.kind==="renew"||e.kind==="victory";}).sort(byNewest),html="";
-  for(i=0;i<list.length;i++){var e=list[i],r=e.kind==="renew";
-    var body=r?[["發生",e.a],["有己的根",e.b],["神的觀點",e.c],["無己行動",e.d]]:[["處境",e.a],["讓耶穌作王",e.b],["果子",(e.fruits||[]).join("、")],["感恩",e.d]],bh="";
-    for(var j=0;j<body.length;j++){if(body[j][1])bh+='<span><b class="small">'+body[j][0]+'：</b>'+esc(body[j][1])+'</span>';}
-    html+='<div class="rec"><div class="h"><span><span class="tag '+(r?"old":"new")+'">'+(r?"更新記錄":"得勝見證")+'</span> '+fmtDate(e.date)+'・'+esc(e.area)+'</span>'+delControls(e.id)+'</div>'+bh+'</div>';}
-  return '<section class="card"><div class="seg2"><button data-jmode="renew" aria-pressed="'+isR+'">更新記錄</button><button data-jmode="victory" aria-pressed="'+(!isR)+'">得勝見證</button></div>'+
-    '<p class="small" style="margin:0">'+(isR?"把看見的有己帶到十字架前，寫下明天一個具體的無己行動。":"記下讓耶穌作王的時刻，凡事謝恩，把榮耀歸給耶穌。")+'</p>'+
-    form+'<button class="btn '+(isR?"old":"new")+'" id="j-save">儲存</button></section>'+
-  '<section class="card"><div class="eyebrow">我的記錄</div>'+(html||'<p class="empty" style="margin:0">還沒有記錄。第一筆可以從今天一件小事開始寫起。</p>')+'</section>';
+  for(i=0;i<list.length;i++){var e=list[i],r=e.kind==="renew",frs=[];
+    eachA(e.fruits||[],function(f){frs.push(T(f));});
+    var body=r?[["發生",e.a],["有己的根",e.b],["神的觀點",e.c],["無己行動",e.d]]:[["處境",e.a],["讓耶穌作王",e.b],["果子",frs.join(isEN()?", ":"、")],["感恩",e.d]],bh="";
+    for(var j=0;j<body.length;j++){if(body[j][1])bh+='<span><b class="small">'+T(body[j][0])+T("：")+'</b>'+esc(body[j][1])+'</span>';}
+    html+='<div class="rec"><div class="h"><span><span class="tag '+(r?"old":"new")+'">'+T(r?"更新記錄":"得勝見證")+'</span> '+fmtDate(e.date)+DOT()+esc(T(e.area))+'</span>'+delControls(e.id)+'</div>'+bh+'</div>';}
+  return jSeg()+'<section class="card">'+
+    '<p class="small" style="margin:0">'+T(isR?"把看見的有己帶到十字架前，寫下明天一個具體的無己行動。":"記下讓耶穌作王的時刻，凡事謝恩，把榮耀歸給耶穌。")+'</p>'+
+    form+'<button class="btn '+(isR?"old":"new")+'" id="j-save">'+T("儲存")+'</button></section>'+
+  '<section class="card"><div class="eyebrow">'+T("我的記錄")+'</div>'+(html||'<p class="empty" style="margin:0">'+T("還沒有記錄。第一筆可以從今天一件小事開始寫起。")+'</p>')+'</section>';
 }
-
-/* ---------- 日記草稿 ---------- */
+function jSeg(){var m=state.jmode;
+  return '<div class="seg3"><button data-jmode="renew" aria-pressed="'+(m==="renew")+'">'+T("更新記錄")+'</button><button data-jmode="victory" aria-pressed="'+(m==="victory")+'">'+T("得勝見證")+'</button><button data-jmode="marks" aria-pressed="'+(m==="marks")+'">'+T("畫線收藏")+'</button></div>';}
 var jdraft=null;
-function $(id){return document.getElementById(id);}
 function saveJournalDraft(){
   if(!$("j-a"))return jdraft;
   var fr=[],bs=document.querySelectorAll("[data-fruit]");
@@ -797,8 +940,6 @@ function restoreJournalDraft(d){
   var bs=document.querySelectorAll("[data-fruit]");
   for(var i=0;i<bs.length;i++){if(has(d.fruits,bs[i].getAttribute("data-fruit")))bs[i].setAttribute("aria-pressed","true");}
 }
-
-/* ---------- 繪製 ---------- */
 var app=$("app");
 function render(){
   app.className="view"+(state.tab==="exam"?" mode-old":state.tab==="train"?" mode-new":"");
@@ -807,25 +948,25 @@ function render(){
   var tb=document.querySelectorAll("#tabs button");
   for(var i=0;i<tb.length;i++){tb[i].setAttribute("aria-current",tb[i].getAttribute("data-tab")===state.tab?"page":"false");}
   if(state.tab==="journal"&&jdraft)restoreJournalDraft(jdraft);
+  afterRender();
 }
 function keepScroll(){var y=window.pageYOffset;render();window.scrollTo(0,y);}
 function go(tab){
   if(state.tab==="journal")saveJournalDraft();
   if(tab==="check"&&state.tab!=="check")ck.show=null;
+  if(tab!==state.tab)stopAll();
   state.tab=tab;state.confirmDel=null;
   try{history.replaceState(null,"","#"+tab);}catch(e){}
   render();window.scrollTo(0,0);
 }
-
-/* ---------- 備份 ---------- */
 function exportBackup(){
-  var data=JSON.stringify({app:"321生命操練",version:1,exported:new Date().toISOString(),entries:entries},null,1);
+  var data=JSON.stringify({app:"321生命操練",version:2,exported:new Date().toISOString(),entries:entries,hl:HL,fav:FAV},null,1);
   try{
     var blob=new Blob([data],{type:"application/json"}),url=URL.createObjectURL(blob),a=document.createElement("a");
-    a.href=url;a.download="321生命操練備份-"+TODAY+".json";document.body.appendChild(a);a.click();
+    a.href=url;a.download=(isEN()?"321life-backup-":"321生命操練備份-")+TODAY+".json";document.body.appendChild(a);a.click();
     setTimeout(function(){document.body.removeChild(a);URL.revokeObjectURL(url);},1000);
-    toast("已匯出備份檔");
-  }catch(e){toast("這個瀏覽器無法下載檔案，請改用 Safari 或 Chrome 開啟");}
+    toast(T("已匯出備份檔"));
+  }catch(e){toast(T("這個瀏覽器無法下載檔案，請改用 Safari 或 Chrome 開啟"));}
 }
 function importBackup(file){
   var rd=new FileReader();
@@ -836,13 +977,13 @@ function importBackup(file){
       var seen={},i,added=0;
       for(i=0;i<entries.length;i++)seen[entries[i].id]=1;
       for(i=0;i<list.length;i++){if(list[i]&&list[i].id&&!seen[list[i].id]){entries.push(list[i]);seen[list[i].id]=1;added++;}}
-      saveAll();render();toast("已匯入 "+added+" 筆記錄");
-    }catch(e){toast("這不是 321生命操練的備份檔，請重新選擇");}
+      if(obj.hl&&typeof obj.hl==="object"){for(var k in obj.hl){if(obj.hl.hasOwnProperty(k)&&!HL[k])HL[k]=obj.hl[k];}saveHL();}
+      if(obj.fav&&obj.fav.length){eachA(obj.fav,function(f){if(f&&f.text&&!isFav(f.text))FAV.push(f);});saveFav();}
+      saveAll();render();toast(T("已匯入 {0} 筆記錄",added));
+    }catch(e){toast(T("這不是 321生命操練的備份檔，請重新選擇"));}
   };
   rd.readAsText(file);
 }
-
-/* ---------- 事件 ---------- */
 $("tabs").addEventListener("click",function(e){var b=closestBtn(e.target,this);if(b)go(b.getAttribute("data-tab"));});
 app.addEventListener("input",function(){if(state.tab==="journal")saveJournalDraft();else if(state.tab==="check")ckSaveDraft();});
 app.addEventListener("change",function(e){
@@ -850,12 +991,18 @@ app.addEventListener("change",function(e){
   else if(state.tab==="journal")saveJournalDraft();
 });
 app.addEventListener("click",function(e){
+  var sn=e.target;while(sn&&sn!==app&&!(sn.className&&String(sn.className).indexOf("sent")===0))sn=sn.parentNode;
+  if(sn&&sn!==app&&!closestBtn(e.target,app)){onSentTap(sn);return;}
+  var nt=e.target;while(nt&&nt!==app&&!(nt.className==="hl-note"))nt=nt.parentNode;
+  if(nt&&nt!==app){var own=sentByKey(nt.getAttribute("data-hk"));if(own)openHlSheet(own);return;}
   var b=closestBtn(e.target,app);if(!b)return;
   var at=function(n){return b.getAttribute("data-"+n);},S,mode,i;
   if(at("ck")){ckClick(b);return;}
+  if(at("cka")){ckAct(at("cka"),+at("i"));return;}
+  if(at("mk")){marksAct(b);return;}
   if(at("ckask")){if(ck.show)ckAskMore(ck.show,at("ckask"));return;}
   if(at("ckopen")){ck.show=at("ckopen");ck.err="";ck.askDraft="";ck.askErr="";render();window.scrollTo(0,0);return;}
-  if(at("emo")){var ta=$("c-feel");if(ta){var w=at("emo");ta.value=ta.value.replace(/\s+$/,"")+(ta.value.replace(/\s/g,"")?"、":"")+w;ckSaveDraft();}return;}
+  if(at("emo")){var ta=$("c-feel");if(ta){var w=at("emo");ta.value=ta.value.replace(/\s+$/,"")+(ta.value.replace(/\s/g,"")?(isEN()?", ":"、"):"")+w;ckSaveDraft();}return;}
   if(at("go")){if(at("jm")){state.jmode=at("jm");jdraft=null;}go(at("go"));return;}
   if(at("pick")){
     S=state[state.tab];var id=at("pick"),sel=[];
@@ -871,50 +1018,752 @@ app.addEventListener("click",function(e){
     mode=at("finish");S=state[mode];var scores={},any=false;
     for(i=0;i<S.sel.length;i++){var aa=S.ans[S.sel[i]]||[];if(answeredCount(aa)===5){scores[S.sel[i]]=aa.slice();any=true;}}
     if(!any)return;
-    var rec={id:mode+"-"+new Date().getTime(),kind:mode,date:TODAY,ts:new Date().getTime(),scores:scores};
-    if(!putEntry(rec)){toast("儲存失敗：瀏覽器不允許儲存資料，請關閉無痕模式後再試");return;}
+    var rec={id:mode+"-"+now(),kind:mode,date:TODAY,ts:now(),scores:scores};
+    if(!putEntry(rec)){toast(T(SAVE_FAIL));return;}
     S.done=rec;for(var sid in scores){if(scores.hasOwnProperty(sid))delete S.ans[sid];}
-    lsSet("r321-draft-"+mode,S.ans);render();window.scrollTo(0,0);toast("已儲存");return;
+    lsSet("r321-draft-"+mode,S.ans);stopAll();render();window.scrollTo(0,0);toast(T("已儲存"));return;
   }
-  if(at("again")){state[at("again")].done=null;render();window.scrollTo(0,0);return;}
-  if(at("jmode")){state.jmode=at("jmode");jdraft=null;render();return;}
+  if(at("again")){state[at("again")].done=null;stopAll();render();window.scrollTo(0,0);return;}
+  if(at("jmode")){if(state.jmode!=="marks")saveJournalDraft();state.jmode=at("jmode");if(jdraft&&jdraft.mode!==state.jmode)jdraft=null;render();return;}
   if(at("fruit")){b.setAttribute("aria-pressed",b.getAttribute("aria-pressed")==="true"?"false":"true");saveJournalDraft();return;}
   if(at("ask")){state.confirmDel=at("ask");keepScroll();return;}
   if(at("cancel")){state.confirmDel=null;keepScroll();return;}
-  if(at("del")){if(ck.show===at("del"))ck.show=null;delEntry(at("del"));state.confirmDel=null;keepScroll();toast("已刪除");return;}
+  if(at("del")){if(ck.show===at("del"))ck.show=null;delEntry(at("del"));state.confirmDel=null;keepScroll();toast(T("已刪除"));return;}
   if(at("export")){exportBackup();return;}
   if(at("import")){$("importFile").click();return;}
   if(b.id==="j-save"){
     var j=saveJournalDraft();
-    if(!j.a.replace(/\s/g,"")&&!j.b.replace(/\s/g,"")&&!j.d.replace(/\s/g,"")){toast("請至少寫下一欄內容");return;}
-    var trim=function(s){return s.replace(/^\s+|\s+$/g,"");};
-    var r={id:j.mode+"-"+new Date().getTime(),kind:j.mode,date:TODAY,ts:new Date().getTime(),area:j.area,a:trim(j.a),b:trim(j.b),c:trim(j.c),d:trim(j.d),fruits:j.fruits};
-    if(!putEntry(r)){toast("儲存失敗：瀏覽器不允許儲存資料，請關閉無痕模式後再試");return;}
-    jdraft=null;render();toast("已儲存，榮耀歸給耶穌");
+    if(!j.a.replace(/\s/g,"")&&!j.b.replace(/\s/g,"")&&!j.d.replace(/\s/g,"")){toast(T("請至少寫下一欄內容"));return;}
+    var r={id:j.mode+"-"+now(),kind:j.mode,date:TODAY,ts:now(),area:j.area,a:trim(j.a),b:trim(j.b),c:trim(j.c),d:trim(j.d),fruits:j.fruits};
+    if(!putEntry(r)){toast(T(SAVE_FAIL));return;}
+    jdraft=null;render();toast(T("已儲存，榮耀歸給耶穌"));
   }
 });
-render();
-
-/* ---------- 離線與自動更新 ---------- */
-if("serviceWorker" in navigator&&location.protocol!=="file:"){
-  window.addEventListener("load",function(){
-    navigator.serviceWorker.register("sw.js").then(function(reg){
-      reg.addEventListener("updatefound",function(){
-        var nw=reg.installing;if(!nw)return;
-        nw.addEventListener("statechange",function(){
-          if(nw.state==="installed"&&navigator.serviceWorker.controller){$("updbar").hidden=false;}
-        });
-      });
-    })["catch"](function(){});
-    var reloaded=false;
-    navigator.serviceWorker.addEventListener("controllerchange",function(){if(reloaded)return;reloaded=true;location.reload();});
-  });
-  $("updbtn").addEventListener("click",function(){
-    navigator.serviceWorker.getRegistration().then(function(reg){
-      if(reg&&reg.waiting)reg.waiting.postMessage("skip");else location.reload();
+var APPVER="2.0.202610131251";
+var SVC={xz:XI_ENDPOINT,tts:"https://azure-tts.spch321.workers.dev",model:XI_MODEL};
+var VOICES={
+  zh:[["zh-TW-YunJheNeural","雲哲"],["zh-CN-Yunfan:DragonHDLatestNeural","雲帆"],["zh-CN-Xiaochen:DragonHDLatestNeural","曉辰"]],
+  zs:[["zh-CN-Yunfan:DragonHDLatestNeural","雲帆"],["zh-CN-Xiaochen:DragonHDLatestNeural","曉辰"],["zh-TW-YunJheNeural","雲哲"]],
+  en:[["en-US-AndrewNeural","Andrew"],["en-US-EmmaNeural","Emma"],["en-US-BrianNeural","Brian"]]};
+var RATES=["+0%","-12%","+12%"];
+var HL=lsGet("r321-life-hl",{}),FAV=lsGet("r321-life-fav",[]),CHAT=lsGet("r321-life-chat",[]);
+function saveHL(){lsSet("r321-life-hl",HL);}
+function saveFav(){lsSet("r321-life-fav",FAV);}
+function saveChat(){if(CHAT.length>60)CHAT=CHAT.slice(-60);lsSet("r321-life-chat",CHAT);}
+if(SET.human==null)SET.human=true;if(!SET.aud)SET.aud="adult";
+function loadPack(l,cb){
+  if(l==="zh"||PACK[l]){cb();return;}
+  var key="r321-life-pack-"+l,c=lsGet(key,null);
+  if(c&&c.v===APPVER&&c.d){PACK[l]=c.d;cb();return;}
+  var x=new XMLHttpRequest(),fin=false;
+  function end(){if(fin)return;fin=true;if(!PACK[l]&&c&&c.d)PACK[l]=c.d;cb();}
+  try{x.open("GET","lang-"+l+".json?v="+APPVER,true);x.timeout=12000;
+    x.onload=function(){if(x.status>=200&&x.status<300){try{PACK[l]=JSON.parse(x.responseText);lsSet(key,{v:APPVER,d:PACK[l]});}catch(e){}}end();};
+    x.onerror=x.ontimeout=end;x.send();}catch(e){end();}
+}
+var FONT_URL={zs:"https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;800&family=Noto+Sans+SC:wght@400;500;700&display=swap"};
+function applyChrome(){
+  var h=document.documentElement;
+  eachA(["fs-lg","fs-xl","fs-xxl"],function(c){h.classList.remove(c);});
+  var F=["","fs-lg","fs-xl","fs-xxl"][SET.font||0];if(F)h.classList.add(F);
+  h.setAttribute("lang",isEN()?"en":(isZS()?"zh-Hans":"zh-Hant-TW"));h.setAttribute("data-lang",L());
+  if(SET.theme)h.setAttribute("data-theme",SET.theme);else h.removeAttribute("data-theme");
+  if(FONT_URL[L()]&&!$("font-"+L())){var ln=document.createElement("link");ln.rel="stylesheet";ln.id="font-"+L();ln.href=FONT_URL[L()];document.head.appendChild(ln);}
+  document.title=T("321生命操練");
+  var hd=$("hdtitle");if(hd)hd.textContent=T("生命操練");
+  eachA(qa("#langsw button"),function(b){b.className=b.getAttribute("data-l")===L()?"on":"";});
+  var nb=qa("#tabs button");var NL=["今日","生命健檢","檢視舊人","操練新人","成長","日記"];
+  eachA(nb,function(b,i){var sp=b.querySelector("span");if(sp)sp.textContent=T(NL[i]);});
+  $("tabs").setAttribute("aria-label",T("主選單"));
+  var fb=$("fabxz");if(fb)fb.setAttribute("aria-label",T("問小智"));
+  drawFab();
+}
+function switchLang(l){
+  if(l===L())return;stopAll();closeSheet();
+  if(state.tab==="journal")saveJournalDraft();
+  SET.lang=l;saveSet();
+  loadPack(l,function(){applyChrome();render();if(XZ.open)drawXz();toast(T("已切換為繁體中文"));});
+}
+function cycleFont(){SET.font=((SET.font||0)+1)%4;saveSet();applyChrome();toast(T("字級：{0}",T(["標準","大","特大","超大"][SET.font])));if($("setsheet"))openSettings();}
+function closeSheet(){var m=$("sheet");if(m)m.parentNode.removeChild(m);hlCur=null;}
+function openSheet(html,id){
+  closeSheet();var m=document.createElement("div");m.id="sheet";m.className="sheet-mask";
+  m.innerHTML='<div class="sheet-card" role="dialog" aria-modal="true"'+(id?' id="'+id+'"':'')+'>'+html+'</div>';
+  document.body.appendChild(m);m.onclick=function(e){if(e.target===m)closeSheet();};return m;
+}
+function hlOpen(){return !!$("sheet");}
+function segBtns(name,opts,cur){var h='<div class="segx">';eachA(opts,function(o){h+='<button data-set="'+name+'" data-v="'+o[0]+'" class="'+(String(o[0])===String(cur)?"on":"")+'">'+esc(o[1])+'</button>';});return h+'</div>';}
+function openSettings(){
+  var vs=[];eachA(VOICES[L()],function(v,i){vs.push([i,v[1]]);});
+  openSheet('<div class="sheet-title">'+T("設定")+'<button class="sheet-x" data-sa="close" aria-label="'+T("關閉")+'">✕</button></div>'+
+    '<div class="setrow"><span>'+T("語言")+'</span>'+segBtns("lang",[["zh","繁體"],["zs","简体"],["en","English"]],L())+'</div>'+
+    '<div class="setrow"><span>'+T("字級")+'</span>'+segBtns("font",[[0,T("標準")],[1,T("大")],[2,T("特大")],[3,T("超大")]],SET.font||0)+'</div>'+
+    '<div class="setrow"><span>'+T("主題")+'</span>'+segBtns("theme",[["",T("自動")],["light",T("淺色")],["dark",T("深色")]],SET.theme||"")+'</div>'+
+    '<div class="setrow"><span>'+T("朗讀語音")+'</span>'+segBtns("voice",vs,SET.voice||0)+'</div>'+
+    '<div class="setrow"><span>'+T("朗讀速度")+'</span>'+segBtns("rate",[[1,T("慢")],[0,T("正常")],[2,T("快")]],SET.rate||0)+'</div>'+
+    '<div class="setrow"><span>'+T("真人語音")+'</span>'+segBtns("human",[[1,T("開")],[0,T("關（用手機內建語音）")]],SET.human?1:0)+'</div>'+
+    '<div class="setrow"><span>'+T("小智回答對象")+'</span>'+segBtns("aud",[["adult",T("🧑 成人")],["teen",T("🧒 青少年")],["kid",T("🧸 兒童")],["seeker",T("🌱 慕道友")]],SET.aud)+'</div>'+
+    '<div class="row" style="margin-top:6px"><button class="btn ghost wide" data-sa="marks">'+T("我的畫線與收藏")+'</button><button class="btn ghost wide" data-sa="backup">'+T("備份與還原")+'</button></div>'+
+    '<div class="setver"><span>'+T("版本")+' '+esc(APPVER)+'</span><span><button class="linkbtn" data-sa="chk">'+T("檢查更新")+'</button><button class="linkbtn" data-sa="hard">'+T("強制更新")+'</button></span></div>','setsheet');
+}
+function setClick(b){
+  var n=b.getAttribute("data-set"),v=b.getAttribute("data-v");
+  if(n==="lang"){switchLang(v);setTimeout(openSettings,60);return;}
+  if(n==="font"){SET.font=+v;saveSet();applyChrome();}
+  else if(n==="theme"){SET.theme=v;saveSet();applyChrome();}
+  else if(n==="voice"){SET.voice=+v;saveSet();stopAll();speakText(T("平安！我來為你朗讀。"),"try");}
+  else if(n==="rate"){SET.rate=+v;saveSet();stopAll();}
+  else if(n==="human"){SET.human=v==="1";saveSet();stopAll();}
+  else if(n==="aud"){SET.aud=v;saveSet();if(XZ.open)drawXz();}
+  toast(T("已更新設定"));openSettings();
+}
+function audLine(){
+  var a=SET.aud||"adult";if(a==="adult")return "";
+  if(isEN())return {teen:"\n\n[AUDIENCE: TEENAGER] Talk like a friend: humorous and light, a little playful, never preachy or flippant, never joke about God or the Bible. Keep it short.",
+    kid:"\n\n[AUDIENCE: CHILD 5-11] Very simple words, short sentences, like telling a story; one idea per sentence; no hard terms.",
+    seeker:"\n\n[AUDIENCE: SEEKER, NOT YET A CHRISTIAN] Start from their situation and questions, then bring in Scripture; use everyday words, no church jargon or insider 321 terms (explain any needed word right away); honest, respectful, no pressure, do not ask them to believe right now; clearly say who God is and what Jesus did for us; always give one or two small steps they can try this week; offer prayer only as an invitation (if you wish, you could say to God...)."}[a]||"";
+  return {teen:"\n\n【回答對象：青少年】像朋友聊天、幽默風趣、可以有一點梗，但不說教、不輕浮、不拿神和聖經開玩笑；簡短。",
+    kid:"\n\n【回答對象：兒童】非常淺顯、短句、像說故事、一句只講一件事、不用艱深名詞。",
+    seeker:"\n\n【回答對象：慕道友】站在未信主者的立場；從他的處境與疑問切入，再帶到經文；用最平常的話，不出現「無己、作王、得勝、屬靈」這類內部用語，也不用教會與神學術語（必須用的詞馬上用生活說法解釋）；誠實、尊重、不說教、不施壓、不要求現在就相信；清楚說出神是怎樣的神、耶穌為我們做了什麼；一定給一兩個這個星期自己就能試的小步驟；禱告只當作「若你願意可以這樣對神說」的邀請。"}[a]+(isZS()?"（以上请用简体中文回答）":"");
+}
+var HL_COLORS=["gold","green","blue","pink","purple","maroon","brown","charcoal"];
+var HL_SWATCH={gold:"#D9B168",green:"#6FAE71",blue:"#6C93D1",pink:"#E58FA0",purple:"#A48AC9",maroon:"#8C4A4E",brown:"#8A6740",charcoal:"#54534E"};
+var hlCur=null;
+function sentList(){return qa(".sent",app);}
+function hlKeyOf(el){return L()+"|"+el.getAttribute("data-k")+"|"+el.getAttribute("data-s");}
+function sentByKey(k){if(!k)return null;var p=k.split("|");if(p.length<3)return null;var s=p.pop(),hk=p.slice(1).join("|");
+  var l=sentList();for(var i=0;i<l.length;i++){if(l[i].getAttribute("data-k")===hk&&l[i].getAttribute("data-s")===s)return l[i];}return null;}
+function blkOf(el){var n=el.parentNode;while(n&&n!==app&&!/^(P|BLOCKQUOTE|LI|DD|H2|H3)$/.test(n.tagName))n=n.parentNode;return n&&n!==app?n:el.parentNode;}
+function hlRef(el){
+  var bq=el.parentNode;if(bq&&bq.tagName==="BLOCKQUOTE"){var c=bq.querySelector("cite");if(c)return c.textContent;}
+  var n=el;while(n&&n!==app&&!(n.tagName==="P"&&n.querySelector&&n.querySelector(".rd")))n=n.parentNode;
+  if(n&&n!==app&&n.tagName==="P"){var r=n.querySelector(".rd");if(r)return trim(r.textContent).replace(/^[（(]|[）)]$/g,"");}
+  var sec=el;while(sec&&sec!==app&&!(sec.className&&/\bcard\b/.test(sec.className)))sec=sec.parentNode;
+  var eb=sec&&sec!==app?sec.querySelector(".eyebrow"):null;
+  var tabN={home:"今日",check:"生命健檢",exam:"檢視舊人",train:"操練新人",growth:"成長",journal:"日記"}[state.tab];
+  return T(tabN)+(eb?DOT()+trim(eb.textContent):"");
+}
+function hlText(els){var t="";eachA(els,function(e){t+=e.textContent+(isEN()?" ":"");});return trim(t.replace(/\s+/g," "));}
+function sameBlockRun(el){var l=sentList(),i=l.indexOf(el),k=el.getAttribute("data-k"),o=[];for(var j=i;j<l.length&&l[j].getAttribute("data-k")===k;j++)o.push(l[j]);return o;}
+function spanApply(el,h,n){var run=sameBlockRun(el);n=Math.max(1,Math.min(n,run.length));h.sp=n;h.t=hlText(run.slice(0,n));h.ref=hlRef(el);return h;}
+function onSentTap(el){
+  if(el.getAttribute("data-op")){var own=sentByKey(el.getAttribute("data-op"));if(own){openHlSheet(own);return;}}
+  var k=hlKeyOf(el);
+  if(!HL[k]){
+    var h={c:SET.hlc||"gold",n:"",sp:1,t:"",ref:"",hk:el.getAttribute("data-k"),s:+el.getAttribute("data-s"),lang:L(),tab:state.tab,ts:now()};
+    spanApply(el,h,1);HL[k]=h;saveHL();paintHl();toast(T("已畫線，再點一下可以換色、寫默想"));
+  }else openHlSheet(el);
+}
+function paintHl(){
+  var list=sentList(),cover=[];
+  eachA(list,function(el,i){var k=hlKeyOf(el),h=HL[k];if(!h)return;var n=Math.max(1,+h.sp||1);
+    for(var d=0;d<n&&i+d<list.length&&list[i+d].getAttribute("data-k")===el.getAttribute("data-k");d++)cover[i+d]={h:h,head:d===0,k:k};});
+  eachA(list,function(el,i){var o=cover[i];
+    if(o){el.setAttribute("data-hl","1");el.setAttribute("data-color",o.h.c);if(o.head)el.removeAttribute("data-op");else el.setAttribute("data-op",o.k);}
+    else{el.removeAttribute("data-hl");el.removeAttribute("data-color");el.removeAttribute("data-op");}});
+  eachA(qa(".hl-note",app),function(n){n.parentNode.removeChild(n);});
+  var lastB=null,after=null;
+  eachA(list,function(el,i){var o=cover[i];if(!o||!o.head||!o.h.n)return;var b=blkOf(el);
+    var d=document.createElement("div");d.className="hl-note";d.setAttribute("data-color",o.h.c);d.setAttribute("data-hk",o.k);d.textContent=o.h.n;
+    if(b.tagName==="LI"||b.tagName==="DD"||b.tagName==="H2"||b.tagName==="H3"){if(b.tagName==="LI"||b.tagName==="DD")b.appendChild(d);else b.parentNode.insertBefore(d,b.nextSibling);return;}
+    if(b!==lastB){lastB=b;after=b;}
+    after.parentNode.insertBefore(d,after.nextSibling);after=d;});
+}
+function openHlSheet(el){
+  var k=hlKeyOf(el),h=HL[k];if(!h)return;
+  var sw="";eachA(HL_COLORS,function(c){sw+='<button class="hlswatch'+(h.c===c?" on":"")+'" data-ha="c" data-c="'+c+'" style="background:'+HL_SWATCH[c]+'" aria-label="'+c+'"></button>';});
+  openSheet('<div class="sheet-title">'+T("畫線")+'<span class="sheet-ref" id="hlRef">'+esc(h.ref)+'</span><button class="sheet-x" data-ha="close" aria-label="'+T("關閉")+'">✕</button></div>'+
+    '<p class="sheet-quote" id="hlQuote">'+esc(h.t)+'</p>'+
+    '<div class="sheet-row"><span class="sheet-lab">'+T("顏色")+'</span><div class="swatches">'+sw+'</div></div>'+
+    '<div class="sheet-row"><span class="sheet-lab">'+T("範圍")+'</span><div class="spanrow"><button class="spanbtn" data-ha="sp" data-d="-1" aria-label="'+T("少一句")+'">－</button><span class="spannum" id="hlNum">'+esc(T("{0} 句",h.sp))+'</span><button class="spanbtn" data-ha="sp" data-d="1" aria-label="'+T("多一句")+'">＋</button><button class="spanbtn wide" data-ha="sp" data-d="p">'+T("整段")+'</button></div></div>'+
+    '<textarea class="sheet-ta" id="hlNote" placeholder="'+esc(T("寫下你的默想、領受或要操練的一步……"))+'">'+esc(h.n||"")+'</textarea>'+
+    '<div class="sheet-acts"><button class="btn new" data-ha="save">'+T("儲存")+'</button><button class="btn ghost" data-ha="ask">💬 '+T("問小智")+'</button></div>'+
+    '<div class="sheet-acts2"><button class="btn sm" data-ha="read">🔊 '+T("朗讀這句")+'</button><button class="btn sm" data-ha="from">▶ '+T("從這裡朗讀")+'</button><button class="btn sm" data-ha="copy">⧉ '+T("複製")+'</button><button class="btn sm" data-ha="share">↗ '+T("分享")+'</button><button class="btn sm danger" data-ha="del">✕ '+T("刪除")+'</button></div>');
+  hlCur={el:el,k:k,h:h};
+}
+function hlNoteGrab(){var ta=$("hlNote");if(ta&&hlCur){hlCur.h.n=trim(ta.value);saveHL();}}
+function hlShareText(h){return Q(h.t)+"\n—— "+h.ref+(h.n?"\n\n"+h.n:"")+"\n\n"+T("321生命操練")+" · "+T("國度321空中團契")+"\nhttps://spch321-sudo.github.io/321life/";}
+function hlClick(b){
+  if(!hlCur)return;var a=b.getAttribute("data-ha"),h=hlCur.h,el=hlCur.el;
+  if(a==="close"){hlNoteGrab();closeSheet();paintHl();return;}
+  if(a==="c"){h.c=b.getAttribute("data-c");SET.hlc=h.c;saveSet();saveHL();paintHl();eachA(qa(".hlswatch"),function(s){s.className="hlswatch"+(s===b?" on":"");});return;}
+  if(a==="sp"){var d=b.getAttribute("data-d"),n,run=sameBlockRun(el);
+    if(d==="p"){n=run.length;toast(n===h.sp?T("這一段已經整段畫起來了"):T("已畫整段，共 {0} 句",n));}else{n=(h.sp||1)+(+d);if(n>run.length)toast(T("已經到這一段的最後一句"));}
+    spanApply(el,h,n);saveHL();paintHl();$("hlQuote").textContent=h.t;$("hlNum").textContent=T("{0} 句",h.sp);return;}
+  if(a==="save"){hlNoteGrab();closeSheet();paintHl();toast(T("已儲存"));return;}
+  if(a==="ask"){hlNoteGrab();closeSheet();paintHl();openXz(T("請就這句幫助我默想，並用 321 給我今天可以操練的一步：{0}",Q(h.t))+(h.n?"\n"+T("我的領受：{0}",h.n):""),{t:h.t,ref:h.ref});return;}
+  if(a==="read"){hlNoteGrab();closeSheet();paintHl();speakText(h.t,"hl");return;}
+  if(a==="from"){hlNoteGrab();closeSheet();paintHl();ttsPage(el);return;}
+  if(a==="copy"){copyText(hlShareText(h));return;}
+  if(a==="share"){shareText(hlShareText(h));return;}
+  if(a==="del"){delete HL[hlCur.k];saveHL();closeSheet();paintHl();toast(T("已刪除畫線"));return;}
+}
+function copyText(t){
+  function fb(){try{var ta=document.createElement("textarea");ta.value=t;ta.style.position="fixed";ta.style.opacity="0";document.body.appendChild(ta);ta.select();document.execCommand("copy");document.body.removeChild(ta);toast(T("已複製"));}catch(e){toast(T("無法複製"));}}
+  try{if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){toast(T("已複製"));},fb);return;}}catch(e){}fb();
+}
+function shareText(t){try{if(navigator.share){navigator.share({text:t})["catch"](function(){});return;}}catch(e){}copyText(t);}
+function marksHTML(){
+  var arr=[],h="",k;for(k in HL){if(HL.hasOwnProperty(k)&&(HL[k].lang||"zh")===L())arr.push([k,HL[k]]);}
+  arr.sort(function(a,b){return b[1].ts-a[1].ts;});
+  h+='<section class="card"><div class="eyebrow">'+T("我的畫線（{0}）",arr.length)+'</div>';
+  if(!arr.length)h+='<p class="empty" style="margin:0">'+T("還沒有畫線。在經文、題目、禱告或健檢結果上點一下任何一句，就會畫起來。")+'</p>';
+  eachA(arr,function(e){var x=e[1];
+    h+='<div class="hitem"><div class="q" data-color="'+x.c+'">'+esc(x.t)+'</div>'+(x.n?'<div class="n">'+esc(x.n)+'</div>':'')+
+      '<div class="m"><span>'+esc(x.ref)+'</span><span><button class="linkbtn" data-mk="go" data-k="'+esc(e[0])+'">'+T("回到原處")+'</button><button class="linkbtn" data-mk="read" data-k="'+esc(e[0])+'">🔊</button><button class="linkbtn danger" data-mk="del" data-k="'+esc(e[0])+'">✕</button></span></div></div>';});
+  h+='</section><section class="card"><div class="eyebrow">'+T("小智收藏（{0}）",FAV.length)+'</div>';
+  if(!FAV.length)h+='<p class="empty" style="margin:0">'+T("在小智的回答下按「★ 收藏」，就會存在這裡。")+'</p>';
+  for(var i=FAV.length-1;i>=0;i--){var f=FAV[i];
+    h+='<div class="hitem">'+(f.q?'<div class="small">'+esc(f.q)+'</div>':'')+'<div class="md">'+mdHTML(f.text)+'</div><div class="m"><span>'+(f.ts?fmtDate(dkey(new Date(f.ts))):'')+'</span><span><button class="linkbtn" data-mk="fread" data-i="'+i+'">🔊</button><button class="linkbtn" data-mk="fshare" data-i="'+i+'">↗</button><button class="linkbtn danger" data-mk="fdel" data-i="'+i+'">✕</button></span></div></div>';}
+  return h+'</section>';
+}
+function marksAct(b){
+  var a=b.getAttribute("data-mk"),k=b.getAttribute("data-k"),i=+b.getAttribute("data-i");
+  if(a==="go"){hlGo(k);return;}
+  if(a==="read"){if(HL[k])speakText(HL[k].t+(HL[k].n?"。"+HL[k].n:""),"mk");return;}
+  if(a==="del"){delete HL[k];saveHL();keepScroll();toast(T("已刪除畫線"));return;}
+  if(a==="fread"){if(FAV[i])speakText(mdSpeak(FAV[i].text),"fav");return;}
+  if(a==="fshare"){if(FAV[i])shareText(mdStrip(FAV[i].text)+"\n\n—— "+T("國度321空中團契"));return;}
+  if(a==="fdel"){FAV.splice(i,1);saveFav();keepScroll();toast(T("已刪除"));return;}
+}
+function hlGo(k){
+  var h=HL[k];if(!h)return;var hk=h.hk||"",p=hk.split(":"),tab=h.tab||"home";
+  if(p[0]==="h")tab="home";else if(p[0]==="g")tab="growth";
+  else if(p[0]==="p"||p[0]==="r"){tab=p[1];if(p[0]==="p"){state[tab].done=null;if(G[p[2]]&&!has(state[tab].sel,p[2]))state[tab].sel.push(p[2]);}}
+  else if(p[0]==="c")tab="check";
+  go(tab);
+  if(p[0]==="c"&&p[1]!=="form"&&ckFind(p[1])){ck.show=p[1];render();}
+  setTimeout(function(){var el=sentByKey(k);
+    if(el){try{el.scrollIntoView({block:"center"});}catch(e){}el.className+=" flash";setTimeout(function(){el.className=el.className.replace(/\s*flash/g,"");},1600);}
+    else toast(T("原處目前不在畫面上（例如結果頁已關閉）"));},60);
+}
+function mdInline(t){
+  return esc(t).replace(/\*\*([^*]+)\*\*/g,"<strong>$1</strong>").replace(/__([^_]+)__/g,"<strong>$1</strong>").replace(/(^|[^*])\*([^*\n]+)\*/g,"$1<em>$2</em>");
+}
+function tbRow(x){return /^\s*\|.*\|\s*$/.test(x);}
+function tbSep(x){return /^\s*\|[\s:|\-]+\|\s*$/.test(x)&&x.indexOf("-")>=0;}
+function tbCells(x){var a=trim(x).replace(/^\||\|$/g,"").split("|"),o=[];eachA(a,function(c){o.push(trim(c));});return o;}
+function mdTableMap(src,fmt){
+  var Ls=String(src||"").split("\n"),out=[],i=0;
+  while(i<Ls.length){
+    if(tbRow(Ls[i])&&i+1<Ls.length&&tbSep(Ls[i+1])){var head=tbCells(Ls[i]);i+=2;var rows=[];while(i<Ls.length&&tbRow(Ls[i])){rows.push(tbCells(Ls[i]));i++;}out.push(rows.length?fmt(head,rows):head.join(" "));continue;}
+    out.push(Ls[i]);i++;
+  }
+  return out.join("\n");
+}
+function mdHTML(src){
+  var tabs=[];
+  var s=mdTableMap(String(src||"").replace(/```[a-z]*/g,"").replace(/\r/g,""),function(head,rows){
+    var t='<table class="mdtb"><thead><tr>';eachA(head,function(c){t+="<th>"+mdInline(c)+"</th>";});t+="</tr></thead><tbody>";
+    eachA(rows,function(r){t+="<tr>";eachA(r,function(c){t+="<td>"+mdInline(c)+"</td>";});t+="</tr>";});tabs.push(t+"</tbody></table>");return "\u0001"+(tabs.length-1);});
+  var Ls=s.split("\n"),o="",list=null,i,m,ln;
+  function endList(){if(list){o+="</"+list+">";list=null;}}
+  for(i=0;i<Ls.length;i++){ln=Ls[i].replace(/\s+$/,"");
+    if(!ln.replace(/\s/g,"")){endList();continue;}
+    if((m=ln.match(/^\u0001(\d+)$/))){endList();o+='<div class="tbwrap">'+tabs[+m[1]]+'</div>';continue;}
+    if((m=ln.match(/^\s*#{1,6}\s+(.*)$/))){endList();o+="<h4>"+mdInline(m[1].replace(/\*\*/g,""))+"</h4>";continue;}
+    if(/^\s*(-{3,}|\*{3,})\s*$/.test(ln)){endList();o+="<hr>";continue;}
+    if((m=ln.match(/^\s*>\s?(.*)$/))){endList();o+="<blockquote>"+mdInline(m[1])+"</blockquote>";continue;}
+    if((m=ln.match(/^\s*[-*•・]\s+(.*)$/))){if(list!=="ul"){endList();o+="<ul>";list="ul";}o+="<li>"+mdInline(m[1])+"</li>";continue;}
+    if((m=ln.match(/^\s*(\d+)[.、)]\s*(.*)$/))){if(list!=="ol"){endList();o+=(+m[1]>1?'<ol start="'+(+m[1])+'">':"<ol>");list="ol";}o+="<li>"+mdInline(m[2])+"</li>";continue;}
+    endList();
+    if(/^\s*\*\*(得勝的下一步|得胜的下一步|Next step)/i.test(ln)){o+='<p class="next">'+mdInline(ln)+"</p>";continue;}
+    o+="<p>"+mdInline(ln)+"</p>";
+  }
+  endList();return o;
+}
+function mdStrip(x){
+  return trim(mdTableMap(String(x||""),function(head,rows){var ls=[],hh=[];eachA(head,function(c){if(c)hh.push(c);});if(hh.length)ls.push(hh.join(" → "));eachA(rows,function(r){var r2=[];eachA(r,function(c){if(c)r2.push(c);});ls.push("・"+r2.join(" → "));});return ls.join("\n");})
+    .replace(/^#{1,6} /gm,"").replace(/\*\*([\s\S]+?)\*\*/g,"$1").replace(/\*([\s\S]+?)\*/g,"$1").replace(/\*/g,"")
+    .replace(/^> ?/gm,"").replace(/^---+$/gm,"").replace(/^[-*] /gm,"・").replace(/`+/g,"").replace(/\n{3,}/g,"\n\n"));
+}
+var NUMZH = ['第一', '第二', '第三', '第四', '第五', '第六', '第七', '第八', '第九', '第十'], NUMEN = ['First', 'Second', 'Third', 'Fourth', 'Fifth', 'Sixth', 'Seventh', 'Eighth', 'Ninth', 'Tenth'];
+var CNUM = '一二三四五六七八九十';
+function endP(t) { t = trim(t); return !t ? '' : (/[。！？.!?：:」』”]$/.test(t) ? t : t + (isEN() ? '.' : '。')); }
+function mdTok(t) {
+  var m, b = t.match(/^\*\*([^*]+)\*\*[：:]?$/), u = b ? trim(b[1]) : t;
+  if ((m = u.match(/^(\d{1,2})[.、）)．]\s*(.+)$/)) || (m = u.match(/^[（(]?([一二三四五六七八九十])[)）、.．]\s*(.+)$/))) {
+    var n = /\d/.test(m[1]) ? +m[1] : CNUM.indexOf(m[1]) + 1; return { k: 'li', n: n, t: m[2], hd: !!b };
+  }
+  if ((m = t.match(/^(?:[-*+]\s+|・\s*|•\s*)(.+)$/))) return { k: 'li', n: 0, t: m[1] };
+  return { k: 'p', t: t };
+}
+var LEADW = /^(首先|其次|另外|還有|还有|再來|再来|最後|最后|第[一二三四五六七八九十]|一方面|另一方面|同時|同时|此外|所以|因此|First|Second|Third|Also|Next|Finally|Then|Another)/i;
+var STEPW = /步驟|步骤|方法|做法|行動|行动|怎麼做|怎么做|如何|操練|操练|練習|练习|(兩|两|二|三|四|五|六|七|幾|几)(個|个|件|點|点|步|方面|種|种)|steps?|ways|how to|practices|things/i;
+function mdSpeak(md) {
+  var zh = !isEN(), nq = 0, SP = zh ? '' : ' ';
+  var src = mdTableMap(String(md || '').replace(/(\d)️?⃣/g, '$1. ').replace(EMOJI_RE, ''), function (head, rows) {
+    var out = [zh ? '我們用一個對照來整理。' : 'Let us lay this out side by side.'];
+    eachA(rows, function (r, ri) {
+      var p = [], lead = trim(r[0] || '');
+      for (var j = 1; j < r.length; j++) { var c = trim(r[j] || ''), hd = trim(head[j] || ''); if (c) p.push(hd ? (zh ? hd + '是' + c : hd + ' is ' + c) : c); }
+      var pre = rows.length > 1 && ri === rows.length - 1 ? (zh ? '最後，' : 'Finally, ') : '';
+      out.push(endP(pre + (lead ? lead + (zh ? '：' : ': ') : '') + p.join(zh ? '，' : '; ')));
     });
+    return '\u0001' + out.join('\n\u0001');
+  });
+  var tk = [];
+  eachA(src.split('\n'), function (ln) {
+    var t = trim(ln), m;
+    if (!t || /^---+$/.test(t)) { tk.push({ k: 'gap' }); return; }
+    if (t.charAt(0) === '\u0001') { tk.push({ k: 'raw', t: t.slice(1) }); return; }
+    if ((m = t.match(/^#{1,6}\s*(.+)$/))) { tk.push({ k: 'h', t: trim(m[1].replace(/[*_`]/g, '').replace(/[：:]$/, '')) }); return; }
+    if ((m = t.match(/^>\s?(.*)$/))) { tk.push({ k: 'q', t: trim(m[1]) }); return; }
+    tk.push(mdTok(t));
+  });
+  var hs = [], i, j;
+  for (i = 0; i < tk.length; i++) if (tk[i].k === 'h' && !/想更多|延伸|多想|再想|深思|Think (more|further)|Going deeper|禱告|祷告|Pray/i.test(tk[i].t)) hs.push(i);
+  var grp = [], cur = null, numG = null, nCnt = 0;
+  for (i = 0; i < tk.length; i++) if (tk[i].k === 'li' && tk[i].n) nCnt++;
+  for (i = 0; i < tk.length; i++) {
+    var x = tk[i];
+    if (x.k === 'gap') continue;
+    if (x.k === 'h') { cur = numG = null; continue; }
+    if (x.k === 'li' && x.n) {
+      if (!numG || x.n !== numG.last + 1) { numG = { items: [], intro: introOf(i), num: true }; grp.push(numG); }
+      numG.items.push(i); numG.last = x.n; x.g = numG; cur = null; continue;
+    }
+    if (x.k === 'li') {
+      if (!cur || cur.lastI !== prevNonGap(i)) { cur = { items: [], intro: introOf(i), num: false }; grp.push(cur); }
+      cur.items.push(i); cur.lastI = i; x.g = cur; continue;
+    }
+    cur = null;
+  }
+  function prevNonGap(k) { for (k--; k >= 0; k--) if (tk[k].k !== 'gap') return k; return -1; }
+  function introOf(k) { var q = prevNonGap(k); return q >= 0 && tk[q].k !== 'li' ? tk[q].t || '' : ''; }
+  eachA(grp, function (g) {
+    var n = g.items.length, short = true, lab = 0, scr = 0;
+    eachA(g.items, function (k) {
+      var t = tk[k].t, plain = mdStrip(t);
+      if (plain.length > (zh ? 14 : 48) || /[。！？.!?；;，,]/.test(plain.slice(0, -1))) short = false;
+      if (/^\*\*[^*]+\*\*/.test(t) || tk[k].hd) lab++;
+      if (/\d+\s*[:：]\s*\d+|[「『“]/.test(t)) scr++;
+    });
+    g.mode = g.num && nCnt > 1 ? 'ord' : n < 2 ? 'one' : scr === n ? 'plain' : (g.num || STEPW.test(g.intro)) ? 'ord' : lab * 2 >= n ? 'lab' : short ? 'enum' : 'conn';
+    g.n = n;
+  });
+  var res = [], CZ = ['首先，', '另外，', '還有，', '再來，', '同時，'], CE = ['First, ', 'Also, ', 'Next, ', 'On top of that, ', 'Then, '];
+  for (i = 0; i < tk.length; i++) {
+    var y = tk[i], t = y.t;
+    if (y.k === 'gap') continue;
+    if (y.k === 'raw') { res.push(t); continue; }
+    if (y.k === 'h') {
+      if (/想更多|延伸|多想|再想|深思|Think (more|further)|Going deeper/i.test(t)) res.push(zh ? '如果想更多一點，可以這樣想。' : 'If you want to think further, consider this.');
+      else if (/禱告|祷告|Pray/i.test(t)) res.push(zh ? '讓我們一起禱告。' : 'Let us pray together.');
+      else {
+        var hi = hs.indexOf(i), hl = hs.length, w;
+        if (hl === 1) w = zh ? '我們來談「' + t + '」。' : 'Let us talk about ' + t + '.';
+        else if (hi === 0) w = zh ? '先談「' + t + '」。' : 'Let us start with ' + t + '.';
+        else if (hi === hl - 1 && hl > 2) w = zh ? '最後談「' + t + '」。' : 'Finally, ' + t + '.';
+        else w = zh ? ['接下來談「', '再來看「', '我們再看「'][(hi - 1) % 3] + t + '」。' : ['Next, let us look at ', 'Then, ', 'Now consider '][(hi - 1) % 3] + t + '.';
+        res.push(w);
+      }
+      continue;
+    }
+    if (y.k === 'q') {
+      if (!t) continue;
+      var sc = /[「『“"]/.test(t) || /\d+\s*[:：]\s*\d+/.test(t);
+      res.push((zh ? (sc ? '聖經說：' : (nq++ ? '還有一句：' : '有一句話特別要記住：')) : (sc ? 'Scripture says: ' : (nq++ ? 'And another: ' : 'Here is the line to remember: '))) + endP(t));
+      continue;
+    }
+    if (y.k === 'li' && y.g) {
+      var g = y.g, ix = g.items.indexOf(i), last = ix === g.n - 1 && g.n > 1, has = LEADW.test(mdStrip(t));
+      if (g.mode === 'enum') {
+        if (ix === 0) {
+          var ws = []; eachA(g.items, function (k) { ws.push(mdStrip(tk[k].t).replace(/[。.]$/, '')); });
+          res.push(endP(zh ? (g.n === 2 ? ws.join('和') : ws.slice(0, -1).join('、') + '，還有' + ws[ws.length - 1]) : (g.n === 2 ? ws.join(' and ') : ws.slice(0, -1).join(', ') + ', and ' + ws[ws.length - 1])));
+        }
+        continue;
+      }
+      var pre = '';
+      if (!has && g.mode === 'ord') { var on = (y.n || ix + 1) - 1; pre = on < 10 ? (zh ? NUMZH[on] + '，' : NUMEN[on] + ', ') : ''; }
+      else if (!has && g.mode === 'lab') {
+        var lm = t.match(/^\*\*([^*]+?)\*\*\s*[：:—–-]?\s*(.*)$/) || [0, mdStrip(t), ''];
+        var LB = trim(lm[1]).replace(/[：:]$/, ''), body = trim(lm[2]);
+        res.push(endP((zh ? (ix === 0 ? '首先是' : last ? '最後是' : '再來是') + '「' + LB + '」' : (ix === 0 ? 'First, ' : last ? 'Finally, ' : 'Next, ') + LB) + (body ? (zh ? '，' : ': ') + body : '')));
+        continue;
+      }
+      else if (!has && g.mode === 'conn') pre = last ? (zh ? '最後，' : 'Finally, ') : (zh ? CZ : CE)[ix % 5];
+      res.push(endP(pre + t)); continue;
+    }
+    res.push(endP(t));
+  }
+  return mdStrip(res.join('\n'));
+}
+var TTS_RETRY=[800,1600],TTS_LOOK=2,RA_COOL=4000;
+var spk={on:false,items:[],idx:0,cache:{},native:false,abort:false},raManualAt=0,ttsEl=null,ttsUnlocked=false,ttsLastErr="",sayKey=null,wakeLock=null;
+var TTS_FIX = [
+  [/(與主|與神|與祂|與他|與你|與我|一起|彼此|和主|跟主|同心)同行/g, '$1同形'], [/(与主|与神|与祂|与他|与你|与我|一起|彼此|和主|跟主|同心)同行/g, '$1同形'],
+  [/重生/g, '蟲生'], [/重擔/g, '眾擔'], [/重担/g, '众担'],
+  [/差遣/g, '拆遣'], [/差派/g, '拆派'], [/差役/g, '拆役'],
+  [/背起/g, '揹起'], [/背負/g, '揹負'], [/背负/g, '揹负'], [/背著/g, '揹著'], [/背着/g, '揹着'],
+  [/得著/g, '得着'], [/數算/g, '鼠算'], [/数算/g, '鼠算'], [/朝拜/g, '潮拜'], [/朝見/g, '潮見'], [/朝见/g, '潮见'],
+  [/長老/g, '掌老'], [/長子/g, '掌子'], [/家長/g, '家掌'], [/長大/g, '掌大'], [/長執/g, '掌執'], [/長進/g, '掌進'], [/成長/g, '成掌'], [/生長/g, '生掌'], [/年長/g, '年掌'], [/長輩/g, '掌輩'], [/師長/g, '師掌'], [/兄長/g, '兄掌'],
+  [/长老/g, '掌老'], [/长子/g, '掌子'], [/长大/g, '掌大'], [/长执/g, '掌执'], [/长进/g, '掌进'], [/成长/g, '成掌'], [/生长/g, '生掌'], [/年长/g, '年掌'], [/长辈/g, '掌辈'], [/师长/g, '师掌'], [/兄长/g, '兄掌'],
+  [/行為/g, '行圍'], [/為大/g, '圍大'], [/行为/g, '行围'], [/为大/g, '围大'], [/中了/g, '衷了'], [/中間/g, '衷間'], [/中间/g, '衷间'],
+  [/教會/g, '叫會'], [/教会/g, '叫会'], [/傳道/g, '船道'], [/传道/g, '船道'], [/傳記/g, '賺記'], [/传记/g, '赚记'],
+  [/應當/g, '英當'], [/應許/g, '英許'], [/应当/g, '英当'], [/应许/g, '英许'], [/相應/g, '相映'], [/相应/g, '相映'],
+  [/([組组團团校部首夫牧區区會会社])長/g, '$1掌'], [/([組组團团校部首夫牧區区會会社])长/g, '$1掌'], [/長出/g, '掌出'], [/长出/g, '掌出'], [/長者/g, '掌者'], [/长者/g, '掌者'],
+  [/行傳/g, '行賺'], [/行传/g, '行赚'], [/數到/g, '鼠到'], [/数到/g, '鼠到'], [/數一數/g, '鼠一鼠'], [/数一数/g, '鼠一鼠'], [/(主|神|祂|祢|他|她)差(人|我|你|他|她|祂)/g, '$1拆$2'],
+  [/看守/g, '刊守'], [/種子/g, '腫子'], [/种子/g, '肿子'], [/年少/g, '年紹'], [/好施/g, '耗施'],
+  [/背十/g, '揹十'], [/心為心/g, '心圍心'], [/心为心/g, '心围心'], [/何為/g, '何圍'], [/何为/g, '何围'], [/尊為/g, '尊圍'], [/尊为/g, '尊围'],
+  [/為準/g, '圍準'], [/为准/g, '围准'], [/為成功/g, '圍成功'], [/为成功/g, '围成功'], [/省察/g, '醒察'], [/當天/g, '蕩天'], [/当天/g, '荡天']
+];
+var SILENT_WAV="data:audio/wav;base64,UklGRiQAAABXQVZFZm10IBAAAAABAAEAgD4AAAB9AAACABAAZGF0YQAAAAA=";
+var BK_ZH = '亞:撒迦利亞書|代上:歷代志上|代下:歷代志下|以弗所:以弗所書|以弗所書|以斯帖:以斯帖記|以斯帖記|以斯拉:以斯拉記|以斯拉記|以西結:以西結書|以西結書|以賽亞:以賽亞書|以賽亞書|伯:約伯記|但:但以理書|但以理:但以理書|但以理書|何:何西阿書|何西阿:何西阿書|何西阿書|使徒行傳|來:希伯來書|俄:俄巴底亞書|俄巴底亞:俄巴底亞書|俄巴底亞書|傳:傳道書|傳道書|出:出埃及記|出埃及:出埃及記|出埃及記|列王紀上|列王紀下|利:利未記|利未記|創:創世記|創世記|加:加拉太書|加拉太:加拉太書|加拉太書|可:馬可福音|哀:耶利米哀歌|哈:哈巴谷書|哈巴谷:哈巴谷書|哈巴谷書|哈該書|哥林多前:哥林多前書|哥林多前書|哥林多後:哥林多後書|哥林多後書|啟:啟示錄|啟示錄|士:士師記|士師記|多:提多書|太:馬太福音|尼:尼希米記|尼希米:尼希米記|尼希米記|希伯來:希伯來書|希伯來書|帖前:帖撒羅尼迦前書|帖後:帖撒羅尼迦後書|帖撒羅尼迦前:帖撒羅尼迦前書|帖撒羅尼迦前書|帖撒羅尼迦後:帖撒羅尼迦後書|帖撒羅尼迦後書|弗:以弗所書|彌:彌迦書|彌迦書|彼前:彼得前書|彼後:彼得後書|彼得前:彼得前書|彼得前書|彼得後:彼得後書|彼得後書|徒:使徒行傳|得:路得記|拉:以斯拉記|拿:約拿書|提前:提摩太前書|提多書|提後:提摩太後書|提摩太前:提摩太前書|提摩太前書|提摩太後:提摩太後書|提摩太後書|摩:阿摩司書|撒上:撒母耳記上|撒下:撒母耳記下|撒母耳記上|撒母耳記下|撒迦利亞:撒迦利亞書|撒迦利亞書|斯:以斯帖記|書:約書亞記|林前:哥林多前書|林後:哥林多後書|歌:雅歌|歌羅西:歌羅西書|歌羅西書|歷代志上|歷代志下|民:民數記|民數記|猶:猶大書|猶大書|王上:列王紀上|王下:列王紀下|珥:約珥書|瑪:瑪拉基書|瑪拉基:瑪拉基書|瑪拉基書|申:申命記|申命記|番:西番雅書|箴:箴言|箴言|約:約翰福音|約一:約翰一書|約三:約翰三書|約二:約翰二書|約亞:約書亞記|約伯記|約參:約翰三書|約壹:約翰一書|約拿書|約書亞記|約珥書|約翰一:約翰一書|約翰一書|約翰三:約翰三書|約翰三書|約翰二:約翰二書|約翰二書|約翰福音|約貳:約翰二書|結:以西結書|羅:羅馬書|羅馬書|耶:耶利米書|耶利米:耶利米書|耶利米哀歌|耶利米書|腓:腓立比書|腓利門:腓利門書|腓利門書|腓立比:腓立比書|腓立比書|西:歌羅西書|西番雅:西番雅書|西番雅書|詩:詩篇|詩篇|該:哈該書|賽:以賽亞書|路:路加福音|路加福音|路得記|那鴻書|門:腓利門書|阿摩司:阿摩司書|阿摩司書|雅:雅各書|雅各書|雅歌|馬可福音|馬太福音|鴻:那鴻書';
+var BKM={};
+function bookMap(){var k=isZS()?"zs":"zh";if(BKM[k])return BKM[k];var m={},src=k==="zs"?T("@bkzs"):BK_ZH;if(src==="@bkzs")src=BK_ZH;eachA(src.split("|"),function(p){var a=p.split(":");m[a[0]]=a[1]||a[0];});return (BKM[k]=m);}
+function ttsRef(x){
+  return String(x||"").replace(/([^\s\d:：，。、；（）「」！？]{1,12}|[1-3]?\s?[A-Z][a-z]+\.?(?: of [A-Z][a-z]+)?)\s?(\d+)[:：](\d+)(?:\s*[–\-~～至]\s*(\d+))?/g,function(m,bk,c,v,v2){
+    if(isEN())return bk.replace(/\.$/,"")+" chapter "+c+(v2?" verses "+v+" to "+v2:" verse "+v);
+    var mp=bookMap(),pre=null,full="";
+    for(var k=0;k<bk.length;k++){var suf=bk.slice(k);if(mp[suf]){pre=bk.slice(0,k);full=mp[suf];break;}}
+    if(pre===null)return m;
+    var ps=/^詩篇$|^诗篇$/.test(full);return pre+full+c+(ps?"篇":"章")+v+(v2?"到"+v2:"")+(isZS()?"节":"節");
   });
 }
+var EMOJI_RE=/\uD83C[\uDC00-\uDFFF]|\uD83D[\uDC00-\uDFFF]|\uD83E[\uDC00-\uDFFF]|[←-⇿⌀-⏿■-➿⬀-⯿☀-⛿︎️‍⃣〰〽™ℹ]/g;
+var REF_ONE=/^\s*(?:(?:參|参|見|见|另見|另见|參看|参看|參考|参考|cf\.?|see|See)\s*)?(?:(?:[1-3一二三]\s?)?[一-鿿]{1,6}|(?:[1-3]\s?)?[A-Z][a-z]+\.?(?:\s(?:of\s)?[A-Z][a-z]+)*)?\s*\d+(?:\s*[:：]\s*\d+(?:\s*[-–—~～至]\s*\d+)?)?(?:\s*[章節节篇])?(?:\s*[-–—~～至]\s*\d+(?:\s*[:：]\s*\d+)?)?\s*$/;
+function isRefParen(inner){var ps=String(inner).split(/[；;、，,]/),ok=0;for(var i=0;i<ps.length;i++){if(!trim(ps[i]))continue;if(!REF_ONE.test(ps[i]))return false;ok++;}return ok>0;}
+function dropRefParens(x){return x.replace(/([，,]?\s*(?:參|参|見|见|see|cf\.?)\s*)?[（(]([^（）()]{1,80})[）)]/g,function(m,lead,inner){return isRefParen(inner)?"":m;});}
+function ttsPrep(s){
+  var x=dropRefParens(String(s||"")).replace(/〔[^〕]*〕/g,"").replace(/\[[^\]]*\]/g,"").replace(EMOJI_RE,"").replace(/[＿_]{2,}/g,isEN()?" blank ":"某某");
+  x=ttsRef(x);
+  if(isEN())return trim(x.replace(/[*#>`_~|]/g,"").replace(/\s+/g," ").replace(/\s+([.,;:!?])/g,"$1"));
+  x=x.replace(/[「」『』（）()〔〕\[\]《》〈〉*#>`_~|]/g,"").replace(/[—－]{1,2}/g,"，").replace(/→/g,"，").replace(/321/g,"三二一").replace(/920/g,"九二零").replace(/235/g,"二三五");
+  eachA(TTS_FIX,function(f){x=x.replace(f[0],f[1]);});return trim(x.replace(/[ \t]{2,}/g," "));
+}
+function voiceName(){var v=VOICES[L()],i=SET.voice||0;return (v[i]||v[0])[0];}
+function ttsAudio(){if(!ttsEl){ttsEl=new Audio();ttsEl.preload="auto";try{ttsEl.setAttribute("playsinline","");}catch(e){}}return ttsEl;}
+function ttsUnlock(){if(ttsUnlocked)return;try{var a=ttsAudio();a.src=SILENT_WAV;var p=a.play();if(p&&p.then)p.then(function(){ttsUnlocked=true;},function(){});else ttsUnlocked=true;}catch(e){}}
+function ajaxBuf(url,body,cb){
+  var x=new XMLHttpRequest();try{x.open("POST",url,true);}catch(e){cb(0,null);return;}
+  x.responseType="arraybuffer";x.timeout=25000;x.setRequestHeader("Content-Type","application/json");
+  x.onload=function(){cb(x.status,x.response);};x.onerror=function(){cb(0,null);};x.ontimeout=function(){cb(-1,null);};
+  try{x.send(JSON.stringify(body));}catch(e){cb(0,null);}
+}
+function ttsFetch(text,cb,tries){
+  tries=tries||0;
+  if(!SET.human||navigator.onLine===false){cb(null);return;}
+  ajaxBuf(SVC.tts,{voice:voiceName(),rate:RATES[SET.rate||0],sil:140,silc:140,sile:260,text:text},function(st,buf){
+    if(st===200&&buf&&buf.byteLength>128){cb(URL.createObjectURL(new Blob([buf],{type:"audio/mpeg"})));return;}
+    ttsLastErr=st>0?"http "+st:(st<0?"timeout":"network");
+    if(tries<TTS_RETRY.length)setTimeout(function(){ttsFetch(text,cb,tries+1);},TTS_RETRY[tries]);else cb(null);
+  });
+}
+function keepAwake(on){try{if(on&&navigator.wakeLock&&!wakeLock){navigator.wakeLock.request("screen").then(function(w){wakeLock=w;},function(){});}else if(!on&&wakeLock){wakeLock.release();wakeLock=null;}}catch(e){}}
+document.addEventListener("visibilitychange",function(){if(document.visibilityState==="visible"&&(spk.on||sayKey)){wakeLock=null;keepAwake(true);}});
+function mediaSession(title){
+  try{if("mediaSession" in navigator&&window.MediaMetadata){
+    navigator.mediaSession.metadata=new MediaMetadata({title:title||T("321生命操練"),artist:T("國度321空中團契"),artwork:[{src:"icon-512-v2.png",sizes:"512x512",type:"image/png"}]});
+    navigator.mediaSession.setActionHandler("pause",function(){stopAll();});navigator.mediaSession.setActionHandler("stop",function(){stopAll();});
+    try{navigator.mediaSession.setActionHandler("nexttrack",function(){spkSkip(1);});navigator.mediaSession.setActionHandler("previoustrack",function(){spkSkip(-1);});}catch(e){}
+  }}catch(e){}
+}
+function secOf(e){var n=e;while(n&&n!==app){if(n.className&&/(^|\s)card(\s|$)/.test(String(n.className)))return n;n=n.parentNode;}return null;}
+function secLead(sec){
+  if(!sec)return "";var say=sec.getAttribute("data-say");if(say)return say;
+  var l=sec.querySelector(".eyebrow");if(!l)return "";var t=trim(l.textContent.replace(EMOJI_RE,""));if(!t)return "";
+  if(/禱告|祷告|Pray/i.test(t))return isEN()?"Let us pray together. ":"讓我們一起禱告。";
+  return isEN()?"Next: "+t+". ":T("接下來是「{0}」。",t);
+}
+function unitList(){return qa(".sent, .rd",app);}
+function unitLoc(e){return e.getAttribute("data-k")!=null?{k:e.getAttribute("data-k"),s:e.getAttribute("data-s")}:{t:e.textContent};}
+function buildQueue(fromEl){
+  var els=unitList(),from=0,lastSec=null,i;
+  if(fromEl){from=Math.max(0,els.indexOf(fromEl));}
+  else{for(i=0;i<els.length;i++){if(els[i].getBoundingClientRect().bottom>70){from=i;break;}}}
+  els=els.slice(from);var items=[],cur={text:"",segs:[],lens:[],locs:[],at:-1},MAX=isEN()?320:130;
+  eachA(els,function(e){
+    if(e.offsetParent===null&&e.getClientRects().length===0)return;
+    var sc=secOf(e),lead=(sc&&sc!==lastSec)?secLead(sc):"";lastSec=sc;
+    var t=e.textContent;if(!trim(t))return;
+    if(!/[。！？.!?：:；;，,…]["'」』”]*$/.test(trim(t)))t=trim(t)+(isEN()?". ":"。");
+    if((lead||cur.text.length+t.length>MAX)&&cur.text){items.push(cur);cur={text:"",segs:[],lens:[],locs:[],at:-1};}
+    cur.text+=lead+t+(isEN()?" ":"");cur.segs.push(e);cur.locs.push(unitLoc(e));cur.lens.push(Math.max(1,ttsPrep(lead+t).length));
+  });
+  if(cur.text)items.push(cur);var out=[];eachA(items,function(it){if(ttsPrep(it.text))out.push(it);});return out;
+}
+function ttsRebind(){
+  if(!spk.on)return;var els=unitList(),pos=0;
+  eachA(spk.items,function(it){eachA(it.locs,function(lc,j){var f=null;
+    if(lc.k!=null){for(var i=0;i<els.length;i++){if(els[i].getAttribute("data-k")===lc.k&&els[i].getAttribute("data-s")===lc.s){f=els[i];pos=i;break;}}}
+    else{for(var q=pos;q<els.length;q++){if(els[q].textContent===lc.t){f=els[q];pos=q;break;}}}
+    it.segs[j]=f||it.segs[j];});});
+  var cur=spk.items[spk.idx];if(cur&&cur.at>=0){var k=cur.at;cur.at=-1;var keep=raManualAt;raManualAt=now();raSeg(cur,k);raManualAt=keep;}
+}
+function raClear(){eachA(qa(".tts-reading"),function(e){e.className=e.className.replace(/\s*tts-reading/g,"");});}
+function raSeg(item,k){
+  if(!item||!item.segs.length)return;k=Math.max(0,Math.min(k,item.segs.length-1));
+  if(item.at===k&&document.querySelector(".tts-reading"))return;item.at=k;raClear();var e=item.segs[k];if(!e||!e.parentNode)return;
+  e.className+=" tts-reading";if(now()-raManualAt>RA_COOL){try{e.scrollIntoView({behavior:"smooth",block:"center"});}catch(x){}}
+}
+function raProgress(item,ratio){
+  if(!item||item.lens.length<2||!(ratio>=0))return;var tot=0,acc=0,k=0,j;for(j=0;j<item.lens.length;j++)tot+=item.lens[j];
+  var tg=Math.min(ratio,1)*tot;for(j=0;j<item.lens.length;j++){acc+=item.lens[j];k=j;if(tg<acc)break;}raSeg(item,k);
+}
+var TAB_TITLE={home:"今日",check:"生命健檢",exam:"檢視舊人",train:"操練新人",growth:"成長",journal:"日記"};
+function ttsPage(fromEl){
+  if(spk.on&&!fromEl){stopAll();return;}stopAll();ttsUnlock();
+  var items=buildQueue(fromEl);if(!items.length){toast(T("這一頁沒有可以朗讀的文字"));return;}
+  var title=T(TAB_TITLE[state.tab])+" · "+T("321生命操練");
+  spk={on:true,items:items,idx:0,cache:{},native:false,abort:false,title:title};raManualAt=0;keepAwake(true);mediaSession(title);drawFab();ttsPlayFrom(0);
+}
+function ttsPrefetch(i,cb){var it=spk.items[i];if(!it||spk.cache[i]!==undefined){if(cb)cb();return;}spk.cache[i]=0;ttsFetch(ttsPrep(it.text),function(u){spk.cache[i]=u;if(cb)cb();});}
+function ttsPlayFrom(i){
+  if(!spk.on||spk.abort)return;if(i>=spk.items.length){stopAll();toast(T("朗讀完畢"));return;}
+  spk.idx=i;spk.items[i].at=-1;raSeg(spk.items[i],0);drawSpk();
+  var my=spk;
+  var go2=function(){
+    if(my!==spk)return;
+    for(var k=i+1;k<=i+TTS_LOOK;k++)ttsPrefetch(k);if(!spk.on||spk.abort)return;var url=spk.cache[i];
+    if(!url){ttsNativeFrom(i);return;}
+    var a=ttsAudio();a.onended=null;a.onerror=null;a.ontimeupdate=null;a.src=url;
+    a.ontimeupdate=function(){if(!spk.on||spk.idx!==i)return;var d=a.duration;if(d&&isFinite(d))raProgress(spk.items[i],a.currentTime/d);};
+    a.onended=function(){a.ontimeupdate=null;if(spk.on&&!spk.abort&&my===spk)ttsPlayFrom(i+1);};
+    a.onerror=function(){if(spk.on&&!spk.abort&&my===spk)ttsNativeFrom(i);};
+    var p=a.play();if(p&&p["catch"])p["catch"](function(){if(spk.on&&!spk.abort&&my===spk)ttsNativeFrom(i);});
+  };
+  if(spk.cache[i]===undefined)ttsPrefetch(i,go2);else if(spk.cache[i]===0){var w=setInterval(function(){if(spk.cache[i]!==0||!spk.on||my!==spk){clearInterval(w);go2();}},120);}else go2();
+}
+function nativeLang(){return isEN()?"en-US":(isZS()?"zh-CN":"zh-TW");}
+function ttsNativeFrom(i){
+  if(!("speechSynthesis" in window)){toast(T("這支手機無法朗讀"));stopAll();return;}
+  if(!spk.native){spk.native=true;if(SET.human)toast(T("改用裝置內建語音朗讀")+(ttsLastErr?(isEN()?" ("+ttsLastErr+")":"（"+ttsLastErr+"）"):""));}
+  if(!spk.on||spk.abort||i>=spk.items.length){stopAll();return;}
+  spk.idx=i;spk.items[i].at=-1;raSeg(spk.items[i],0);drawSpk();
+  var say=ttsPrep(spk.items[i].text),u=new SpeechSynthesisUtterance(say);u.lang=nativeLang();u.rate=[.95,.85,1.08][SET.rate||0];
+  u.onboundary=function(e){if(spk.on&&spk.idx===i&&say.length)raProgress(spk.items[i],(e.charIndex||0)/say.length);};
+  u.onend=function(){if(spk.on&&!spk.abort&&spk.idx===i)ttsNativeFrom(i+1);};u.onerror=u.onend;
+  try{speechSynthesis.speak(u);}catch(e){stopAll();}
+}
+function speakText(text,key,onEnd){
+  stopAll();ttsUnlock();key=key||"x";sayKey=key;paintSay();keepAwake(true);mediaSession(T("321生命操練"));drawSpk();drawFab();
+  var clean=ttsPrep(text).slice(0,1500);if(!clean){stopAll();return;}
+  var done=function(){if(sayKey===key){sayKey=null;paintSay();keepAwake(false);drawSpk();drawFab();}if(onEnd)onEnd();};
+  ttsFetch(clean,function(url){
+    if(sayKey!==key)return;
+    if(url){var a=ttsAudio();a.onended=done;a.onerror=function(){nat();};a.ontimeupdate=null;a.src=url;var p=a.play();if(p&&p["catch"])p["catch"](function(){nat();});}
+    else nat();
+  });
+  function nat(){if(sayKey!==key)return;if("speechSynthesis" in window){var u=new SpeechSynthesisUtterance(clean);u.lang=nativeLang();u.rate=[.95,.85,1.08][SET.rate||0];u.onend=done;u.onerror=done;speechSynthesis.speak(u);}else{toast(T("這支手機無法朗讀"));done();}}
+}
+function paintSay(){eachA(qa("[data-xa=tts]"),function(b){var on=sayKey==="m"+b.getAttribute("data-i");b.className="msg-act"+(on?" on":"");b.innerHTML=on?"⏸ "+esc(T("停止")):"🔊 "+esc(T("朗讀"));});
+  eachA(qa("[data-cka=tts]"),function(b){var on=sayKey==="ck"+b.getAttribute("data-i");b.className="msg-act"+(on?" on":"");b.innerHTML=on?"⏸ "+esc(T("停止")):"🔊 "+esc(T("朗讀"));});}
+function stopAll(){
+  spk.on=false;spk.abort=true;sayKey=null;try{if(ttsEl){ttsEl.onended=null;ttsEl.ontimeupdate=null;ttsEl.pause();}}catch(e){}
+  try{if("speechSynthesis" in window)speechSynthesis.cancel();}catch(e){}raClear();paintSay();keepAwake(false);drawSpk();drawFab();
+}
+function drawSpk(){
+  var el=$("spk"),on=spk.on||!!sayKey;
+  if(!on){if(el)el.parentNode.removeChild(el);return;}
+  if(!el){el=document.createElement("div");el.id="spk";el.className="spk";document.body.appendChild(el);}
+  var prog=spk.on&&spk.items.length?" · "+(spk.idx+1)+"/"+spk.items.length:"";
+  el.innerHTML='<span class="t">🔊 '+esc(spk.on?spk.title:T("朗讀中"))+prog+'</span>'+(spk.on?'<button data-spk="-1" aria-label="'+T("上一段")+'">⏮</button><button data-spk="1" aria-label="'+T("下一段")+'">⏭</button>':'')+'<button data-spk="0" aria-label="'+T("停止")+'">■</button>';
+}
+function spkSkip(n){if(!spk.on)return;var k=Math.max(0,Math.min(spk.items.length-1,spk.idx+n));try{if(ttsEl){ttsEl.onended=null;ttsEl.pause();}if("speechSynthesis" in window)speechSynthesis.cancel();}catch(e){}raManualAt=0;ttsPlayFrom(k);}
+window.addEventListener("touchmove",function(){raManualAt=now();},{passive:true});
+window.addEventListener("wheel",function(){raManualAt=now();},{passive:true});
+document.addEventListener("click",function(e){var b=e.target;while(b&&b!==document&&b.tagName!=="BUTTON")b=b.parentNode;if(!b||b===document)return;var s=b.getAttribute("data-spk");if(s==null)return;if(s==="0")stopAll();else spkSkip(+s);});
+function drawFab(){
+  var b=$("fabtts");if(!b)return;var on=spk.on||!!sayKey;
+  b.innerHTML=on?"■":"🔊";b.setAttribute("aria-label",on?T("停止朗讀"):T("朗讀這一頁"));b.className="fab"+(on?" on":"");
+}
+var XZ={open:false},chatBusy=false,chatSrc=null;
+var XZ_TASK="【現在的任務】你是使用者在「321生命操練」App 裡的屬靈同伴。陪他把聖經真理與321理念用在每天的操練：五道門戶（看、聽、想、講、行）與五重領域（觀念、生命、生活、關係、事工）；幫助他看見舊人有己、穿上新人無己，在每一個「2」面前結出聖靈的果子，反敗為勝成為得勝者。回答要具體、做得到：給可以直接說出口的話（用「」寫出完整句子）與步驟；焦點帶回耶穌，用心靠聖靈；需要時在最後問他一個幫助更深的問題。若他談到暴力、虐待、人身危險或自傷輕生，要把安全放第一，鼓勵他立刻聯絡可信任的人或當地緊急求助。";
+var SYS_FMT_ZH="\n\n【回答格式】用 markdown：### 短小標題、- 條列、1. 編號、**粗體**；需要並列對照時可以用 markdown 表格。請把最重要的那一句用「> 」標成引言；引用經文用「> 」並在後面寫出處。不要用 ASCII 圖案、程式碼區塊或唸不出來的裝飾符號。段落短，手機好讀，約300到600字。若寫到禱告，結尾一律用「奉主耶穌的名禱告，阿們」。";
+var SYS_FMT_EN="\n\n[FORMAT] Use markdown: ### short headings, - bullets, 1. numbered steps, **bold**; a markdown table when comparing. Mark the single most important line with \"> \"; quote Scripture with \"> \" followed by the reference. No ASCII art, code blocks or decorative symbols. Short paragraphs, about 200-450 words. If you write a prayer, end it with \"in the name of the Lord Jesus we pray, Amen.\"";
+function xzCtx(){
+  var c=[],t=state.tab;
+  c.push("【使用者目前在】"+{home:"今日",check:"生命健檢",exam:"檢視舊人",train:"操練新人",growth:"成長",journal:"日記"}[t]+"；今天"+(WEEK[WD]?"的檢視重點："+G[WEEK[WD][0]].name+"＋"+G[WEEK[WD][1]].name:"是"+(WD===6?"同行日":"主日感恩日")));
+  if(t==="exam"||t==="train"){var S=state[t],ns=[];eachA(S.sel,function(id){var g=G[id];ns.push(g.name+"——"+g[t].title);});if(ns.length)c.push("正在"+(t==="exam"?"檢視舊人":"操練新人")+"："+ns.join("；"));
+    if(S.done){var p=[];for(var id in S.done.scores){if(S.done.scores.hasOwnProperty(id))p.push(G[id].name+" "+sum(S.done.scores[id])+"/15");}c.push("剛完成的分數："+p.join("、"));}}
+  if(t==="check"&&ck.show){var e=ckFind(ck.show);if(e&&e.ai&&e.ai.title)c.push("正在看的健檢："+e.ai.title+"（"+(e.ai.who||"")+"）；事件："+String(e.input.ev||"").slice(0,120));}
+  return c.join("\n");
+}
+function xzSys(){return ckBase()+XZ_TASK+(isEN()?SYS_FMT_EN:SYS_FMT_ZH)+"\n\n"+xzCtx()+audLine();}
+var QBANK=["怎樣分辨此刻是舊人作王還是新人作王？","我一被批評就想辯解，怎樣操練「快快的聽，慢慢的說」？","驕傲和謙卑在日常生活裡怎麼分辨？","用一個比喻說明「無己不是沒有，乃是進入無限」","我常拿自己和別人比較，怎樣用神的眼光看自己？","怎樣在家人（我的「2」）面前結出忍耐的果子？","憂慮一直來，怎樣把心意奪回、順服基督？","讓耶穌作王，在職場上具體會怎麼做？","改變觀念的八大步驟，怎樣用在一節經文上？","幫我擬一個七天的無己操練計畫"];
+var FU=[["💬","說出口","請幫我寫出可以直接說出口的一兩句話，用在你剛才說的情況裡。"],["🏠","家庭","你剛才的回答，用在我和家人之間，具體可以怎麼做？"],["💼","職場","你剛才的回答，用在職場和同事之間，具體可以怎麼做？"],["🔁","又跌倒","如果我照你剛才說的去做，卻又失敗了，該怎樣重新起來？"],["🙏","禱告","請根據你剛才的回答，帶我做一個簡短的禱告。"],["📅","七天","請把你剛才的回答整理成七天的操練計畫，每天一個小行動。"]];
+function isFav(t){for(var i=0;i<FAV.length;i++)if(FAV[i].text===t)return true;return false;}
+function msgLong(m){return m&&m.role!=="user"&&mdStrip(m.text||"").length>(isEN()?420:200);}
+function foldOld(){for(var k=0;k<CHAT.length-1;k++)if(msgLong(CHAT[k]))CHAT[k].fold=true;}
+function msgFold(i){
+  var m=CHAT[i];if(!m)return;m.fold=!m.fold;saveChat();
+  var el=$("msg"+i);if(!el){paintChat();return;}
+  el.className="msg ai"+(m.fold?" fold":"");
+  var b=el.querySelector(".msg-more");if(b)b.textContent=T(m.fold?"展開全文 ▾":"收合 ▴");
+  if(m.fold){try{el.scrollIntoView({block:"nearest"});}catch(e){}}
+}
+function foldAll(){var n=0;eachA(CHAT,function(m){if(msgLong(m)&&!m.fold){m.fold=true;n++;}});saveChat();paintChat();toast(T(n?"已收合所有長回答":"目前沒有需要收合的回答"));}
+function lastOk(){for(var i=CHAT.length-1;i>=0;i--){if(CHAT[i].role!=="user")return CHAT[i].ok&&!CHAT[i].wait&&!CHAT[i].cont?i:-1;}return -1;}
+function chatLogHtml(){
+  if(!CHAT.length)return '<div class="xzhi">'+T("平安！我是小智，你的 321 生命陪伴者。今天想操練哪一道門戶、哪一個領域？也可以把一件讓你不平安的事告訴我。")+'<br><span class="small">'+T("小智的回答是陪伴與提醒，請以聖經與聖靈的引導為準。")+'</span></div>';
+  var h="",lk=lastOk();
+  eachA(CHAT,function(m,i){
+    if(m.role==="user"){h+='<div class="msg user">'+esc(m.text)+'</div>';return;}
+    var lg=!m.wait&&!m.cont&&msgLong(m),fd=lg&&m.fold;
+    h+='<div class="msg ai'+(fd?" fold":"")+'" id="msg'+i+'"><div class="msg-body md">'+(m.wait?'<span class="typing"><i></i><i></i><i></i></span> '+esc(T("小智正在思想……")):mdHTML(m.text))+(m.cont?'<p class="small"><span class="typing"><i></i><i></i><i></i></span> '+esc(T("小智還在接著寫…"))+'</p>':'')+'</div>'+
+      (lg?'<button class="msg-more" data-xa="fold" data-i="'+i+'">'+esc(T(fd?"展開全文 ▾":"收合 ▴"))+'</button>':'')+
+      (m.wait||m.cont?'':'<div class="msg-actions"><button class="msg-act'+(isFav(m.text)?" on":"")+'" data-xa="fav" data-i="'+i+'">★ '+T("收藏")+'</button><button class="msg-act" data-xa="share" data-i="'+i+'">↗ '+T("分享")+'</button><button class="msg-act" data-xa="copy" data-i="'+i+'">⧉ '+T("複製")+'</button><button class="msg-act" data-xa="tts" data-i="'+i+'">🔊 '+T("朗讀")+'</button><button class="msg-act" data-xa="del" data-i="'+i+'" aria-label="'+T("刪除")+'">✕</button></div>')+'</div>';
+    if(i===lk&&!chatBusy){var fu="";eachA(FU,function(f){fu+='<button class="fu-chip" data-xa="q" data-q="'+esc(T(f[2]))+'">'+f[0]+' '+esc(T(f[1]))+'</button>';});h+='<div class="fu"><span class="small">'+T("接著問：")+'</span>'+fu+'</div>';}
+  });
+  return h;
+}
+function openXz(q,src){XZ.open=true;if(src)chatSrc=src;drawXz();if(q)sendChat(q);}
+function closeXz(){XZ.open=false;drawXz();}
+function drawXz(){
+  var el=$("xz");
+  if(!el){el=document.createElement("div");el.id="xz";el.className="xz";el.setAttribute("role","dialog");document.body.appendChild(el);}
+  el.className="xz"+(XZ.open?" on":"");document.body.style.overflow=XZ.open?"hidden":"";if(!XZ.open){el.innerHTML="";return;}
+  var qs="";eachA(QBANK,function(q){qs+='<button class="qs-chip" data-xa="q" data-q="'+esc(T(q))+'">'+esc(T(q))+'</button>';});
+  var auds={adult:"🧑 成人",teen:"🧒 青少年",kid:"🧸 兒童",seeker:"🌱 慕道友"},ab="";
+  for(var a in auds){if(auds.hasOwnProperty(a))ab+='<button data-xa="aud" data-v="'+a+'" class="'+(SET.aud===a?"on":"")+'">'+esc(T(auds[a]))+'</button>';}
+  el.innerHTML='<div class="xzhd"><button class="ib" data-xa="close" aria-label="'+T("關閉")+'">✕</button><span class="xzav">智</span><div class="grow"><b>'+T("小智")+'</b><div class="small">'+T("321 生命陪伴者")+'</div></div><button class="hdbtn" data-xa="foldall">'+T("收合")+'</button><button class="hdbtn" data-xa="clear">'+T("新對話")+'</button></div>'+
+    '<div class="xzbd" id="xzb"><div class="chatctx">'+esc(T("目前：{0}",T(TAB_TITLE[state.tab])))+'</div><div class="segx sm">'+ab+'</div>'+
+    '<button class="qs-toggle" data-xa="qs">💡 '+T("看看範例問題")+'</button><div class="qs-panel" id="qsPanel" hidden>'+qs+'</div>'+
+    '<div class="chatlog" id="chatlog">'+chatLogHtml()+'</div></div>'+
+    '<div class="xzft"><textarea id="chatIn" rows="1" placeholder="'+esc(T("問小智任何操練上的問題……"))+'"></textarea><button class="btn new" data-xa="send">'+T("送出")+'</button></div>';
+  var inp=$("chatIn");if(inp)inp.onkeydown=function(e){if(e.keyCode===13&&!e.shiftKey&&!e.isComposing){e.preventDefault();sendChat(inp.value);}};
+  paintSay();var bd=$("xzb");if(bd)bd.scrollTop=bd.scrollHeight;
+}
+function paintChat(){var log=$("chatlog");if(!log)return;log.innerHTML=chatLogHtml();paintSay();var bd=$("xzb");if(bd)setTimeout(function(){bd.scrollTop=bd.scrollHeight;},30);}
+function sendChat(text){
+  text=trim(text);if(!text||chatBusy)return;var inp=$("chatIn");if(inp)inp.value="";
+  if(navigator.onLine===false){CHAT.push({role:"user",text:text,ts:now()});CHAT.push({role:"ai",text:T("目前離線，連上網路後小智才能回答。"),ts:now()});saveChat();paintChat();return;}
+  CHAT.push({role:"user",text:text,src:chatSrc,ts:now()});var src=chatSrc;chatSrc=null;
+  CHAT.push({role:"ai",text:"",wait:true,src:src});if(CHAT.length>60)CHAT=CHAT.slice(-60);chatBusy=true;paintChat();
+  var msgs=[];eachA(CHAT,function(m){if(!m.wait&&m.text&&!m.err)msgs.push({role:m.role==="user"?"user":"assistant",content:m.text});});msgs=msgs.slice(-12);
+  while(msgs.length&&msgs[0].role!=="user")msgs.shift();
+  var last=CHAT[CHAT.length-1];
+  xiChat(xzSys(),msgs,1800,4,function(part){last.wait=false;last.cont=true;last.text=part;if(XZ.open)paintChat();},function(err,txt){
+    last.wait=false;last.cont=false;foldOld();last.fold=false;last.ts=now();
+    if(err){last.text=err;last.err=true;last.ok=false;}else{last.text=txt;last.ok=true;}
+    chatBusy=false;saveChat();if(XZ.open)paintChat();else toast(T("小智回答了"));
+  });
+}
+function xzClick(b){
+  var a=b.getAttribute("data-xa"),i=+b.getAttribute("data-i"),m=CHAT[i];
+  if(a==="close"){closeXz();return;}
+  if(a==="send"){var inp=$("chatIn");sendChat(inp?inp.value:"");return;}
+  if(a==="q"){sendChat(b.getAttribute("data-q"));var p=$("qsPanel");if(p)p.hidden=true;return;}
+  if(a==="qs"){var pn=$("qsPanel");if(pn)pn.hidden=!pn.hidden;return;}
+  if(a==="aud"){SET.aud=b.getAttribute("data-v");saveSet();drawXz();toast(T("小智回答對象：{0}",b.textContent));return;}
+  if(a==="foldall"){foldAll();return;}
+  if(a==="clear"){if(chatBusy)return;CHAT=[];saveChat();stopAll();paintChat();toast(T("已開始新對話"));return;}
+  if(a==="fold"){msgFold(i);return;}
+  if(!m)return;
+  if(a==="fav"){if(isFav(m.text)){FAV=FAV.filter?FAV.filter(function(f){return f.text!==m.text;}):FAV;toast(T("已取消收藏"));}else{var q=CHAT[i-1]&&CHAT[i-1].role==="user"?CHAT[i-1].text:"";FAV.push({text:m.text,q:q,ts:now()});toast(T("已收藏，可在「日記→畫線收藏」找到"));}saveFav();b.className="msg-act"+(isFav(m.text)?" on":"");return;}
+  if(a==="share"){var s=m.src?Q(m.src.t)+"\n—— "+m.src.ref+"\n\n":"";shareText(s+mdStrip(m.text)+"\n\n—— "+T("國度321空中團契")+"\nhttps://spch321-sudo.github.io/321life/");return;}
+  if(a==="copy"){copyText(mdStrip(m.text));return;}
+  if(a==="tts"){if(sayKey==="m"+i){stopAll();return;}speakText(mdSpeak(m.text),"m"+i);return;}
+  if(a==="del"){CHAT.splice(i,1);if(CHAT[i-1]&&CHAT[i-1].role==="user"&&(!CHAT[i]||CHAT[i].role==="user"))CHAT.splice(i-1,1);saveChat();stopAll();paintChat();return;}
+}
+function ckAct(a,i){
+  var e=ckFind(ck.show);if(!e||!e.chat||!e.chat[i])return;var c=e.chat[i];
+  if(a==="tts"){if(sayKey==="ck"+i){stopAll();return;}speakText(mdSpeak(c.a),"ck"+i);return;}
+  if(a==="copy"){copyText(mdStrip(c.a));return;}
+  if(a==="share"){shareText(Q(c.q)+"\n\n"+mdStrip(c.a)+"\n\n—— "+T("國度321空中團契"));return;}
+  if(a==="fav"){if(!isFav(c.a)){FAV.push({text:c.a,q:c.q,ts:now()});saveFav();}toast(T("已收藏，可在「日記→畫線收藏」找到"));return;}
+}
+function afterRender(){
+  eachA(qa(".md > p, .md > ul > li, .md > ol > li, .md > blockquote, .md > h4, .turn > .q",app),function(e){if(e.className.indexOf("rd")<0)e.className=(e.className?e.className+" ":"")+"rd";});
+  paintHl();ttsRebind();paintSay();if(typeof updIdle==="function")updIdle();
+}
+document.addEventListener("click",function(e){
+  var b=e.target;while(b&&b!==document&&b.tagName!=="BUTTON")b=b.parentNode;if(!b||b===document)return;
+  if(b.getAttribute("data-l")&&b.parentNode&&b.parentNode.id==="langsw"){switchLang(b.getAttribute("data-l"));return;}
+  if(b.id==="btnfont"){cycleFont();return;}
+  if(b.id==="btnset"){openSettings();return;}
+  if(b.id==="fabtts"){if(spk.on||sayKey){stopAll();return;}ttsPage();return;}
+  if(b.id==="fabxz"){stopAll();openXz();return;}
+  if(b.getAttribute("data-set")){setClick(b);return;}
+  var sa=b.getAttribute("data-sa");
+  if(sa){closeSheet();
+    if(sa==="marks"){state.jmode="marks";go("journal");}
+    else if(sa==="backup"){go("growth");setTimeout(function(){var k=$("backup");if(k)k.scrollIntoView();},60);}
+    else if(sa==="chk")checkUpdate(1);else if(sa==="hard")applyUpdate(true);
+    return;}
+  if(b.getAttribute("data-ha")){hlClick(b);return;}
+  if(b.getAttribute("data-xa")){xzClick(b);return;}
+});
+document.addEventListener("keydown",function(e){if(e.keyCode===27){if($("sheet")){hlNoteGrab();closeSheet();paintHl();}else if(XZ.open)closeXz();}});
+function isBusy(){return !!(spk.on||sayKey||chatBusy||ck.busy||ck.asking||hlOpen()||(document.activeElement&&/TEXTAREA|INPUT|SELECT/.test(document.activeElement.tagName)));}
+var UPD = { reg: null, target: '', pending: false };
+function ssGet(k) { try { return sessionStorage.getItem(k) || ''; } catch (e) { return ''; } }
+function ssSet(k, v) { try { sessionStorage.setItem(k, v); } catch (e) { } }
+function verFetch(ok, fail) {
+  var x = new XMLHttpRequest();
+  x.open('GET', 'version.json?t=' + now(), true);
+  try { x.setRequestHeader('Cache-Control', 'no-cache'); } catch (e) { }
+  x.timeout = 15000;
+  x.onload = function () { if (x.status >= 200 && x.status < 300) { try { return ok(JSON.parse(x.responseText)); } catch (e) { } } if (fail) fail(); };
+  x.onerror = x.ontimeout = function () { if (fail) fail(); };
+  x.send();
+}
+function updBar(on) {
+  var b = $("updbar");
+  if (!on) { if (b) b.parentNode.removeChild(b); return; }
+  if (!b) { b = document.createElement('div'); b.id = 'updbar'; b.className = 'updbar'; b.onclick = function () { applyUpdate(false); }; document.body.appendChild(b); }
+  b.textContent = T("已有新版本，點這裡立即更新");
+}
+function reloadFresh() { if (window.__reloading) return; window.__reloading = 1; location.replace(location.pathname + '?u=' + now() + location.hash); }
+function applyUpdate(hard) {
+  updBar(false); toast(T("正在更新到新版本……"));
+  ssSet('updTry', UPD.target || 'x');
+  if (!hard && navigator.serviceWorker && UPD.reg) {
+    try { if (UPD.reg.waiting) UPD.reg.waiting.postMessage('skip'); UPD.reg.update(); } catch (e) { }
+    setTimeout(reloadFresh, 900); return;
+  }
+  ssSet('updHard', UPD.target || 'x');
+  var done = 0, fin = function () { if (!done) { done = 1; reloadFresh(); } };
+  try {
+    if (window.caches && caches.keys) caches.keys().then(function (ks) { return Promise.all(ks.map(function (k) { return caches['delete'](k); })); })['catch'](function () { });
+    if (navigator.serviceWorker && navigator.serviceWorker.getRegistrations) navigator.serviceWorker.getRegistrations().then(function (rs) { for (var i = 0; i < rs.length; i++) rs[i].unregister(); setTimeout(fin, 300); }, fin);
+  } catch (e) { }
+  setTimeout(fin, 1500);
+}
+function onNewVersion(v) {
+  if (!v || v === APPVER) return;
+  UPD.target = v;
+  if (isBusy()) { UPD.pending = true; updBar(true); return; }
+  if (ssGet('updHard') === v) { updBar(true); return; }
+  applyUpdate(ssGet('updTry') === v);
+}
+function updIdle() {
+  if (UPD.pending && isBusy()) { if (!UPD.t) UPD.t = setTimeout(function () { UPD.t = 0; updIdle(); }, 20000); return; } if (UPD.pending && !isBusy()) { UPD.pending = false; onNewVersion(UPD.target); } }
+function checkUpdate(manual) {
+  if (navigator.onLine === false) { if (manual) toast(T("網路連不上，請稍後再試")); return; }
+  try { if (UPD.reg) UPD.reg.update(); } catch (e) { }
+  verFetch(function (j) {
+    if (j && j.v && j.v !== APPVER) onNewVersion(j.v);
+    else if (manual) toast(T("已是最新版本"));
+  }, function () { if (manual) toast(T("網路連不上，請稍後再試")); });
+}
+function initUpdate() {
+  if (!/^https?:/.test(location.protocol)) return;
+  if (/[?&]u=\d+/.test(location.search) && history.replaceState) { try { history.replaceState(null, '', location.pathname + location.hash); } catch (e) { } }
+  if ('serviceWorker' in navigator) {
+    var sw = navigator.serviceWorker;
+    sw.register('sw.js', { updateViaCache: 'none' }).then(function (reg) {
+      UPD.reg = reg;
+      var track = function (w) { if (w) w.addEventListener('statechange', function () { if (w.state === 'installed' && sw.controller) checkUpdate(0); }); };
+      track(reg.installing); track(reg.waiting);
+      reg.addEventListener('updatefound', function () { track(reg.installing); });
+    })['catch'](function () { });
+    sw.addEventListener('message', function (e) { var d = e.data || {}; if (d.t === 'sw-updated' && d.v && d.v !== APPVER) onNewVersion(d.v); });
+    sw.addEventListener('controllerchange', function () { if (UPD.target && !isBusy()) reloadFresh(); });
+  }
+  setTimeout(function () { checkUpdate(0); }, 2500);
+  setInterval(function () { checkUpdate(0); }, 30 * 60 * 1000);
+  document.addEventListener('visibilitychange', function () { if (document.visibilityState === 'visible') checkUpdate(0); });
+  window.addEventListener('pageshow', function (e) { if (e.persisted) checkUpdate(0); });
+  window.addEventListener('online', function () { checkUpdate(0); });
+}
+loadPack(L(),function(){
+  applyChrome();render();initUpdate();
+  setTimeout(function(){if(SET.human&&navigator.onLine!==false)ajaxBuf(SVC.tts,{voice:voiceName(),rate:"+0%",sil:140,silc:140,sile:260,text:"。"},function(){});},1200);
+});
+
 </script>
 </body>
 </html>

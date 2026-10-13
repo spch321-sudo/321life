@@ -1,49 +1,52 @@
-/* 321生命操練 service worker — 更新版本時把 VERSION 加一 */
-var VERSION = "321life-v1.3.0";
-var SHELL = ["./", "index.html", "manifest.json", "icon-192.png", "icon-512.png", "icon-maskable-512.png", "apple-touch-icon.png", "hero.jpg", "hero-720.jpg"];
-
-self.addEventListener("install", function (e) {
-  e.waitUntil(caches.open(VERSION).then(function (c) { return c.addAll(SHELL); }));
+/* 321生命操練 Service Worker —— 自動更新版
+   ‧ 每次發佈 V 都不同 → 瀏覽器偵測到 sw.js 位元組改變就安裝新 SW
+   ‧ install：skipWaiting；預載用 cache:'reload' 繞過 HTTP 快取（GitHub Pages 會快取 10 分鐘）
+   ‧ activate：刪舊快取、clients.claim，並通知所有頁面；背景中的舊頁面直接重新導向成新版
+     （連「沒有更新程式碼的舊版頁面」也能被帶到新版）
+   ‧ fetch：HTML／JS／JSON 網路優先（no-cache），離線才用快取；圖片快取優先；影音不攔截（Range 請求） */
+var V = '321life-@@VER@@';
+var VER = '@@VER@@';
+var SHELL = ['./', './index.html', './manifest.json', './lang-zs.json', './lang-en.json', './icon-192-v2.png', './icon-512-v2.png', './icon-maskable-512-v2.png', './apple-touch-icon-v2.png', './favicon-32.png', './hero.jpg', './hero-720.jpg'];
+self.addEventListener('install', function (e) {
+  self.skipWaiting();
+  e.waitUntil(caches.open(V).then(function (c) {
+    return Promise.all(SHELL.map(function (u) { return fetch(new Request(u, { cache: 'reload' })).then(function (r) { if (r && r.ok) return c.put(u, r); })['catch'](function () { }); }));
+  }));
 });
-
-self.addEventListener("activate", function (e) {
-  e.waitUntil(caches.keys().then(function (keys) {
-    return Promise.all(keys.filter(function (k) { return k !== VERSION && k.indexOf("321life-") === 0; })
-      .map(function (k) { return caches.delete(k); }));
-  }).then(function () { return self.clients.claim(); }));
+self.addEventListener('activate', function (e) {
+  e.waitUntil(caches.keys().then(function (ks) {
+    return Promise.all(ks.filter(function (k) { return k !== V && k !== '321life-fonts'; }).map(function (k) { return caches['delete'](k); }));
+  }).then(function () { return self.clients.claim(); }).then(function () {
+    return self.clients.matchAll({ type: 'window', includeUncontrolled: true });
+  }).then(function (cs) {
+    cs.forEach(function (c) {
+      try { c.postMessage({ t: 'sw-updated', v: VER }); } catch (x) { }
+      if (c.visibilityState === 'hidden' && c.navigate) { try { c.navigate(c.url); } catch (x) { } }
+    });
+  }));
 });
-
-self.addEventListener("message", function (e) {
-  if (e.data === "skip") self.skipWaiting();
-});
-
-self.addEventListener("fetch", function (e) {
-  var req = e.request;
-  if (req.method !== "GET") return;
-  var url = new URL(req.url);
-
-  /* 頁面：先抓網路（拿到最新版），沒網路時用快取 */
-  if (req.mode === "navigate") {
-    e.respondWith(fetch(req).then(function (res) {
-      var copy = res.clone();
-      caches.open(VERSION).then(function (c) { c.put("index.html", copy); });
-      return res;
-    })["catch"](function () { return caches.match("index.html"); }));
+self.addEventListener('message', function (e) { if (e.data === 'skip') self.skipWaiting(); });
+self.addEventListener('fetch', function (e) {
+  var r = e.request; if (r.method !== 'GET') return;
+  var u = new URL(r.url);
+  if (u.hostname === 'fonts.googleapis.com' || u.hostname === 'fonts.gstatic.com') {
+    e.respondWith(caches.open('321life-fonts').then(function (c) { return c.match(r).then(function (h) { return h || fetch(r).then(function (resp) { c.put(r, resp.clone()); return resp; }); }); }));
     return;
   }
-
-  /* 字型：用過一次就存起來，離線也能顯示 */
-  if (url.hostname === "fonts.googleapis.com" || url.hostname === "fonts.gstatic.com") {
-    e.respondWith(caches.open("321life-fonts").then(function (c) {
-      return c.match(req).then(function (hit) {
-        return hit || fetch(req).then(function (res) { c.put(req, res.clone()); return res; });
-      });
-    }));
+  if (u.origin !== self.location.origin) return;
+  var p = u.pathname;
+  if (/\.(mp3|m4a|aac|wav|ogg|opus|mp4|mov|webm)$/i.test(p) || r.headers.get('range')) return;
+  if (/version\.json$/.test(p)) { e.respondWith(fetch(p + '?t=' + Date.now(), { cache: 'no-store' })['catch'](function () { return new Response('{}', { headers: { 'Content-Type': 'application/json' } }); })); return; }
+  var nav = r.mode === 'navigate' || /\.html$/.test(p) || /\/$/.test(p);
+  var key = nav ? './index.html' : (/\.(json|js)$/.test(p) ? u.origin + p : r);
+  if (nav || /\.(json|js|css)$/.test(p)) {
+    e.respondWith(fetch(nav ? u.origin + p + u.search : r.url, { cache: 'no-cache', credentials: 'same-origin' }).then(function (resp) {
+      if (resp && resp.ok) { var cp = resp.clone(); caches.open(V).then(function (c) { c.put(key, cp); }); }
+      return resp;
+    })['catch'](function () { return caches.match(key).then(function (h) { return h || caches.match(r, { ignoreSearch: true }).then(function (h2) { return h2 || caches.match('./index.html'); }); }); }));
     return;
   }
-
-  /* 其他同站檔案：快取優先 */
-  if (url.origin === self.location.origin) {
-    e.respondWith(caches.match(req).then(function (hit) { return hit || fetch(req); }));
-  }
+  e.respondWith(caches.match(r, { ignoreSearch: true }).then(function (h) {
+    return h || fetch(r).then(function (resp) { if (resp && resp.ok) { var cp = resp.clone(); caches.open(V).then(function (c) { c.put(r, cp); }); } return resp; });
+  }));
 });
