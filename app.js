@@ -22,6 +22,8 @@ if(!SET){var nl=String(navigator.language||"zh").toLowerCase();
   var olduser=false;try{olduser=!!localStorage.getItem("r321-life-entries");}catch(e){}
   SET={lang:olduser?"zh":(/^zh-(cn|sg|hans)/.test(nl)?"zs":(/^zh/.test(nl)?"zh":(/^en/.test(nl)?"en":"zh"))),font:0,theme:"",voice:0,rate:0,human:true,aud:"adult"};}
 function saveSet(){lsSet("r321-life-set",SET);}
+/* 網址參數 ?lang=zh|zs|en（也接受 tc/sc）：從空中團契等外部連結直接開對語言，用完即從網址移除 */
+(function(){var m=/[?&]lang=(zh|zs|en|tc|sc)(?:&|$)/i.exec(location.search);if(!m)return;var v=m[1].toLowerCase();v=v==="tc"?"zh":(v==="sc"?"zs":v);SET.lang=v;saveSet();try{if(history.replaceState)history.replaceState(null,"",location.pathname+location.search.replace(/([?&])lang=[^&]*&?/i,"$1").replace(/[?&]$/,"")+location.hash);}catch(e){}})();
 var PACK={zh:{}};
 function L(){return SET.lang||"zh";}
 function isEN(){return L()==="en";}
