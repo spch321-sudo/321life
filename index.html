@@ -1055,7 +1055,7 @@ app.addEventListener("click",function(e){
     jdraft=null;render();toast(T("已儲存，榮耀歸給耶穌"));
   }
 });
-var APPVER="2.0.202611022316";
+var APPVER="2.0.202611031010";
 var SVC={xz:XI_ENDPOINT,tts:"https://azure-tts.spch321.workers.dev",model:XI_MODEL};
 var VOICES={
   zh:[["zh-TW-YunJheNeural","雲哲"],["zh-CN-Yunfan:DragonHDLatestNeural","雲帆"],["zh-CN-Xiaochen:DragonHDLatestNeural","曉辰"]],
@@ -1098,7 +1098,7 @@ function switchLang(l){
   if(l===L())return;stopAll();closeSheet();
   if(state.tab==="journal")saveJournalDraft();
   SET.lang=l;saveSet();
-  loadPack(l,function(){applyChrome();render();if(XZ.open)drawXz();toast(T("已切換為繁體中文"));});
+  loadPack(l,function(){applyChrome();render();if(XZ.open)drawXz();try{var gr=$("gxaroot");if(gr&&gr.parentNode)gr.parentNode.removeChild(gr);if(window.GXA_FACTORY)window.GXA_FACTORY();}catch(e){}toast(T("已切換為繁體中文"));});
 }
 function cycleFont(){SET.font=((SET.font||0)+1)%4;saveSet();applyChrome();toast(T("字級：{0}",T(["標準","大","特大","超大"][SET.font])));if($("setsheet"))openSettings();}
 function closeSheet(){var m=$("sheet");if(m)m.parentNode.removeChild(m);hlCur=null;}
@@ -1189,16 +1189,17 @@ function paintHl(){
     if(b!==lastB){lastB=b;after=b;}
     after.parentNode.insertBefore(d,after.nextSibling);after=d;});
 }
+function isScrip(el){var p=el.parentNode;return !!(p&&((p.tagName==="BLOCKQUOTE"&&p.querySelector&&p.querySelector("cite"))||(p.querySelector&&p.querySelector(".rd")&&p.tagName==="P")));}
 function openHlSheet(el){
   var k=hlKeyOf(el),h=HL[k];if(!h)return;
   var sw="";eachA(HL_COLORS,function(c){sw+='<button class="hlswatch'+(h.c===c?" on":"")+'" data-ha="c" data-c="'+c+'" style="background:'+HL_SWATCH[c]+'" aria-label="'+c+'"></button>';});
   openSheet('<div class="sheet-title">'+T("畫線")+'<span class="sheet-ref" id="hlRef">'+esc(h.ref)+'</span><button class="sheet-x" data-ha="close" aria-label="'+T("關閉")+'">✕</button></div>'+
     '<p class="sheet-quote" id="hlQuote">'+esc(h.t)+'</p>'+
     '<div class="sheet-row"><span class="sheet-lab">'+T("顏色")+'</span><div class="swatches">'+sw+'</div></div>'+
-    '<div class="sheet-row"><span class="sheet-lab">'+T("範圍")+'</span><div class="spanrow"><button class="spanbtn" data-ha="sp" data-d="-1" aria-label="'+T("少一句")+'">－</button><span class="spannum" id="hlNum">'+esc(T("{0} 句",h.sp))+'</span><button class="spanbtn" data-ha="sp" data-d="1" aria-label="'+T("多一句")+'">＋</button><button class="spanbtn wide" data-ha="sp" data-d="p">'+T("整段")+'</button></div></div>'+
+    '<div class="sheet-row"><span class="sheet-lab">'+T("範圍")+'</span><div class="spanrow"><button class="spanbtn" data-ha="sp" data-d="-1" aria-label="'+T("少一句")+'">－</button><span class="spannum" id="hlNum">'+esc(T("{0} 句",h.sp))+'</span><button class="spanbtn" data-ha="sp" data-d="1" aria-label="'+T("多一句")+'">＋</button><button class="spanbtn wide" data-ha="sp" data-d="p">'+T("整段")+'</button>'+(isScrip(el)?'<button class="spanbtn wide" data-ha="sp" data-d="v">'+T("整節")+'</button>':"")+'</div></div>'+
     '<textarea class="sheet-ta" id="hlNote" placeholder="'+esc(T("寫下你的默想、領受或要操練的一步……"))+'">'+esc(h.n||"")+'</textarea>'+
     '<div class="sheet-acts"><button class="btn new" data-ha="save">'+T("儲存")+'</button><button class="btn ghost" data-ha="ask">💬 '+T("問小智")+'</button></div>'+
-    '<div class="sheet-acts2"><button class="btn sm" data-ha="read">🔊 '+T("朗讀這句")+'</button><button class="btn sm" data-ha="from">▶ '+T("從這裡朗讀")+'</button><button class="btn sm" data-ha="copy">⧉ '+T("複製")+'</button><button class="btn sm" data-ha="share">↗ '+T("分享")+'</button><button class="btn sm danger" data-ha="del">✕ '+T("刪除")+'</button></div>');
+    '<div class="sheet-acts2"><button class="btn sm new" data-ha="card">🖼 '+T("做成美圖")+'</button><button class="btn sm" data-ha="read">🔊 '+T("朗讀這句")+'</button><button class="btn sm" data-ha="from">▶ '+T("從這裡朗讀")+'</button><button class="btn sm" data-ha="copy">⧉ '+T("複製")+'</button><button class="btn sm" data-ha="share">↗ '+T("分享")+'</button><button class="btn sm danger" data-ha="del">✕ '+T("刪除")+'</button></div>');
   hlCur={el:el,k:k,h:h};
 }
 function hlNoteGrab(){var ta=$("hlNote");if(ta&&hlCur){hlCur.h.n=trim(ta.value);saveHL();}}
@@ -1208,10 +1209,11 @@ function hlClick(b){
   if(a==="close"){hlNoteGrab();closeSheet();paintHl();return;}
   if(a==="c"){h.c=b.getAttribute("data-c");SET.hlc=h.c;saveSet();saveHL();paintHl();eachA(qa(".hlswatch"),function(s){s.className="hlswatch"+(s===b?" on":"");});return;}
   if(a==="sp"){var d=b.getAttribute("data-d"),n,run=sameBlockRun(el);
-    if(d==="p"){n=run.length;toast(n===h.sp?T("這一段已經整段畫起來了"):T("已畫整段，共 {0} 句",n));}else{n=(h.sp||1)+(+d);if(n>run.length)toast(T("已經到這一段的最後一句"));}
+    if(d==="p"||d==="v"){n=run.length;toast(n===h.sp?(d==="v"?T("這一節已經整節畫起來了"):T("這一段已經整段畫起來了")):(d==="v"?T("已畫整節，共 {0} 句",n):T("已畫整段，共 {0} 句",n)));}else{n=(h.sp||1)+(+d);if(n>run.length)toast(T("已經到這一段的最後一句"));}
     spanApply(el,h,n);saveHL();paintHl();$("hlQuote").textContent=h.t;$("hlNum").textContent=T("{0} 句",h.sp);return;}
   if(a==="save"){hlNoteGrab();closeSheet();paintHl();toast(T("已儲存"));return;}
   if(a==="ask"){hlNoteGrab();closeSheet();paintHl();openXz(T("請就這句幫助我默想，並用 321 給我今天可以操練的一步：{0}",Q(h.t))+(h.n?"\n"+T("我的領受：{0}",h.n):""),{t:h.t,ref:h.ref});return;}
+  if(a==="card"){hlNoteGrab();closeSheet();paintHl();openStudio({t:h.t,ref:h.ref,n:h.n});return;}
   if(a==="read"){hlNoteGrab();closeSheet();paintHl();speakText(h.t,"hl");return;}
   if(a==="from"){hlNoteGrab();closeSheet();paintHl();ttsPage(el);return;}
   if(a==="copy"){copyText(hlShareText(h));return;}
@@ -1223,23 +1225,73 @@ function copyText(t){
   try{if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){toast(T("已複製"));},fb);return;}}catch(e){}fb();
 }
 function shareText(t){try{if(navigator.share){navigator.share({text:t})["catch"](function(){});return;}}catch(e){}copyText(t);}
+
+/* ---------- 美圖工作室（掛件 gxa.js：GXS 工作室／我的作品／VPICK321 自動選經文）---------- */
+window.GXA_CFG={
+  get name(){return T("321生命操練");},
+  get nameEn(){return "321 Life Practice";},
+  slug:"life321",
+  lang:function(){return L();},
+  svc:function(){return {xz:SVC.xz};},
+  lessons:function(){return [];},
+  current:function(){return 1;},
+  quote:function(){return {text:"",ref:T("321生命操練"),note:""};},
+  ready:function(G){try{G.setFs(17*[1,1.12,1.25,1.4][SET.font||0]);}catch(e){}}
+};
+function studioReady(){return !!(window.GXS&&window.GXS.open);}
+function studioWait(){toast(T("美圖工作室還在載入，請稍後再按一次"));}
+function openStudio(c){
+  c=c||{};if(!studioReady()){studioWait();return;}
+  stopAll();closeSheet();if(XZ.open)closeXz();
+  try{GXS.open({text:c.t||"",ref:c.ref||"",note:c.n||""});}catch(e){studioWait();}
+}
+function defaultCard(){
+  var best=null,k;for(k in HL){if(HL.hasOwnProperty(k)&&(HL[k].lang||"zh")===L()&&(!best||(HL[k].ts||0)>(best.ts||0)))best=HL[k];}
+  if(best&&best.t)return {t:best.t,ref:best.ref,n:best.n};
+  if(isEN())return {t:"But seek first God\u2019s Kingdom, and his righteousness; and all these things will be given to you as well.",ref:"Matthew 6:33 (WEB)",n:""};
+  if(isZS())return {t:"\u300c你们要先求他的国和他的义，这些东西都要加给你们了。\u300d",ref:"马太福音 6:33",n:""};
+  return {t:"\u300c你們要先求他的國和他的義，這些東西都要加給你們了。\u300d",ref:"馬太福音 6:33",n:""};
+}
+function openWorks(){
+  if(!window.GXA||!GXA.works){studioWait();return;}
+  stopAll();closeSheet();if(XZ.open)closeXz();try{GXA.works();}catch(e){studioWait();}
+}
+function cardText(md){
+  var LIM=isEN()?300:140,raw=String(md||""),m=raw.match(/^> ?(.+)$/m);
+  if(m){var q=mdStrip(m[1]);if(q.length>=12&&q.length<=LIM+60)return q;}
+  var lines=mdStrip(raw).split("\n"),body=[];eachA(lines,function(l){if(trim(l)&&!/^・/.test(trim(l)))body.push(trim(l));});
+  var b=body.join(isEN()?" ":"");if(b.length<=LIM)return b;
+  var cut=b.slice(0,LIM),k=Math.max(cut.lastIndexOf("。"),cut.lastIndexOf("！"),cut.lastIndexOf(". "));return (k>40?cut.slice(0,k+1):cut)+"…";
+}
+/* 小智回答做成美圖：從畫線來的提問帶著原句，就用原句當經文、回答摘要當內文；否則自動挑回答裡最合適的一節經文 */
+function answerCard(text,q,src){
+  if(!studioReady()){studioWait();return;}
+  if(src&&src.t){openStudio({t:src.t,ref:src.ref,n:cardText(text)});return;}
+  stopAll();closeSheet();if(XZ.open)closeXz();
+  try{GXS.fromAnswer(text,q||"");}catch(e){openStudio({t:cardText(text),ref:T("小智"),n:""});}
+}
 function marksHTML(){
   var arr=[],h="",k;for(k in HL){if(HL.hasOwnProperty(k)&&(HL[k].lang||"zh")===L())arr.push([k,HL[k]]);}
   arr.sort(function(a,b){return b[1].ts-a[1].ts;});
-  h+='<section class="card"><div class="eyebrow">'+T("我的畫線（{0}）",arr.length)+'</div>';
+  h+='<section class="card"><div class="eyebrow">'+T("美圖工作室")+'</div><p class="small" style="margin:0 0 8px">'+T("把經文或小智的回答做成美圖，配音樂、錄語音或影片分享。")+'</p><div class="row"><button class="btn new wide" data-mk="studio">🖼 '+T("美圖工作室")+'</button><button class="btn ghost wide" data-mk="works">🎞 '+T("我的作品")+'</button></div></section>'+
+    '<section class="card"><div class="eyebrow">'+T("我的畫線（{0}）",arr.length)+'</div>';
   if(!arr.length)h+='<p class="empty" style="margin:0">'+T("還沒有畫線。在經文、題目、禱告或健檢結果上點一下任何一句，就會畫起來。")+'</p>';
   eachA(arr,function(e){var x=e[1];
     h+='<div class="hitem"><div class="q" data-color="'+x.c+'">'+esc(x.t)+'</div>'+(x.n?'<div class="n">'+esc(x.n)+'</div>':'')+
-      '<div class="m"><span>'+esc(x.ref)+'</span><span><button class="linkbtn" data-mk="go" data-k="'+esc(e[0])+'">'+T("回到原處")+'</button><button class="linkbtn" data-mk="read" data-k="'+esc(e[0])+'">🔊</button><button class="linkbtn danger" data-mk="del" data-k="'+esc(e[0])+'">✕</button></span></div></div>';});
+      '<div class="m"><span>'+esc(x.ref)+'</span><span><button class="linkbtn" data-mk="go" data-k="'+esc(e[0])+'">'+T("回到原處")+'</button><button class="linkbtn" data-mk="card" data-k="'+esc(e[0])+'">🖼</button><button class="linkbtn" data-mk="read" data-k="'+esc(e[0])+'">🔊</button><button class="linkbtn danger" data-mk="del" data-k="'+esc(e[0])+'">✕</button></span></div></div>';});
   h+='</section><section class="card"><div class="eyebrow">'+T("小智收藏（{0}）",FAV.length)+'</div>';
   if(!FAV.length)h+='<p class="empty" style="margin:0">'+T("在小智的回答下按「★ 收藏」，就會存在這裡。")+'</p>';
   for(var i=FAV.length-1;i>=0;i--){var f=FAV[i];
-    h+='<div class="hitem">'+(f.q?'<div class="small">'+esc(f.q)+'</div>':'')+'<div class="md">'+mdHTML(f.text)+'</div><div class="m"><span>'+(f.ts?fmtDate(dkey(new Date(f.ts))):'')+'</span><span><button class="linkbtn" data-mk="fread" data-i="'+i+'">🔊</button><button class="linkbtn" data-mk="fshare" data-i="'+i+'">↗</button><button class="linkbtn danger" data-mk="fdel" data-i="'+i+'">✕</button></span></div></div>';}
+    h+='<div class="hitem">'+(f.q?'<div class="small">'+esc(f.q)+'</div>':'')+'<div class="md">'+mdHTML(f.text)+'</div><div class="m"><span>'+(f.ts?fmtDate(dkey(new Date(f.ts))):'')+'</span><span><button class="linkbtn" data-mk="fcard" data-i="'+i+'">🖼</button><button class="linkbtn" data-mk="fread" data-i="'+i+'">🔊</button><button class="linkbtn" data-mk="fshare" data-i="'+i+'">↗</button><button class="linkbtn danger" data-mk="fdel" data-i="'+i+'">✕</button></span></div></div>';}
   return h+'</section>';
 }
 function marksAct(b){
   var a=b.getAttribute("data-mk"),k=b.getAttribute("data-k"),i=+b.getAttribute("data-i");
   if(a==="go"){hlGo(k);return;}
+  if(a==="studio"){openStudio(defaultCard());return;}
+  if(a==="works"){openWorks();return;}
+  if(a==="card"){if(HL[k])openStudio({t:HL[k].t,ref:HL[k].ref,n:HL[k].n});return;}
+  if(a==="fcard"){if(FAV[i])answerCard(FAV[i].text,FAV[i].q,null);return;}
   if(a==="read"){if(HL[k])speakText(HL[k].t+(HL[k].n?"。"+HL[k].n:""),"mk");return;}
   if(a==="del"){delete HL[k];saveHL();keepScroll();toast(T("已刪除畫線"));return;}
   if(a==="fread"){if(FAV[i])speakText(mdSpeak(FAV[i].text),"fav");return;}
@@ -1601,7 +1653,19 @@ function xzCtx(){
   if(t==="check"&&ck.show){var e=ckFind(ck.show);if(e&&e.ai&&e.ai.title)c.push("正在看的健檢："+e.ai.title+"（"+(e.ai.who||"")+"）；事件："+String(e.input.ev||"").slice(0,120));}
   return c.join("\n");
 }
-function xzSys(){return ckBase()+XZ_TASK+(isEN()?SYS_FMT_EN:SYS_FMT_ZH)+"\n\n"+xzCtx()+audLine();}
+var LEN_TXT={"zh": {"brief": " 回答長度：簡要。整段回答控制在 3～5 句話（約 150 字內）：直接給核心答案、一句關鍵經文或一個比喻，最後一句禱告或一個小步驟。不用表格、不列長清單。", "full": " 回答長度：詳細。請完整、有條理地回答（約 800～1200 字）：說明經文脈絡、關鍵字詞的意思、相關經文對照、清楚的321應用、這星期可以操練的具體步驟，最後以禱告結束。可用簡短小標題。"}, "en": {"brief": " Length: BRIEF. Keep the whole answer to about 3–5 short sentences (roughly 120 words): the core answer, one key verse or picture, and a one-line prayer or step. No tables, no long lists.", "full": " Length: DETAILED. Give a fuller, well-organised answer (roughly 600–900 words): the passage context, the meaning of key words, cross-references, a clear 3-2-1 application, a practical step for this week, and a closing prayer. Short headings are welcome."}, "zs": {"brief": " 回答长度：简要。整段回答控制在 3～5 句话（约 150 字内）：直接给核心答案、一句关键经文或一个比喻，最后一句祷告或一个小步骤。不用表格、不列长清单。", "full": " 回答长度：详细。请完整、有条理地回答（约 800～1200 字）：说明经文脉络、关键字词的意思、相关经文对照、清楚的321应用、这星期可以操练的具体步骤，最后以祷告结束。可用简短小标题。"}};
+var LEN_KEYS=["brief","mid","full"];
+function alen(){return LEN_KEYS.indexOf(SET.alen)<0?"mid":SET.alen;}
+function lenName(k){return T({brief:"簡要",mid:"適中",full:"詳細"}[k]);}
+function lenBtns(){var h="";eachA(LEN_KEYS,function(k){h+='<button data-xa="len" data-v="'+k+'" class="'+(alen()===k?"on":"")+'">'+esc(lenName(k))+'</button>';});return h;}
+function lenLine(){var k=alen();if(k==="mid")return "";var t=LEN_TXT[L()]||LEN_TXT.zh;
+  return "\n\n"+t[k]+(isEN()?" (This length request overrides the earlier instruction to keep answers short; still follow the answer-format rules above.)":(isZS()?"（这一条长度要求优先于上面「回应精简」的原则；仍然照上面的「回答格式」排版。）":"（這一條長度要求優先於上面「回應精簡」的原則；仍然照上面的「回答格式」排版。）"));}
+/* 切換長度＝用新長度重新回答最後一題 */
+function reaskLast(){
+  if(chatBusy)return false;var j=-1;for(var n=CHAT.length-1;n>=0;n--){if(CHAT[n].role!=="user"&&!CHAT[n].wait&&!CHAT[n].err){j=n;break;}break;}
+  if(j<1||CHAT[j-1].role!=="user")return false;var q=CHAT[j-1].text,src=CHAT[j-1].src||null;
+  CHAT.splice(j-1,2);saveChat();chatSrc=src;toast(T("已改成「{0}」，重新回答中…",lenName(alen())));sendChat(q);return true;}
+function xzSys(){return ckBase()+XZ_TASK+(isEN()?SYS_FMT_EN:SYS_FMT_ZH)+"\n\n"+xzCtx()+audLine()+lenLine();}
 var QBANK=["怎樣分辨此刻是舊人作王還是新人作王？","我一被批評就想辯解，怎樣操練「快快的聽，慢慢的說」？","驕傲和謙卑在日常生活裡怎麼分辨？","用一個比喻說明「無己不是沒有，乃是進入無限」","我常拿自己和別人比較，怎樣用神的眼光看自己？","怎樣在家人（我的「2」）面前結出忍耐的果子？","憂慮一直來，怎樣把心意奪回、順服基督？","讓耶穌作王，在職場上具體會怎麼做？","改變觀念的八大步驟，怎樣用在一節經文上？","幫我擬一個七天的無己操練計畫"];
 var FU=[["💬","說出口","請幫我寫出可以直接說出口的一兩句話，用在你剛才說的情況裡。"],["🏠","家庭","你剛才的回答，用在我和家人之間，具體可以怎麼做？"],["💼","職場","你剛才的回答，用在職場和同事之間，具體可以怎麼做？"],["🔁","又跌倒","如果我照你剛才說的去做，卻又失敗了，該怎樣重新起來？"],["🙏","禱告","請根據你剛才的回答，帶我做一個簡短的禱告。"],["📅","七天","請把你剛才的回答整理成七天的操練計畫，每天一個小行動。"]];
 function isFav(t){for(var i=0;i<FAV.length;i++)if(FAV[i].text===t)return true;return false;}
@@ -1624,7 +1688,7 @@ function chatLogHtml(){
     var lg=!m.wait&&!m.cont&&msgLong(m),fd=lg&&m.fold;
     h+='<div class="msg ai'+(fd?" fold":"")+'" id="msg'+i+'"><div class="msg-body md">'+(m.wait?'<span class="typing"><i></i><i></i><i></i></span> '+esc(T("小智正在思想……")):mdHTML(m.text))+(m.cont?'<p class="small"><span class="typing"><i></i><i></i><i></i></span> '+esc(T("小智還在接著寫…"))+'</p>':'')+'</div>'+
       (lg?'<button class="msg-more" data-xa="fold" data-i="'+i+'">'+esc(T(fd?"展開全文 ▾":"收合 ▴"))+'</button>':'')+
-      (m.wait||m.cont?'':'<div class="msg-actions"><button class="msg-act'+(isFav(m.text)?" on":"")+'" data-xa="fav" data-i="'+i+'">★ '+T("收藏")+'</button><button class="msg-act" data-xa="share" data-i="'+i+'">↗ '+T("分享")+'</button><button class="msg-act" data-xa="copy" data-i="'+i+'">⧉ '+T("複製")+'</button><button class="msg-act" data-xa="tts" data-i="'+i+'">🔊 '+T("朗讀")+'</button><button class="msg-act" data-xa="del" data-i="'+i+'" aria-label="'+T("刪除")+'">✕</button></div>')+'</div>';
+      (m.wait||m.cont?'':'<div class="msg-actions"><button class="msg-act'+(isFav(m.text)?" on":"")+'" data-xa="fav" data-i="'+i+'">★ '+T("收藏")+'</button><button class="msg-act" data-xa="share" data-i="'+i+'">↗ '+T("分享")+'</button><button class="msg-act" data-xa="copy" data-i="'+i+'">⧉ '+T("複製")+'</button><button class="msg-act" data-xa="tts" data-i="'+i+'">🔊 '+T("朗讀")+'</button><button class="msg-act" data-xa="card" data-i="'+i+'">🖼 '+T("做成美圖")+'</button><button class="msg-act" data-xa="del" data-i="'+i+'" aria-label="'+T("刪除")+'">✕</button></div>')+'</div>';
     if(i===lk&&!chatBusy){var fu="";eachA(FU,function(f){fu+='<button class="fu-chip" data-xa="q" data-q="'+esc(T(f[2]))+'">'+f[0]+' '+esc(T(f[1]))+'</button>';});h+='<div class="fu"><span class="small">'+T("接著問：")+'</span>'+fu+'</div>';}
   });
   return h;
@@ -1640,6 +1704,7 @@ function drawXz(){
   eachA(AUD_KEYS,function(a){ab+='<button data-xa="aud" data-v="'+a+'" class="'+(SET.aud===a?"on":"")+'">'+esc(audName(a))+'</button>';});
   el.innerHTML='<div class="xzhd"><button class="ib" data-xa="close" aria-label="'+T("關閉")+'">✕</button><span class="xzav">智</span><div class="grow"><b>'+T("小智")+'</b><div class="small">'+T("321 生命陪伴者")+'</div></div><button class="hdbtn" data-xa="foldall">'+T("收合")+'</button><button class="hdbtn" data-xa="clear">'+T("新對話")+'</button></div>'+
     '<div class="xzbd" id="xzb"><div class="chatctx">'+esc(T("目前：{0}",T(TAB_TITLE[state.tab])))+'</div><div class="segx sm">'+ab+'</div>'+
+    '<div class="segx sm" id="lenbar"><span class="small" style="align-self:center">'+esc(T("回答長度"))+'</span>'+lenBtns()+'</div>'+
     '<button class="qs-toggle" data-xa="qs">💡 '+T("看看範例問題")+'</button><div class="qs-panel" id="qsPanel" hidden>'+qs+'</div>'+
     '<div class="chatlog" id="chatlog">'+chatLogHtml()+'</div></div>'+
     '<div class="xzft"><textarea id="chatIn" rows="1" placeholder="'+esc(T("問小智任何操練上的問題……"))+'"></textarea><button class="btn new" data-xa="send">'+T("送出")+'</button></div>';
@@ -1668,6 +1733,8 @@ function xzClick(b){
   if(a==="q"){sendChat(b.getAttribute("data-q"));var p=$("qsPanel");if(p)p.hidden=true;return;}
   if(a==="qs"){var pn=$("qsPanel");if(pn)pn.hidden=!pn.hidden;return;}
   if(a==="aud"){SET.aud=b.getAttribute("data-v");saveSet();drawXz();toast(T("小智回答對象：{0}",b.textContent));return;}
+  if(a==="len"){var nv=b.getAttribute("data-v");if(alen()===nv)return;SET.alen=nv;saveSet();drawXz();
+    if(!reaskLast())toast(T("回答長度：{0}",b.textContent));return;}
   if(a==="foldall"){foldAll();return;}
   if(a==="clear"){if(chatBusy)return;CHAT=[];saveChat();stopAll();paintChat();toast(T("已開始新對話"));return;}
   if(a==="fold"){msgFold(i);return;}
@@ -1676,6 +1743,7 @@ function xzClick(b){
   if(a==="share"){var s=m.src?Q(m.src.t)+"\n—— "+m.src.ref+"\n\n":"";shareText(s+mdStrip(m.text)+"\n\n—— "+T("國度321空中團契")+"\nhttps://spch321-sudo.github.io/321life/");return;}
   if(a==="copy"){copyText(mdStrip(m.text));return;}
   if(a==="tts"){if(sayKey==="m"+i){stopAll();return;}speakText(mdSpeak(m.text),"m"+i);return;}
+  if(a==="card"){var uq=CHAT[i-1]&&CHAT[i-1].role==="user"?CHAT[i-1].text:"";answerCard(m.text,uq,m.src||(CHAT[i-1]&&CHAT[i-1].src)||null);return;}
   if(a==="del"){CHAT.splice(i,1);if(CHAT[i-1]&&CHAT[i-1].role==="user"&&(!CHAT[i]||CHAT[i].role==="user"))CHAT.splice(i-1,1);saveChat();stopAll();paintChat();return;}
 }
 function ckAct(a,i){
@@ -1786,7 +1854,8 @@ loadPack(L(),function(){
 });
 
 </script>
-<script src="coread.js?v=2.0.202611022316"></script>
+<script src="coread.js?v=2.0.202611031010"></script>
+<script src="gxa.js?v=2.0.202611031010"></script>
 <script id="k321meet">window.K321MEET_CFG={wrap:'viewHome',marker:'',rerender:function(){try{render()}catch(e){}},lang:function(){try{var l=L();return l==='en'?'en':l==='zs'?'sc':'tc'}catch(e){return 'tc'}}};
 /* 國度321空中團契 · 首頁「下一堂聚會／一鍵加入聚會／聚會時間與奉獻支持」 k321meet v1 */
 (function () {
