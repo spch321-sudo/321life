@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-Hant-TW">
-<head>
+<head><script>(function(){try{var q=location.search,m=q.match(/[?&]join=([A-Za-z0-9]{6})/);if(m){sessionStorage.setItem('cr_j',JSON.stringify({j:m[1],s:/[?&]screen=1/.test(q)?1:0,t:Date.now()}));}else{var o=JSON.parse(sessionStorage.getItem('cr_j')||'null');if(o&&Date.now()-o.t<20000){history.replaceState(null,'',location.pathname+'?join='+o.j+(o.s?'&screen=1':'')+location.hash);}}if(/[?&]screen=1/.test(location.search))window.CR_SCREEN=true;}catch(e){}})();</script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>321生命操練</title>
@@ -309,6 +309,19 @@ html[data-lang="en"] nav.tabs button span{font-size:11px}
 .turn .msg-actions{margin-top:0}
 .updbar{cursor:pointer;justify-content:center;font-weight:700;font-size:14px}
 
+
+/* ---- 一起共讀 ---- */
+.cr-pt{outline:3px solid var(--gold);outline-offset:2px;border-radius:4px;background:rgba(168,123,31,.16);animation:crpt 1.1s ease-out 3}
+@keyframes crpt{0%{outline-color:transparent;outline-offset:8px}60%{outline-color:var(--gold);outline-offset:2px}100%{outline-color:var(--gold)}}
+.crchip{position:fixed;left:max(14px,calc(50% - 320px + 14px));bottom:calc(74px + env(safe-area-inset-bottom,0px));z-index:58;border:0;border-radius:999px;padding:8px 14px 8px 10px;font-size:0.8125rem;background:var(--vine);color:#fff;box-shadow:0 6px 18px rgba(0,0,0,.22);max-width:calc(100vw - 100px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer}
+.crchip .dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:#5BD38A;margin-right:6px;vertical-align:1px;animation:crp 1.6s infinite}
+.crchip.wait .dot{background:#F2C14E}.crchip.off{background:var(--gold)}.crchip.off .dot{background:#fff;animation:none}
+@keyframes crp{0%,100%{opacity:1}50%{opacity:.35}}
+.cr-k{font-size:0.8125rem;color:var(--muted);text-align:center;margin-top:4px}.cr-code{font-size:2.3rem;font-weight:800;letter-spacing:.12em;text-align:center;color:var(--vine);line-height:1.3;font-variant-numeric:tabular-nums}
+.cr-qr{display:flex;justify-content:center}.cr-qr img{width:180px;height:180px;image-rendering:pixelated;background:#fff;border-radius:10px;padding:4px}
+.cr-c{text-align:center}.cr-count{text-align:center;font-weight:700}.cr-acts{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}.cr-tip,.cr-desc{line-height:1.7}
+.cr-join{display:flex;gap:8px}.cr-join input{flex:1;min-width:0;font:inherit;font-size:1.15rem;letter-spacing:.1em;padding:10px 12px;border:1px solid var(--line);border-radius:12px;background:var(--surface);color:var(--fg);text-align:center}
+#crTop{font-size:15px}
 </style>
 </head>
 <body>
@@ -316,6 +329,7 @@ html[data-lang="en"] nav.tabs button span{font-size:11px}
   <header class="top">
     <div class="brand"><span class="mark">321</span><h1 id="hdtitle">生命操練</h1></div>
     <div class="tools">
+      <button class="ib" id="crTop" aria-label="一起共讀 Read together">📡</button>
       <div class="langsw" id="langsw" role="group" aria-label="Language"><button data-l="zh">繁</button><button data-l="zs">简</button><button data-l="en">EN</button></div>
       <button class="ib" id="btnfont" aria-label="字級 Font size">Aa</button>
       <button class="ib" id="btnset" aria-label="設定 Settings"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></button>
@@ -994,7 +1008,7 @@ app.addEventListener("change",function(e){
 });
 app.addEventListener("click",function(e){
   var sn=e.target;while(sn&&sn!==app&&!(sn.className&&String(sn.className).indexOf("sent")===0))sn=sn.parentNode;
-  if(sn&&sn!==app&&!closestBtn(e.target,app)){onSentTap(sn);return;}
+  if(sn&&sn!==app&&!closestBtn(e.target,app)){if(window.CR){CR.mark(sn,1);CR.manual();}onSentTap(sn);return;}
   var nt=e.target;while(nt&&nt!==app&&!(nt.className==="hl-note"))nt=nt.parentNode;
   if(nt&&nt!==app){var own=sentByKey(nt.getAttribute("data-hk"));if(own)openHlSheet(own);return;}
   var b=closestBtn(e.target,app);if(!b)return;
@@ -1041,7 +1055,7 @@ app.addEventListener("click",function(e){
     jdraft=null;render();toast(T("已儲存，榮耀歸給耶穌"));
   }
 });
-var APPVER="2.0.202610201200";
+var APPVER="2.0.202611022316";
 var SVC={xz:XI_ENDPOINT,tts:"https://azure-tts.spch321.workers.dev",model:XI_MODEL};
 var VOICES={
   zh:[["zh-TW-YunJheNeural","雲哲"],["zh-CN-Yunfan:DragonHDLatestNeural","雲帆"],["zh-CN-Xiaochen:DragonHDLatestNeural","曉辰"]],
@@ -1502,7 +1516,7 @@ function raClear(){eachA(qa(".tts-reading"),function(e){e.className=e.className.
 function raSeg(item,k){
   if(!item||!item.segs.length)return;k=Math.max(0,Math.min(k,item.segs.length-1));
   if(item.at===k&&document.querySelector(".tts-reading"))return;item.at=k;raClear();var e=item.segs[k];if(!e||!e.parentNode)return;
-  e.className+=" tts-reading";if(now()-raManualAt>RA_COOL){try{e.scrollIntoView({behavior:"smooth",block:"center"});}catch(x){}}
+  e.className+=" tts-reading";if(window.CR)CR.mark(e,1);if(now()-raManualAt>RA_COOL){try{e.scrollIntoView({behavior:"smooth",block:"center"});}catch(x){}}
 }
 function raProgress(item,ratio){
   if(!item||item.lens.length<2||!(ratio>=0))return;var tot=0,acc=0,k=0,j;for(j=0;j<item.lens.length;j++)tot+=item.lens[j];
@@ -1674,6 +1688,7 @@ function ckAct(a,i){
 function afterRender(){
   eachA(qa(".md > p, .md > ul > li, .md > ol > li, .md > blockquote, .md > h4, .turn > .q",app),function(e){if(e.className.indexOf("rd")<0)e.className=(e.className?e.className+" ":"")+"rd";});
   paintHl();ttsRebind();paintSay();if(typeof updIdle==="function")updIdle();
+  if(window.CR)CR.rendered();
 }
 document.addEventListener("click",function(e){
   var b=e.target;while(b&&b!==document&&b.tagName!=="BUTTON")b=b.parentNode;if(!b||b===document)return;
@@ -1693,7 +1708,7 @@ document.addEventListener("click",function(e){
   if(b.getAttribute("data-xa")){xzClick(b);return;}
 });
 document.addEventListener("keydown",function(e){if(e.keyCode===27){if($("sheet")){hlNoteGrab();closeSheet();paintHl();}else if(XZ.open)closeXz();}});
-function isBusy(){return !!(spk.on||sayKey||chatBusy||ck.busy||ck.asking||hlOpen()||(document.activeElement&&/TEXTAREA|INPUT|SELECT/.test(document.activeElement.tagName)));}
+function isBusy(){return !!((window.CR&&CR.on())||spk.on||sayKey||chatBusy||ck.busy||ck.asking||hlOpen()||(document.activeElement&&/TEXTAREA|INPUT|SELECT/.test(document.activeElement.tagName)));}
 var UPD = { reg: null, target: '', pending: false };
 function ssGet(k) { try { return sessionStorage.getItem(k) || ''; } catch (e) { return ''; } }
 function ssSet(k, v) { try { sessionStorage.setItem(k, v); } catch (e) { } }
@@ -1771,6 +1786,7 @@ loadPack(L(),function(){
 });
 
 </script>
+<script src="coread.js?v=2.0.202611022316"></script>
 <script id="k321meet">window.K321MEET_CFG={wrap:'viewHome',marker:'',rerender:function(){try{render()}catch(e){}},lang:function(){try{var l=L();return l==='en'?'en':l==='zs'?'sc':'tc'}catch(e){return 'tc'}}};
 /* 國度321空中團契 · 首頁「下一堂聚會／一鍵加入聚會／聚會時間與奉獻支持」 k321meet v1 */
 (function () {
