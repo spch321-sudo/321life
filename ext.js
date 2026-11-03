@@ -68,7 +68,7 @@ function openSettings(){
     '<div class="setrow"><span>'+T("朗讀語音")+'</span>'+segBtns("voice",vs,SET.voice||0)+'</div>'+
     '<div class="setrow"><span>'+T("朗讀速度")+'</span>'+segBtns("rate",[[1,T("慢")],[0,T("正常")],[2,T("快")]],SET.rate||0)+'</div>'+
     '<div class="setrow"><span>'+T("真人語音")+'</span>'+segBtns("human",[[1,T("開")],[0,T("關（用手機內建語音）")]],SET.human?1:0)+'</div>'+
-    '<div class="setrow"><span>'+T("小智回答對象")+'</span>'+segBtns("aud",audOpts(),SET.aud)+'</div>'+
+    '<div class="setrow"><span>'+T("小智")+'</span>'+XZ2.settingsHtml()+'</div>'+
     '<div class="row" style="margin-top:6px"><button class="btn ghost wide" data-sa="marks">'+T("我的畫線與收藏")+'</button><button class="btn ghost wide" data-sa="backup">'+T("備份與還原")+'</button></div>'+
     '<div class="setver"><span>'+T("版本")+' '+esc(APPVER)+'</span><span><button class="linkbtn" data-sa="chk">'+T("檢查更新")+'</button><button class="linkbtn" data-sa="hard">'+T("強制更新")+'</button></span></div>','setsheet');
 }
@@ -495,21 +495,24 @@ function xzCtx(){
   return c.join("\n");
 }
 /*END*/
-/*NOI18N*/
-var LEN_TXT={"zh": {"brief": " 回答長度：簡要。整段回答控制在 3～5 句話（約 150 字內）：直接給核心答案、一句關鍵經文或一個比喻，最後一句禱告或一個小步驟。不用表格、不列長清單。", "full": " 回答長度：詳細。請完整、有條理地回答（約 800～1200 字）：說明經文脈絡、關鍵字詞的意思、相關經文對照、清楚的321應用、這星期可以操練的具體步驟，最後以禱告結束。可用簡短小標題。"}, "en": {"brief": " Length: BRIEF. Keep the whole answer to about 3–5 short sentences (roughly 120 words): the core answer, one key verse or picture, and a one-line prayer or step. No tables, no long lists.", "full": " Length: DETAILED. Give a fuller, well-organised answer (roughly 600–900 words): the passage context, the meaning of key words, cross-references, a clear 3-2-1 application, a practical step for this week, and a closing prayer. Short headings are welcome."}, "zs": {"brief": " 回答长度：简要。整段回答控制在 3～5 句话（约 150 字内）：直接给核心答案、一句关键经文或一个比喻，最后一句祷告或一个小步骤。不用表格、不列长清单。", "full": " 回答长度：详细。请完整、有条理地回答（约 800～1200 字）：说明经文脉络、关键字词的意思、相关经文对照、清楚的321应用、这星期可以操练的具体步骤，最后以祷告结束。可用简短小标题。"}};
-/*END*/
-var LEN_KEYS=["brief","mid","full"];
-function alen(){return LEN_KEYS.indexOf(SET.alen)<0?"mid":SET.alen;}
-function lenName(k){return T({brief:"簡要",mid:"適中",full:"詳細"}[k]);}
-function lenBtns(){var h="";eachA(LEN_KEYS,function(k){h+='<button data-xa="len" data-v="'+k+'" class="'+(alen()===k?"on":"")+'">'+esc(lenName(k))+'</button>';});return h;}
-function lenLine(){var k=alen();if(k==="mid")return "";var t=LEN_TXT[L()]||LEN_TXT.zh;
-  return "\n\n"+t[k]+(isEN()?" (This length request overrides the earlier instruction to keep answers short; still follow the answer-format rules above.)":(isZS()?"（这一条长度要求优先于上面「回应精简」的原则；仍然照上面的「回答格式」排版。）":"（這一條長度要求優先於上面「回應精簡」的原則；仍然照上面的「回答格式」排版。）"));}
+/* ===== XZ2（-xz1103）：小智最新功能共用套件——回答長度五段、讀者資料、慕道友信仰背景、設定頁區塊、滿版小智頁摘要列 ===== */
+XZ2.init({
+  app: 'life', pfx: 'xz321-life-', ownAud: true,
+  lang: function () { return L(); },
+  aud: { get: function () { return SET.aud || 'adult'; }, set: function (k) { SET.aud = k; saveSet(); } },
+  legacyLen: function () { return SET.alen; },
+  qsLabel: ['對象範例題', '对象范例题', 'Examples for me'],
+  reAnswer: function (m) { return reaskLast(m); },
+  onAsk: function (q) { sendChat(q); },
+  toast: function (m) { toast(m); }
+});
+XZ2.watchScroll('#xzb');
 /* 切換長度＝用新長度重新回答最後一題 */
-function reaskLast(){
+function reaskLast(msg){
   if(chatBusy)return false;var j=-1;for(var n=CHAT.length-1;n>=0;n--){if(CHAT[n].role!=="user"&&!CHAT[n].wait&&!CHAT[n].err){j=n;break;}break;}
   if(j<1||CHAT[j-1].role!=="user")return false;var q=CHAT[j-1].text,src=CHAT[j-1].src||null;
-  CHAT.splice(j-1,2);saveChat();chatSrc=src;toast(T("已改成「{0}」，重新回答中…",lenName(alen())));sendChat(q);return true;}
-function xzSys(){return ckBase()+XZ_TASK+(isEN()?SYS_FMT_EN:SYS_FMT_ZH)+"\n\n"+xzCtx()+audLine()+lenLine();}
+  CHAT.splice(j-1,2);saveChat();chatSrc=src;toast(msg||T("重新回答中…"));sendChat(q);return true;}
+function xzSys(){return ckBase()+XZ_TASK+(isEN()?SYS_FMT_EN:SYS_FMT_ZH)+"\n\n"+xzCtx()+audLine()+XZ2.sysTail();}
 var QBANK=["怎樣分辨此刻是舊人作王還是新人作王？","我一被批評就想辯解，怎樣操練「快快的聽，慢慢的說」？","驕傲和謙卑在日常生活裡怎麼分辨？","用一個比喻說明「無己不是沒有，乃是進入無限」","我常拿自己和別人比較，怎樣用神的眼光看自己？","怎樣在家人（我的「2」）面前結出忍耐的果子？","憂慮一直來，怎樣把心意奪回、順服基督？","讓耶穌作王，在職場上具體會怎麼做？","改變觀念的八大步驟，怎樣用在一節經文上？","幫我擬一個七天的無己操練計畫"];
 var FU=[["💬","說出口","請幫我寫出可以直接說出口的一兩句話，用在你剛才說的情況裡。"],["🏠","家庭","你剛才的回答，用在我和家人之間，具體可以怎麼做？"],["💼","職場","你剛才的回答，用在職場和同事之間，具體可以怎麼做？"],["🔁","又跌倒","如果我照你剛才說的去做，卻又失敗了，該怎樣重新起來？"],["🙏","禱告","請根據你剛才的回答，帶我做一個簡短的禱告。"],["📅","七天","請把你剛才的回答整理成七天的操練計畫，每天一個小行動。"]];
 function isFav(t){for(var i=0;i<FAV.length;i++)if(FAV[i].text===t)return true;return false;}
@@ -543,13 +546,8 @@ function drawXz(){
   var el=$("xz");
   if(!el){el=document.createElement("div");el.id="xz";el.className="xz";el.setAttribute("role","dialog");document.body.appendChild(el);}
   el.className="xz"+(XZ.open?" on":"");document.body.style.overflow=XZ.open?"hidden":"";if(!XZ.open){el.innerHTML="";return;}
-  var qs="";eachA(QBANK,function(q){qs+='<button class="qs-chip" data-xa="q" data-q="'+esc(T(q))+'">'+esc(T(q))+'</button>';});
-  var ab="";
-  eachA(AUD_KEYS,function(a){ab+='<button data-xa="aud" data-v="'+a+'" class="'+(SET.aud===a?"on":"")+'">'+esc(audName(a))+'</button>';});
-  el.innerHTML='<div class="xzhd"><button class="ib" data-xa="close" aria-label="'+T("關閉")+'">✕</button><span class="xzav">智</span><div class="grow"><b>'+T("小智")+'</b><div class="small">'+T("321 生命陪伴者")+'</div></div><button class="hdbtn" data-xa="foldall">'+T("收合")+'</button><button class="hdbtn" data-xa="clear">'+T("新對話")+'</button></div>'+
-    '<div class="xzbd" id="xzb"><div class="chatctx">'+esc(T("目前：{0}",T(TAB_TITLE[state.tab])))+'</div><div class="segx sm">'+ab+'</div>'+
-    '<div class="segx sm" id="lenbar"><span class="small" style="align-self:center">'+esc(T("回答長度"))+'</span>'+lenBtns()+'</div>'+
-    '<button class="qs-toggle" data-xa="qs">💡 '+T("看看範例問題")+'</button><div class="qs-panel" id="qsPanel" hidden>'+qs+'</div>'+
+  el.innerHTML='<div class="xzhd"><button class="ib" data-xa="close" aria-label="'+T("關閉")+'">✕</button><span class="xzav">智</span><div class="grow"><b>'+T("小智")+'</b><div class="small">'+T("321 生命陪伴者")+'</div></div><button class="hdbtn" data-xa="font" aria-label="'+T("字級")+'">A</button><button class="hdbtn" data-xa="foldall">'+T("收合")+'</button><button class="hdbtn" data-xa="clear">'+T("新對話")+'</button></div>'+
+    '<div class="xzbd" id="xzb"><div class="chatctx">'+esc(T("目前：{0}",T(TAB_TITLE[state.tab])))+'</div>'+XZ2.controlsHtml({qs:true})+
     '<div class="chatlog" id="chatlog">'+chatLogHtml()+'</div></div>'+
     '<div class="xzft"><textarea id="chatIn" rows="1" placeholder="'+esc(T("問小智任何操練上的問題……"))+'"></textarea><button class="btn new" data-xa="send">'+T("送出")+'</button></div>';
   var inp=$("chatIn");if(inp)inp.onkeydown=function(e){if(e.keyCode===13&&!e.shiftKey&&!e.isComposing){e.preventDefault();sendChat(inp.value);}};
@@ -558,13 +556,14 @@ function drawXz(){
 function paintChat(){var log=$("chatlog");if(!log)return;log.innerHTML=chatLogHtml();paintSay();var bd=$("xzb");if(bd)setTimeout(function(){bd.scrollTop=bd.scrollHeight;},30);}
 function sendChat(text){
   text=trim(text);if(!text||chatBusy)return;var inp=$("chatIn");if(inp)inp.value="";
+  try{XZ2.collapse();}catch(e){}
   if(navigator.onLine===false){CHAT.push({role:"user",text:text,ts:now()});CHAT.push({role:"ai",text:T("目前離線，連上網路後小智才能回答。"),ts:now()});saveChat();paintChat();return;}
   CHAT.push({role:"user",text:text,src:chatSrc,ts:now()});var src=chatSrc;chatSrc=null;
   CHAT.push({role:"ai",text:"",wait:true,src:src});if(CHAT.length>60)CHAT=CHAT.slice(-60);chatBusy=true;paintChat();
   var msgs=[];eachA(CHAT,function(m){if(!m.wait&&m.text&&!m.err)msgs.push({role:m.role==="user"?"user":"assistant",content:m.text});});msgs=msgs.slice(-12);
   while(msgs.length&&msgs[0].role!=="user")msgs.shift();
   var last=CHAT[CHAT.length-1];
-  xiChat(xzSys(),msgs,1800,4,function(part){last.wait=false;last.cont=true;last.text=part;if(XZ.open)paintChat();},function(err,txt){
+  xiChat(xzSys(),msgs,XZ2.maxTokens(),4,function(part){last.wait=false;last.cont=true;last.text=part;if(XZ.open)paintChat();},function(err,txt){
     last.wait=false;last.cont=false;foldOld();last.fold=false;last.ts=now();
     if(err){last.text=err;last.err=true;last.ok=false;}else{last.text=txt;last.ok=true;}
     chatBusy=false;saveChat();if(XZ.open)paintChat();else toast(T("小智回答了"));
@@ -575,10 +574,7 @@ function xzClick(b){
   if(a==="close"){closeXz();return;}
   if(a==="send"){var inp=$("chatIn");sendChat(inp?inp.value:"");return;}
   if(a==="q"){sendChat(b.getAttribute("data-q"));var p=$("qsPanel");if(p)p.hidden=true;return;}
-  if(a==="qs"){var pn=$("qsPanel");if(pn)pn.hidden=!pn.hidden;return;}
-  if(a==="aud"){SET.aud=b.getAttribute("data-v");saveSet();drawXz();toast(T("小智回答對象：{0}",b.textContent));return;}
-  if(a==="len"){var nv=b.getAttribute("data-v");if(alen()===nv)return;SET.alen=nv;saveSet();drawXz();
-    if(!reaskLast())toast(T("回答長度：{0}",b.textContent));return;}
+  if(a==="font"){cycleFont();return;}
   if(a==="foldall"){foldAll();return;}
   if(a==="clear"){if(chatBusy)return;CHAT=[];saveChat();stopAll();paintChat();toast(T("已開始新對話"));return;}
   if(a==="fold"){msgFold(i);return;}

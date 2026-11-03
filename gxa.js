@@ -796,6 +796,7 @@ var SAGE321 = (function () {
     t = String(t).replace(/^\s+|\s+$/g, '');
     if (!t || XZ.busy) return;
     XZ.open = true;
+    if (C.onSend) { try { C.onSend(); } catch (e) {} }
     push('user', t);
     draw(); call();
   }
@@ -808,6 +809,7 @@ var SAGE321 = (function () {
              '請幫我更明白這句話，並幫助我活出來。';
     })(String(quote || '').slice(0, 300), note || '');
     if (XZ.busy) { draw(); return; }
+    if (C.onSend) { try { C.onSend(); } catch (e) {} }
     push('user', q);
     draw(); call();
   }
@@ -858,7 +860,7 @@ var SAGE321 = (function () {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       signal: ctrl ? ctrl.signal : undefined,
-      body: JSON.stringify(C.sendModel ? { model: C.model, max_tokens: C.maxTokens, system: sys, messages: msgs } : { system: sys, messages: msgs })
+      body: JSON.stringify({ model: C.model, max_tokens: (typeof C.maxTokens === 'function' ? C.maxTokens() : C.maxTokens), system: sys, messages: msgs })
     }).then(function (res) {
       if (!res.ok) throw new Error('HTTP ' + res.status);
       return res.json();
@@ -1190,7 +1192,7 @@ var GX = (function () {
 
   /* ── 回答對象與長度 ─────────────────────────────────────────── */
   const AUD_KEYS = GXD.keys;
-  const aud = () => (S.set && AUD_KEYS.indexOf(S.set.aud) >= 0) ? S.set.aud : 'adult';
+  const aud = () => { try { return XZ2.aud(); } catch (e) { return (S.set && AUD_KEYS.indexOf(S.set.aud) >= 0) ? S.set.aud : 'adult'; } };
   const alen = () => (S.set && ['brief', 'mid', 'full'].indexOf(S.set.alen) >= 0) ? S.set.alen : 'mid';
   const A = () => GXD.aud[aud()];
   let audOpen = false;
@@ -1198,12 +1200,7 @@ var GX = (function () {
   function sysExtra() {
     let s = '\n\n【回答對象】' + A().sys;
     if (EN) s = '\n\n[Audience]' + A().sys;
-    const k = alen();
-    if (k !== 'mid') {
-      s += (EN ? '\n\n[Length]' : '\n\n【回答長度】') + GXD.len[k] +
-        T('（這一條長度要求優先於上面「回應精簡」的原則；仍然照上面的「回答格式」排版。）',
-          ' (This length request overrides the earlier instruction to keep answers short; still follow the answer-format rules above.)');
-    }
+    s += '\n\n' + XZ2.sysTail();   /* 信仰背景＋讀者資料＋回答長度（五段）改由 XZ2 提供，只送一次 */
     if (isSC()) s += '\n\n【語言】這位讀者使用简体中文，請一律用简体中文回答。';
     return s;
   }
@@ -1218,40 +1215,23 @@ var GX = (function () {
     const nm = GXD.names;
     return AUD_KEYS.map(k => `<button class="gxa${aud() === k ? ' on' : ''}" onclick="GX.setAud('${k}','${where}')">${GXD.icon[k]} ${esc(nm[k])}</button>`).join('');
   }
-  function ctl() {
-    const k = aud(), L = alen(), ln = GXD.lenNames;
-    return `<div class="gxrow">
-      <button class="gxsm" onclick="GX.togAud()">${GXD.icon[k]} ${esc(T('對象：', 'For: ') + GXD.names[k])} ${audOpen ? '▴' : '▾'}</button>
-      <span class="gxlen"><span class="xs muted">${esc(T('長度', 'Length'))}</span>${['brief', 'mid', 'full'].map(x =>
-        `<button class="${L === x ? 'on' : ''}" onclick="GX.setLen('${x}')">${esc(ln[x])}</button>`).join('')}</span></div>
-      ${audOpen ? `<div class="gxaud">${audBtns('xz')}</div><p class="xs muted gxhint">${esc(GXD.hints[k])}</p>` : ''}`;
-  }
-  function togAud() { audOpen = !audOpen; SAGE321.draw(true); }
+  function ctl() { return XZ2.controlsHtml({ qs: true }); }
+  function togAud() { XZ2.act('audtog'); }
   function setAud(k, where) {
     if (AUD_KEYS.indexOf(k) < 0) return;
-    S.set.aud = k; keep();
+    try { XZ2.setAud(k); } catch (e) {}
     say(T('回答對象：', 'Answering for: ') + GXD.names[k]);
+    try { XZ2.refresh(); } catch (e) {}
     if (where === 'xz') SAGE321.draw(true);
     else if (where === 'pl') plPaint();
     else render();
   }
-  function setLen(k) {
-    if (alen() === k) return;
-    S.set.alen = k; keep();
-    const nm = GXD.lenNames[k];
-    if (SAGE321.reask()) say(T('用「' + nm + '」重新回答…', 'Answering again: ' + nm + '…'));
-    else { say(T('回答長度：', 'Answer length: ') + nm); SAGE321.draw(true); }
-  }
+  function setLen(k) { XZ2.act('len', k); }
   function settingsCard() {
-    const k = aud(), L = alen(), ln = GXD.lenNames;
-    return `<div class="card" id="gxset"><p class="eyebrow">${esc(T('小智回答對象', 'Who Xiaozhi answers for'))}</p>
-      <div class="gxaud">${audBtns('me')}</div>
-      <p class="xs muted gxhint">${esc(GXD.hints[k])}</p>
-      <p class="eyebrow" style="margin-top:12px">${esc(T('回答長度', 'Answer length'))}</p>
-      <div class="row">${['brief', 'mid', 'full'].map(x => `<button class="pill ${L === x ? 'on' : ''}" onclick="GX.setLenMe('${x}')">${esc(ln[x])}</button>`).join('')}</div>
+    return `<div class="card" id="gxset"><p class="eyebrow">${esc(T('小智設定', 'Xiaozhi settings'))}</p>${XZ2.settingsHtml()}
       <p class="xs muted" style="margin:8px 0 0">${esc(T('讀經樂出題、小智寫祝福也會跟著回答對象調整口氣。', 'Bible Fun questions and Xiaozhi’s blessings follow this setting too.'))}</p></div>`;
   }
-  function setLenMe(k) { S.set.alen = k; keep(); say(T('回答長度：', 'Answer length: ') + GXD.lenNames[k]); render(); }
+  function setLenMe(k) { XZ2.act('sLen', k); }
 
   /* ── 共用：一次性呼叫小智（重試、逾時） ───────────────────────── */
   async function aiRaw(sys, ask, ms, maxT) {
@@ -4776,6 +4756,7 @@ body:has(#gxaroot .gxz.on) .xz-fab,body:has(#gxaroot .gxz.on) #fab,body:has(#gxa
         worker: SVC.xz, model: SVC.model, sendModel: !!SVC.sendModel, maxTokens: SVC.maxTokens || 1000,
         name: T('小智', 'Xiaozhi'), tagline: T('陪讀 · 解經 · 禱告', 'Read · Reflect · Pray'),
         sysExtra: () => GX.sysExtra(), followups: () => GX.followups(), controls: () => GX.ctl(),
+        maxTokens: () => XZ2.maxTokens(), onSend: () => XZ2.collapse(),
         onCard: (t, q) => GXS.fromAnswer(t, q),
         onShare: (t, q) => GX.shareText(GX.sc((q ? q + '\n\n' : '') + SAGE321.plainOf(t) + '\n\n—— ' + GX.FELLOW + '\n' + GX.home())),
         toast: (m) => toast(m),
