@@ -23,7 +23,8 @@
 <link rel="apple-touch-icon" href="apple-touch-icon-v2.png">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon-v2.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;800&family=Noto+Sans+TC:wght@400;500;700&display=swap">
+<link rel="stylesheet" media="print" onload="this.media='all'" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;800&family=Noto+Sans+TC:wght@400;500;700&display=swap">
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@600;800&family=Noto+Sans+TC:wght@400;500;700&display=swap"></noscript>
 <style>
 
 :root{
@@ -252,6 +253,10 @@ html[data-lang="en"] nav.tabs button span{font-size:11px}
 .sheet-ta{min-height:70px}
 .sheet-acts{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 .sheet-acts2{display:flex;flex-wrap:wrap;gap:6px}
+.wd-verse{font-family:var(--display);font-size:1.15em;line-height:2.1;max-height:34vh;overflow-y:auto;overflow-wrap:anywhere}
+.wdc{font:inherit;color:inherit;background:transparent;border:0;border-bottom:2px dotted var(--gold);padding:0 1px;margin:0;border-radius:3px;cursor:pointer}
+.wdc.on{background:var(--hlbg-gold,rgba(217,177,104,.45));border-bottom-style:solid}
+.wdp{opacity:.7}
 .btn.sm{min-height:38px;padding:6px 12px;font-size:0.875rem;background:var(--sunk);font-weight:600}
 .btn.danger{color:var(--plum)}
 .segx{display:flex;flex-wrap:wrap;gap:6px}
@@ -354,7 +359,7 @@ html[data-lang="en"] nav.tabs button span{font-size:11px}
   <button data-tab="growth"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg><span>成長</span></button>
   <button data-tab="journal"><svg viewBox="0 0 24 24"><path d="M5 4h11l3 3v13H5zM9 10h6M9 14h6M9 18h3"/></svg><span>日記</span></button>
 </nav>
-<script src="xz2.js?v=xz1103"></script>
+<script src="xz2.js?v=rf1105"></script>
 <script>
 var GROUPS=[
  {id:"see",kind:"門戶",name:"看",
@@ -662,11 +667,11 @@ function langLine(){
 function ckBase(){return CK_BASE.replace("全部用繁體中文；引用經文一律用和合本原文，出處要正確，沒有把握的經文寧可不引。",langLine());}
 function ckSys(){
   var s=ckBase()+CK_TASK+CK_JSON;
-  if(isEN())s+="\n\n[ENGLISH OUTPUT] All JSON string values must be in English. \"who\" must be exactly one of: Old self reigns | Old and new at war | New self reigns. \"area\" must be one of: See, Hear, Think, Speak, Act, Mindset, Life, Living, Relationships, Ministry. \"chain\" k values: Perception, Reaction, Response. Use straight double quotes only for JSON syntax; inside strings use “” for quotations. The prayer ends with: in the name of the Lord Jesus Christ we pray, Amen.";
-  else if(isZS())s+="\n\n【简体输出】所有 JSON 字串值一律用简体中文；who、area、chain.k 的选项也用简体（旧人作王｜新旧交战｜新人作王；看｜听｜想｜讲｜行｜观念｜生命｜生活｜关系｜事工；感应｜反应｜回应）。";
+  if(isEN())s+="\n\n[ENGLISH OUTPUT] All JSON string values must be in English. \"who\" must be exactly one of: Old self reigns | Old and new at war | New self reigns. \"area\" must be one of: See, Hear, Think, Speak, Act, Mindset, Life, Living, Relationships, Ministry. \"chain\" k values: Perception, Reaction, Response. Use straight double quotes only for JSON syntax; inside strings use “” for quotations. The \"prayer\" field is a GUIDED prayer (about 80 words): do not pray for the reader or write a finished prayer; speak to them as \"you\" with 3-4 gentle prompts (thanksgiving, what to confess or surrender, what to ask, quiet listening), each ending with an invitation like \"tell Him in your own words…\"; never include their name or personal details; invite them to close with: in the name of the Lord Jesus Christ we pray, Amen.";
+  else if(isZS())s+="\n\n【简体输出】「prayer」是引导祷告：不要替他祷告、不写现成祷告文，用「你」给3到4个温柔的引导，每项以「用你自己的话告诉祂……」作结，不写入他的名字或个人细节，最后邀请他自己用「奉主耶稣基督的名祷告，阿们」结束。所有 JSON 字串值一律用简体中文；who、area、chain.k 的选项也用简体（旧人作王｜新旧交战｜新人作王；看｜听｜想｜讲｜行｜观念｜生命｜生活｜关系｜事工；感应｜反应｜回应）。";
   return s+audLine();
 }
-function ckChatSys(){return ckBase()+CK_TASK+"\n"+CK_CHAT+(isEN()?"\nWrite in English. The last line is always: **Next step to overcome:** one concrete action.":"")+audLine();}
+function ckChatSys(){return ckBase()+CK_TASK+"\n"+CK_CHAT+HONEST_SYS()+(isEN()?"\nWrite in English. The last line is always: **Next step to overcome:** one concrete action.":"")+audLine();}
 var CK_JSON="【輸出格式】只輸出一個 JSON 物件，不要任何其他文字，不要用```包起來。字串裡不可出現半形雙引號，引用話語一律用「」。每個欄位都要精簡，整份控制在900字以內，務必完整輸出到最後的 }。欄位：\n"+
 "{\"title\":\"十五字內的一句話，點出這次健檢的核心\",\n"+
 "\"who\":\"舊人作王｜新舊交戰｜新人作王 三選一\",\n"+
@@ -680,7 +685,7 @@ var CK_JSON="【輸出格式】只輸出一個 JSON 物件，不要任何其他�
 "\"steps\":[\"更新建議\"],（三到四條，每條40字內，具體可行，涵蓋：向神、向自己、向那位「2」）\n"+
 "\"tomorrow\":\"明天一個具體的無己行動，一句話\",\n"+
 "\"asks\":[\"三個他最值得繼續追問的問題，第一人稱、具體貼近這件事，每題20字內\"],\n"+
-"\"prayer\":\"第一人稱的禱告，約100字，奉主耶穌基督的名禱告，阿們\"}";
+"\"prayer\":\"引導禱告，約100字：不要替他禱告、不寫現成禱告文；用「你」直接對他說，給3到4個溫柔的引導（感恩、要認罪或交託的事、要祈求的事、安靜聆聽），每項以「用你自己的話告訴祂……」作結；不要寫進他的名字或個人細節；最後邀請他自己用「奉主耶穌基督的名禱告，阿們」結束\"}";
 var CK_CHAT="【現在的任務：陪他繼續追問】你已經為這件事做過生命健檢（內容在前面的對話裡）。現在他要繼續追問，目標是：實際面對問題、真正解決問題、在這件事上成為得勝者。\n"+
 "回答原則：\n1. 緊扣他這件事和他的問題，不重複健檢已說過的內容，往更深、更實際的地方走。\n"+
 "2. 要給做得到的東西：可以直接說出口的話（用「」寫出完整句子）、具體步驟、時間點、怎樣面對對方可能的反應、跌倒了怎麼重新起來。\n"+
@@ -851,7 +856,9 @@ function xiChat(sys,msgs,maxTok,max,onPart,done){
     });
   })(0);
 }
+function crisisSheet(){openSheet('<div class="sheet-title">'+T("你不是一個人")+'<button class="sheet-x" data-sa="close" aria-label="'+T("關閉")+'">✕</button></div><div class="md">'+mdHTML(crisisCard())+'</div>',"crisissheet");}
 function ckRun(inp,oldId){
+  try{var allT="",kk;for(kk in inp){if(inp.hasOwnProperty(kk))allT+=" "+inp[kk];}if(crisisHit(allT))crisisSheet();}catch(e){}
   ck.busy=true;ck.err="";if(oldId)ck.show=null;render();
   if(!oldId)setTimeout(function(){var b=document.querySelector(".busy");if(b&&b.scrollIntoView)b.scrollIntoView({block:"center"});},30);
   xiCall(ckSys(),[{role:"user",content:ckPrompt(inp)}],4000,function(err,txt){
@@ -1064,7 +1071,7 @@ app.addEventListener("click",function(e){
     jdraft=null;render();toast(T("已儲存，榮耀歸給耶穌"));
   }
 });
-var APPVER="2.0.202611031010-xz1103-au1103-xzm1103";
+var APPVER="2.0.202611050900-xz1103-au1103-xzm1103-rf1105";
 var SVC={xz:XI_ENDPOINT,tts:"https://azure-tts.spch321.workers.dev",model:XI_MODEL};
 var VOICES={
   zh:[["zh-TW-YunJheNeural","雲哲"],["zh-CN-Yunfan:DragonHDLatestNeural","雲帆"],["zh-CN-Xiaochen:DragonHDLatestNeural","曉辰"]],
@@ -1208,7 +1215,7 @@ function openHlSheet(el){
     '<div class="sheet-row"><span class="sheet-lab">'+T("範圍")+'</span><div class="spanrow"><button class="spanbtn" data-ha="sp" data-d="-1" aria-label="'+T("少一句")+'">－</button><span class="spannum" id="hlNum">'+esc(T("{0} 句",h.sp))+'</span><button class="spanbtn" data-ha="sp" data-d="1" aria-label="'+T("多一句")+'">＋</button><button class="spanbtn wide" data-ha="sp" data-d="p">'+T("整段")+'</button>'+(isScrip(el)?'<button class="spanbtn wide" data-ha="sp" data-d="v">'+T("整節")+'</button>':"")+'</div></div>'+
     '<textarea class="sheet-ta" id="hlNote" placeholder="'+esc(T("寫下你的默想、領受或要操練的一步……"))+'">'+esc(h.n||"")+'</textarea>'+
     '<div class="sheet-acts"><button class="btn new" data-ha="save">'+T("儲存")+'</button><button class="btn ghost" data-ha="ask">💬 '+T("問小智")+'</button></div>'+
-    '<div class="sheet-acts2"><button class="btn sm new" data-ha="card">🖼 '+T("做成美圖")+'</button><button class="btn sm" data-ha="read">🔊 '+T("朗讀這句")+'</button><button class="btn sm" data-ha="from">▶ '+T("從這裡朗讀")+'</button><button class="btn sm" data-ha="copy">⧉ '+T("複製")+'</button><button class="btn sm" data-ha="share">↗ '+T("分享")+'</button><button class="btn sm danger" data-ha="del">✕ '+T("刪除")+'</button></div>');
+    '<div class="sheet-acts2"><button class="btn sm new" data-ha="card">🖼 '+T("做成美圖")+'</button><button class="btn sm" data-ha="read">🔊 '+T("朗讀這句")+'</button>'+(isScrip(el)?'<button class="btn sm" data-ha="word">🔍 '+T("原文字義")+'</button>':'')+'<button class="btn sm" data-ha="from">▶ '+T("從這裡朗讀")+'</button><button class="btn sm" data-ha="copy">⧉ '+T("複製")+'</button><button class="btn sm" data-ha="share">↗ '+T("分享")+'</button><button class="btn sm danger" data-ha="del">✕ '+T("刪除")+'</button></div>');
   hlCur={el:el,k:k,h:h};
 }
 function hlNoteGrab(){var ta=$("hlNote");if(ta&&hlCur){hlCur.h.n=trim(ta.value);saveHL();}}
@@ -1224,10 +1231,59 @@ function hlClick(b){
   if(a==="ask"){hlNoteGrab();closeSheet();paintHl();openXz(T("請就這句幫助我默想，並用 321 給我今天可以操練的一步：{0}",Q(h.t))+(h.n?"\n"+T("我的領受：{0}",h.n):""),{t:h.t,ref:h.ref});return;}
   if(a==="card"){hlNoteGrab();closeSheet();paintHl();openStudio({t:h.t,ref:h.ref,n:h.n});return;}
   if(a==="read"){hlNoteGrab();closeSheet();paintHl();speakText(h.t,"hl");return;}
+  if(a==="word"){hlNoteGrab();closeSheet();paintHl();openWordSheet(el,h);return;}
   if(a==="from"){hlNoteGrab();closeSheet();paintHl();ttsPage(el);return;}
   if(a==="copy"){copyText(hlShareText(h));return;}
   if(a==="share"){shareText(hlShareText(h));return;}
   if(a==="del"){delete HL[hlCur.k];saveHL();closeSheet();paintHl();toast(T("已刪除畫線"));return;}
+}
+/* ===== rf1105 原文字義：畫線面板「🔍 原文字義」→ 選字面板 → 帶進小智（規格見 321-bible-app-v2-word-study）===== */
+var wd=null;
+function wdTokens(s){
+  s=String(s||"");var out=[],i,c,cjk=/[\u3400-\u9fff\uf900-\ufaff]/.test(s),punct=/^[\s，。、；：？！「」『』（）《》〈〉“”‘’—…·,.;:?!"'()\[\]\-–]+$/;
+  if(cjk){for(i=0;i<s.length;i++){c=s.charAt(i);if(/\s/.test(c))continue;out.push({t:c,p:punct.test(c)});}}
+  else{var ws=s.split(/\s+/);for(i=0;i<ws.length;i++){if(!ws[i])continue;out.push({t:ws[i],p:punct.test(ws[i]),sp:true});}}
+  return out;
+}
+function wdSelText(){
+  if(!wd||wd.a<0)return "";var lo=Math.min(wd.a,wd.b),hi=Math.max(wd.a,wd.b),p=[],i;
+  for(i=lo;i<=hi;i++)p.push(wd.toks[i].t);
+  return trim(p.join(wd.toks[0]&&wd.toks[0].sp?" ":"").replace(/^[\s，。、；：？！「」『』（）《》〈〉“”‘’—…·,.;:?!"'()\[\]\-–]+|[\s，。、；：？！「」『』（）《》〈〉“”‘’—…·,.;:?!"'()\[\]\-–]+$/g,""));
+}
+function wdPaint(){
+  var box=$("wdTok"),i,h="",lo=wd.a<0?-1:Math.min(wd.a,wd.b),hi=wd.a<0?-1:Math.max(wd.a,wd.b);
+  for(i=0;i<wd.toks.length;i++){var k=wd.toks[i];
+    if(k.p)h+='<span class="wdp">'+esc(k.t)+'</span>';
+    else h+='<button class="wdc'+(i>=lo&&i<=hi?" on":"")+'" data-wa="t" data-i="'+i+'">'+esc(k.t)+'</button>';
+    if(k.sp)h+=" ";}
+  box.innerHTML=h;var sel=wdSelText(),b=$("wdGo");if(b){b.disabled=!sel;}
+  var s=$("wdSelLab");if(s)s.textContent=sel?Q(sel):T("（還沒選字）");
+}
+function openWordSheet(el,hh){
+  var sent=trim(el.textContent||""),whole=hh&&hh.t&&hh.t!==sent?hh.t:"";
+  wd={sent:sent,whole:whole,ref:hh?hh.ref:hlRef(el),toks:wdTokens(sent),a:-1,b:-1,sel:false};
+  openSheet('<div class="sheet-title">🔍 '+T("原文字義")+'<span class="sheet-ref">'+esc(wd.ref)+'</span><button class="sheet-x" data-wa="close" aria-label="'+T("關閉")+'">✕</button></div>'+
+    '<p class="small" style="margin:0">'+T("點一個字作起點，再點另一個字選到那裡；也可以直接查整句。")+'</p>'+
+    '<div class="wd-verse" id="wdTok"></div>'+
+    '<div class="small">'+T("已選：")+'<b id="wdSelLab"></b></div>'+
+    '<div class="sheet-acts"><button class="btn new" id="wdGo" data-wa="sel" disabled>🔍 '+T("查選取")+'</button><button class="btn ghost" data-wa="sent">'+T("查這一句")+'</button></div>'+
+    (whole?'<div class="sheet-acts2"><button class="btn sm" data-wa="whole">'+T("查整段畫線")+'</button></div>':''),"wdsheet");
+  wdPaint();
+}
+function wdAsk(kind){
+  if(!wd)return;var x=kind==="sel"?wdSelText():(kind==="whole"?wd.whole:wd.sent);if(!x)return;
+  var what=kind==="sel"?T("字詞"):T("整句"),r=wd.ref;
+  var q=T("請查考原文字義並帶我應用。經文：{0}{1}。我要查的是（{2}）：{3}。",r?r+" ":"",Q(wd.sent),what,Q(x));
+  var src={t:wd.sent,ref:wd.ref,word:true};closeSheet();wd=null;openXz(q,src);
+}
+function wdClick(b){
+  var a=b.getAttribute("data-wa");
+  if(a==="close"){closeSheet();wd=null;return;}
+  if(!wd)return;
+  if(a==="t"){var i=+b.getAttribute("data-i");
+    if(wd.a<0||wd.sel){wd.a=wd.b=i;wd.sel=false;}else{wd.b=i;wd.sel=true;}
+    wdPaint();return;}
+  wdAsk(a);
 }
 function copyText(t){
   function fb(){try{var ta=document.createElement("textarea");ta.value=t;ta.style.position="fixed";ta.style.opacity="0";document.body.appendChild(ta);ta.select();document.execCommand("copy");document.body.removeChild(ta);toast(T("已複製"));}catch(e){toast(T("無法複製"));}}
@@ -1517,20 +1573,70 @@ function ttsPrep(s){
 function voiceName(){var v=VOICES[L()],i=SET.voice||0;return (v[i]||v[0])[0];}
 function ttsAudio(){if(!ttsEl){ttsEl=new Audio();ttsEl.preload="auto";try{ttsEl.setAttribute("playsinline","");}catch(e){}}return ttsEl;}
 function ttsUnlock(){if(ttsUnlocked)return;try{var a=ttsAudio();a.src=SILENT_WAV;var p=a.play();if(p&&p.then)p.then(function(){ttsUnlocked=true;},function(){});else ttsUnlocked=true;}catch(e){}}
-function ajaxBuf(url,body,cb){
+function ajaxBuf(url,body,cb,ms){
   var x=new XMLHttpRequest();try{x.open("POST",url,true);}catch(e){cb(0,null);return;}
-  x.responseType="arraybuffer";x.timeout=25000;x.setRequestHeader("Content-Type","application/json");
+  x.responseType="arraybuffer";x.timeout=ms||25000;x.setRequestHeader("Content-Type","application/json");
   x.onload=function(){cb(x.status,x.response);};x.onerror=function(){cb(0,null);};x.ontimeout=function(){cb(-1,null);};
   try{x.send(JSON.stringify(body));}catch(e){cb(0,null);}
 }
-function ttsFetch(text,cb,tries){
+/* ===== rf1105 朗讀升級（規格見 321-bible-app-v2-tts-upgrade）：音檔本機快取、雲端失敗快速回復與斷路器、看門狗、睡前定時 ===== */
+var TTS_CACHE_NAME="tts-life321",TTS_CACHE_MAX=300,ttsDownUntil=0,ttsWdT=0,ttsSleep={mode:0,tm:0,fade:0};
+function ttsHash(s){var a=2166136261,b=5381,i,c;s=String(s);for(i=0;i<s.length;i++){c=s.charCodeAt(i);a^=c;a=(a*16777619)>>>0;b=((b*33)^c)>>>0;}return a.toString(36)+b.toString(36)+s.length.toString(36);}
+function ttsCacheKey(text){return location.origin+"/__tts/life321/"+ttsHash([voiceName(),RATES[SET.rate||0],"140|140|260",text].join("|"));}
+function ttsCacheGet(text,cb){
+  try{if(!window.caches||!window.Promise){cb(null);return;}
+    caches.open(TTS_CACHE_NAME).then(function(c){return c.match(ttsCacheKey(text));}).then(function(r){return r?r.arrayBuffer():null;}).then(function(b){cb(b&&b.byteLength>128?b:null);},function(){cb(null);});
+  }catch(e){cb(null);}
+}
+function ttsCachePut(text,buf){
+  try{if(!window.caches||!window.Promise)return;var key=ttsCacheKey(text),cc;
+    caches.open(TTS_CACHE_NAME).then(function(c){cc=c;return c.put(key,new Response(buf.slice(0),{headers:{"Content-Type":"audio/mpeg"}}));}).then(function(){return cc.keys();}).then(function(ks){
+      for(var i=0;i<ks.length-TTS_CACHE_MAX;i++)cc["delete"](ks[i]);}).then(null,function(){});
+  }catch(e){}
+}
+function ttsFetch(text,cb,tries,quick){
   tries=tries||0;
-  if(!SET.human||navigator.onLine===false){cb(null);return;}
-  ajaxBuf(SVC.tts,{voice:voiceName(),rate:RATES[SET.rate||0],sil:140,silc:140,sile:260,text:text},function(st,buf){
-    if(st===200&&buf&&buf.byteLength>128){cb(URL.createObjectURL(new Blob([buf],{type:"audio/mpeg"})));return;}
-    ttsLastErr=st>0?"http "+st:(st<0?"timeout":"network");
-    if(tries<TTS_RETRY.length)setTimeout(function(){ttsFetch(text,cb,tries+1);},TTS_RETRY[tries]);else cb(null);
+  if(!SET.human){cb(null);return;}
+  ttsCacheGet(text,function(buf){
+    if(buf){cb(URL.createObjectURL(new Blob([buf],{type:"audio/mpeg"})));return;}
+    if(navigator.onLine===false){cb(null);return;}
+    ttsFetchNet(text,cb,0,quick);
   });
+}
+/* 一般 15 秒×3 次；快速（第一段或剛失敗過）6 秒×2 次。失敗後 20 秒內其餘沒快取的段落立刻放棄雲端、改用裝置語音 */
+function ttsFetchNet(text,cb,tries,quick){
+  if(now()<ttsDownUntil){ttsLastErr="paused";cb(null);return;}
+  ajaxBuf(SVC.tts,{voice:voiceName(),rate:RATES[SET.rate||0],sil:140,silc:140,sile:260,text:text},function(st,buf){
+    if(st===200&&buf&&buf.byteLength>128){ttsCachePut(text,buf);cb(URL.createObjectURL(new Blob([buf],{type:"audio/mpeg"})));return;}
+    ttsLastErr=st>0?"http "+st:(st<0?"timeout":"network");
+    if(tries<(quick?1:TTS_RETRY.length))setTimeout(function(){ttsFetchNet(text,cb,tries+1,quick);},TTS_RETRY[tries]);
+    else{ttsDownUntil=now()+20000;cb(null);}
+  },quick?6000:15000);
+}
+function ttsWeight(p){
+  var zh=!isEN(),cps=zh?4.6:14,m1=p.match(/[，、；：,;:]/g),m2=p.match(/[。！？.!?]/g);
+  return Math.max(1,p.length+(m1?m1.length:0)*.14*cps+(m2?m2.length:0)*.26*cps);
+}
+function ttsSplitText(s,max){
+  s=String(s||"");max=max||(isEN()?600:250);var sents=s.match(/[^。！？!?\n.]*[。！？!?.]+["'」』”）)]*|[^。！？!?\n.]+$/g)||[s],out=[],cur="",i;
+  for(i=0;i<sents.length;i++){var x=sents[i];
+    while(x.length>max){if(cur){out.push(cur);cur="";}out.push(x.slice(0,max));x=x.slice(max);}
+    if(cur.length+x.length>max&&cur){out.push(cur);cur="";}cur+=x;}
+  if(trim(cur))out.push(cur);return out;
+}
+function ttsWd(ms,fn){clearTimeout(ttsWdT);ttsWdT=ms?setTimeout(fn,ms):0;}
+function ttsWdMs(len){var r=RATES[SET.rate||0],f=1+(parseFloat(r)||0)/100;return Math.max(15000,len*480/f+10000);}
+/* 睡前定時：關→15→30→60 分鐘→關；時間到淡出 5 秒再停（不存檔） */
+function ttsSleepClear(){clearTimeout(ttsSleep.tm);clearInterval(ttsSleep.fade);ttsSleep.tm=0;ttsSleep.fade=0;ttsSleep.mode=0;try{if(ttsEl)ttsEl.volume=1;}catch(e){}}
+function ttsSleepCycle(){
+  var seq=[0,15,30,60],n=seq[(seq.indexOf(ttsSleep.mode)+1)%seq.length];
+  clearTimeout(ttsSleep.tm);ttsSleep.mode=n;
+  if(n)ttsSleep.tm=setTimeout(ttsSleepFire,n*60000);
+  toast(n?T("睡前定時：{0} 分鐘後停止朗讀",n):T("睡前定時已關閉"));drawSpk();
+}
+function ttsSleepFire(){
+  var v=1;clearInterval(ttsSleep.fade);
+  ttsSleep.fade=setInterval(function(){v-=.2;try{if(ttsEl&&v>0)ttsEl.volume=Math.max(0,v);}catch(e){}if(v<=0){stopAll();toast(T("睡前定時：已停止朗讀"));}},1000);
 }
 function keepAwake(on){try{if(on&&navigator.wakeLock&&!wakeLock){navigator.wakeLock.request("screen").then(function(w){wakeLock=w;},function(){});}else if(!on&&wakeLock){wakeLock.release();wakeLock=null;}}catch(e){}}
 document.addEventListener("visibilitychange",function(){if(document.visibilityState==="visible"&&(spk.on||sayKey)){wakeLock=null;keepAwake(true);}});
@@ -1561,7 +1667,7 @@ function buildQueue(fromEl){
     var t=e.textContent;if(!trim(t))return;
     if(!/[。！？.!?：:；;，,…]["'」』”]*$/.test(trim(t)))t=trim(t)+(isEN()?". ":"。");
     if((lead||cur.text.length+t.length>MAX)&&cur.text){items.push(cur);cur={text:"",segs:[],lens:[],locs:[],at:-1};}
-    cur.text+=lead+t+(isEN()?" ":"");cur.segs.push(e);cur.locs.push(unitLoc(e));cur.lens.push(Math.max(1,ttsPrep(lead+t).length));
+    cur.text+=lead+t+(isEN()?" ":"");cur.segs.push(e);cur.locs.push(unitLoc(e));cur.lens.push(ttsWeight(ttsPrep(lead+t)));
   });
   if(cur.text)items.push(cur);var out=[];eachA(items,function(it){if(ttsPrep(it.text))out.push(it);});return out;
 }
@@ -1588,51 +1694,82 @@ function ttsPage(fromEl){
   if(spk.on&&!fromEl){stopAll();return;}stopAll();ttsUnlock();
   var items=buildQueue(fromEl);if(!items.length){toast(T("這一頁沒有可以朗讀的文字"));return;}
   var title=T(TAB_TITLE[state.tab])+" · "+T("321生命操練");
-  spk={on:true,items:items,idx:0,cache:{},native:false,abort:false,title:title};raManualAt=0;keepAwake(true);mediaSession(title);drawFab();ttsPlayFrom(0);
+  ttsDownUntil=0;spk={on:true,items:items,idx:0,cache:{},native:false,abort:false,title:title};raManualAt=0;keepAwake(true);mediaSession(title);drawFab();ttsPlayFrom(0);
 }
-function ttsPrefetch(i,cb){var it=spk.items[i];if(!it||spk.cache[i]!==undefined){if(cb)cb();return;}spk.cache[i]=0;ttsFetch(ttsPrep(it.text),function(u){spk.cache[i]=u;if(cb)cb();});}
+function ttsPrefetch(i,cb){var it=spk.items[i];if(!it||spk.cache[i]!==undefined){if(cb)cb();return;}spk.cache[i]=0;ttsFetch(ttsPrep(it.text),function(u){spk.cache[i]=u;if(!u)spk.failed=true;if(cb)cb();},0,i===spk.start||!!spk.failed);}
 function ttsPlayFrom(i){
   if(!spk.on||spk.abort)return;if(i>=spk.items.length){stopAll();toast(T("朗讀完畢"));return;}
+  if(i===0&&!spk.begun){spk.begun=1;ttsDownUntil=0;}
+  if(spk.start===undefined)spk.start=i;
   spk.idx=i;spk.items[i].at=-1;raSeg(spk.items[i],0);drawSpk();
-  var my=spk;
+  var my=spk,g=spk.gen=(spk.gen||0)+1;
+  var live=function(){return spk.on&&!spk.abort&&my===spk&&spk.gen===g;};
   var go2=function(){
-    if(my!==spk)return;
+    if(!live())return;
     for(var k=i+1;k<=i+TTS_LOOK;k++)ttsPrefetch(k);if(!spk.on||spk.abort)return;var url=spk.cache[i];
     if(!url){ttsNativeFrom(i);return;}
     var a=ttsAudio();a.onended=null;a.onerror=null;a.ontimeupdate=null;a.src=url;
-    a.ontimeupdate=function(){if(!spk.on||spk.idx!==i)return;var d=a.duration;if(d&&isFinite(d))raProgress(spk.items[i],a.currentTime/d);};
-    a.onended=function(){a.ontimeupdate=null;if(spk.on&&!spk.abort&&my===spk)ttsPlayFrom(i+1);};
-    a.onerror=function(){if(spk.on&&!spk.abort&&my===spk)ttsNativeFrom(i);};
-    var p=a.play();if(p&&p["catch"])p["catch"](function(){if(spk.on&&!spk.abort&&my===spk)ttsNativeFrom(i);});
+    ttsWd(ttsWdMs(ttsPrep(spk.items[i].text).length),function(){if(live())ttsNativeFrom(i);});
+    a.onloadedmetadata=a.ondurationchange=function(){var d=a.duration;if(d&&isFinite(d)&&live())ttsWd(d*1000+5000,function(){if(live())ttsNativeFrom(i);});};
+    a.ontimeupdate=function(){if(!live())return;var d=a.duration;if(d&&isFinite(d))raProgress(spk.items[i],a.currentTime/d);};
+    a.onended=function(){a.ontimeupdate=null;ttsWd(0);if(live())ttsPlayFrom(i+1);};
+    a.onerror=function(){if(live())ttsNativeFrom(i);};
+    var p=a.play();if(p&&p["catch"])p["catch"](function(){if(live())ttsNativeFrom(i);});
   };
-  if(spk.cache[i]===undefined)ttsPrefetch(i,go2);else if(spk.cache[i]===0){var w=setInterval(function(){if(spk.cache[i]!==0||!spk.on||my!==spk){clearInterval(w);go2();}},120);}else go2();
+  if(spk.cache[i]===undefined)ttsPrefetch(i,go2);else if(spk.cache[i]===0){var w=setInterval(function(){if(spk.cache[i]!==0||!spk.on||my!==spk||spk.gen!==g){clearInterval(w);go2();}},120);}else go2();
 }
 function nativeLang(){return isEN()?"en-US":(isZS()?"zh-CN":"zh-TW");}
+/* 裝置語音只代表「這一段」；唸完一段再回雲端（斷路器開著時會立刻再回裝置語音） */
 function ttsNativeFrom(i){
+  ttsWd(0);
   if(!("speechSynthesis" in window)){toast(T("這支手機無法朗讀"));stopAll();return;}
-  if(!spk.native){spk.native=true;if(SET.human)toast(T("改用裝置內建語音朗讀")+(ttsLastErr?(isEN()?" ("+ttsLastErr+")":"（"+ttsLastErr+"）"):""));}
+  if(!spk.toasted){spk.toasted=true;spk.native=true;if(SET.human)toast(T("改用裝置內建語音朗讀")+(ttsLastErr?(isEN()?" ("+ttsLastErr+")":"（"+ttsLastErr+"）"):""));}
   if(!spk.on||spk.abort||i>=spk.items.length){stopAll();return;}
+  try{if(ttsEl){ttsEl.onended=null;ttsEl.onerror=null;ttsEl.ontimeupdate=null;ttsEl.pause();}speechSynthesis.cancel();}catch(e){}
   spk.idx=i;spk.items[i].at=-1;raSeg(spk.items[i],0);drawSpk();
+  var my=spk,g=spk.gen=(spk.gen||0)+1;
   var say=ttsPrep(spk.items[i].text),u=new SpeechSynthesisUtterance(say);u.lang=nativeLang();u.rate=[.95,.85,1.08][SET.rate||0];
   u.onboundary=function(e){if(spk.on&&spk.idx===i&&say.length)raProgress(spk.items[i],(e.charIndex||0)/say.length);};
-  u.onend=function(){if(spk.on&&!spk.abort&&spk.idx===i)ttsNativeFrom(i+1);};u.onerror=u.onend;
+  var ended=false;u.onend=function(){if(ended)return;ended=true;if(spk.on&&!spk.abort&&my===spk&&spk.gen===g)ttsPlayFrom(i+1);};u.onerror=u.onend;
   try{speechSynthesis.speak(u);}catch(e){stopAll();}
 }
+/* 單段朗讀（小智回答、畫線一句…）：依句子切成 250／600 字一段，逐段播放，下一段先在背後抓；不再截斷 */
 function speakText(text,key,onEnd){
-  stopAll();ttsUnlock();key=key||"x";sayKey=key;paintSay();keepAwake(true);mediaSession(T("321生命操練"));drawSpk();drawFab();
-  var clean=ttsPrep(text).slice(0,1500);if(!clean){stopAll();return;}
-  var done=function(){if(sayKey===key){sayKey=null;paintSay();keepAwake(false);drawSpk();drawFab();}if(onEnd)onEnd();};
-  ttsFetch(clean,function(url){
-    if(sayKey!==key)return;
-    if(url){var a=ttsAudio();a.onended=done;a.onerror=function(){nat();};a.ontimeupdate=null;a.src=url;var p=a.play();if(p&&p["catch"])p["catch"](function(){nat();});}
-    else nat();
-  });
-  function nat(){if(sayKey!==key)return;if("speechSynthesis" in window){var u=new SpeechSynthesisUtterance(clean);u.lang=nativeLang();u.rate=[.95,.85,1.08][SET.rate||0];u.onend=done;u.onerror=done;speechSynthesis.speak(u);}else{toast(T("這支手機無法朗讀"));done();}}
+  stopAll();ttsUnlock();key=key||"x";sayKey=key;ttsDownUntil=0;paintSay();keepAwake(true);mediaSession(T("321生命操練"));drawSpk();drawFab();
+  var clean=ttsPrep(text);if(!clean){stopAll();return;}
+  var parts=ttsSplitText(clean),k=0,pre={},failed=false;
+  var done=function(){ttsWd(0);if(sayKey===key){sayKey=null;paintSay();keepAwake(false);drawSpk();drawFab();}if(onEnd)onEnd();};
+  function get(n,cb){
+    if(n>=parts.length){cb(undefined);return;}
+    if(pre[n]!==undefined&&pre[n]!==0){cb(pre[n]);return;}
+    if(pre[n]===0){var w=setInterval(function(){if(pre[n]!==0||sayKey!==key){clearInterval(w);cb(pre[n]);}},100);return;}
+    pre[n]=0;ttsFetch(parts[n],function(u){pre[n]=u;if(!u)failed=true;cb(u);},0,n===0||failed);
+  }
+  function step(){
+    if(sayKey!==key)return;if(k>=parts.length){done();return;}
+    var n=k++;get(n,function(url){
+      if(sayKey!==key)return;
+      if(k<parts.length)get(k,function(){});
+      var a;
+      if(url){a=ttsAudio();a.onended=function(){ttsWd(0);step();};a.onerror=function(){nat(n);};a.ontimeupdate=null;a.src=url;
+        ttsWd(ttsWdMs(parts[n].length),function(){if(sayKey===key)nat(n);});
+        a.onloadedmetadata=a.ondurationchange=function(){var d=a.duration;if(d&&isFinite(d)&&sayKey===key)ttsWd(d*1000+5000,function(){if(sayKey===key)nat(n);});};
+        var p=a.play();if(p&&p["catch"])p["catch"](function(){nat(n);});}
+      else nat(n);
+    });
+  }
+  function nat(n){
+    ttsWd(0);if(sayKey!==key)return;
+    if("speechSynthesis" in window){try{if(ttsEl){ttsEl.onended=null;ttsEl.onerror=null;ttsEl.pause();}speechSynthesis.cancel();}catch(e){}
+      var u=new SpeechSynthesisUtterance(parts[n]),ended=false;u.lang=nativeLang();u.rate=[.95,.85,1.08][SET.rate||0];u.onend=u.onerror=function(){if(ended)return;ended=true;step();};speechSynthesis.speak(u);}
+    else{toast(T("這支手機無法朗讀"));done();}
+  }
+  step();
 }
 function paintSay(){eachA(qa("[data-xa=tts]"),function(b){var on=sayKey==="m"+b.getAttribute("data-i");b.className="msg-act"+(on?" on":"");b.innerHTML=on?"⏸ "+esc(T("停止")):"🔊 "+esc(T("朗讀"));});
   eachA(qa("[data-cka=tts]"),function(b){var on=sayKey==="ck"+b.getAttribute("data-i");b.className="msg-act"+(on?" on":"");b.innerHTML=on?"⏸ "+esc(T("停止")):"🔊 "+esc(T("朗讀"));});}
 function stopAll(){
-  spk.on=false;spk.abort=true;sayKey=null;try{if(ttsEl){ttsEl.onended=null;ttsEl.ontimeupdate=null;ttsEl.pause();}}catch(e){}
+  spk.on=false;spk.abort=true;sayKey=null;ttsWd(0);ttsSleepClear();try{if(ttsEl){ttsEl.onended=null;ttsEl.onerror=null;ttsEl.onloadedmetadata=null;ttsEl.ondurationchange=null;ttsEl.ontimeupdate=null;ttsEl.pause();}}catch(e){}
   try{if("speechSynthesis" in window)speechSynthesis.cancel();}catch(e){}raClear();paintSay();keepAwake(false);drawSpk();drawFab();
 }
 function drawSpk(){
@@ -1640,20 +1777,21 @@ function drawSpk(){
   if(!on){if(el)el.parentNode.removeChild(el);return;}
   if(!el){el=document.createElement("div");el.id="spk";el.className="spk";document.body.appendChild(el);}
   var prog=spk.on&&spk.items.length?" · "+(spk.idx+1)+"/"+spk.items.length:"";
-  el.innerHTML='<span class="t">🔊 '+esc(spk.on?spk.title:T("朗讀中"))+prog+'</span>'+(spk.on?'<button data-spk="-1" aria-label="'+T("上一段")+'">⏮</button><button data-spk="1" aria-label="'+T("下一段")+'">⏭</button>':'')+'<button data-spk="0" aria-label="'+T("停止")+'">■</button>';
+  el.innerHTML='<span class="t">🔊 '+esc(spk.on?spk.title:T("朗讀中"))+prog+'</span>'+(spk.on?'<button data-spk="-1" aria-label="'+T("上一段")+'">⏮</button><button data-spk="1" aria-label="'+T("下一段")+'">⏭</button>':'')+'<button data-spk="sl" aria-label="'+T("睡前定時")+'">'+(ttsSleep.mode?ttsSleep.mode+"′":"⏲")+'</button><button data-spk="0" aria-label="'+T("停止")+'">■</button>';
 }
 function spkSkip(n){if(!spk.on)return;var k=Math.max(0,Math.min(spk.items.length-1,spk.idx+n));try{if(ttsEl){ttsEl.onended=null;ttsEl.pause();}if("speechSynthesis" in window)speechSynthesis.cancel();}catch(e){}raManualAt=0;ttsPlayFrom(k);}
 window.addEventListener("touchmove",function(){raManualAt=now();},{passive:true});
 window.addEventListener("wheel",function(){raManualAt=now();},{passive:true});
-document.addEventListener("click",function(e){var b=e.target;while(b&&b!==document&&b.tagName!=="BUTTON")b=b.parentNode;if(!b||b===document)return;var s=b.getAttribute("data-spk");if(s==null)return;if(s==="0")stopAll();else spkSkip(+s);});
+document.addEventListener("click",function(e){var b=e.target;while(b&&b!==document&&b.tagName!=="BUTTON")b=b.parentNode;if(!b||b===document)return;var s=b.getAttribute("data-spk");if(s==null)return;if(s==="0")stopAll();else if(s==="sl")ttsSleepCycle();else spkSkip(+s);});
 function drawFab(){
   var b=$("fabtts");if(!b)return;var on=spk.on||!!sayKey;
   b.innerHTML=on?"■":"🔊";b.setAttribute("aria-label",on?T("停止朗讀"):T("朗讀這一頁"));b.className="fab"+(on?" on":"");
 }
 var XZ={open:false},chatBusy=false,chatSrc=null;
 var XZ_TASK="【現在的任務】你是使用者在「321生命操練」App 裡的屬靈同伴。陪他把聖經真理與321理念用在每天的操練：五道門戶（看、聽、想、講、行）與五重領域（觀念、生命、生活、關係、事工）；幫助他看見舊人有己、穿上新人無己，在每一個「2」面前結出聖靈的果子，反敗為勝成為得勝者。回答要具體、做得到：給可以直接說出口的話（用「」寫出完整句子）與步驟；焦點帶回耶穌，用心靠聖靈；需要時在最後問他一個幫助更深的問題。若他談到暴力、虐待、人身危險或自傷輕生，要把安全放第一，鼓勵他立刻聯絡可信任的人或當地緊急求助。";
-var SYS_FMT_ZH="\n\n【回答格式】用 markdown：### 短小標題、- 條列、1. 編號、**粗體**；需要並列對照時可以用 markdown 表格。請把最重要的那一句用「> 」標成引言；引用經文用「> 」並在後面寫出處。不要用 ASCII 圖案、程式碼區塊或唸不出來的裝飾符號。段落短，手機好讀，約300到600字。若寫到禱告，結尾一律用「奉主耶穌的名禱告，阿們」。";
-var SYS_FMT_EN="\n\n[FORMAT] Use markdown: ### short headings, - bullets, 1. numbered steps, **bold**; a markdown table when comparing. Mark the single most important line with \"> \"; quote Scripture with \"> \" followed by the reference. No ASCII art, code blocks or decorative symbols. Short paragraphs, about 200-450 words. If you write a prayer, end it with \"in the name of the Lord Jesus we pray, Amen.\"";
+var SYS_FMT_ZH="\n\n【回答格式】用 markdown：### 短小標題、- 條列、1. 編號、**粗體**；需要並列對照時可以用 markdown 表格。請把最重要的那一句用「> 」標成引言；引用經文用「> 」並在後面寫出處。不要用 ASCII 圖案、程式碼區塊或唸不出來的裝飾符號。段落短，手機好讀，約300到600字。禱告：不要替讀者禱告，也不要寫一篇現成的禱告文讓他背誦；請改寫一小段「引導禱告」，邀請讀者用自己的話向神禱告：直接對讀者說話（用「你」），給 3～4 個溫柔的引導，例如感恩、要認罪或交託的事、要祈求的事、安靜聆聽，每一項都以「用你自己的話告訴祂……」這樣的開放邀請作結；不要把讀者的名字或個人細節寫進禱告裡。只有讀者明確要求寫一篇禱告文時才可以寫。需要收尾時，邀請他自己用「奉主耶穌的名禱告，阿們」結束，不要用「奉耶穌的名求」。";
+var SYS_FMT_ZS="\n\n【回答格式】用 markdown：### 短小标题、- 条列、1. 编号、**粗体**；需要并列对照时可以用 markdown 表格。请把最重要的那一句用「> 」标成引言；引用经文用「> 」并在后面写出处。不要用 ASCII 图案、代码区块或念不出来的装饰符号。段落短，手机好读，约300到600字。祷告：不要替读者祷告，也不要写一篇现成的祷告文让他背诵；请改写一小段「引导祷告」，邀请读者用自己的话向神祷告：直接对读者说话（用「你」），给 3～4 个温柔的引导，例如感恩、要认罪或交托的事、要祈求的事、安静聆听，每一项都以「用你自己的话告诉祂……」这样的开放邀请作结；不要把读者的名字或个人细节写进祷告里。只有读者明确要求写一篇祷告文时才可以写。需要收尾时，邀请他自己用「奉主耶稣的名祷告，阿们」结束，不要用「奉耶稣的名求」。";
+var SYS_FMT_EN="\n\n[FORMAT] Use markdown: ### short headings, - bullets, 1. numbered steps, **bold**; a markdown table when comparing. Mark the single most important line with \"> \"; quote Scripture with \"> \" followed by the reference. No ASCII art, code blocks or decorative symbols. Short paragraphs, about 200-450 words. PRAYER: do not pray on the reader's behalf and do not write a finished prayer for them to recite. Instead write a short \"Guided prayer\" section that invites the reader to pray in their own words: speak to the reader directly (you), give 3 to 4 gentle prompts such as thanksgiving, what to confess or surrender, what to ask, and a closing listening moment, each ending with an open invitation like \"tell Him in your own words…\". Never put the reader's name or personal details into the prayer. Only if the reader explicitly asks for a written prayer may you write one. When a closing line is needed, invite them to end with \"in the name of the Lord Jesus we pray, Amen\" — never \"in Jesus' name we ask, Amen.\"";
 function xzCtx(){
   var c=[],t=state.tab;
   c.push("【使用者目前在】"+{home:"今日",check:"生命健檢",exam:"檢視舊人",train:"操練新人",growth:"成長",journal:"日記"}[t]+"；今天"+(WEEK[WD]?"的檢視重點："+G[WEEK[WD][0]].name+"＋"+G[WEEK[WD][1]].name:"是"+(WD===6?"同行日":"主日感恩日")));
@@ -1679,9 +1817,19 @@ function reaskLast(msg){
   if(chatBusy)return false;var j=-1;for(var n=CHAT.length-1;n>=0;n--){if(CHAT[n].role!=="user"&&!CHAT[n].wait&&!CHAT[n].err){j=n;break;}break;}
   if(j<1||CHAT[j-1].role!=="user")return false;var q=CHAT[j-1].text,src=CHAT[j-1].src||null;
   CHAT.splice(j-1,2);saveChat();chatSrc=src;toast(msg||T("重新回答中…"));sendChat(q);return true;}
-function xzSys(){return ckBase()+XZ_TASK+(isEN()?SYS_FMT_EN:SYS_FMT_ZH)+"\n\n"+xzCtx()+audLine()+XZ2.sysTail();}
+/* ===== rf1105：小智的誠實、危機與引導禱告（規格見 321-bible-app-v2-xiaozhi-safety）===== */
+var HONEST_ZH="原則：（1）誠實：絕不編造經文、引言、原文字義或歷史；不確定就直說「我不確定」，並請讀者回到經文。引用經文只用你確定的經文，並一定寫出出處（書名 章:節）。（2）遇到基督徒之間有不同看法的議題，簡短公平地說明，不把單一立場說成唯一答案。（3）你是 AI 陪伴者，不是牧者、醫生或律師；涉及醫療、法律、受虐或嚴重情緒的事，鼓勵讀者找信任的牧者、專業人員或當地緊急服務。（4）若讀者提到自殺、自傷、受虐或立即的危險：先用平靜關懷的語氣回應，不說教、不長篇引經，鼓勵他現在就聯絡當地緊急服務或求助專線，以及身邊可信任的人，並溫柔地陪著他。",HONEST_ZS="原则：（1）诚实：绝不编造经文、引言、原文字义或历史；不确定就直说「我不确定」，并请读者回到经文。引用经文只用你确定的经文，并一定写出出处（书名 章:节）。（2）遇到基督徒之间有不同看法的议题，简短公平地说明，不把单一立场说成唯一答案。（3）你是 AI 陪伴者，不是牧者、医生或律师；涉及医疗、法律、受虐或严重情绪的事，鼓励读者找信任的牧者、专业人员或当地紧急服务。（4）若读者提到自杀、自伤、受虐或立即的危险：先用平静关怀的语气回应，不说教、不长篇引经，鼓励他现在就联系当地紧急服务或求助热线，以及身边可信任的人，并温柔地陪着他。",HONEST_EN="PRINCIPLES: (1) Be honest. Never invent a verse, a quotation, a Hebrew/Greek meaning or a historical fact; if unsure, say \"I am not sure\" and point the reader to the text. Quote Scripture only when you are certain of it, and always give the reference (book chapter:verse). (2) Where Christians differ, say so briefly and fairly instead of presenting one view as the only one. (3) You are an AI companion, not a pastor, doctor or lawyer: for medical, legal, abuse or serious emotional matters, encourage the reader to talk to a trusted pastor, a professional or local emergency services. (4) If the reader mentions suicide, self-harm, abuse or immediate danger: respond first with calm care, do not lecture or quote verses at length, encourage them to contact local emergency services or a crisis line and a trusted person right now, and gently stay with them.";
+function HONEST_SYS(){return " "+(isEN()?HONEST_EN:(isZS()?HONEST_ZS:HONEST_ZH));}
+var WORD_ZH="原文字義：當讀者問某個字、詞或句的原文字義時，用簡短小標題依序回答：①原文——背後的希伯來文／希臘文、拼音與基本字義；若和合本這個詞對應不只一個原文字，請分別說明；②在這節的用法——詞性或字根意思，以及放在這節上下文怎麼理解；③聖經其他用法——只寫你確定的一兩處，附出處；④應用——從321角度（無己、讓耶穌作王、被聖靈引導）帶出，並給一個今天可以操練的小步驟。務必誠實：不確定的就標明不確定，絕不編造 Strong 編號或字義；最後用一行提醒讀者對照可靠的原文工具書（如 Strong's、BDAG、HALOT）。篇幅精練。",WORD_ZS="原文字义：当读者问某个字、词或句的原文字义时，用简短小标题依序回答：①原文——背后的希伯来文／希腊文、拼音与基本字义；若和合本这个词对应不只一个原文字，请分别说明；②在这节的用法——词性或字根意思，以及放在这节上下文怎么理解；③圣经其他用法——只写你确定的一两处，附出处；④应用——从321角度（无己、让耶稣作王、被圣灵引导）带出，并给一个今天可以操练的小步骤。务必诚实：不确定的就标明不确定，绝不编造 Strong 编号或字义；最后用一行提醒读者对照可靠的原文工具书（如 Strong's、BDAG、HALOT）。篇幅精练。",WORD_EN="WORD STUDY: when the reader asks about the original-language meaning of a word, phrase or sentence, answer in this order with short headings: (1) Original — the Hebrew/Greek word(s) behind it, transliteration and basic meaning; if the Chinese union-version wording covers several original words, say so and explain each; (2) Usage here — part of speech or root idea and how it works in this verse and context; (3) Elsewhere — one or two other Bible uses ONLY if you are certain, with references; (4) Application — through the 3-2-1 lens (self-emptying, letting Jesus be King, led by the Spirit) with one small step for today. Be honest: label anything you are not sure of as uncertain, never invent Strong numbers or meanings, and close with one line reminding the reader to verify with a reliable lexicon (Strong's, BDAG, HALOT). Keep it clear and not too long.";
+function WORD_SYS(){return " "+(isEN()?WORD_EN:(isZS()?WORD_ZS:WORD_ZH));}
+var CRISIS_RE=/自殺|自杀|輕生|轻生|不想活|想死|結束生命|结束生命|了結自己|了结自己|活不下去|傷害自己|伤害自己|割腕|跳樓|跳楼|suicid|kill myself|end my life|want to die|self[- ]?harm|hurt myself/i;
+function crisisHit(x){return CRISIS_RE.test(String(x||""));}
+var CRISIS_ZH="💛 **你現在不是一個人。** 我聽見你了，謝謝你願意說出來。\n\n如果你有傷害自己的念頭，或覺得撐不下去，請現在就找一個人陪你：\n\n- 緊急危險：**119**（救護）／**110**（警察）\n- 24 小時安心專線：**1925**（依舊愛我）\n- 生命線：**1995**\n- 張老師：**1980**\n- 身邊信任的牧者、家人或朋友，請現在就打給他\n\n神與你同在，祂看顧你。我也會在這裡陪你，你想說什麼都可以。",CRISIS_ZS="💛 **你现在不是一个人。** 我听见你了，谢谢你愿意说出来。\n\n如果你有伤害自己的念头，或觉得撑不下去，请现在就找一个人陪你：联系你所在地的紧急服务或心理援助热线，并打给身边信任的牧者、家人或朋友。\n\n神与你同在，祂看顾你。我也会在这里陪你，你想说什么都可以。",CRISIS_EN="💛 **You are not alone.** I hear you, and I am glad you said it.\n\nIf you are thinking about hurting yourself or feel you cannot go on, please reach out to someone right now: your local emergency number or crisis line, and a pastor, family member or friend you trust.\n\nGod is with you and cares for you. I am here too — say whatever you need.";
+function crisisCard(){return isEN()?CRISIS_EN:(isZS()?CRISIS_ZS:CRISIS_ZH);}
+var xzWord=false;
+function xzSys(){return ckBase()+XZ_TASK+(isEN()?SYS_FMT_EN:(isZS()?SYS_FMT_ZS:SYS_FMT_ZH))+"\n\n"+xzCtx()+audLine()+XZ2.sysTail()+HONEST_SYS()+(xzWord?WORD_SYS():"");}
 var QBANK=["怎樣分辨此刻是舊人作王還是新人作王？","我一被批評就想辯解，怎樣操練「快快的聽，慢慢的說」？","驕傲和謙卑在日常生活裡怎麼分辨？","用一個比喻說明「無己不是沒有，乃是進入無限」","我常拿自己和別人比較，怎樣用神的眼光看自己？","怎樣在家人（我的「2」）面前結出忍耐的果子？","憂慮一直來，怎樣把心意奪回、順服基督？","讓耶穌作王，在職場上具體會怎麼做？","改變觀念的八大步驟，怎樣用在一節經文上？","幫我擬一個七天的無己操練計畫"];
-var FU=[["💬","說出口","請幫我寫出可以直接說出口的一兩句話，用在你剛才說的情況裡。"],["🏠","家庭","你剛才的回答，用在我和家人之間，具體可以怎麼做？"],["💼","職場","你剛才的回答，用在職場和同事之間，具體可以怎麼做？"],["🔁","又跌倒","如果我照你剛才說的去做，卻又失敗了，該怎樣重新起來？"],["🙏","禱告","請根據你剛才的回答，帶我做一個簡短的禱告。"],["📅","七天","請把你剛才的回答整理成七天的操練計畫，每天一個小行動。"]];
+var FU=[["💬","說出口","請幫我寫出可以直接說出口的一兩句話，用在你剛才說的情況裡。"],["🏠","家庭","你剛才的回答，用在我和家人之間，具體可以怎麼做？"],["💼","職場","你剛才的回答，用在職場和同事之間，具體可以怎麼做？"],["🔁","又跌倒","如果我照你剛才說的去做，卻又失敗了，該怎樣重新起來？"],["🙏","禱告","請根據你剛才的回答，用「引導禱告」帶我用自己的話向神禱告。"],["📅","七天","請把你剛才的回答整理成七天的操練計畫，每天一個小行動。"]];
 function isFav(t){for(var i=0;i<FAV.length;i++)if(FAV[i].text===t)return true;return false;}
 function msgLong(m){return m&&m.role!=="user"&&mdStrip(m.text||"").length>(isEN()?420:200);}
 function foldOld(){for(var k=0;k<CHAT.length-1;k++)if(msgLong(CHAT[k]))CHAT[k].fold=true;}
@@ -1725,9 +1873,10 @@ function sendChat(text){
   text=trim(text);if(!text||chatBusy)return;var inp=$("chatIn");if(inp)inp.value="";
   try{XZ2.collapse();}catch(e){}
   if(navigator.onLine===false){CHAT.push({role:"user",text:text,ts:now()});CHAT.push({role:"ai",text:T("目前離線，連上網路後小智才能回答。"),ts:now()});saveChat();paintChat();return;}
-  CHAT.push({role:"user",text:text,src:chatSrc,ts:now()});var src=chatSrc;chatSrc=null;
+  CHAT.push({role:"user",text:text,src:chatSrc,ts:now()});var src=chatSrc;chatSrc=null;xzWord=!!(src&&src.word);
+  if(crisisHit(text))CHAT.push({role:"ai",text:crisisCard(),ok:true,crisis:true,ts:now()});
   CHAT.push({role:"ai",text:"",wait:true,src:src});if(CHAT.length>60)CHAT=CHAT.slice(-60);chatBusy=true;paintChat();
-  var msgs=[];eachA(CHAT,function(m){if(!m.wait&&m.text&&!m.err)msgs.push({role:m.role==="user"?"user":"assistant",content:m.text});});msgs=msgs.slice(-12);
+  var msgs=[];eachA(CHAT,function(m){if(!m.wait&&m.text&&!m.err&&!m.crisis)msgs.push({role:m.role==="user"?"user":"assistant",content:m.text});});msgs=msgs.slice(-12);
   while(msgs.length&&msgs[0].role!=="user")msgs.shift();
   var last=CHAT[CHAT.length-1];
   xiChat(xzSys(),msgs,XZ2.maxTokens(),4,function(part){last.wait=false;last.cont=true;last.text=part;if(XZ.open)paintChat();},function(err,txt){
@@ -1779,6 +1928,7 @@ document.addEventListener("click",function(e){
     else if(sa==="backup"){go("growth");setTimeout(function(){var k=$("backup");if(k)k.scrollIntoView();},60);}
     else if(sa==="chk")checkUpdate(1);else if(sa==="hard")applyUpdate(true);
     return;}
+  if(b.getAttribute("data-wa")){wdClick(b);return;}
   if(b.getAttribute("data-ha")){hlClick(b);return;}
   if(b.getAttribute("data-xa")){xzClick(b);return;}
 });
@@ -1979,8 +2129,8 @@ loadPack(L(),function(){
 });
 
 </script>
-<script src="coread.js?v=2.0.202611031010-xz1103-au1103-xzm1103"></script>
-<script src="gxa.js?v=2.0.202611031010-xz1103-au1103-xzm1103"></script>
+<script src="coread.js?v=2.0.202611050900-xz1103-au1103-xzm1103-rf1105"></script>
+<script src="gxa.js?v=2.0.202611050900-xz1103-au1103-xzm1103-rf1105"></script>
 <script id="k321meet">window.K321MEET_CFG={wrap:'viewHome',marker:'',rerender:function(){try{render()}catch(e){}},lang:function(){try{var l=L();return l==='en'?'en':l==='zs'?'sc':'tc'}catch(e){return 'tc'}}};
 /* 國度321空中團契 · 首頁「下一堂聚會／一鍵加入聚會／聚會時間與奉獻支持」 k321meet v1 */
 (function () {

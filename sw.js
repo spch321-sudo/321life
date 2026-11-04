@@ -4,9 +4,9 @@
    ‧ activate：刪舊快取、clients.claim，並通知所有頁面；背景中的舊頁面直接重新導向成新版
      （連「沒有更新程式碼的舊版頁面」也能被帶到新版）
    ‧ fetch：HTML／JS／JSON 網路優先（no-cache），離線才用快取；圖片快取優先；影音不攔截（Range 請求） */
-var V = '321life-2.0.202611031010-xz1103-au1103-xzm1103';
-var VER = '2.0.202611031010-xz1103-au1103-xzm1103';
-var SHELL = ['./', './index.html', './manifest.json', './lang-zs.json', './lang-en.json', './icon-192-v2.png', './icon-512-v2.png', './icon-maskable-512-v2.png', './apple-touch-icon-v2.png', './favicon-32.png', './hero.jpg', './hero-720.jpg', './coread.js', './peerjs.min.js', './gxa.js', "./xz2.js", './xzm.js'];
+var V = '321life-2.0.202611050900-xz1103-au1103-xzm1103-rf1105';
+var VER = '2.0.202611050900-xz1103-au1103-xzm1103-rf1105';
+var SHELL = ['./', './index.html', './manifest.json', './lang-zs.json', './lang-en.json', './icon-192-v2.png', './icon-512-v2.png', './icon-maskable-512-v2.png', './apple-touch-icon-v2.png', './favicon-32.png', './hero.jpg', './hero-720.jpg', './coread.js', './peerjs.min.js', './gxa.js', './xz2.js', './xzm.js'];
 self.addEventListener('install', function (e) {
   self.skipWaiting();
   e.waitUntil(caches.open(V).then(function (c) {
@@ -15,7 +15,7 @@ self.addEventListener('install', function (e) {
 });
 self.addEventListener('activate', function (e) {
   e.waitUntil(caches.keys().then(function (ks) {
-    return Promise.all(ks.filter(function (k) { return k !== V && k !== '321life-fonts'; }).map(function (k) { return caches['delete'](k); }));
+    return Promise.all(ks.filter(function (k) { return k.indexOf('321life-') === 0 && k !== V && k !== '321life-fonts'; }).map(function (k) { return caches['delete'](k); }));
   }).then(function () { return self.clients.claim(); }).then(function () {
     return self.clients.matchAll({ type: 'window', includeUncontrolled: true });
   }).then(function (cs) {
@@ -26,6 +26,29 @@ self.addEventListener('activate', function (e) {
   }));
 });
 self.addEventListener('message', function (e) { if (e.data === 'skip') self.skipWaiting(); });
+/* v-rf1105：網路優先，但慢網路（超過 SHELL_WAIT 毫秒沒回）先用完全相同的快取開；網路那份繼續下載並更新快取。
+   只有導覽請求才可以退回 index.html（程式檔退回 HTML 會造成 Unexpected token '<'）。 */
+var SHELL_WAIT = 1000;
+function shellFetch(e, req, key, url, nav) {
+  var net = fetch(url, { cache: 'no-cache', credentials: 'same-origin' }).then(function (resp) {
+    if (resp && resp.ok) { var cp = resp.clone(); caches.open(V).then(function (c) { c.put(key, cp); }); }
+    return resp;
+  });
+  e.waitUntil(net.then(function () { }, function () { }));
+  function fallback() {
+    return caches.match(key).then(function (h) { return h || caches.match(req, { ignoreSearch: true }); })
+      .then(function (h) { return h || (nav ? caches.match('./index.html') : undefined); });
+  }
+  return new Promise(function (resolve) {
+    var done = false;
+    var t = setTimeout(function () { fallback().then(function (h) { if (h && !done) { done = true; resolve(h); } }); }, SHELL_WAIT);
+    net.then(function (resp) { if (!done) { done = true; clearTimeout(t); resolve(resp); } }, function () {
+      clearTimeout(t);
+      if (done) return;
+      fallback().then(function (h) { if (!done) { done = true; resolve(h || Response.error()); } });
+    });
+  });
+}
 self.addEventListener('fetch', function (e) {
   var r = e.request; if (r.method !== 'GET') return;
   var u = new URL(r.url);
@@ -40,10 +63,7 @@ self.addEventListener('fetch', function (e) {
   var nav = r.mode === 'navigate' || /\.html$/.test(p) || /\/$/.test(p);
   var key = nav ? './index.html' : (/\.(json|js)$/.test(p) ? u.origin + p : r);
   if (nav || /\.(json|js|css)$/.test(p)) {
-    e.respondWith(fetch(nav ? u.origin + p + u.search : r.url, { cache: 'no-cache', credentials: 'same-origin' }).then(function (resp) {
-      if (resp && resp.ok) { var cp = resp.clone(); caches.open(V).then(function (c) { c.put(key, cp); }); }
-      return resp;
-    })['catch'](function () { return caches.match(key).then(function (h) { return h || caches.match(r, { ignoreSearch: true }).then(function (h2) { return h2 || caches.match('./index.html'); }); }); }));
+    e.respondWith(shellFetch(e, r, key, nav ? u.origin + p + u.search : r.url, nav));
     return;
   }
   e.respondWith(caches.match(r, { ignoreSearch: true }).then(function (h) {

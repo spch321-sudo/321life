@@ -1941,13 +1941,13 @@ var GXS = (function () {
   const isIOS = () => /iP(hone|ad|od)/.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
 
   const TPL = {
-    navy:  { n: ['深藍聖夜', 'Midnight Navy'], bg: ['#123F92', '#0D3988', '#071A42'], glow: 'rgba(212,166,91,.30)', ink: '#F2ECDD', accent: '#F7EFDC', gold: '#D4A65B', sub: '#BBA98A', frame: 'rgba(212,166,91,.42)' },
-    paper: { n: ['素樸信箋', 'Plain Letter'], bg: ['#FBF8F1', '#F4EFE3', '#EDE6D6'], glow: 'rgba(212,166,91,.45)', ink: '#3A3122', accent: '#23211C', gold: '#A9762F', sub: '#8A7C63', frame: 'rgba(169,118,47,.34)' },
-    dawn:  { n: ['晨曦盼望', 'Dawn of Hope'], bg: ['#FFF6EC', '#FBE9D2', '#F6D9B8'], glow: 'rgba(255,214,150,.6)', ink: '#3A2A1A', accent: '#8A4B16', gold: '#C97A22', sub: '#8A6A4A', frame: 'rgba(181,101,29,.30)' },
-    grace: { n: ['青草安歇', 'Green Pastures'], bg: ['#F2F7F1', '#E4EFE6', '#D6E7DA'], glow: 'rgba(160,200,170,.5)', ink: '#1C2E26', accent: '#255943', gold: '#3C8A64', sub: '#5C7A6A', frame: 'rgba(46,106,80,.28)' },
-    rose:  { n: ['溫柔玫瑰', 'Gentle Rose'], bg: ['#FCF5F3', '#F6E7E3', '#EFD8D2'], glow: 'rgba(220,160,150,.45)', ink: '#33221E', accent: '#8A3D2E', gold: '#B36A54', sub: '#8A6A62', frame: 'rgba(154,74,58,.28)' },
-    sky:   { n: ['平安晴空', 'Peaceful Sky'], bg: ['#F1F7FB', '#DFEEF6', '#CFE4F0'], glow: 'rgba(150,200,230,.5)', ink: '#1B2A33', accent: '#1E5270', gold: '#2E7DA0', sub: '#5A7684', frame: 'rgba(37,96,128,.28)' },
-    linen: { n: ['素雅棉麻', 'Soft Linen'], bg: ['#F7F4EE', '#EFEAE0', '#E6DFD2'], glow: 'rgba(200,190,170,.4)', ink: '#2A2620', accent: '#4A4234', gold: '#8A7A5A', sub: '#7A7263', frame: 'rgba(90,80,64,.26)' },
+    navy:  { n: ['深藍聖夜', 'Midnight Navy'], bg: ['#123F92', '#0D3988', '#071A42'], glow: 'rgba(212,166,91,.30)', ink: '#F2ECDD', accent: '#F7EFDC', gold: '#D4A65B', sub: '#BFAE91', frame: 'rgba(212,166,91,.42)' },
+    paper: { n: ['素樸信箋', 'Plain Letter'], bg: ['#FBF8F1', '#F4EFE3', '#EDE6D6'], glow: 'rgba(212,166,91,.45)', ink: '#3A3122', accent: '#23211C', gold: '#A9762F', sub: '#6C614D', frame: 'rgba(169,118,47,.34)' },
+    dawn:  { n: ['晨曦盼望', 'Dawn of Hope'], bg: ['#FFF6EC', '#FBE9D2', '#F6D9B8'], glow: 'rgba(255,214,150,.6)', ink: '#3A2A1A', accent: '#8A4B16', gold: '#C97A22', sub: '#71563C', frame: 'rgba(181,101,29,.30)' },
+    grace: { n: ['青草安歇', 'Green Pastures'], bg: ['#F2F7F1', '#E4EFE6', '#D6E7DA'], glow: 'rgba(160,200,170,.5)', ink: '#1C2E26', accent: '#255943', gold: '#3C8A64', sub: '#4B6356', frame: 'rgba(46,106,80,.28)' },
+    rose:  { n: ['溫柔玫瑰', 'Gentle Rose'], bg: ['#FCF5F3', '#F6E7E3', '#EFD8D2'], glow: 'rgba(220,160,150,.45)', ink: '#33221E', accent: '#8A3D2E', gold: '#B36A54', sub: '#715650', frame: 'rgba(154,74,58,.28)' },
+    sky:   { n: ['平安晴空', 'Peaceful Sky'], bg: ['#F1F7FB', '#DFEEF6', '#CFE4F0'], glow: 'rgba(150,200,230,.5)', ink: '#1B2A33', accent: '#1E5270', gold: '#2E7DA0', sub: '#49606C', frame: 'rgba(37,96,128,.28)' },
+    linen: { n: ['素雅棉麻', 'Soft Linen'], bg: ['#F7F4EE', '#EFEAE0', '#E6DFD2'], glow: 'rgba(200,190,170,.4)', ink: '#2A2620', accent: '#4A4234', gold: '#8A7A5A', sub: '#635D51', frame: 'rgba(90,80,64,.26)' },
     night: { n: ['深夜星光', 'Starry Night'], bg: ['#101E1B', '#16302A', '#0E2420'], glow: 'rgba(232,201,122,.26)', ink: '#EDEAE0', accent: '#E8C97A', gold: '#E8C97A', sub: '#9FB0AA', frame: 'rgba(232,201,122,.34)' },
     plain: { n: ['純白簡潔', 'Pure White'], bg: ['#FFFFFF', '#FFFFFF', '#FFFFFF'], glow: 'rgba(0,0,0,0)', ink: '#23211C', accent: '#1F4D3D', gold: '#A9762F', sub: '#6B6255', frame: 'rgba(31,77,61,.22)' }
   };
@@ -2211,11 +2211,41 @@ var GXS = (function () {
     ctx.restore();
   }
 
+  /* rf1105（互動聖經 v2.62.0）：相片當背景時，依相片上／中／下三段「最不利」的亮度算遮罩強度，讓文字對比至少約 5:1 */
+  const relLum = (r, g, b) => { const f = v => { v /= 255; return v <= .03928 ? v / 12.92 : Math.pow((v + .055) / 1.055, 2.4); }; return .2126 * f(r) + .7152 * f(g) + .0722 * f(b); };
+  const hexRGB = hx => { hx = String(hx).replace('#', ''); return [0, 2, 4].map(i => parseInt(hx.slice(i, i + 2), 16) || 0); };
+  function scrimAlphas(img, Tp, bg) {
+    const base = [.46, .66, .56], out = base.slice();
+    try {
+      const c = document.createElement('canvas'); c.width = 8; c.height = 12;
+      const x = c.getContext('2d'); coverDraw2(x, img, 0, 0, 8, 12);
+      const d = x.getImageData(0, 0, 8, 12).data;
+      const inkL = relLum.apply(null, hexRGB(Tp.ink));
+      for (let b = 0; b < 3; b++) {
+        const cells = [];
+        for (let row = b * 4; row < b * 4 + 4; row++) for (let col = 0; col < 8; col++) { const i = (row * 8 + col) * 4; cells.push([d[i], d[i + 1], d[i + 2]]); }
+        let a = base[b];
+        for (; a < .9; a += .03) {
+          let worst = 99;
+          for (const p of cells) {
+            const Lm = relLum(p[0] * (1 - a) + bg[0] * a, p[1] * (1 - a) + bg[1] * a, p[2] * (1 - a) + bg[2] * a);
+            worst = Math.min(worst, (Math.max(Lm, inkL) + .05) / (Math.min(Lm, inkL) + .05));
+          }
+          if (worst >= 5) break;
+        }
+        out[b] = +Math.min(.9, a).toFixed(2);
+      }
+    } catch (e) {}
+    return out;
+  }
+  let cardOverflow = '';   /* ''／'note'（領受放不下已省略或縮短）／'verse'（經文縮到最小仍放不下） */
   /* 一般卡片（照互動聖經 drawVerseCard：背景／貼紙／原圖） */
   function drawCard(cv, W, H) {
+    cardOverflow = '';
     if (isFull()) return drawFull(cv, W, H);
     const ctx = cv.getContext('2d'); cv.width = W; cv.height = H;
-    const Tp = inkT(TPL[st().tpl]);
+    let Tp = inkT(TPL[st().tpl]);
+    if (photoImg && photoMode !== 'orig') Tp = Object.assign({}, Tp, { sub: Tp.ink });   /* 相片上團契名與落款改用內文色 */
     const Sm = Math.min(W, H), F = Sm / 1080, pad = Math.round(Sm * .085), iw = W - pad * 2;
     const wide = W > H * 1.2;
     let colW = wide ? Math.min(iw, Math.round(H * 1.5)) : iw;
@@ -2261,10 +2291,11 @@ var GXS = (function () {
       coverDraw2(ctx, photoImg, 0, 0, W, H);
       const hx = Tp.bg[1].replace('#', '');
       const R0 = parseInt(hx.slice(0, 2), 16), G0 = parseInt(hx.slice(2, 4), 16), B0 = parseInt(hx.slice(4, 6), 16);
+      const al = scrimAlphas(photoImg, Tp, [R0, G0, B0]);
       const scg = ctx.createLinearGradient(0, 0, 0, H);
-      scg.addColorStop(0, `rgba(${R0},${G0},${B0},0.46)`);
-      scg.addColorStop(.5, `rgba(${R0},${G0},${B0},0.66)`);
-      scg.addColorStop(1, `rgba(${R0},${G0},${B0},0.56)`);
+      scg.addColorStop(0, `rgba(${R0},${G0},${B0},${al[0]})`);
+      scg.addColorStop(.5, `rgba(${R0},${G0},${B0},${al[1]})`);
+      scg.addColorStop(1, `rgba(${R0},${G0},${B0},${al[2]})`);
       ctx.fillStyle = scg; ctx.fillRect(0, 0, W, H);
     }
     const rg = ctx.createRadialGradient(W * .84, H * .10, 10, W * .84, H * .10, W * .75);
@@ -2310,7 +2341,7 @@ var GXS = (function () {
     const nt = sc(String(note || '').trim());
     const ref = refText();
     let vs = Math.round(58 * FT * FB), vl, fixed, ns, nl, total;
-    const vsMin = Math.round((orig ? 20 : 28) * FT);
+    const vsMin = Math.round((orig ? 20 : 24) * FT);
     for (;;) {
       for (;;) {
         ctx.font = `600 ${vs}px ${serif}`;
@@ -2329,20 +2360,24 @@ var GXS = (function () {
         }
       }
       total = fixed + (nt ? nl.length * ns * 1.76 : 0);
-      if (!orig || total <= room || vs <= vsMin) break;
+      if (total <= room || vs <= vsMin) break;
       vs -= Math.max(1, Math.round(3 * FT));
     }
+    let ntDraw = nt;
     if (nt && total > room + 1) {
-      const fit = Math.max(1, Math.floor((room - fixed) / (ns * 1.76)));
-      if (nl.length > fit) {
+      const fit = Math.floor((room - fixed) / (ns * 1.76));
+      if (fit < 1) {   /* 連一行都放不下：整段領受省略，絕不壓到署名 */
+        ntDraw = ''; nl = []; total = fixed - Math.round(86 * FT); cardOverflow = 'note';
+      } else if (nl.length > fit) {
         nl = nl.slice(0, fit); let last = nl[fit - 1]; ctx.font = `${ns}px ${sans}`;
         while (last.length > 1 && ctx.measureText(last + '…').width > tiw) last = last.slice(0, -1);
         nl[fit - 1] = last.replace(/[，。、；：,.;:\s]+$/, '') + '…';
-        total = fixed + nl.length * ns * 1.76;
+        total = fixed + nl.length * ns * 1.76; cardOverflow = 'note';
       }
     }
+    if (total > room + 1) cardOverflow = 'verse';
     let y = topRoom + Math.max(0, (room - total) / 2);
-    const vh = vs * .9 + vl.length * vs * 1.52 + Math.round(64 * FT), nh = total - vh;
+    const vh = vs * .9 + vl.length * vs * 1.52 + Math.round(64 * FT), nh = total - vh;   /* ntDraw 為空時 nh<=0 */
     let vx = 0, vy = 0, nx = 0, ny = 0;
     if (orig) {
       const mg = Math.round(12 * F);
@@ -2351,7 +2386,7 @@ var GXS = (function () {
         const y1 = -(TY + top) + mg, y2 = H - (TY + top + hh) - mg;
         return [Math.max(x1 / W, Math.min(x2 / W, dx)), Math.max(y1 / H, Math.min(y2 / H, dy))];
       };
-      if (origSplit && nt) {
+      if (origSplit && ntDraw) {
         let r1 = clampMv(origDX, origDY, y, vh); origDX = r1[0]; origDY = r1[1];
         let r2 = clampMv(origNX, origNY, y + vh, nh); origNX = r2[0]; origNY = r2[1];
         nx = origNX * W; ny = origNY * H;
@@ -2369,7 +2404,7 @@ var GXS = (function () {
     if (ref) ctx.fillText(ref, TW / 2, y);
     y += Math.round(64 * FT);
     ctx.restore();
-    if (nt) {
+    if (ntDraw) {
       ctx.save(); ctx.translate(nx, ny);
       ctx.fillStyle = Tp.gold;
       ctx.beginPath(); ctx.arc(TW / 2, y, Math.round(5 * FT), 0, 7); ctx.fill();
@@ -2490,6 +2525,7 @@ var GXS = (function () {
     rendering = setTimeout(() => {
       const d = dims(), cv = document.createElement('canvas');
       try { drawCard(cv, d[0], d[1]); cardURL = cv.toDataURL('image/png'); } catch (e) { cardURL = ''; }
+      cardWarnPaint();
       const pv = q1('#gxsPv');
       if (pv && cardURL) { pv.src = cardURL; pv.style.aspectRatio = d[0] + ' / ' + d[1]; }
     }, 40);
@@ -2497,10 +2533,34 @@ var GXS = (function () {
   function cardBlob() {
     const d = dims(), cv = document.createElement('canvas');
     drawCard(cv, d[0], d[1]);
+    cardMime = (photoImg || stkImg) ? 'image/jpeg' : 'image/png';   /* 有相片輸出 JPEG .92（檔案小、LINE 收得快），純色維持 PNG */
     return new Promise(r => {
-      try { cv.toBlob(b => r(b), 'image/png'); }
+      try { cv.toBlob(b => r(b), cardMime, .92); }
       catch (e) { r(null); }
     });
+  }
+  let cardMime = 'image/png';
+  const cardExt = () => (cardMime === 'image/jpeg' ? '.jpg' : '.png');
+  function cardWarnPaint() {
+    const el = q1('#gxsWarn'); if (!el) return;
+    el.style.display = cardOverflow ? '' : 'none';
+    if (cardOverflow) el.textContent = cardOverflow === 'note'
+      ? T('⚠️ 這張卡片放不下全部的內文，已先縮短或省略；想完整呈現，可改選較高的尺寸（直式 9:16）或把內文寫短一點。', '⚠️ The text does not fit and was shortened or left out. Choose a taller size (Portrait 9:16) or write less.')
+      : T('⚠️ 經文比較長，字已縮到最小；建議改選直式 9:16，或只選一兩節。', '⚠️ The verse is long and already at the smallest size. Try Portrait 9:16 or a shorter passage.');
+  }
+  /* 一鍵調整：依序試幾組尺寸／字級，挑第一組放得下的 */
+  function cardAutoFit() {
+    const g = st(), cands = [['t', 1.2], ['t', 1], ['p', 1.2], ['p', 1], ['p', .9]];
+    const sz0 = g.size, fs0 = g.fs; let pick = cands[cands.length - 1];
+    for (const c of cands) {
+      g.size = c[0]; g.fs = c[1];
+      const d = SIZES[c[0]], cv = document.createElement('canvas');
+      try { drawCard(cv, Math.round(d[0] / 2), Math.round(d[1] / 2)); } catch (e) {}
+      if (!cardOverflow) { pick = c; break; }
+    }
+    g.size = pick[0]; g.fs = pick[1]; keep();
+    if (sz0 === pick[0] && fs0 === pick[1]) return T('目前的尺寸與字級已經合適', 'Current size and text size already fit');
+    return T('已選「', 'Chose "') + L2(SIZES[pick[0]][2]) + T('」與合適字級', '" and a fitting text size');
   }
   const fileBase = () => (EN ? GX.BK.en.toLowerCase().replace(/\s+/g, '') : '321' + GX.BK.zh) + '-' + String(item && item.ref || 'card').replace(/[\\/:*?"<>|\s]+/g, '');
 
@@ -3770,7 +3830,8 @@ function mx_strBytes(s){const a=new Uint8Array(s.length);for(let i=0;i<s.length;
       <p class="gxlab">${esc(T('外框', 'Border'))}</p>${chips(BORDERS.map(b => [b[0], L2(b[1])]), g.border, 'border')}
       <p class="gxlab">${esc(T('尺寸', 'Size'))}</p>${chips(Object.keys(SIZES).map(k => [k, L2(SIZES[k][2])]), g.size, 'size')}
       <p class="gxlab">${esc(T('字級', 'Text size'))}</p>${chips(FS.map(f => [f[0], L2(f[1])]), g.fs, 'fs')}
-      ${hint(T('字級會一起放大團體名稱、稱呼、經文、內文與署名。', 'Scales the group name, greeting, verse, text and signature together.'))}`;
+      ${hint(T('字級會一起放大團體名稱、稱呼、經文、內文與署名。', 'Scales the group name, greeting, verse, text and signature together.'))}
+      <button class="btn pri" style="width:100%;margin-top:8px" data-k="cardauto">${esc(T('✨ 一鍵調整：依經文長度自動選尺寸與字級', '✨ Auto-fit: pick size and text size for the length'))}</button>`;
   }
   function tabPhoto() {
     const isStk = photoMode === 'sticker';
@@ -3987,6 +4048,7 @@ function mx_strBytes(s){const a=new Uint8Array(s.length);for(let i=0;i<s.length;
       else { photoImg = null; photoBy = ''; origMove = false; g.photoLast = ''; keep(); }
       return paint();
     }
+    if (k === 'cardauto') { say(cardAutoFit()); return paint(); }
     if (k === 'bless') return blessWrite();
     if (k === 'tw') { const c = q1('#gxsTw', EL); if (c) c.style.display = c.style.display === 'none' ? 'flex' : 'none'; return; }
     if (k === 'twp') return tweak(v);
@@ -4003,9 +4065,9 @@ function mx_strBytes(s){const a=new Uint8Array(s.length);for(let i=0;i<s.length;
   }
   async function saveImg() {
     const b = await cardBlob(); if (!b) { say(T('請長按圖片儲存', 'Press and hold the picture to save')); return; }
-    const name = fileBase() + '.png';
+    const name = fileBase() + cardExt();
     if (isIOS()) {
-      const f = new File([b], name, { type: 'image/png' });
+      const f = new File([b], name, { type: cardMime });
       if (navigator.canShare && navigator.canShare({ files: [f] })) {
         say(T('在分享面板選「儲存影像」就會存進相簿', 'Choose “Save Image” to put it in Photos'));
         try { await navigator.share({ files: [f] }); return; } catch (e) { if (e && e.name === 'AbortError') return; }
@@ -4021,7 +4083,7 @@ function mx_strBytes(s){const a=new Uint8Array(s.length);for(let i=0;i<s.length;
   async function shareImg() {
     const b = await cardBlob();
     if (!b) return saveImg();
-    const f = new File([b], fileBase() + '.png', { type: 'image/png' });
+    const f = new File([b], fileBase() + cardExt(), { type: cardMime });
     if (navigator.canShare && navigator.canShare({ files: [f] })) {
       try { await navigator.share({ files: [f], text: sc(verseText() + (item.ref ? '\n—— ' + item.ref : '')) }); return; }
       catch (e) { if (e && e.name === 'AbortError') return; }
@@ -4082,6 +4144,7 @@ function mx_strBytes(s){const a=new Uint8Array(s.length);for(let i=0;i<s.length;
     EL.innerHTML = `<div class="gxscard">
       <div class="gxshead"><b>🖼 ${esc(T('美圖工作室', 'Card studio'))}</b><button class="ico" data-k="x" aria-label="close">✕</button></div>
       <div class="gxspv"><img id="gxsPv" alt=""></div>
+      <p id="gxsWarn" class="xs" style="display:none;text-align:center;margin:4px 0 0;color:#B35A00" role="status"></p>
       <p class="xs muted" style="text-align:center;margin:4px 0 8px">${esc(T('長按圖片也可以直接儲存', 'You can also press and hold the picture to save'))}</p>
       <div class="gxacts"><button class="btn pri" data-k="share">↗ ${esc(T('分享', 'Share'))}</button><button class="btn" data-k="save">⬇ ${esc(T('存到手機', 'Save'))}</button></div>
       <div class="gxtabs">${TABS.map(x => `<button data-t="${x[0]}">${esc(T(x[1][0], x[1][1]))}</button>`).join('')}</div>
