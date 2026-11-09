@@ -1071,7 +1071,7 @@ app.addEventListener("click",function(e){
     jdraft=null;render();toast(T("已儲存，榮耀歸給耶穌"));
   }
 });
-var APPVER="2.0.202611091200-xz1103-au1103-xzm1103-rf1105-cs1109";
+var APPVER="2.0.202611091200-xz1103-au1103-xzm1103-rf1105-cs1109-nv1109";
 var SVC={xz:XI_ENDPOINT,tts:"https://azure-tts.spch321.workers.dev",model:XI_MODEL};
 var VOICES={
   zh:[["zh-TW-YunJheNeural","雲哲"],["zh-CN-Yunfan:DragonHDLatestNeural","雲帆"],["zh-CN-Xiaochen:DragonHDLatestNeural","曉辰"]],
@@ -1951,9 +1951,9 @@ var AUPD = (function () {
   };
   var U = { reg: null, target: '', pending: false, applying: 0, inited: 0 };
   var TX = {
-    zh: { newVer: '有新版本，點一下立即更新', updating: '正在更新到新版…', latest: '目前已是最新版 v', found: '找到新版本，正在更新…', foundBusy: '找到新版本，忙完就會自動更新', netErr: '無法檢查更新，請確認網路', checking: '檢查更新中…', done: '已更新到新版 v' },
-    zs: { newVer: '有新版本，点一下立即更新', updating: '正在更新到新版…', latest: '目前已是最新版 v', found: '找到新版本，正在更新…', foundBusy: '找到新版本，忙完就会自动更新', netErr: '无法检查更新，请确认网络', checking: '检查更新中…', done: '已更新到新版 v' },
-    en: { newVer: 'A new version is ready. Tap to update', updating: 'Updating to the new version…', latest: 'You are on the latest version v', found: 'New version found, updating…', foundBusy: 'New version found. It will update when you are idle', netErr: 'Cannot check for updates. Please check your connection', checking: 'Checking for updates…', done: 'Updated to version ' }
+    zh: { newVer: '有新版本，點一下立即更新', updating: '正在更新到新版…', latest: '目前已是最新版 v', found: '找到新版本，正在更新…', foundBusy: '找到新版本，忙完就會自動更新', netErr: '無法檢查更新，請確認網路', checking: '檢查更新中…', done: '已更新到最新版本' },
+    zs: { newVer: '有新版本，点一下立即更新', updating: '正在更新到新版…', latest: '目前已是最新版 v', found: '找到新版本，正在更新…', foundBusy: '找到新版本，忙完就会自动更新', netErr: '无法检查更新，请确认网络', checking: '检查更新中…', done: '已更新到最新版本' },
+    en: { newVer: 'A new version is ready. Tap to update', updating: 'Updating to the new version…', latest: 'You are on the latest version v', found: 'New version found, updating…', foundBusy: 'New version found. It will update when you are idle', netErr: 'Cannot check for updates. Please check your connection', checking: 'Checking for updates…', done: 'Updated to the latest version' }
   };
   function now() { return +new Date(); }
   function ver() { try { return String(CFG.ver()); } catch (e) { return ''; } }
@@ -2103,7 +2103,7 @@ var AUPD = (function () {
     if (U.inited) return; U.inited = 1;
     if (!/^https?:/.test(location.protocol)) return;
     try { if (/[?&]u=\d+/.test(location.search) && history.replaceState) { var s = location.search.replace(/([?&])u=\d+&?/, '$1').replace(/[?&]$/, ''); history.replaceState(null, '', location.pathname + s + location.hash); } } catch (e) { }
-    if (ssGet('auTry') && ssGet('auTry') === ver()) { ssSet('auTry', ''); ssSet('auHard', ''); setTimeout(function () { say(T('done') + ver()); }, 1200); }
+    if (ssGet('auTry') && ssGet('auTry') === ver()) { ssSet('auTry', ''); ssSet('auHard', ''); setTimeout(function () { say(T('done')); }, 1200); }
     register();
     setTimeout(function () { check(0); }, 2500);
     setInterval(function () { check(0); }, 30 * 60 * 1000);
@@ -2129,8 +2129,8 @@ loadPack(L(),function(){
 });
 
 </script>
-<script src="coread.js?v=2.0.202611091200-xz1103-au1103-xzm1103-rf1105-cs1109"></script>
-<script src="gxa.js?v=2.0.202611091200-xz1103-au1103-xzm1103-rf1105-cs1109"></script>
+<script src="coread.js?v=2.0.202611091200-xz1103-au1103-xzm1103-rf1105-cs1109-nv1109"></script>
+<script src="gxa.js?v=2.0.202611091200-xz1103-au1103-xzm1103-rf1105-cs1109-nv1109"></script>
 <script id="k321meet">window.K321MEET_CFG={wrap:'viewHome',marker:'',rerender:function(){try{render()}catch(e){}},lang:function(){try{var l=L();return l==='en'?'en':l==='zs'?'sc':'tc'}catch(e){return 'tc'}}};
 /* 國度321空中團契 · 首頁「下一堂聚會／一鍵加入聚會／聚會時間與奉獻支持」 k321meet v1 */
 (function () {
@@ -2394,7 +2394,7 @@ loadPack(L(),function(){
 })();
 </script>
 <script src="xzm.js?v=xzm1103"></script>
-<script src="cpar.js?v=2.0.202611091200-xz1103-au1103-xzm1103-rf1105-cs1109"></script>
+<script src="cpar.js?v=2.0.202611091200-xz1103-au1103-xzm1103-rf1105-cs1109-nv1109"></script>
 <script>try{XZM.install(XZM.preset.lesson());}catch(e){}</script>
 </body>
 </html>
