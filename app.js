@@ -24,6 +24,8 @@ if(!SET){var nl=String(navigator.language||"zh").toLowerCase();
 function saveSet(){lsSet("r321-life-set",SET);}
 /* 網址參數 ?lang=zh|zs|en（也接受 tc/sc）：從空中團契等外部連結直接開對語言，用完即從網址移除 */
 (function(){var m=/[?&]lang=(zh|zs|en|tc|sc)(?:&|$)/i.exec(location.search);if(!m)return;var v=m[1].toLowerCase();v=v==="tc"?"zh":(v==="sc"?"zs":v);SET.lang=v;saveSet();try{if(history.replaceState)history.replaceState(null,"",location.pathname+location.search.replace(/([?&])lang=[^&]*&?/i,"$1").replace(/[?&]$/,"")+location.hash);}catch(e){}})();
+/* ?lang321=zh|zs|en|ko|ja|id|ceb：空中團契／小智問答帶入的語言，套用並保存，用完即從網址移除 */
+(function(){try{var m=/[?&]lang321=([A-Za-z]+)/.exec(location.search);if(!m)return;var c=m[1].toLowerCase();var map={zh:"zh",zs:"zs",en:"en",ko:"en",ja:"en",id:"en",ceb:"en"};if(!map[c])return;SET.lang=map[c];saveSet();if(history.replaceState){var q=location.search.replace(/([?&])lang321=[^&]*(&|$)/,function(a,p,e){return e?p:"";}).replace(/[?&]$/,"");history.replaceState(history.state,"",location.pathname+q+location.hash);}}catch(e){}})();
 var PACK={zh:{}};
 function L(){return SET.lang||"zh";}
 function isEN(){return L()==="en";}
