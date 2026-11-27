@@ -169,6 +169,7 @@
   function apply() {
     var app = document.getElementById('app'), tab = state.tab;
     if (!app || !VIEWS[tab]) return;
+    if (!/^(zh|zs|en)$/.test(SET.lang || 'zh')) return;
     css();
     var on = isOn(), bar = document.createElement('div'); bar.className = 'cparbar';
     bar.innerHTML = '<button type="button" class="cparbtn' + (on ? ' on' : '') + '" data-cpar="1">🌐 ' + T2('btn') + (EN() ? ': ' : '：') + (on ? T2('on') : T2('off')) + '</button>';

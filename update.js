@@ -15,7 +15,7 @@ var AUPD = (function () {
     sw: 'sw.js',
     busy: function () { return BUSY || isBusy(); },
     toast: function (m) { toast(m); },
-    lang: function () { return (typeof L === 'function') ? L() : ''; },
+    lang: function () { return (typeof LX === 'function') ? LX() : ((typeof L === 'function') ? L() : ''); },
     before: function () {  }
   };
   var U = { reg: null, target: '', pending: false, applying: 0, inited: 0 };

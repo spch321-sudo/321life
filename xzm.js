@@ -646,7 +646,7 @@ XZM.preset.lesson = function (o) {
 
   XZM._mis = MIS;
   var A = {
-    lang: function () { var l = g(function () { return L(); }, 'zh'); return l === 'en' ? 'en' : (l === 'zs' ? 'sc' : 'tc'); },
+    lang: function () { var l = g(function () { return typeof LX === 'function' ? LX() : L(); }, 'zh'); return l === 'en' ? 'en' : (l === 'zs' ? 'sc' : 'tc'); },
     toast: function (m) { g(function () { toast(m); }); },
     msgs: function () { return CH(); },
     isDone: function (m) { return !!(m && m.role !== 'user' && m.ok && !m.wait && !m.cont && !m.err); },

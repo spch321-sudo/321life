@@ -198,8 +198,11 @@ html,body{overflow-x:hidden}
 html{font-size:16px}
 html.fs-lg{font-size:18px}html.fs-xl{font-size:20.5px}html.fs-xxl{font-size:23px}
 html[data-lang="zs"]{--display:"Noto Serif SC","Songti SC","STSong","SimSun",serif;--body:"Noto Sans SC","PingFang SC","Microsoft YaHei",system-ui,sans-serif}
-html[data-lang="en"]{--display:Georgia,"Times New Roman",serif;--body:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
-html[data-lang="en"] .eyebrow{letter-spacing:.06em;text-transform:uppercase}
+html[data-lang="en"],html[data-lang="id"],html[data-lang="ceb"]{--display:Georgia,"Times New Roman",serif;--body:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+html[data-lang="ko"]{--display:"Noto Serif KR","Nanum Myeongjo","Batang","AppleMyungjo",serif;--body:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic",system-ui,sans-serif}
+html[data-lang="ja"]{--display:"Noto Serif JP","Hiragino Mincho ProN","Yu Mincho","MS PMincho",serif;--body:"Noto Sans JP","Hiragino Sans","Yu Gothic","Meiryo",system-ui,sans-serif}
+.langsw button#langbtn{padding:5px 12px;white-space:nowrap}.lmenu{display:grid;gap:8px;margin-top:10px}.lmenu .lm{border:1px solid var(--line);background:var(--surface);color:var(--fg);border-radius:12px;padding:12px 14px;font-size:16px;text-align:left;min-height:48px}.lmenu .lm.on{border-color:var(--vine);background:var(--vine-soft);font-weight:700}
+html[data-lang="en"] .eyebrow,html[data-lang="id"] .eyebrow,html[data-lang="ceb"] .eyebrow{letter-spacing:.06em;text-transform:uppercase}
 .top{flex-wrap:nowrap}
 .brand{min-width:0}
 .brand h1{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -211,7 +214,7 @@ html[data-lang="en"] .eyebrow{letter-spacing:.06em;text-transform:uppercase}
 .ib svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 @media (max-width:380px){.brand h1{display:none}.langsw button{padding:5px 7px}}
 nav.tabs button span{font-size:12px;line-height:1.2}
-html[data-lang="en"] nav.tabs button span{font-size:11px}
+html[data-lang="en"] nav.tabs button span,html[data-lang="ko"] nav.tabs button span,html[data-lang="id"] nav.tabs button span,html[data-lang="ceb"] nav.tabs button span,html[data-lang="ja"] nav.tabs button span{font-size:11px}
 .fabs{position:fixed;right:max(14px,calc(50% - 320px + 14px));bottom:calc(74px + env(safe-area-inset-bottom,0px));display:grid;gap:10px;z-index:12}
 .fab{width:46px;height:46px;border-radius:50%;border:1px solid var(--line);background:var(--surface);box-shadow:0 4px 14px rgba(0,0,0,.18);font-size:18px;display:grid;place-items:center;padding:0;color:var(--fg)}
 .fab.on{background:var(--plum);color:#fff;border-color:var(--plum)}
@@ -343,7 +346,7 @@ html[data-lang="en"] nav.tabs button span{font-size:11px}
     <div class="brand"><span class="mark">321</span><h1 id="hdtitle">生命操練</h1></div>
     <div class="tools">
       <button class="ib" id="crTop" aria-label="一起共讀 Read together">📡</button>
-      <div class="langsw" id="langsw" role="group" aria-label="Language"><button data-l="zh">繁</button><button data-l="zs">简</button><button data-l="en">EN</button></div>
+      <div class="langsw" id="langsw" role="group" aria-label="Language"><button class="on" id="langbtn" aria-haspopup="dialog" aria-label="Language">繁 ▾</button></div>
       <button class="ib" id="btnfont" aria-label="字級 Font size">Aa</button>
       <button class="ib" id="btnset" aria-label="設定 Settings"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/></svg></button>
     </div>
@@ -444,26 +447,32 @@ function eachA(a,f){for(var i=0;i<a.length;i++)f(a[i],i);}
 var SET=lsGet("r321-life-set",null);
 if(!SET){var nl=String(navigator.language||"zh").toLowerCase();
   var olduser=false;try{olduser=!!localStorage.getItem("r321-life-entries");}catch(e){}
-  SET={lang:olduser?"zh":(/^zh-(cn|sg|hans)/.test(nl)?"zs":(/^zh/.test(nl)?"zh":(/^en/.test(nl)?"en":"zh"))),font:0,theme:"",voice:0,rate:0,human:true,aud:"adult"};}
+  SET={lang:olduser?"zh":(/^zh-(cn|sg|hans)/.test(nl)?"zs":(/^zh/.test(nl)?"zh":(/^en/.test(nl)?"en":(/^ko/.test(nl)?"ko":(/^ja/.test(nl)?"ja":(/^(id|in)(-|$)/.test(nl)?"id":(/^ceb/.test(nl)?"ceb":"zh"))))))),font:0,theme:"",voice:0,rate:0,human:true,aud:"adult"};}
 function saveSet(){lsSet("r321-life-set",SET);}
 /* 網址參數 ?lang=zh|zs|en（也接受 tc/sc）：從空中團契等外部連結直接開對語言，用完即從網址移除 */
-(function(){var m=/[?&]lang=(zh|zs|en|tc|sc)(?:&|$)/i.exec(location.search);if(!m)return;var v=m[1].toLowerCase();v=v==="tc"?"zh":(v==="sc"?"zs":v);SET.lang=v;saveSet();try{if(history.replaceState)history.replaceState(null,"",location.pathname+location.search.replace(/([?&])lang=[^&]*&?/i,"$1").replace(/[?&]$/,"")+location.hash);}catch(e){}})();
+(function(){var m=/[?&]lang=(zh|zs|en|ko|ja|id|ceb|tc|sc)(?:&|$)/i.exec(location.search);if(!m)return;var v=m[1].toLowerCase();v=v==="tc"?"zh":(v==="sc"?"zs":v);SET.lang=v;saveSet();try{if(history.replaceState)history.replaceState(null,"",location.pathname+location.search.replace(/([?&])lang=[^&]*&?/i,"$1").replace(/[?&]$/,"")+location.hash);}catch(e){}})();
 /* ?lang321=zh|zs|en|ko|ja|id|ceb：空中團契／小智問答帶入的語言，套用並保存，用完即從網址移除 */
-(function(){try{var m=/[?&]lang321=([A-Za-z]+)/.exec(location.search);if(!m)return;var c=m[1].toLowerCase();var map={zh:"zh",zs:"zs",en:"en",ko:"en",ja:"en",id:"en",ceb:"en"};if(!map[c])return;SET.lang=map[c];saveSet();if(history.replaceState){var q=location.search.replace(/([?&])lang321=[^&]*(&|$)/,function(a,p,e){return e?p:"";}).replace(/[?&]$/,"");history.replaceState(history.state,"",location.pathname+q+location.hash);}}catch(e){}})();
+(function(){try{var m=/[?&]lang321=([A-Za-z]+)/.exec(location.search);if(!m)return;var c=m[1].toLowerCase();var map={zh:"zh",zs:"zs",en:"en",ko:"ko",ja:"ja",id:"id",ceb:"ceb"};if(!map[c])return;SET.lang=map[c];saveSet();if(history.replaceState){var q=location.search.replace(/([?&])lang321=[^&]*(&|$)/,function(a,p,e){return e?p:"";}).replace(/[?&]$/,"");history.replaceState(history.state,"",location.pathname+q+location.hash);}}catch(e){}})();
 var PACK={zh:{}};
 function L(){return SET.lang||"zh";}
-function isEN(){return L()==="en";}
+function isEN(){var l=L();return l==="en"||l==="ko"||l==="id"||l==="ceb";}/* 西文標點（空格分詞）：en／ko／id／ceb */
+function isEN0(){return L()==="en";}
+function isNZ(){var l=L();return l!=="zh"&&l!=="zs";}/* 非中文 */
+function LX(){var l=L();return l==="zh"||l==="zs"||l==="en"?l:"en";}/* 附屬套件（小智共用套件、美圖工作室…）尚無的語言一律用英文 */
+var LNAME_EN={zh:"Traditional Chinese",zs:"Simplified Chinese",en:"English",ko:"Korean",ja:"Japanese",id:"Indonesian",ceb:"Cebuano"};
+var LSHORT={zh:"繁",zs:"简",en:"EN",ko:"한",ja:"日",id:"ID",ceb:"CEB"};
+var LMENU=[["zh","繁體中文"],["zs","简体中文"],["en","English"],["ko","한국어"],["ja","日本語"],["id","Bahasa Indonesia"],["ceb","Cebuano"]];
 function isZS(){return L()==="zs";}
 function T(k){var d=PACK[L()]||{},s=d[k];if(s==null)s=k;
   for(var i=1;i<arguments.length;i++)s=s.split("{"+(i-1)+"}").join(arguments[i]);return s;}
 function DOT(){return isEN()?" · ":"・";}
 function Q(s){return isEN()?"“"+s+"”":"「"+s+"」";}
 var MON_EN=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
-function fmtDate(k){var p=String(k).split("-");return isEN()?MON_EN[(+p[1])-1]+" "+(+p[2]):(+p[1])+T("月")+(+p[2])+T("日");}
+function fmtDate(k){var p=String(k).split("-");if(isNZ()&&!isEN0()){var ms=T("@mons");ms=ms==="@mons"?[]:ms.split("|");return T("@fd",ms[(+p[1])-1]||String(+p[1]),String(+p[2]));}return isEN0()?MON_EN[(+p[1])-1]+" "+(+p[2]):(+p[1])+T("月")+(+p[2])+T("日");}
 var WDN=["主日","一","二","三","四","五","六"];
 var WDN_EN=["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 var WDS_EN=["S","M","T","W","T","F","S"];
-function wdName(d){return isEN()?WDN_EN[d]:T("星期")+WDN[d];}
+function wdName(d){if(isNZ()&&!isEN0())return T("@wdl").split("|")[d];return isEN0()?WDN_EN[d]:T("星期")+WDN[d];}
 function toast(t){var old=qa(".toast");eachA(old,function(o){o.parentNode.removeChild(o);});
   var el=document.createElement("div");el.className="toast";el.textContent=t;document.body.appendChild(el);setTimeout(function(){if(el.parentNode)el.parentNode.removeChild(el);},2400);}
 function splitS(text){
@@ -507,7 +516,7 @@ function viewHome(){
   for(var k=0;k<7;k++){
     var d=new Date(mon.getFullYear(),mon.getMonth(),mon.getDate()+k),key=dkey(d),done=!!days[key],wd=(k+1)%7;
     if(done)nWeek++;
-    week+='<div class="d"><span class="dot'+(done?" done":"")+(key===TODAY?" today":"")+'">'+(done?"✓":"")+'</span>'+(isEN()?WDS_EN[wd]:(k===6?T("日"):T(WDN[wd])))+'</div>';
+    week+='<div class="d"><span class="dot'+(done?" done":"")+(key===TODAY?" today":"")+'">'+(done?"✓":"")+'</span>'+(isNZ()?(isEN0()?WDS_EN[wd]:T("@wds").split("|")[wd]):(k===6?T("日"):T(WDN[wd])))+'</div>';
   }
   var focus;
   if(pair){
@@ -661,19 +670,32 @@ var CK_BASE="你是「小智」，國度321空中團契的生命陪伴者，以�
 "【安全】如果內容顯示有人正遭受暴力、虐待、人身危險，或有自傷、輕生的念頭，不要把它當成「有己」來分析，也不要勸他忍耐順服；要溫柔地把安全放第一，鼓勵他立刻聯絡可信任的人、當地緊急求助或專業協助，並在 picture 裡清楚說明。\n\n"+
 "";
 var CK_TASK="【你的任務】使用者會寫下一件事：事件、感應（看到、聽到）、反應（意念、情緒）、回應（說了、做了）。請沿著「感應→反應→回應」這條鏈，指出哪裡是舊人有己在作王、哪裡已經有新人無己的生命；點出有己的根（我要的是甚麼：面子、控制、被肯定、被體諒、公平、安全感……），以及怎樣離開了本位；再給出具體、做得到的更新建議。\n";
+function langDir(){
+  var n=LNAME_EN[L()],g="Write your entire reply in natural, warm, elegant "+n+" (the reader reads "+n+"; do not answer in English or Chinese unless the user explicitly asks). Wherever this prompt mentions the reader's language, script or Chinese/English wording, it means "+n+". Keep Xiaozhi (小智) as the name of the companion. ";
+  var sc={ko:"Use the vocabulary of the Korean Protestant church (하나님, 예수 그리스도, 성령님, 은혜, 구원, 기도). When you quote Scripture, use the wording of the 개역한글 (Korean Revised Version, 1961) and give references with Korean book names, for example 요한복음 3:16.",
+    ja:"Use polite です・ます style and the vocabulary of the Japanese Protestant church (神, 主イエス・キリスト, 聖霊, 恵み, 救い, 祈り, 福音). When you quote Scripture, use the wording of the 口語訳聖書 (Japanese Colloquial Bible, 1955) and give references with Japanese book names, for example ヨハネによる福音書 3:16.",
+    id:"Use baku yet warm Bahasa Indonesia and the vocabulary of Indonesian Protestant/Evangelical churches (Allah, Tuhan, TUHAN, Tuhan Yesus, Roh Kudus, Injil, firman Tuhan, pertobatan, anugerah). When you quote Scripture, follow the wording of the Alkitab Yang Terbuka (AYT) / Terjemahan Baru and name books as in AYT (e.g. Yohanes 3:16, Kisah Para Rasul, Wahyu).",
+    ceb:"Use standard modern Cebuano (Binisaya / Sinugboanon, Latin script) — not Tagalog or Filipino, and avoid heavy Taglish. Address the reader respectfully as kamo/ninyo. When you quote Scripture, quote it in Cebuano in the style of the common Cebuano Bible (Ang Pulong sa Dios / Balaan nga Bibliya) and name books as in it (e.g. Juan 3:16, Mga Salmo, Pinadayag); use Dios, Ginoo, Jesu-Cristo, Balaang Espiritu, Maayong Balita in the usual Cebuano church vocabulary. Be respectful to readers of every background and never disparage another faith or denomination."}[L()];
+  var gl=" Render the 321 terms in "+n+" consistently: 舊人 (old self, self-centered) = "+T("舊人")+"; 新人 (new self, selfless) = "+T("新人")+"; 有己 (having self) = "+T("有己")+"; 無己 (no self, selflessness) = "+T("無己")+"; 讓耶穌作王 (let Jesus reign) = "+T("讓耶穌作王")+"; the 2 / 0 / 9 = each person in my life / selflessness / the ninefold fruit of the Spirit.";
+  return g+sc+gl+" When unsure of the exact wording of a verse, give only the reference rather than risk misquoting.";
+}
 function langLine(){
-  if(isEN())return "Write every word of your reply in natural, warm English (the user reads English). Quote Scripture from the World English Bible (WEB) with English book names, e.g. James 1:19. Keep the 321 terms in plain English: old self (self-centered, 'having self'), new self (selfless, 'no self'), the '2' (each person in my life), '0' (selflessness), '9' (the ninefold fruit of the Spirit).";
+  if(isNZ()&&!isEN0())return langDir();
+  if(isEN0())return "Write every word of your reply in natural, warm English (the user reads English). Quote Scripture from the World English Bible (WEB) with English book names, e.g. James 1:19. Keep the 321 terms in plain English: old self (self-centered, 'having self'), new self (selfless, 'no self'), the '2' (each person in my life), '0' (selflessness), '9' (the ninefold fruit of the Spirit).";
   if(isZS())return "全部用简体中文回答；引用经文一律用和合本（简体）原文，出处要正确，没有把握的经文宁可不引。";
   return "全部用繁體中文；引用經文一律用和合本原文，出處要正確，沒有把握的經文寧可不引。";
 }
 function ckBase(){return CK_BASE.replace("全部用繁體中文；引用經文一律用和合本原文，出處要正確，沒有把握的經文寧可不引。",langLine());}
 function ckSys(){
   var s=ckBase()+CK_TASK+CK_JSON;
-  if(isEN())s+="\n\n[ENGLISH OUTPUT] All JSON string values must be in English. \"who\" must be exactly one of: Old self reigns | Old and new at war | New self reigns. \"area\" must be one of: See, Hear, Think, Speak, Act, Mindset, Life, Living, Relationships, Ministry. \"chain\" k values: Perception, Reaction, Response. Use straight double quotes only for JSON syntax; inside strings use “” for quotations. The \"prayer\" field is a GUIDED prayer (about 80 words): do not pray for the reader or write a finished prayer; speak to them as \"you\" with 3-4 gentle prompts (thanksgiving, what to confess or surrender, what to ask, quiet listening), each ending with an invitation like \"tell Him in your own words…\"; never include their name or personal details; invite them to close with: in the name of the Lord Jesus Christ we pray, Amen.";
+  if(isNZ()&&!isEN0())s+=nzOut();
+  else if(isEN0())s+="\n\n[ENGLISH OUTPUT] All JSON string values must be in English. \"who\" must be exactly one of: Old self reigns | Old and new at war | New self reigns. \"area\" must be one of: See, Hear, Think, Speak, Act, Mindset, Life, Living, Relationships, Ministry. \"chain\" k values: Perception, Reaction, Response. Use straight double quotes only for JSON syntax; inside strings use “” for quotations. The \"prayer\" field is a GUIDED prayer (about 80 words): do not pray for the reader or write a finished prayer; speak to them as \"you\" with 3-4 gentle prompts (thanksgiving, what to confess or surrender, what to ask, quiet listening), each ending with an invitation like \"tell Him in your own words…\"; never include their name or personal details; invite them to close with: in the name of the Lord Jesus Christ we pray, Amen.";
   else if(isZS())s+="\n\n【简体输出】「prayer」是引导祷告：不要替他祷告、不写现成祷告文，用「你」给3到4个温柔的引导，每项以「用你自己的话告诉祂……」作结，不写入他的名字或个人细节，最后邀请他自己用「奉主耶稣基督的名祷告，阿们」结束。所有 JSON 字串值一律用简体中文；who、area、chain.k 的选项也用简体（旧人作王｜新旧交战｜新人作王；看｜听｜想｜讲｜行｜观念｜生命｜生活｜关系｜事工；感应｜反应｜回应）。";
   return s+audLine();
 }
-function ckChatSys(){return ckBase()+CK_TASK+"\n"+CK_CHAT+HONEST_SYS()+(isEN()?"\nWrite in English. The last line is always: **Next step to overcome:** one concrete action.":"")+audLine();}
+function nzOut(){var n=LNAME_EN[L()],ar=["看","聽","想","講","行","觀念","生命","生活","關係","事工"],a=[];for(var i=0;i<ar.length;i++)a.push(T(ar[i]));
+  return "\n\n[OUTPUT LANGUAGE: "+n.toUpperCase()+"] All JSON string values must be in "+n+". \"who\" must be exactly one of: "+T("舊人作王")+" | "+T("新舊交戰")+" | "+T("新人作王")+". \"area\" must be exactly one of: "+a.join(", ")+". \"chain\" k values must be exactly: "+T("感應")+", "+T("反應")+", "+T("回應")+". Use straight double quotes only for JSON syntax; inside strings use the normal quotation marks of "+n+". The \"prayer\" field is a GUIDED prayer (about 80 words): do not pray for the reader or write a finished prayer; speak to them as \"you\" with 3-4 gentle prompts (thanksgiving, what to confess or surrender, what to ask, quiet listening), each ending with an invitation like \"tell Him in your own words…\"; never include their name or personal details; invite them to close with the usual Christian closing in "+n+" (in the name of the Lord Jesus Christ we pray, Amen).";}
+function ckChatSys(){return ckBase()+CK_TASK+"\n"+CK_CHAT+HONEST_SYS()+(isEN0()?"\nWrite in English. The last line is always: **Next step to overcome:** one concrete action.":(isNZ()?"\nWrite in "+LNAME_EN[L()]+". The last line is always the line meaning \"**Next step to overcome:**\" in that language, followed by one concrete action.":""))+audLine();}
 var CK_JSON="【輸出格式】只輸出一個 JSON 物件，不要任何其他文字，不要用```包起來。字串裡不可出現半形雙引號，引用話語一律用「」。每個欄位都要精簡，整份控制在900字以內，務必完整輸出到最後的 }。欄位：\n"+
 "{\"title\":\"十五字內的一句話，點出這次健檢的核心\",\n"+
 "\"who\":\"舊人作王｜新舊交戰｜新人作王 三選一\",\n"+
@@ -728,7 +750,7 @@ function viewCheck(){
     h+='<button class="ckrec" data-ckopen="'+x.id+'"><span class="small">'+fmtDate(x.date)+(x.ai&&x.ai.who?DOT()+esc(x.ai.who):'')+'</span><b>'+esc(t)+'</b></button>';}
   return form+'<section class="card"><div class="eyebrow">'+T("健檢記錄")+'</div>'+(h||'<p class="empty" style="margin:0">'+T("還沒有記錄。")+'</p>')+'</section>';
 }
-function ckWhoClass(w){w=w||"";return /^(新人|New)/i.test(w)?"n":/交戰|交战|war/i.test(w)?"m":"o";}
+function ckWhoClass(w){w=w||"";if(isNZ()&&!isEN0()){if(w===T("新人作王"))return "n";if(w===T("新舊交戰"))return "m";if(w===T("舊人作王"))return "o";}return /^(新人|New)/i.test(w)?"n":/交戰|交战|war/i.test(w)?"m":"o";}
 function ckChatHTML(e,a){
   var ch=e.chat||[],h="",i,asks=(a&&a.asks&&a.asks.length)?a.asks.slice(0,3):[],seen={};
   for(i=0;i<ch.length;i++)seen[ch[i].q]=1;
@@ -997,7 +1019,7 @@ function exportBackup(){
   var data=JSON.stringify({app:"321生命操練",version:2,exported:new Date().toISOString(),entries:entries,hl:HL,fav:FAV},null,1);
   try{
     var blob=new Blob([data],{type:"application/json"}),url=URL.createObjectURL(blob),a=document.createElement("a");
-    a.href=url;a.download=(isEN()?"321life-backup-":"321生命操練備份-")+TODAY+".json";document.body.appendChild(a);a.click();
+    a.href=url;a.download=(isNZ()?"321life-backup-":"321生命操練備份-")+TODAY+".json";document.body.appendChild(a);a.click();
     setTimeout(function(){document.body.removeChild(a);URL.revokeObjectURL(url);},1000);
     toast(T("已匯出備份檔"));
   }catch(e){toast(T("這個瀏覽器無法下載檔案，請改用 Safari 或 Chrome 開啟"));}
@@ -1073,9 +1095,13 @@ app.addEventListener("click",function(e){
     jdraft=null;render();toast(T("已儲存，榮耀歸給耶穌"));
   }
 });
-var APPVER="2.0.202611091200-xz1103-au1103-xzm1103-rf1105-cs1109-nv1109-ac1111-lg1111";
+var APPVER="2.0.202611271200-xz1103-au1103-xzm1103-rf1105-cs1109-nv1109-ac1111-lg1111-ml1127";
 var SVC={xz:XI_ENDPOINT,tts:"https://azure-tts.spch321.workers.dev",model:XI_MODEL};
 var VOICES={
+  ko:[["ko-KR-InJoonNeural","인준"],["ko-KR-SunHiNeural","선희"],["ko-KR-HyunsuMultilingualNeural","현수"]],
+  ja:[["ja-JP-KeitaNeural","ケイタ"],["ja-JP-NanamiNeural","ナナミ"],["ja-JP-DaichiNeural","ダイチ"]],
+  id:[["id-ID-ArdiNeural","Ardi"],["id-ID-GadisNeural","Gadis"]],
+  ceb:[["fil-PH-AngeloNeural","Angelo"],["fil-PH-BlessicaNeural","Blessica"]],
   zh:[["zh-TW-YunJheNeural","雲哲"],["zh-CN-Yunfan:DragonHDLatestNeural","雲帆"],["zh-CN-Xiaochen:DragonHDLatestNeural","曉辰"]],
   zs:[["zh-CN-Yunfan:DragonHDLatestNeural","雲帆"],["zh-CN-Xiaochen:DragonHDLatestNeural","曉辰"],["zh-TW-YunJheNeural","雲哲"]],
   en:[["en-US-AndrewNeural","Andrew"],["en-US-EmmaNeural","Emma"],["en-US-BrianNeural","Brian"]]};
@@ -1095,23 +1121,25 @@ function loadPack(l,cb){
     x.onload=function(){if(x.status>=200&&x.status<300){try{PACK[l]=JSON.parse(x.responseText);lsSet(key,{v:APPVER,d:PACK[l]});}catch(e){}}end();};
     x.onerror=x.ontimeout=end;x.send();}catch(e){end();}
 }
-var FONT_URL={zs:"https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;800&family=Noto+Sans+SC:wght@400;500;700&display=swap"};
+var FONT_URL={zs:"https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;800&family=Noto+Sans+SC:wght@400;500;700&display=swap",ko:"https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@600;800&family=Noto+Sans+KR:wght@400;500;700&display=swap",ja:"https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@600;800&family=Noto+Sans+JP:wght@400;500;700&display=swap"};
 function applyChrome(){
   var h=document.documentElement;
   eachA(["fs-lg","fs-xl","fs-xxl"],function(c){h.classList.remove(c);});
   var F=["","fs-lg","fs-xl","fs-xxl"][SET.font||0];if(F)h.classList.add(F);
-  h.setAttribute("lang",isEN()?"en":(isZS()?"zh-Hans":"zh-Hant-TW"));h.setAttribute("data-lang",L());
+  h.setAttribute("lang",{zh:"zh-Hant-TW",zs:"zh-Hans",en:"en",ko:"ko",ja:"ja",id:"id",ceb:"ceb"}[L()]||"en");h.setAttribute("data-lang",L());
   if(SET.theme)h.setAttribute("data-theme",SET.theme);else h.removeAttribute("data-theme");
   if(FONT_URL[L()]&&!$("font-"+L())){var ln=document.createElement("link");ln.rel="stylesheet";ln.id="font-"+L();ln.href=FONT_URL[L()];document.head.appendChild(ln);}
   document.title=T("321生命操練");
   var hd=$("hdtitle");if(hd)hd.textContent=T("生命操練");
-  eachA(qa("#langsw button"),function(b){b.className=b.getAttribute("data-l")===L()?"on":"";});
+  var lb=$("langbtn");if(lb)lb.textContent=(LSHORT[L()]||"EN")+" ▾";
   var nb=qa("#tabs button");var NL=["今日","生命健檢","檢視舊人","操練新人","成長","日記"];
   eachA(nb,function(b,i){var sp=b.querySelector("span");if(sp)sp.textContent=T(NL[i]);});
   $("tabs").setAttribute("aria-label",T("主選單"));
   var fb=$("fabxz");if(fb)fb.setAttribute("aria-label",T("問小智"));
   drawFab();
 }
+function openLangMenu(){var h="";eachA(LMENU,function(o){h+='<button class="lm'+(o[0]===L()?" on":"")+'" data-lm="'+o[0]+'">'+esc(o[1])+(o[0]===L()?" ✓":"")+'</button>';});
+  openSheet('<div class="sheet-title">🌐 Language<button class="sheet-x" data-sa="close" aria-label="Close">✕</button></div><div class="lmenu">'+h+'</div>');}
 function switchLang(l){
   if(l===L())return;stopAll();closeSheet();
   if(state.tab==="journal")saveJournalDraft();
@@ -1130,7 +1158,7 @@ function segBtns(name,opts,cur){var h='<div class="segx">';eachA(opts,function(o
 function openSettings(){
   var vs=[];eachA(VOICES[L()],function(v,i){vs.push([i,v[1]]);});
   openSheet('<div class="sheet-title">'+T("設定")+'<button class="sheet-x" data-sa="close" aria-label="'+T("關閉")+'">✕</button></div>'+
-    '<div class="setrow"><span>'+T("語言")+'</span>'+segBtns("lang",[["zh","繁體"],["zs","简体"],["en","English"]],L())+'</div>'+
+    '<div class="setrow"><span>'+T("語言")+'</span>'+segBtns("lang",[["zh","繁體"],["zs","简体"],["en","English"],["ko","한국어"],["ja","日本語"],["id","Indonesia"],["ceb","Cebuano"]],L())+'</div>'+
     '<div class="setrow"><span>'+T("字級")+'</span>'+segBtns("font",[[0,T("標準")],[1,T("大")],[2,T("特大")],[3,T("超大")]],SET.font||0)+'</div>'+
     '<div class="setrow"><span>'+T("主題")+'</span>'+segBtns("theme",[["",T("自動")],["light",T("淺色")],["dark",T("深色")]],SET.theme||"")+'</div>'+
     '<div class="setrow"><span>'+T("朗讀語音")+'</span>'+segBtns("voice",vs,SET.voice||0)+'</div>'+
@@ -1152,12 +1180,16 @@ function setClick(b){
   toast(T("已更新設定"));openSettings();
 }
 var AUD_KEYS=["adult", "teen", "kid", "seeker", "elder", "single_parent", "single", "parent", "couple", "pastor"],AUD_ICON={"adult": "🧑", "teen": "🧒", "kid": "🧸", "seeker": "🌱", "elder": "👴", "single_parent": "👩‍👧", "single": "🙋", "parent": "👨‍👩‍👧", "couple": "💑", "pastor": "⛪"},AUD_NM={"zh": {"adult": "成人", "teen": "青少年", "kid": "兒童", "seeker": "慕道友", "elder": "長輩", "single_parent": "單親", "single": "單身", "parent": "父母", "couple": "夫妻", "pastor": "牧者"}, "zs": {"adult": "成人", "teen": "青少年", "kid": "儿童", "seeker": "慕道友", "elder": "长辈", "single_parent": "单亲", "single": "单身", "parent": "父母", "couple": "夫妻", "pastor": "牧者"}, "en": {"adult": "Adult", "teen": "Teen", "kid": "Child", "seeker": "Seeker", "elder": "Elder", "single_parent": "Single parent", "single": "Single", "parent": "Parent", "couple": "Couple", "pastor": "Pastor"}},AUD_SYS6={"zh": {"elder": "\n\n回答對象：長輩（約65歲以上）。請用尊敬、溫和、慢慢說的口吻，像晚輩敬重地陪長輩讀經；句子清楚、不拐彎，不用網路用語和英文縮寫；比喻取自一生的閱歷（田地、家人、歲月、病痛、孫子、老街坊）。重點先講，分成短段落，不要太長。肯定他們一生走過的路與在主裡的忠心，不說教、不指責、不用「你應該」。可以談健康與軟弱、孤單、放下與交託、把信仰傳給下一代、永恆的盼望與感恩。結尾給一件簡單、容易做到的小事（一句禱告、打電話問候家人、數算一件感謝）。若提到身體不適、孤單或失去親人，要先溫柔安慰，並鼓勵他和家人、教會關懷同工聯絡。", "single_parent": "\n\n回答對象：單親爸爸或媽媽（一個人撐起一個家）。請先接住他的辛苦：他常常很累、有愧疚、有孤單，也有經濟、時間與教養的壓力。口吻溫暖、接納、不評斷，不追問過去的原因，不說「你應該再找個伴」，也不把單親說成缺憾。引用神的心意：神是孤兒的父、寡婦的伸冤者（詩篇68:5），祂與我們同在。再給盼望與實際：每一個小步驟都要在忙碌中做得到（五分鐘禱告、跟孩子的一個小儀式、開口向弟兄姊妹求助）。內容簡短、段落要短。結尾給一個這個星期做得到的小步驟。若他提到被暴力對待、疲憊到撐不下去或想傷害自己，要溫柔回應，並鼓勵他立刻聯絡信任的人、教會同工或專業協助。", "single": "\n\n回答對象：單身的人（可能未婚、離婚、喪偶，或正在等候；不要預設他想結婚或不想結婚）。請不要把單身說成缺憾、「預備期」或「還沒到的人生」，也不要用催婚的口氣。談在基督裡的身分已經完整、被愛；談孤單時怎麼與神、與朋友、與團契連結；談時間、金錢與恩賜的運用與使命；談等待中的信靠；談感情與婚姻的智慧，以及在情感與身體上的聖潔，態度要尊重、不論斷。口吻真誠、平等、輕鬆。結尾給一個這個星期可以做的小步驟。若他提到孤單到想傷害自己，要溫柔回應並鼓勵他立刻聯絡信任的人或專業協助。", "parent": "\n\n回答對象：正在養育孩子的父母（孩子可能從嬰幼兒到成年）。請站在父母的位置：他們常常疲累、擔心孩子、也常常內疚。口吻溫暖、貼近生活、不評斷；承認每個孩子與每個家庭都不同。談陪伴與榜樣、管教與恩典的平衡、親子溝通（怎麼聽、怎麼說）、為孩子禱告、夫妻同心、面對自己的軟弱與失敗；可用日常場景當比喻（吃飯、功課、手機、睡前）。結尾給一個這個星期可以做的具體小步驟（一句話、一個擁抱、一段睡前禱告）。若提到孩子遭受傷害、家庭暴力或孩子有自傷的念頭，要溫柔回應並鼓勵立刻尋求專業協助與信任的人。", "couple": "\n\n回答對象：夫妻（正在經營婚姻的丈夫與妻子，可能是新婚、有孩子的中年夫妻，或相伴多年的伴侶）。請站在夫妻同行的位置：口吻溫暖、真誠、不評斷，不偏袒任何一方；承認每段婚姻都有磨合、疲累與受傷的時候。談愛是決定與付出、彼此饒恕、傾聽與表達（怎麼說、怎麼聽）、尊重與同心、金錢與家務的分工、姻親與孩子的教養、一起禱告與一起讀經、在主裡成為一體；可用日常場景當比喻（飯桌、手牽手、吵完架之後、睡前）。結尾給一個這個星期兩個人就能一起做的具體小步驟（一句感謝的話、一段兩人的禱告、一次不看手機的散步）。不要教導妻子順服或丈夫掌權的單方面要求，要強調彼此相愛、彼此順服。若提到家庭暴力、外遇、對方的威脅或有自傷念頭，要溫柔回應，把安全放在第一位，並鼓勵立刻尋求專業協助與信任的人，不要勸人一味忍耐。", "pastor": "\n\n回答對象：牧者與傳道同工（教會的牧師、傳道人、小組長與事奉的同工）。請站在同工的位置：他們常常肩負許多人的重擔，自己也會疲累、孤單、被誤解或灰心。口吻尊重、平等、真誠，像同工之間彼此扶持，不說教、不居高臨下。可以有適度的深度：點出經文脈絡、原文語境與關鍵字詞的意思，談牧養羊群與生命建造、預備講道與教導、帶領小組與門徒訓練、團隊同心與衝突、面對批評與孤單、屬靈爭戰、自己的靈命與家庭，以及不倦怠的安息與依靠；也可提供講章或查經的切入點、段落與應用建議，但要提醒最後仍須自己在神面前領受。結尾給一個這個星期可以做的具體小步驟（一段安靜親近神的時間、一通關心的電話、一次向同工的坦誠分享）。若提到極度疲憊、憂鬱、想放棄或有自傷念頭，要溫柔回應，並鼓勵立刻尋求信任的同工、屬靈長輩與專業協助。"}, "zs": {"elder": "\n\n回答对象：长辈（约65岁以上）。请用尊敬、温和、慢慢说的口吻，像晚辈敬重地陪长辈读经；句子清楚、不拐弯，不用网路用语和英文缩写；比喻取自一生的阅历（田地、家人、岁月、病痛、孙子、老街坊）。重点先讲，分成短段落，不要太长。肯定他们一生走过的路与在主里的忠心，不说教、不指责、不用「你应该」。可以谈健康与软弱、孤单、放下与交托、把信仰传给下一代、永恒的盼望与感恩。结尾给一件简单、容易做到的小事（一句祷告、打电话问候家人、数算一件感谢）。若提到身体不适、孤单或失去亲人，要先温柔安慰，并鼓励他和家人、教会关怀同工联络。", "single_parent": "\n\n回答对象：单亲爸爸或妈妈（一个人撑起一个家）。请先接住他的辛苦：他常常很累、有愧疚、有孤单，也有经济、时间与教养的压力。口吻温暖、接纳、不评断，不追问过去的原因，不说「你应该再找个伴」，也不把单亲说成缺憾。引用神的心意：神是孤儿的父、寡妇的伸冤者（诗篇68:5），祂与我们同在。再给盼望与实际：每一个小步骤都要在忙碌中做得到（五分钟祷告、跟孩子的一个小仪式、开口向弟兄姐妹求助）。内容简短、段落要短。结尾给一个这个星期做得到的小步骤。若他提到被暴力对待、疲惫到撑不下去或想伤害自己，要温柔回应，并鼓励他立刻联络信任的人、教会同工或专业协助。", "single": "\n\n回答对象：单身的人（可能未婚、离婚、丧偶，或正在等候；不要预设他想结婚或不想结婚）。请不要把单身说成缺憾、「预备期」或「还没到的人生」，也不要用催婚的口气。谈在基督里的身分已经完整、被爱；谈孤单时怎么与神、与朋友、与团契连结；谈时间、金钱与恩赐的运用与使命；谈等待中的信靠；谈感情与婚姻的智慧，以及在情感与身体上的圣洁，态度要尊重、不论断。口吻真诚、平等、轻松。结尾给一个这个星期可以做的小步骤。若他提到孤单到想伤害自己，要温柔回应并鼓励他立刻联络信任的人或专业协助。", "parent": "\n\n回答对象：正在养育孩子的父母（孩子可能从婴幼儿到成年）。请站在父母的位置：他们常常疲累、担心孩子、也常常内疚。口吻温暖、贴近生活、不评断；承认每个孩子与每个家庭都不同。谈陪伴与榜样、管教与恩典的平衡、亲子沟通（怎么听、怎么说）、为孩子祷告、夫妻同心、面对自己的软弱与失败；可用日常场景当比喻（吃饭、功课、手机、睡前）。结尾给一个这个星期可以做的具体小步骤（一句话、一个拥抱、一段睡前祷告）。若提到孩子遭受伤害、家庭暴力或孩子有自伤的念头，要温柔回应并鼓励立刻寻求专业协助与信任的人。", "couple": "\n\n回答对象：夫妻（正在经营婚姻的丈夫与妻子，可能是新婚、有孩子的中年夫妻，或相伴多年的伴侣）。请站在夫妻同行的位置：口吻温暖、真诚、不评断，不偏袒任何一方；承认每段婚姻都有磨合、疲累与受伤的时候。谈爱是决定与付出、彼此饶恕、倾听与表达（怎么说、怎么听）、尊重与同心、金钱与家务的分工、姻亲与孩子的教养、一起祷告与一起读经、在主里成为一体；可用日常场景当比喻（饭桌、手牵手、吵完架之后、睡前）。结尾给一个这个星期两个人就能一起做的具体小步骤（一句感谢的话、一段两人的祷告、一次不看手机的散步）。不要教导妻子顺服或丈夫掌权的单方面要求，要强调彼此相爱、彼此顺服。若提到家庭暴力、外遇、对方的威胁或有自伤念头，要温柔回应，把安全放在第一位，并鼓励立刻寻求专业协助与信任的人，不要劝人一味忍耐。", "pastor": "\n\n回答对象：牧者与传道同工（教会的牧师、传道人、小组长与事奉的同工）。请站在同工的位置：他们常常肩负许多人的重担，自己也会疲累、孤单、被误解或灰心。口吻尊重、平等、真诚，像同工之间彼此扶持，不说教、不居高临下。可以有适度的深度：点出经文脉络、原文语境与关键字词的意思，谈牧养羊群与生命建造、预备讲道与教导、带领小组与门徒训练、团队同心与冲突、面对批评与孤单、属灵争战、自己的灵命与家庭，以及不倦怠的安息与依靠；也可提供讲章或查经的切入点、段落与应用建议，但要提醒最后仍须自己在神面前领受。结尾给一个这个星期可以做的具体小步骤（一段安静亲近神的时间、一通关心的电话、一次向同工的坦诚分享）。若提到极度疲惫、忧郁、想放弃或有自伤念头，要温柔回应，并鼓励立刻寻求信任的同工、属灵长辈与专业协助。"}, "en": {"elder": "\n\nAudience: an elder (about 65 and older). Speak respectfully, gently and unhurriedly, like a younger person reading Scripture with an older one they honour. Short, clear sentences; no internet slang or abbreviations; pictures from a long life (fields, family, the years, illness, grandchildren, old neighbours). Main point first, in short paragraphs. Honour the road they have walked and their faithfulness in the Lord; never preach, scold, or say \"you should\". You may speak of health and frailty, loneliness, letting go and entrusting, passing faith to the next generation, eternal hope and gratitude. End with one simple thing that is easy to do (a short prayer, a phone call to family, counting one blessing). If they mention illness, loneliness or loss, comfort them first and encourage them to reach out to family or the church care team.", "single_parent": "\n\nAudience: a single parent (carrying a household alone). First receive their weariness: they are often exhausted, carry guilt and loneliness, and face pressure over money, time and raising children. Be warm, accepting and non-judging; do not ask why they are single, never say \"you should find a partner\", and never describe single parenting as a lack. Bring in God's heart: he is a father to the fatherless and a defender of widows (Psalm 68:5), and he is with us. Then give hope and practicality — every small step must be doable in a busy life (a five-minute prayer, one small ritual with the child, asking brothers and sisters for help). Keep it short, in short paragraphs. End with one step they can take this week. If they mention being abused, being too exhausted to go on, or wanting to harm themselves, answer gently and encourage them to contact someone they trust, a church worker or professional help right away.", "single": "\n\nAudience: a single person (never married, divorced, widowed, or still waiting — do not assume they want or do not want to marry). Never describe being single as a lack, a \"preparation stage\" or \"life not yet begun\", and never use a pushy-about-marriage tone. Speak of an identity in Christ that is already whole and loved; of connecting with God, friends and fellowship in loneliness; of using time, money and gifts for a purpose; of trusting while waiting; of wisdom in dating and marriage and of purity in heart and body, respectfully and without judging. Be sincere, equal and light. End with one step they can take this week. If they mention loneliness so deep they want to harm themselves, answer gently and encourage them to contact someone they trust or professional help right away.", "parent": "\n\nAudience: a parent raising children (from babies to adult children). Stand in the parent's shoes: they are often tired, worried about their children, and often feel guilty. Be warm, down-to-earth and non-judging; acknowledge that every child and every family is different. Speak of presence and example, balancing discipline and grace, parent–child communication (how to listen, how to speak), praying for children, husband and wife standing together, and facing one's own weakness and failure; use everyday scenes as pictures (mealtime, homework, phones, bedtime). End with one concrete step for this week (one sentence, a hug, a bedtime prayer). If a child is being harmed, there is domestic violence, or the child has thoughts of self-harm, answer gently and encourage seeking professional help and a trusted person right away.", "couple": "\n\nAudience: a married couple (husband and wife — newlyweds, parents in the thick of life, or long-time partners). Stand beside them as a fellow traveler: warm, sincere, never judging and never taking one side; admit every marriage has seasons of friction, weariness and hurt. Speak of love as a decision and a gift, forgiving one another, listening and speaking well, respect and unity, money and household work, in-laws and raising children, praying and reading Scripture together, becoming one in the Lord. Use everyday pictures (the dinner table, holding hands, after an argument, bedtime). Close with one small step the two of them can do together this week (a word of thanks, a short prayer together, a phone-free walk). Never lay one-sided demands on the wife to submit or the husband to rule; stress mutual love and mutual submission. If domestic violence, an affair, threats or thoughts of self-harm come up, respond gently, put safety first, and encourage reaching out at once to professionals and trusted people — never urge someone just to endure.", "pastor": "\n\nAudience: a pastor or ministry worker (pastor, preacher, small-group leader, church staff or volunteer). Stand beside them as a fellow worker: they carry many people's burdens and can themselves be weary, lonely, misunderstood or discouraged. Be respectful, equal and sincere — never lecturing or talking down. You may go deeper: the context of the passage, the sense of key words, shepherding and building lives, sermon and lesson preparation, leading groups and discipleship, team unity and conflict, criticism and loneliness, spiritual warfare, one's own walk and family, and resting in God without burning out. You may offer a sermon or Bible-study outline with points and applications, but remind them to receive the word from God themselves first. Close with one small step for this week (a quiet hour with God, a caring phone call, an honest talk with a coworker). If extreme exhaustion, depression, wanting to quit or self-harm come up, respond gently and encourage reaching out at once to trusted coworkers, spiritual elders and professionals."}};
+AUD_NM.ko={adult:"성인",teen:"청소년",kid:"어린이",seeker:"구도자",elder:"어르신",single_parent:"한부모",single:"싱글",parent:"부모",couple:"부부",pastor:"목회자"};
+AUD_NM.ja={adult:"大人",teen:"ティーン",kid:"子ども",seeker:"求道者",elder:"お年寄り",single_parent:"ひとり親",single:"独身",parent:"親",couple:"夫婦",pastor:"牧師"};
+AUD_NM.id={adult:"Dewasa",teen:"Remaja",kid:"Anak",seeker:"Pencari",elder:"Lansia",single_parent:"Orang tua tunggal",single:"Lajang",parent:"Orang tua",couple:"Pasangan",pastor:"Gembala"};
+AUD_NM.ceb={adult:"Hamtong",teen:"Tin-edyer",kid:"Bata",seeker:"Nangitag Kamatuoran",elder:"Tigulang",single_parent:"Usa ka ginikanan",single:"Single",parent:"Ginikanan",couple:"Magtiayon",pastor:"Pastor"};
 function audName(k){var n=(AUD_NM[L()]||AUD_NM.zh)[k]||k;return AUD_ICON[k]+" "+n;}
 function audOpts(){var o=[];eachA(AUD_KEYS,function(k){o.push([k,audName(k)]);});return o;}
 function audLine(){
   var a=SET.aud||"adult";if(a==="adult"||AUD_KEYS.indexOf(a)<0)return "";
-  if(AUD_SYS6.zh[a])return (AUD_SYS6[L()]||AUD_SYS6.zh)[a];
-  if(isEN())return {teen:"\n\n[AUDIENCE: TEENAGER] Talk like a friend: humorous and light, a little playful, never preachy or flippant, never joke about God or the Bible. Keep it short.",
+  if(AUD_SYS6.zh[a])return (AUD_SYS6[LX()]||AUD_SYS6.zh)[a];
+  if(isNZ())return {teen:"\n\n[AUDIENCE: TEENAGER] Talk like a friend: humorous and light, a little playful, never preachy or flippant, never joke about God or the Bible. Keep it short.",
     kid:"\n\n[AUDIENCE: CHILD 5-11] Very simple words, short sentences, like telling a story; one idea per sentence; no hard terms.",
     seeker:"\n\n[AUDIENCE: SEEKER, NOT YET A CHRISTIAN] Start from their situation and questions, then bring in Scripture; use everyday words, no church jargon or insider 321 terms (explain any needed word right away); honest, respectful, no pressure, do not ask them to believe right now; clearly say who God is and what Jesus did for us; always give one or two small steps they can try this week; offer prayer only as an invitation (if you wish, you could say to God...)."}[a]||"";
   return {teen:"\n\n【回答對象：青少年】像朋友聊天、幽默風趣、可以有一點梗，但不說教、不輕浮、不拿神和聖經開玩笑；簡短。",
@@ -1298,7 +1330,7 @@ window.GXA_CFG={
   get name(){return T("321生命操練");},
   get nameEn(){return "321 Life Practice";},
   slug:"life321",
-  lang:function(){return L();},
+  lang:function(){return LX();},
   svc:function(){return {xz:SVC.xz};},
   lessons:function(){return [];},
   current:function(){return 1;},
@@ -1315,7 +1347,8 @@ function openStudio(c){
 function defaultCard(){
   var best=null,k;for(k in HL){if(HL.hasOwnProperty(k)&&(HL[k].lang||"zh")===L()&&(!best||(HL[k].ts||0)>(best.ts||0)))best=HL[k];}
   if(best&&best.t)return {t:best.t,ref:best.ref,n:best.n};
-  if(isEN())return {t:"But seek first God\u2019s Kingdom, and his righteousness; and all these things will be given to you as well.",ref:"Matthew 6:33 (WEB)",n:""};
+  if(isNZ()&&!isEN0())return {t:T("@dvt"),ref:T("@dvr"),n:""};
+  if(isEN0())return {t:"But seek first God\u2019s Kingdom, and his righteousness; and all these things will be given to you as well.",ref:"Matthew 6:33 (WEB)",n:""};
   if(isZS())return {t:"\u300c你们要先求他的国和他的义，这些东西都要加给你们了。\u300d",ref:"马太福音 6:33",n:""};
   return {t:"\u300c你們要先求他的國和他的義，這些東西都要加給你們了。\u300d",ref:"馬太福音 6:33",n:""};
 }
@@ -1418,6 +1451,7 @@ function mdStrip(x){
 }
 var NUMZH = ['第一', '第二', '第三', '第四', '第五', '第六', '第七', '第八', '第九', '第十'], NUMEN = ['First', 'Second', 'Third', 'Fourth', 'Fifth', 'Sixth', 'Seventh', 'Eighth', 'Ninth', 'Tenth'];
 var CNUM = '一二三四五六七八九十';
+function ES(s, a) { var r = s; if (!isEN0()) { var d = PACK[L()]; if (d && d['@e:' + s] != null) r = d['@e:' + s]; } return a == null ? r : r.split('{0}').join(a); }
 function endP(t) { t = trim(t); return !t ? '' : (/[。！？.!?：:」』”]$/.test(t) ? t : t + (isEN() ? '.' : '。')); }
 function mdTok(t) {
   var m, b = t.match(/^\*\*([^*]+)\*\*[：:]?$/), u = b ? trim(b[1]) : t;
@@ -1430,14 +1464,14 @@ function mdTok(t) {
 var LEADW = /^(首先|其次|另外|還有|还有|再來|再来|最後|最后|第[一二三四五六七八九十]|一方面|另一方面|同時|同时|此外|所以|因此|First|Second|Third|Also|Next|Finally|Then|Another)/i;
 var STEPW = /步驟|步骤|方法|做法|行動|行动|怎麼做|怎么做|如何|操練|操练|練習|练习|(兩|两|二|三|四|五|六|七|幾|几)(個|个|件|點|点|步|方面|種|种)|steps?|ways|how to|practices|things/i;
 function mdSpeak(md) {
-  var zh = !isEN(), nq = 0, SP = zh ? '' : ' ';
+  var zh = !isNZ(), nq = 0, SP = (zh || L() === 'ja') ? '' : ' ';
   var src = mdTableMap(String(md || '').replace(/(\d)️?⃣/g, '$1. ').replace(EMOJI_RE, ''), function (head, rows) {
-    var out = [zh ? '我們用一個對照來整理。' : 'Let us lay this out side by side.'];
+    var out = [zh ? '我們用一個對照來整理。' : ES('Let us lay this out side by side.')];
     eachA(rows, function (r, ri) {
       var p = [], lead = trim(r[0] || '');
-      for (var j = 1; j < r.length; j++) { var c = trim(r[j] || ''), hd = trim(head[j] || ''); if (c) p.push(hd ? (zh ? hd + '是' + c : hd + ' is ' + c) : c); }
-      var pre = rows.length > 1 && ri === rows.length - 1 ? (zh ? '最後，' : 'Finally, ') : '';
-      out.push(endP(pre + (lead ? lead + (zh ? '：' : ': ') : '') + p.join(zh ? '，' : '; ')));
+      for (var j = 1; j < r.length; j++) { var c = trim(r[j] || ''), hd = trim(head[j] || ''); if (c) p.push(hd ? (zh ? hd + '是' + c : hd + ES(' is ') + c) : c); }
+      var pre = rows.length > 1 && ri === rows.length - 1 ? (zh ? '最後，' : ES('Finally, ')) : '';
+      out.push(endP(pre + (lead ? lead + (zh ? '：' : ES(': ')) : '') + p.join(zh ? '，' : ES('; '))));
     });
     return '\u0001' + out.join('\n\u0001');
   });
@@ -1474,7 +1508,7 @@ function mdSpeak(md) {
     var n = g.items.length, short = true, lab = 0, scr = 0;
     eachA(g.items, function (k) {
       var t = tk[k].t, plain = mdStrip(t);
-      if (plain.length > (zh ? 14 : 48) || /[。！？.!?；;，,]/.test(plain.slice(0, -1))) short = false;
+      if (plain.length > (isEN() ? 48 : 14) || /[。！？.!?；;，,]/.test(plain.slice(0, -1))) short = false;
       if (/^\*\*[^*]+\*\*/.test(t) || tk[k].hd) lab++;
       if (/\d+\s*[:：]\s*\d+|[「『“]/.test(t)) scr++;
     });
@@ -1487,14 +1521,14 @@ function mdSpeak(md) {
     if (y.k === 'gap') continue;
     if (y.k === 'raw') { res.push(t); continue; }
     if (y.k === 'h') {
-      if (/想更多|延伸|多想|再想|深思|Think (more|further)|Going deeper/i.test(t)) res.push(zh ? '如果想更多一點，可以這樣想。' : 'If you want to think further, consider this.');
-      else if (/禱告|祷告|Pray/i.test(t)) res.push(zh ? '讓我們一起禱告。' : 'Let us pray together.');
+      if (/想更多|延伸|多想|再想|深思|Think (more|further)|Going deeper/i.test(t)) res.push(zh ? '如果想更多一點，可以這樣想。' : ES('If you want to think further, consider this.'));
+      else if (/禱告|祷告|Pray/i.test(t)) res.push(zh ? '讓我們一起禱告。' : ES('Let us pray together.'));
       else {
         var hi = hs.indexOf(i), hl = hs.length, w;
-        if (hl === 1) w = zh ? '我們來談「' + t + '」。' : 'Let us talk about ' + t + '.';
-        else if (hi === 0) w = zh ? '先談「' + t + '」。' : 'Let us start with ' + t + '.';
-        else if (hi === hl - 1 && hl > 2) w = zh ? '最後談「' + t + '」。' : 'Finally, ' + t + '.';
-        else w = zh ? ['接下來談「', '再來看「', '我們再看「'][(hi - 1) % 3] + t + '」。' : ['Next, let us look at ', 'Then, ', 'Now consider '][(hi - 1) % 3] + t + '.';
+        if (hl === 1) w = zh ? '我們來談「' + t + '」。' : ES('Let us talk about {0}.', t);
+        else if (hi === 0) w = zh ? '先談「' + t + '」。' : ES('Let us start with {0}.', t);
+        else if (hi === hl - 1 && hl > 2) w = zh ? '最後談「' + t + '」。' : ES('Finally, {0}.', t);
+        else w = zh ? ['接下來談「', '再來看「', '我們再看「'][(hi - 1) % 3] + t + '」。' : ES(['Next, let us look at {0}.', 'Then, {0}.', 'Now consider {0}.'][(hi - 1) % 3], t);
         res.push(w);
       }
       continue;
@@ -1502,7 +1536,7 @@ function mdSpeak(md) {
     if (y.k === 'q') {
       if (!t) continue;
       var sc = /[「『“"]/.test(t) || /\d+\s*[:：]\s*\d+/.test(t);
-      res.push((zh ? (sc ? '聖經說：' : (nq++ ? '還有一句：' : '有一句話特別要記住：')) : (sc ? 'Scripture says: ' : (nq++ ? 'And another: ' : 'Here is the line to remember: '))) + endP(t));
+      res.push((zh ? (sc ? '聖經說：' : (nq++ ? '還有一句：' : '有一句話特別要記住：')) : (sc ? ES('Scripture says: ') : (nq++ ? ES('And another: ') : ES('Here is the line to remember: ')))) + endP(t));
       continue;
     }
     if (y.k === 'li' && y.g) {
@@ -1510,19 +1544,19 @@ function mdSpeak(md) {
       if (g.mode === 'enum') {
         if (ix === 0) {
           var ws = []; eachA(g.items, function (k) { ws.push(mdStrip(tk[k].t).replace(/[。.]$/, '')); });
-          res.push(endP(zh ? (g.n === 2 ? ws.join('和') : ws.slice(0, -1).join('、') + '，還有' + ws[ws.length - 1]) : (g.n === 2 ? ws.join(' and ') : ws.slice(0, -1).join(', ') + ', and ' + ws[ws.length - 1])));
+          res.push(endP(zh ? (g.n === 2 ? ws.join('和') : ws.slice(0, -1).join('、') + '，還有' + ws[ws.length - 1]) : (g.n === 2 ? ws.join(ES(' and ')) : ws.slice(0, -1).join(ES(', ')) + ES(', and ') + ws[ws.length - 1])));
         }
         continue;
       }
       var pre = '';
-      if (!has && g.mode === 'ord') { var on = (y.n || ix + 1) - 1; pre = on < 10 ? (zh ? NUMZH[on] + '，' : NUMEN[on] + ', ') : ''; }
+      if (!has && g.mode === 'ord') { var on = (y.n || ix + 1) - 1; pre = on < 10 ? (zh ? NUMZH[on] + '，' : ES(NUMEN[on] + ', ')) : ''; }
       else if (!has && g.mode === 'lab') {
         var lm = t.match(/^\*\*([^*]+?)\*\*\s*[：:—–-]?\s*(.*)$/) || [0, mdStrip(t), ''];
         var LB = trim(lm[1]).replace(/[：:]$/, ''), body = trim(lm[2]);
-        res.push(endP((zh ? (ix === 0 ? '首先是' : last ? '最後是' : '再來是') + '「' + LB + '」' : (ix === 0 ? 'First, ' : last ? 'Finally, ' : 'Next, ') + LB) + (body ? (zh ? '，' : ': ') + body : '')));
+        res.push(endP((zh ? (ix === 0 ? '首先是' : last ? '最後是' : '再來是') + '「' + LB + '」' : (ix === 0 ? ES('First, ') : last ? ES('Finally, ') : ES('Next, ')) + LB) + (body ? (zh ? '，' : ES(': ')) + body : '')));
         continue;
       }
-      else if (!has && g.mode === 'conn') pre = last ? (zh ? '最後，' : 'Finally, ') : (zh ? CZ : CE)[ix % 5];
+      else if (!has && g.mode === 'conn') pre = last ? (zh ? '最後，' : ES('Finally, ')) : (zh ? CZ : (isEN0() ? CE : CE.map(function (x) { return ES(x); })))[ix % 5];
       res.push(endP(pre + t)); continue;
     }
     res.push(endP(t));
@@ -1554,7 +1588,8 @@ var BKM={};
 function bookMap(){var k=isZS()?"zs":"zh";if(BKM[k])return BKM[k];var m={},src=k==="zs"?T("@bkzs"):BK_ZH;if(src==="@bkzs")src=BK_ZH;eachA(src.split("|"),function(p){var a=p.split(":");m[a[0]]=a[1]||a[0];});return (BKM[k]=m);}
 function ttsRef(x){
   return String(x||"").replace(/([^\s\d:：，。、；（）「」！？]{1,12}|[1-3]?\s?[A-Z][a-z]+\.?(?: of [A-Z][a-z]+)?)\s?(\d+)[:：](\d+)(?:\s*[–\-~～至]\s*(\d+))?/g,function(m,bk,c,v,v2){
-    if(isEN())return bk.replace(/\.$/,"")+" chapter "+c+(v2?" verses "+v+" to "+v2:" verse "+v);
+    if(isNZ()&&!isEN0())return v2?T("@rfr",bk.replace(/\.$/,""),c,v,v2):T("@rf",bk.replace(/\.$/,""),c,v);
+    if(isEN0())return bk.replace(/\.$/,"")+" chapter "+c+(v2?" verses "+v+" to "+v2:" verse "+v);
     var mp=bookMap(),pre=null,full="";
     for(var k=0;k<bk.length;k++){var suf=bk.slice(k);if(mp[suf]){pre=bk.slice(0,k);full=mp[suf];break;}}
     if(pre===null)return m;
@@ -1566,11 +1601,12 @@ var REF_ONE=/^\s*(?:(?:參|参|見|见|另見|另见|參看|参看|參考|参考
 function isRefParen(inner){var ps=String(inner).split(/[；;、，,]/),ok=0;for(var i=0;i<ps.length;i++){if(!trim(ps[i]))continue;if(!REF_ONE.test(ps[i]))return false;ok++;}return ok>0;}
 function dropRefParens(x){return x.replace(/([，,]?\s*(?:參|参|見|见|see|cf\.?)\s*)?[（(]([^（）()]{1,80})[）)]/g,function(m,lead,inner){return isRefParen(inner)?"":m;});}
 function ttsPrep(s){
-  var x=dropRefParens(String(s||"")).replace(/〔[^〕]*〕/g,"").replace(/\[[^\]]*\]/g,"").replace(EMOJI_RE,"").replace(/[＿_]{2,}/g,isEN()?" blank ":"某某");
+  var x=dropRefParens(String(s||"")).replace(/〔[^〕]*〕/g,"").replace(/\[[^\]]*\]/g,"").replace(EMOJI_RE,"").replace(/[＿_]{2,}/g,isNZ()?(isEN0()?" blank ":" "+T("@blank")+" "):"某某");
   x=ttsRef(x);
+  if(isNZ()&&!isEN0())x=x.replace(/321/g,T("@t321")).replace(/920/g,T("@t920")).replace(/235/g,T("@t235"));
   if(isEN())return trim(x.replace(/[*#>`_~|]/g,"").replace(/\s+/g," ").replace(/\s+([.,;:!?])/g,"$1"));
   x=x.replace(/[「」『』（）()〔〕\[\]《》〈〉*#>`_~|]/g,"").replace(/[—－]{1,2}/g,"，").replace(/→/g,"，").replace(/321/g,"三二一").replace(/920/g,"九二零").replace(/235/g,"二三五");
-  eachA(TTS_FIX,function(f){x=x.replace(f[0],f[1]);});return trim(x.replace(/[ \t]{2,}/g," "));
+  if(!isNZ())eachA(TTS_FIX,function(f){x=x.replace(f[0],f[1]);});return trim(x.replace(/[ \t]{2,}/g," "));
 }
 function voiceName(){var v=VOICES[L()],i=SET.voice||0;return (v[i]||v[0])[0];}
 function ttsAudio(){if(!ttsEl){ttsEl=new Audio();ttsEl.preload="auto";try{ttsEl.setAttribute("playsinline","");}catch(e){}}return ttsEl;}
@@ -1653,8 +1689,8 @@ function secOf(e){var n=e;while(n&&n!==app){if(n.className&&/(^|\s)card(\s|$)/.t
 function secLead(sec){
   if(!sec)return "";var say=sec.getAttribute("data-say");if(say)return say;
   var l=sec.querySelector(".eyebrow");if(!l)return "";var t=trim(l.textContent.replace(EMOJI_RE,""));if(!t)return "";
-  if(/禱告|祷告|Pray/i.test(t))return isEN()?"Let us pray together. ":"讓我們一起禱告。";
-  return isEN()?"Next: "+t+". ":T("接下來是「{0}」。",t);
+  if(/禱告|祷告|Pray|기도|祈り|\bDoa\b|ampo/i.test(t))return isNZ()?T("@pray"):"讓我們一起禱告。";
+  return isNZ()?T("@next",t):T("接下來是「{0}」。",t);
 }
 function unitList(){return qa(".sent, .rd",app);}
 function unitLoc(e){return e.getAttribute("data-k")!=null?{k:e.getAttribute("data-k"),s:e.getAttribute("data-s")}:{t:e.textContent};}
@@ -1720,7 +1756,7 @@ function ttsPlayFrom(i){
   };
   if(spk.cache[i]===undefined)ttsPrefetch(i,go2);else if(spk.cache[i]===0){var w=setInterval(function(){if(spk.cache[i]!==0||!spk.on||my!==spk||spk.gen!==g){clearInterval(w);go2();}},120);}else go2();
 }
-function nativeLang(){return isEN()?"en-US":(isZS()?"zh-CN":"zh-TW");}
+function nativeLang(){return {zh:"zh-TW",zs:"zh-CN",en:"en-US",ko:"ko-KR",ja:"ja-JP",id:"id-ID",ceb:"fil-PH"}[L()]||"en-US";}
 /* 裝置語音只代表「這一段」；唸完一段再回雲端（斷路器開著時會立刻再回裝置語音） */
 function ttsNativeFrom(i){
   ttsWd(0);
@@ -1805,7 +1841,7 @@ function xzCtx(){
 /* ===== XZ2（-xz1103）：小智最新功能共用套件——回答長度五段、讀者資料、慕道友信仰背景、設定頁區塊、滿版小智頁摘要列 ===== */
 XZ2.init({
   app: 'life', pfx: 'xz321-life-', ownAud: true,
-  lang: function () { return L(); },
+  lang: function () { return LX(); },
   aud: { get: function () { return SET.aud || 'adult'; }, set: function (k) { SET.aud = k; saveSet(); } },
   legacyLen: function () { return SET.alen; },
   qsLabel: ['對象範例題', '对象范例题', 'Examples for me'],
@@ -1821,15 +1857,15 @@ function reaskLast(msg){
   CHAT.splice(j-1,2);saveChat();chatSrc=src;toast(msg||T("重新回答中…"));sendChat(q);return true;}
 /* ===== rf1105：小智的誠實、危機與引導禱告（規格見 321-bible-app-v2-xiaozhi-safety）===== */
 var HONEST_ZH="原則：（1）誠實：絕不編造經文、引言、原文字義或歷史；不確定就直說「我不確定」，並請讀者回到經文。引用經文只用你確定的經文，並一定寫出出處（書名 章:節）。（2）遇到基督徒之間有不同看法的議題，簡短公平地說明，不把單一立場說成唯一答案。（3）你是 AI 陪伴者，不是牧者、醫生或律師；涉及醫療、法律、受虐或嚴重情緒的事，鼓勵讀者找信任的牧者、專業人員或當地緊急服務。（4）若讀者提到自殺、自傷、受虐或立即的危險：先用平靜關懷的語氣回應，不說教、不長篇引經，鼓勵他現在就聯絡當地緊急服務或求助專線，以及身邊可信任的人，並溫柔地陪著他。",HONEST_ZS="原则：（1）诚实：绝不编造经文、引言、原文字义或历史；不确定就直说「我不确定」，并请读者回到经文。引用经文只用你确定的经文，并一定写出出处（书名 章:节）。（2）遇到基督徒之间有不同看法的议题，简短公平地说明，不把单一立场说成唯一答案。（3）你是 AI 陪伴者，不是牧者、医生或律师；涉及医疗、法律、受虐或严重情绪的事，鼓励读者找信任的牧者、专业人员或当地紧急服务。（4）若读者提到自杀、自伤、受虐或立即的危险：先用平静关怀的语气回应，不说教、不长篇引经，鼓励他现在就联系当地紧急服务或求助热线，以及身边可信任的人，并温柔地陪着他。",HONEST_EN="PRINCIPLES: (1) Be honest. Never invent a verse, a quotation, a Hebrew/Greek meaning or a historical fact; if unsure, say \"I am not sure\" and point the reader to the text. Quote Scripture only when you are certain of it, and always give the reference (book chapter:verse). (2) Where Christians differ, say so briefly and fairly instead of presenting one view as the only one. (3) You are an AI companion, not a pastor, doctor or lawyer: for medical, legal, abuse or serious emotional matters, encourage the reader to talk to a trusted pastor, a professional or local emergency services. (4) If the reader mentions suicide, self-harm, abuse or immediate danger: respond first with calm care, do not lecture or quote verses at length, encourage them to contact local emergency services or a crisis line and a trusted person right now, and gently stay with them.";
-function HONEST_SYS(){return " "+(isEN()?HONEST_EN:(isZS()?HONEST_ZS:HONEST_ZH));}
+function HONEST_SYS(){return " "+(isNZ()?HONEST_EN:(isZS()?HONEST_ZS:HONEST_ZH));}
 var WORD_ZH="原文字義：當讀者問某個字、詞或句的原文字義時，用簡短小標題依序回答：①原文——背後的希伯來文／希臘文、拼音與基本字義；若和合本這個詞對應不只一個原文字，請分別說明；②在這節的用法——詞性或字根意思，以及放在這節上下文怎麼理解；③聖經其他用法——只寫你確定的一兩處，附出處；④應用——從321角度（無己、讓耶穌作王、被聖靈引導）帶出，並給一個今天可以操練的小步驟。務必誠實：不確定的就標明不確定，絕不編造 Strong 編號或字義；最後用一行提醒讀者對照可靠的原文工具書（如 Strong's、BDAG、HALOT）。篇幅精練。",WORD_ZS="原文字义：当读者问某个字、词或句的原文字义时，用简短小标题依序回答：①原文——背后的希伯来文／希腊文、拼音与基本字义；若和合本这个词对应不只一个原文字，请分别说明；②在这节的用法——词性或字根意思，以及放在这节上下文怎么理解；③圣经其他用法——只写你确定的一两处，附出处；④应用——从321角度（无己、让耶稣作王、被圣灵引导）带出，并给一个今天可以操练的小步骤。务必诚实：不确定的就标明不确定，绝不编造 Strong 编号或字义；最后用一行提醒读者对照可靠的原文工具书（如 Strong's、BDAG、HALOT）。篇幅精练。",WORD_EN="WORD STUDY: when the reader asks about the original-language meaning of a word, phrase or sentence, answer in this order with short headings: (1) Original — the Hebrew/Greek word(s) behind it, transliteration and basic meaning; if the Chinese union-version wording covers several original words, say so and explain each; (2) Usage here — part of speech or root idea and how it works in this verse and context; (3) Elsewhere — one or two other Bible uses ONLY if you are certain, with references; (4) Application — through the 3-2-1 lens (self-emptying, letting Jesus be King, led by the Spirit) with one small step for today. Be honest: label anything you are not sure of as uncertain, never invent Strong numbers or meanings, and close with one line reminding the reader to verify with a reliable lexicon (Strong's, BDAG, HALOT). Keep it clear and not too long.";
-function WORD_SYS(){return " "+(isEN()?WORD_EN:(isZS()?WORD_ZS:WORD_ZH));}
-var CRISIS_RE=/自殺|自杀|輕生|轻生|不想活|想死|結束生命|结束生命|了結自己|了结自己|活不下去|傷害自己|伤害自己|割腕|跳樓|跳楼|suicid|kill myself|end my life|want to die|self[- ]?harm|hurt myself/i;
+function WORD_SYS(){return " "+(isNZ()?WORD_EN:(isZS()?WORD_ZS:WORD_ZH));}
+var CRISIS_RE=/自殺|自杀|輕生|轻生|不想活|想死|結束生命|结束生命|了結自己|了结自己|活不下去|傷害自己|伤害自己|割腕|跳樓|跳楼|suicid|kill myself|end my life|want to die|self[- ]?harm|hurt myself|자살|죽고 ?싶|스스로 목숨|自殺|死にたい|消えたい|自傷|bunuh diri|ingin mati|mengakhiri hidup|melukai diri|magpakamatay|gusto na ?ko mamatay|gusto nako mamatay|mamatay na lang|pagpakamatay|saktan ang akong kaugalingon/i;
 function crisisHit(x){return CRISIS_RE.test(String(x||""));}
 var CRISIS_ZH="💛 **你現在不是一個人。** 我聽見你了，謝謝你願意說出來。\n\n如果你有傷害自己的念頭，或覺得撐不下去，請現在就找一個人陪你：\n\n- 緊急危險：**119**（救護）／**110**（警察）\n- 24 小時安心專線：**1925**（依舊愛我）\n- 生命線：**1995**\n- 張老師：**1980**\n- 身邊信任的牧者、家人或朋友，請現在就打給他\n\n神與你同在，祂看顧你。我也會在這裡陪你，你想說什麼都可以。",CRISIS_ZS="💛 **你现在不是一个人。** 我听见你了，谢谢你愿意说出来。\n\n如果你有伤害自己的念头，或觉得撑不下去，请现在就找一个人陪你：联系你所在地的紧急服务或心理援助热线，并打给身边信任的牧者、家人或朋友。\n\n神与你同在，祂看顾你。我也会在这里陪你，你想说什么都可以。",CRISIS_EN="💛 **You are not alone.** I hear you, and I am glad you said it.\n\nIf you are thinking about hurting yourself or feel you cannot go on, please reach out to someone right now: your local emergency number or crisis line, and a pastor, family member or friend you trust.\n\nGod is with you and cares for you. I am here too — say whatever you need.";
-function crisisCard(){return isEN()?CRISIS_EN:(isZS()?CRISIS_ZS:CRISIS_ZH);}
+function crisisCard(){if(isNZ()&&!isEN0()){var t=T("@crisis");if(t!=="@crisis")return t;}return isNZ()?CRISIS_EN:(isZS()?CRISIS_ZS:CRISIS_ZH);}
 var xzWord=false;
-function xzSys(){return ckBase()+XZ_TASK+(isEN()?SYS_FMT_EN:(isZS()?SYS_FMT_ZS:SYS_FMT_ZH))+"\n\n"+xzCtx()+audLine()+XZ2.sysTail()+HONEST_SYS()+(xzWord?WORD_SYS():"");}
+function xzSys(){return ckBase()+XZ_TASK+(isNZ()?SYS_FMT_EN:(isZS()?SYS_FMT_ZS:SYS_FMT_ZH))+"\n\n"+xzCtx()+audLine()+XZ2.sysTail()+HONEST_SYS()+(xzWord?WORD_SYS():"");}
 var QBANK=["怎樣分辨此刻是舊人作王還是新人作王？","我一被批評就想辯解，怎樣操練「快快的聽，慢慢的說」？","驕傲和謙卑在日常生活裡怎麼分辨？","用一個比喻說明「無己不是沒有，乃是進入無限」","我常拿自己和別人比較，怎樣用神的眼光看自己？","怎樣在家人（我的「2」）面前結出忍耐的果子？","憂慮一直來，怎樣把心意奪回、順服基督？","讓耶穌作王，在職場上具體會怎麼做？","改變觀念的八大步驟，怎樣用在一節經文上？","幫我擬一個七天的無己操練計畫"];
 var FU=[["💬","說出口","請幫我寫出可以直接說出口的一兩句話，用在你剛才說的情況裡。"],["🏠","家庭","你剛才的回答，用在我和家人之間，具體可以怎麼做？"],["💼","職場","你剛才的回答，用在職場和同事之間，具體可以怎麼做？"],["🔁","又跌倒","如果我照你剛才說的去做，卻又失敗了，該怎樣重新起來？"],["🙏","禱告","請根據你剛才的回答，用「引導禱告」帶我用自己的話向神禱告。"],["📅","七天","請把你剛才的回答整理成七天的操練計畫，每天一個小行動。"]];
 function isFav(t){for(var i=0;i<FAV.length;i++)if(FAV[i].text===t)return true;return false;}
@@ -1918,6 +1954,8 @@ function afterRender(){
 }
 document.addEventListener("click",function(e){
   var b=e.target;while(b&&b!==document&&b.tagName!=="BUTTON")b=b.parentNode;if(!b||b===document)return;
+  if(b.id==="langbtn"){openLangMenu();return;}
+  if(b.getAttribute("data-lm")){var nl2=b.getAttribute("data-lm");closeSheet();switchLang(nl2);return;}
   if(b.getAttribute("data-l")&&b.parentNode&&b.parentNode.id==="langsw"){switchLang(b.getAttribute("data-l"));return;}
   if(b.id==="btnfont"){cycleFont();return;}
   if(b.id==="btnset"){openSettings();return;}
@@ -1948,7 +1986,7 @@ var AUPD = (function () {
     sw: 'sw.js',
     busy: function () { return BUSY || isBusy(); },
     toast: function (m) { toast(m); },
-    lang: function () { return (typeof L === 'function') ? L() : ''; },
+    lang: function () { return (typeof LX === 'function') ? LX() : ((typeof L === 'function') ? L() : ''); },
     before: function () {  }
   };
   var U = { reg: null, target: '', pending: false, applying: 0, inited: 0 };
@@ -2131,9 +2169,9 @@ loadPack(L(),function(){
 });
 
 </script>
-<script src="coread.js?v=2.0.202611091200-xz1103-au1103-xzm1103-rf1105-cs1109-nv1109-ac1111-lg1111"></script>
-<script src="gxa.js?v=2.0.202611091200-xz1103-au1103-xzm1103-rf1105-cs1109-nv1109-ac1111-lg1111"></script>
-<script id="k321meet">window.K321MEET_CFG={wrap:'viewHome',marker:'',rerender:function(){try{render()}catch(e){}},lang:function(){try{var l=L();return l==='en'?'en':l==='zs'?'sc':'tc'}catch(e){return 'tc'}}};
+<script src="coread.js?v=2.0.202611271200-xz1103-au1103-xzm1103-rf1105-cs1109-nv1109-ac1111-lg1111-ml1127"></script>
+<script src="gxa.js?v=2.0.202611271200-xz1103-au1103-xzm1103-rf1105-cs1109-nv1109-ac1111-lg1111-ml1127"></script>
+<script id="k321meet">window.K321MEET_CFG={wrap:'viewHome',marker:'',rerender:function(){try{render()}catch(e){}},lang:function(){try{var l=LX();return l==='en'?'en':l==='zs'?'sc':'tc'}catch(e){return 'tc'}}};
 /* 國度321空中團契 · 首頁「下一堂聚會／一鍵加入聚會／聚會時間與奉獻支持」 k321meet v1 */
 (function () {
   if (window.K321MEET) return;
@@ -2395,8 +2433,8 @@ loadPack(L(),function(){
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else boot();
 })();
 </script>
-<script src="xzm.js?v=xzm1103"></script>
-<script src="cpar.js?v=2.0.202611091200-xz1103-au1103-xzm1103-rf1105-cs1109-nv1109-ac1111-lg1111"></script>
+<script src="xzm.js?v=xzm1127"></script>
+<script src="cpar.js?v=2.0.202611271200-xz1103-au1103-xzm1103-rf1105-cs1109-nv1109-ac1111-lg1111-ml1127"></script>
 <script>try{XZM.install(XZM.preset.lesson());}catch(e){}</script>
 <script src="../321steward/k321acct.js?v=ac1111"></script>
 <script src="k321acct-addon.js?v=ac1111"></script>
